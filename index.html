@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://cdn.cookiehub.eu/c2/f67c8ba2.js"></script>
-  <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) {var cpm = {};window.cookiehub.load(cpm);});</script>
   <meta charset="UTF-8" />
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      var _ch = document.createElement('script');
+      _ch.async = true;
+      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      document.head.appendChild(_ch);
+      document.addEventListener('DOMContentLoaded', function() { var cpm = {}; window.cookiehub && window.cookiehub.load(cpm); });
+    }
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Base64 Encode Online — encodeb64.com</title>
   <meta name="description" content="The fastest way to encode text or files to Base64, right in your browser. Free, private, no server." />
@@ -11,27 +18,34 @@
   <meta property="og:description" content="The fastest way to encode text or files to Base64, right in your browser." />
   <meta property="og:url" content="https://encodeb64.com" />
   <meta property="og:type" content="website" />
-  <!-- Google Consent Mode v2 defaults — must be before GA loads -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied',
-      'wait_for_update': 500
-    });
+    if (location.hostname === 'encodeb64.com') {
+      // Google Consent Mode v2
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      // Google Analytics
+      var _ga = document.createElement('script');
+      _ga.async = true;
+      _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
+      document.head.appendChild(_ga);
+      window.dataLayer = window.dataLayer || [];
+      gtag('js', new Date());
+      gtag('config', 'G-MYEHD96X9Q');
+      // AdSense
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
+    }
   </script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-MYEHD96X9Q');
-  </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104" crossorigin="anonymous"></script>
   <meta name="google-site-verification" content="zw27fsekxX4vNdkOvHfQkWX5v1hB-HBlqchzUv6ejl8" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
   <style>
@@ -815,6 +829,7 @@
     <nav class="nav-pills">
       <span class="nav-pill active" data-i18n="nav_encode">Encode</span>
       <a href="https://decodeb64.com" class="nav-pill inactive" data-i18n="nav_decode">Decode</a>
+      <a href="/image-to-base64" class="nav-pill inactive" data-i18n="nav_image">Image to Base64</a>
     </nav>
     <div class="lang-selector">
       <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
@@ -1060,6 +1075,7 @@ const T = {
     page_title: "Base64 Encode Online — encodeb64.com",
     nav_encode: "Encode",
     nav_decode: "Decode",
+    nav_image: "Image to Base64",
     hero_h1: "Encode to Base64",
     hero_sub: "The fastest way to encode text or files to Base64, right in your browser.",
     input_label: "Text or data to encode",
@@ -1113,6 +1129,7 @@ const T = {
     page_title: "Codificador Base64 Online — encodeb64.com",
     nav_encode: "Codificar",
     nav_decode: "Decodificar",
+    nav_image: "Imagen a Base64",
     hero_h1: "Codificar a Base64",
     hero_sub: "La forma más rápida de codificar texto o archivos a Base64, directamente en tu navegador.",
     input_label: "Texto o datos a codificar",
@@ -1161,6 +1178,7 @@ const T = {
     page_title: "Codificador Base64 Online — encodeb64.com",
     nav_encode: "Codificar",
     nav_decode: "Decodificar",
+    nav_image: "Imagem para Base64",
     hero_h1: "Codificar para Base64",
     hero_sub: "A maneira mais rápida de codificar texto ou arquivos para Base64, diretamente no seu navegador.",
     input_label: "Texto ou dados para codificar",
@@ -1209,6 +1227,7 @@ const T = {
     page_title: "Encodeur Base64 en ligne — encodeb64.com",
     nav_encode: "Encoder",
     nav_decode: "Décoder",
+    nav_image: "Image en Base64",
     hero_h1: "Encoder en Base64",
     hero_sub: "La façon la plus rapide d'encoder du texte ou des fichiers en Base64, directement dans votre navigateur.",
     input_label: "Texte ou données à encoder",
@@ -1257,6 +1276,7 @@ const T = {
     page_title: "Base64 Encoder Online — encodeb64.com",
     nav_encode: "Kodieren",
     nav_decode: "Dekodieren",
+    nav_image: "Bild zu Base64",
     hero_h1: "Zu Base64 kodieren",
     hero_sub: "Der schnellste Weg, Text oder Dateien in Base64 zu kodieren, direkt in Ihrem Browser.",
     input_label: "Text oder Daten zum Kodieren",
@@ -1305,6 +1325,7 @@ const T = {
     page_title: "Codificatore Base64 Online — encodeb64.com",
     nav_encode: "Codifica",
     nav_decode: "Decodifica",
+    nav_image: "Immagine in Base64",
     hero_h1: "Codifica in Base64",
     hero_sub: "Il modo più veloce per codificare testo o file in Base64, direttamente nel tuo browser.",
     input_label: "Testo o dati da codificare",
@@ -1353,6 +1374,7 @@ const T = {
     page_title: "Base64 在线编码 — encodeb64.com",
     nav_encode: "编码",
     nav_decode: "解码",
+    nav_image: "图片转Base64",
     hero_h1: "编码为 Base64",
     hero_sub: "在浏览器中即时将文本或文件编码为 Base64，无需服务器。",
     input_label: "待编码的文本或数据",
@@ -1401,6 +1423,7 @@ const T = {
     page_title: "Кодировщик Base64 онлайн — encodeb64.com",
     nav_encode: "Кодировать",
     nav_decode: "Декодировать",
+    nav_image: "Изображение в Base64",
     hero_h1: "Кодировать в Base64",
     hero_sub: "Самый быстрый способ кодировать текст или файлы в Base64, прямо в вашем браузере.",
     input_label: "Текст или данные для кодирования",

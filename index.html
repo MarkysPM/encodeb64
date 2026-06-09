@@ -12,12 +12,27 @@
     }
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Base64 Encode Online — encodeb64.com</title>
-  <meta name="description" content="The fastest way to encode text or files to Base64, right in your browser. Free, private, no server." />
-  <meta property="og:title" content="Base64 Encode Online — encodeb64.com" />
-  <meta property="og:description" content="The fastest way to encode text or files to Base64, right in your browser." />
-  <meta property="og:url" content="https://encodeb64.com" />
+  <title>Base64 Encoder Online — Free Tool | encodeb64.com</title>
+  <meta name="description" content="Free online Base64 encoder. Encode text, files and images to Base64 instantly — UTF-8 perfect, Base64URL safe, up to 100MB. No server, 100% private." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://encodeb64.com/" />
+  <link rel="alternate" hreflang="en" href="https://encodeb64.com/" />
+  <link rel="alternate" hreflang="es" href="https://encodeb64.com/es/" />
+  <link rel="alternate" hreflang="pt" href="https://encodeb64.com/pt/" />
+  <link rel="alternate" hreflang="fr" href="https://encodeb64.com/fr/" />
+  <link rel="alternate" hreflang="de" href="https://encodeb64.com/de/" />
+  <link rel="alternate" hreflang="it" href="https://encodeb64.com/it/" />
+  <link rel="alternate" hreflang="zh" href="https://encodeb64.com/zh/" />
+  <link rel="alternate" hreflang="ru" href="https://encodeb64.com/ru/" />
+  <link rel="alternate" hreflang="x-default" href="https://encodeb64.com/" />
+  <meta property="og:title" content="Base64 Encoder Online — Free Tool | encodeb64.com" />
+  <meta property="og:description" content="Free online Base64 encoder. Encode text, files and images to Base64 instantly — UTF-8 perfect, Base64URL safe, up to 100MB. No server, 100% private." />
+  <meta property="og:url" content="https://encodeb64.com/" />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://encodeb64.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Base64 Encoder Online — Free Tool | encodeb64.com" />
+  <meta name="twitter:description" content="Free online Base64 encoder. Encode text, files and images to Base64 instantly — UTF-8 perfect, Base64URL safe, up to 100MB." />
   <script>
     if (location.hostname === 'encodeb64.com') {
       // Google Consent Mode v2
@@ -770,6 +785,32 @@
     .b64-src { color: var(--green); }
     .b64-enc { color: var(--cyan-light); }
 
+    /* ─── CONTENT SECTIONS ─── */
+    .content-h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      letter-spacing: -0.2px;
+    }
+    .other-tool-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 18px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .other-tool-link:hover {
+      border-color: rgba(0,229,204,0.4);
+      color: var(--cyan);
+    }
+
     /* ─── FOOTER ─── */
     footer {
       position: relative;
@@ -828,7 +869,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <span class="nav-pill active" data-i18n="nav_encode">Encode</span>
-      <a href="https://decodeb64.com" class="nav-pill inactive" data-i18n="nav_decode">Decode</a>
+      <a href="https://decodeb64.com" class="nav-pill inactive" data-i18n="nav_decode" rel="noopener noreferrer" target="_blank">Decode</a>
       <a href="/image-to-base64" class="nav-pill inactive" data-i18n="nav_image">Image to Base64</a>
     </nav>
     <div class="lang-selector">
@@ -1054,6 +1095,65 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section style="margin-top:8px;" itemscope itemtype="https://schema.org/FAQPage">
+    <h2 class="content-h2" data-i18n="faq_title">Frequently Asked Questions</h2>
+    <div class="accordion-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="faq_q1" itemprop="name">What is Base64 encoding?</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div class="accordion-content" data-i18n="faq_a1" itemprop="text">Base64 is a binary-to-text encoding scheme that converts binary data into 64 printable ASCII characters (A–Z, a–z, 0–9, +, /). It is used in JWT tokens, CSS image embedding, email attachments (MIME), API authentication, and webhooks.</div>
+      </div>
+    </div>
+    <div class="accordion-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="faq_q2" itemprop="name">Is Base64 safe for passwords?</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div class="accordion-content" data-i18n="faq_a2" itemprop="text">No. Base64 is encoding, not encryption. Anyone can decode it instantly. For passwords, use bcrypt, SHA-256, Argon2, or similar hashing algorithms with a salt.</div>
+      </div>
+    </div>
+    <div class="accordion-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="faq_q3" itemprop="name">How do I convert an image to Base64?</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div class="accordion-content" data-i18n="faq_a3" itemprop="text">Use our Image to Base64 converter: drag and drop your image, click Convert, and get the Base64 string instantly. Perfect for embedding in CSS, HTML, and API payloads.</div>
+      </div>
+    </div>
+    <div class="accordion-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="faq_q4" itemprop="name">Does Base64 encoding increase file size?</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div class="accordion-content" data-i18n="faq_a4" itemprop="text">Yes, by approximately 33%. Three binary bytes are encoded as four ASCII characters. Use Base64 when you need binary data in text-based formats (JSON, XML, CSS), not for serving images at scale.</div>
+      </div>
+    </div>
+    <div class="accordion-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="faq_q5" itemprop="name">What is Base64URL safe encoding?</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div class="accordion-content" data-i18n="faq_a5" itemprop="text">Base64URL is a variant of Base64 that replaces + with -, / with _, and removes = padding. Defined in RFC 4648 §5. Ideal for JWT tokens, URL parameters, filenames, and webhooks.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OTHER TOOLS -->
+  <section style="margin-top:28px;margin-bottom:8px;">
+    <h2 class="content-h2" data-i18n="other_tools_title">Other Tools</h2>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="https://decodeb64.com" class="other-tool-link" rel="noopener noreferrer" target="_blank">Base64 Decode →</a>
+      <a href="/image-to-base64" class="other-tool-link">Image to Base64 →</a>
+    </div>
+  </section>
+
 </main>
 
 <!-- FOOTER -->
@@ -1065,19 +1165,19 @@
     <a href="#" data-i18n="footer_terms">Terms of Use</a>
     <a href="#" data-i18n="footer_contact">Contact</a>
   </div>
-  <span class="footer-right"><span data-i18n="footer_also_try">Also try:</span> <a href="https://decodeb64.com">decodeb64.com →</a></span>
+  <span class="footer-right"><span data-i18n="footer_also_try">Also try:</span> <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode — decodeb64.com →</a></span>
 </footer>
 
 <script>
 // ─── TRANSLATIONS ─────────────────────────────────────────────────────────────
 const T = {
   en: {
-    page_title: "Base64 Encode Online — encodeb64.com",
+    page_title: "Base64 Encoder Online — Free Tool | encodeb64.com",
     nav_encode: "Encode",
     nav_decode: "Decode",
     nav_image: "Image to Base64",
-    hero_h1: "Encode to Base64",
-    hero_sub: "The fastest way to encode text or files to Base64, right in your browser.",
+    hero_h1: "Base64 Encoder Online",
+    hero_sub: "The fastest online Base64 encoder. Encode text, files, and images to Base64 instantly — UTF-8 perfect, Base64URL safe, up to 100MB. No server, 100% private.",
     input_label: "Text or data to encode",
     input_placeholder: "Paste your text here...",
     output_label: "Base64 encoded output",
@@ -1119,6 +1219,18 @@ const T = {
       </tbody>
     </table>
     <p style="margin-top:12px;">The 24 bits from "Man" are grouped into four 6-bit values: T=19, W=22, F=5, u=46. Each 6-bit value indexes into the Base64 alphabet (A=0 … Z=25, a=26 … z=51, 0=52 … 9=61, +=62, /=63). If the input has 1 or 2 remaining bytes, one or two = padding characters are appended.</p>`,
+    faq_title: "Frequently Asked Questions",
+    faq_q1: "What is Base64 encoding?",
+    faq_a1: "Base64 is a binary-to-text encoding scheme that converts binary data into 64 printable ASCII characters (A–Z, a–z, 0–9, +, /). It is used in JWT tokens, CSS image embedding, email attachments (MIME), API authentication, and webhooks.",
+    faq_q2: "Is Base64 safe for passwords?",
+    faq_a2: "No. Base64 is encoding, not encryption. Anyone can decode it instantly. For passwords, use bcrypt, SHA-256, Argon2, or similar hashing algorithms with a salt.",
+    faq_q3: "How do I convert an image to Base64?",
+    faq_a3: "Use our Image to Base64 converter: drag and drop your image, click Convert, and get the Base64 string instantly. Perfect for embedding in CSS, HTML, and API payloads.",
+    faq_q4: "Does Base64 encoding increase file size?",
+    faq_a4: "Yes, by approximately 33%. Three binary bytes are encoded as four ASCII characters. Use Base64 when you need binary data in text-based formats (JSON, XML, CSS), not for serving images at scale.",
+    faq_q5: "What is Base64URL safe encoding?",
+    faq_a5: "Base64URL is a variant of Base64 that replaces + with -, / with _, and removes = padding. Defined in RFC 4648 §5. Ideal for JWT tokens, URL parameters, filenames, and webhooks.",
+    other_tools_title: "Other Tools",
     footer_about: "About",
     footer_privacy: "Privacy Policy",
     footer_terms: "Terms of Use",
@@ -1126,12 +1238,12 @@ const T = {
     footer_also_try: "Also try:",
   },
   es: {
-    page_title: "Codificador Base64 Online — encodeb64.com",
+    page_title: "Codificador Base64 Online Gratis | encodeb64.com",
     nav_encode: "Codificar",
     nav_decode: "Decodificar",
     nav_image: "Imagen a Base64",
-    hero_h1: "Codificar a Base64",
-    hero_sub: "La forma más rápida de codificar texto o archivos a Base64, directamente en tu navegador.",
+    hero_h1: "Codificador Base64 Online",
+    hero_sub: "El codificador Base64 online más rápido. Codifica texto, archivos e imágenes a Base64 al instante — UTF-8 perfecto, Base64URL, hasta 100MB. Sin servidor, 100% privado.",
     input_label: "Texto o datos a codificar",
     input_placeholder: "Pega tu texto aquí...",
     output_label: "Salida codificada en Base64",
@@ -1168,6 +1280,18 @@ const T = {
     <tbody><tr><td>M</td><td>77</td><td>01001101</td><td>010011/01…</td><td>T/W</td></tr>
     <tr><td>a</td><td>97</td><td>01100001</td><td>…0110/0001…</td><td>W/F</td></tr>
     <tr><td>n</td><td>110</td><td>01101110</td><td>…011011/10</td><td>F/u</td></tr></tbody></table>`,
+    faq_title: "Preguntas Frecuentes",
+    faq_q1: "¿Qué es la codificación Base64?",
+    faq_a1: "Base64 es un esquema de codificación binario a texto que convierte datos binarios en 64 caracteres ASCII imprimibles. Se usa en tokens JWT, imágenes en CSS, adjuntos de email (MIME), autenticación API y webhooks.",
+    faq_q2: "¿Es Base64 seguro para contraseñas?",
+    faq_a2: "No. Base64 es codificación, no cifrado. Cualquiera puede decodificarlo al instante. Para contraseñas usa bcrypt, SHA-256, Argon2 o algoritmos similares con salt.",
+    faq_q3: "¿Cómo convierto una imagen a Base64?",
+    faq_a3: "Usa nuestra herramienta Image to Base64: arrastra tu imagen, haz clic en Convertir y obtén el string Base64 al instante. Perfecto para CSS, HTML y APIs.",
+    faq_q4: "¿Base64 aumenta el tamaño del archivo?",
+    faq_a4: "Sí, aproximadamente un 33%. Tres bytes binarios se codifican como cuatro caracteres ASCII. Usa Base64 cuando necesites datos binarios en formatos de texto (JSON, XML, CSS).",
+    faq_q5: "¿Qué es Base64URL safe?",
+    faq_a5: "Base64URL reemplaza + por -, / por _ y elimina el relleno =. Definido en RFC 4648 §5. Ideal para tokens JWT, parámetros de URL, nombres de archivo y webhooks.",
+    other_tools_title: "Otras herramientas",
     footer_about: "Acerca de",
     footer_privacy: "Política de privacidad",
     footer_terms: "Términos de uso",
@@ -1175,12 +1299,12 @@ const T = {
     footer_also_try: "Prueba también:",
   },
   pt: {
-    page_title: "Codificador Base64 Online — encodeb64.com",
+    page_title: "Codificador Base64 Online Gratuito | encodeb64.com",
     nav_encode: "Codificar",
     nav_decode: "Decodificar",
     nav_image: "Imagem para Base64",
-    hero_h1: "Codificar para Base64",
-    hero_sub: "A maneira mais rápida de codificar texto ou arquivos para Base64, diretamente no seu navegador.",
+    hero_h1: "Codificador Base64 Online",
+    hero_sub: "O codificador Base64 online mais rápido. Codifique texto, arquivos e imagens para Base64 instantaneamente — UTF-8 perfeito, Base64URL, até 100MB. Sem servidor, 100% privado.",
     input_label: "Texto ou dados para codificar",
     input_placeholder: "Cole seu texto aqui...",
     output_label: "Saída codificada em Base64",
@@ -1217,6 +1341,18 @@ const T = {
     <tbody><tr><td>M</td><td>77</td><td>01001101</td><td>010011/01…</td><td>T/W</td></tr>
     <tr><td>a</td><td>97</td><td>01100001</td><td>…0110/0001…</td><td>W/F</td></tr>
     <tr><td>n</td><td>110</td><td>01101110</td><td>…011011/10</td><td>F/u</td></tr></tbody></table>`,
+    faq_title: "Perguntas Frequentes",
+    faq_q1: "O que é codificação Base64?",
+    faq_a1: "Base64 é um esquema de codificação binário para texto que converte dados binários em 64 caracteres ASCII imprimíveis. Usado em tokens JWT, imagens em CSS, anexos de email (MIME), autenticação de API e webhooks.",
+    faq_q2: "Base64 é seguro para senhas?",
+    faq_a2: "Não. Base64 é codificação, não criptografia. Qualquer pessoa pode decodificá-lo instantaneamente. Para senhas, use bcrypt, SHA-256, Argon2 ou algoritmos similares com salt.",
+    faq_q3: "Como converter uma imagem para Base64?",
+    faq_a3: "Use nossa ferramenta Image to Base64: arraste sua imagem, clique em Converter e obtenha o string Base64 instantaneamente. Perfeito para CSS, HTML e APIs.",
+    faq_q4: "Base64 aumenta o tamanho do arquivo?",
+    faq_a4: "Sim, aproximadamente 33%. Três bytes binários são codificados como quatro caracteres ASCII. Use Base64 quando precisar de dados binários em formatos de texto (JSON, XML, CSS).",
+    faq_q5: "O que é codificação Base64URL safe?",
+    faq_a5: "Base64URL substitui + por -, / por _ e remove o preenchimento =. Definido na RFC 4648 §5. Ideal para tokens JWT, parâmetros de URL, nomes de arquivo e webhooks.",
+    other_tools_title: "Outras ferramentas",
     footer_about: "Sobre",
     footer_privacy: "Política de Privacidade",
     footer_terms: "Termos de Uso",
@@ -1224,12 +1360,12 @@ const T = {
     footer_also_try: "Experimente também:",
   },
   fr: {
-    page_title: "Encodeur Base64 en ligne — encodeb64.com",
+    page_title: "Encodeur Base64 en Ligne Gratuit | encodeb64.com",
     nav_encode: "Encoder",
     nav_decode: "Décoder",
     nav_image: "Image en Base64",
-    hero_h1: "Encoder en Base64",
-    hero_sub: "La façon la plus rapide d'encoder du texte ou des fichiers en Base64, directement dans votre navigateur.",
+    hero_h1: "Encodeur Base64 en Ligne",
+    hero_sub: "L'encodeur Base64 en ligne le plus rapide. Encodez du texte, des fichiers et des images en Base64 instantanément — UTF-8 parfait, Base64URL, jusqu'à 100 Mo. Sans serveur, 100% privé.",
     input_label: "Texte ou données à encoder",
     input_placeholder: "Collez votre texte ici...",
     output_label: "Sortie encodée en Base64",
@@ -1266,6 +1402,18 @@ const T = {
     <tbody><tr><td>M</td><td>77</td><td>01001101</td><td>010011/01…</td><td>T/W</td></tr>
     <tr><td>a</td><td>97</td><td>01100001</td><td>…0110/0001…</td><td>W/F</td></tr>
     <tr><td>n</td><td>110</td><td>01101110</td><td>…011011/10</td><td>F/u</td></tr></tbody></table>`,
+    faq_title: "Foire aux questions",
+    faq_q1: "Qu'est-ce que l'encodage Base64 ?",
+    faq_a1: "Base64 est un schéma d'encodage binaire vers texte qui convertit des données binaires en 64 caractères ASCII imprimables. Utilisé dans les tokens JWT, les images CSS, les pièces jointes email (MIME), l'authentification API et les webhooks.",
+    faq_q2: "Base64 est-il sûr pour les mots de passe ?",
+    faq_a2: "Non. Base64 est de l'encodage, pas du chiffrement. N'importe qui peut le décoder instantanément. Pour les mots de passe, utilisez bcrypt, SHA-256, Argon2 ou des algorithmes similaires avec un sel.",
+    faq_q3: "Comment convertir une image en Base64 ?",
+    faq_a3: "Utilisez notre outil Image en Base64 : glissez-déposez votre image, cliquez sur Convertir et obtenez la chaîne Base64 instantanément. Parfait pour CSS, HTML et les APIs.",
+    faq_q4: "Base64 augmente-t-il la taille du fichier ?",
+    faq_a4: "Oui, d'environ 33%. Trois octets binaires sont encodés en quatre caractères ASCII. Utilisez Base64 quand vous avez besoin de données binaires dans des formats textuels (JSON, XML, CSS).",
+    faq_q5: "Qu'est-ce que l'encodage Base64URL safe ?",
+    faq_a5: "Base64URL remplace + par -, / par _ et supprime le rembourrage =. Défini dans la RFC 4648 §5. Idéal pour les tokens JWT, les paramètres d'URL, les noms de fichiers et les webhooks.",
+    other_tools_title: "Autres outils",
     footer_about: "À propos",
     footer_privacy: "Politique de confidentialité",
     footer_terms: "Conditions d'utilisation",
@@ -1273,12 +1421,12 @@ const T = {
     footer_also_try: "Essayez aussi :",
   },
   de: {
-    page_title: "Base64 Encoder Online — encodeb64.com",
+    page_title: "Base64 Encoder Online — Kostenlos | encodeb64.com",
     nav_encode: "Kodieren",
     nav_decode: "Dekodieren",
     nav_image: "Bild zu Base64",
-    hero_h1: "Zu Base64 kodieren",
-    hero_sub: "Der schnellste Weg, Text oder Dateien in Base64 zu kodieren, direkt in Ihrem Browser.",
+    hero_h1: "Base64 Encoder Online",
+    hero_sub: "Der schnellste Online-Base64-Encoder. Kodieren Sie Text, Dateien und Bilder sofort in Base64 — UTF-8 perfekt, Base64URL, bis zu 100 MB. Kein Server, 100% privat.",
     input_label: "Text oder Daten zum Kodieren",
     input_placeholder: "Fügen Sie Ihren Text hier ein...",
     output_label: "Base64-kodierte Ausgabe",
@@ -1315,6 +1463,18 @@ const T = {
     <tbody><tr><td>M</td><td>77</td><td>01001101</td><td>010011/01…</td><td>T/W</td></tr>
     <tr><td>a</td><td>97</td><td>01100001</td><td>…0110/0001…</td><td>W/F</td></tr>
     <tr><td>n</td><td>110</td><td>01101110</td><td>…011011/10</td><td>F/u</td></tr></tbody></table>`,
+    faq_title: "Häufig gestellte Fragen",
+    faq_q1: "Was ist Base64-Kodierung?",
+    faq_a1: "Base64 ist ein Binär-zu-Text-Kodierungsschema, das Binärdaten in 64 druckbare ASCII-Zeichen umwandelt. Es wird in JWT-Tokens, CSS-Bildeinbettung, E-Mail-Anhängen (MIME), API-Authentifizierung und Webhooks verwendet.",
+    faq_q2: "Ist Base64 sicher für Passwörter?",
+    faq_a2: "Nein. Base64 ist Kodierung, keine Verschlüsselung. Jeder kann es sofort dekodieren. Für Passwörter verwenden Sie bcrypt, SHA-256, Argon2 oder ähnliche Hashing-Algorithmen mit Salt.",
+    faq_q3: "Wie konvertiere ich ein Bild in Base64?",
+    faq_a3: "Nutzen Sie unser Image-to-Base64-Tool: Bild hineinziehen, auf Konvertieren klicken und den Base64-String sofort erhalten. Perfekt für CSS, HTML und APIs.",
+    faq_q4: "Erhöht Base64 die Dateigröße?",
+    faq_a4: "Ja, um etwa 33%. Drei Binär-Bytes werden als vier ASCII-Zeichen kodiert. Verwenden Sie Base64, wenn Sie Binärdaten in textbasierten Formaten benötigen (JSON, XML, CSS).",
+    faq_q5: "Was ist Base64URL-sichere Kodierung?",
+    faq_a5: "Base64URL ersetzt + durch -, / durch _ und entfernt = Auffüllung. Definiert in RFC 4648 §5. Ideal für JWT-Tokens, URL-Parameter, Dateinamen und Webhooks.",
+    other_tools_title: "Weitere Tools",
     footer_about: "Über uns",
     footer_privacy: "Datenschutzrichtlinie",
     footer_terms: "Nutzungsbedingungen",
@@ -1322,12 +1482,12 @@ const T = {
     footer_also_try: "Auch ausprobieren:",
   },
   it: {
-    page_title: "Codificatore Base64 Online — encodeb64.com",
+    page_title: "Codificatore Base64 Online Gratuito | encodeb64.com",
     nav_encode: "Codifica",
     nav_decode: "Decodifica",
     nav_image: "Immagine in Base64",
-    hero_h1: "Codifica in Base64",
-    hero_sub: "Il modo più veloce per codificare testo o file in Base64, direttamente nel tuo browser.",
+    hero_h1: "Codificatore Base64 Online",
+    hero_sub: "Il codificatore Base64 online più veloce. Codifica testo, file e immagini in Base64 istantaneamente — UTF-8 perfetto, Base64URL, fino a 100 MB. Nessun server, 100% privato.",
     input_label: "Testo o dati da codificare",
     input_placeholder: "Incolla il tuo testo qui...",
     output_label: "Output codificato in Base64",
@@ -1364,6 +1524,18 @@ const T = {
     <tbody><tr><td>M</td><td>77</td><td>01001101</td><td>010011/01…</td><td>T/W</td></tr>
     <tr><td>a</td><td>97</td><td>01100001</td><td>…0110/0001…</td><td>W/F</td></tr>
     <tr><td>n</td><td>110</td><td>01101110</td><td>…011011/10</td><td>F/u</td></tr></tbody></table>`,
+    faq_title: "Domande frequenti",
+    faq_q1: "Cos'è la codifica Base64?",
+    faq_a1: "Base64 è uno schema di codifica da binario a testo che converte i dati binari in 64 caratteri ASCII stampabili. Utilizzato in token JWT, immagini CSS, allegati email (MIME), autenticazione API e webhook.",
+    faq_q2: "Base64 è sicuro per le password?",
+    faq_a2: "No. Base64 è codifica, non crittografia. Chiunque può decodificarlo istantaneamente. Per le password, usa bcrypt, SHA-256, Argon2 o algoritmi simili con salt.",
+    faq_q3: "Come converto un'immagine in Base64?",
+    faq_a3: "Usa il nostro strumento Image to Base64: trascina l'immagine, clicca su Converti e ottieni la stringa Base64 istantaneamente. Perfetto per CSS, HTML e API.",
+    faq_q4: "La codifica Base64 aumenta le dimensioni del file?",
+    faq_a4: "Sì, di circa il 33%. Tre byte binari vengono codificati come quattro caratteri ASCII. Usa Base64 quando hai bisogno di dati binari in formati testuali (JSON, XML, CSS).",
+    faq_q5: "Cos'è la codifica Base64URL safe?",
+    faq_a5: "Base64URL sostituisce + con -, / con _ e rimuove il padding =. Definito in RFC 4648 §5. Ideale per token JWT, parametri URL, nomi file e webhook.",
+    other_tools_title: "Altri strumenti",
     footer_about: "Chi siamo",
     footer_privacy: "Informativa sulla privacy",
     footer_terms: "Termini di utilizzo",
@@ -1371,12 +1543,12 @@ const T = {
     footer_also_try: "Prova anche:",
   },
   zh: {
-    page_title: "Base64 在线编码 — encodeb64.com",
+    page_title: "Base64 在线编码器 — 免费工具 | encodeb64.com",
     nav_encode: "编码",
     nav_decode: "解码",
     nav_image: "图片转Base64",
-    hero_h1: "编码为 Base64",
-    hero_sub: "在浏览器中即时将文本或文件编码为 Base64，无需服务器。",
+    hero_h1: "Base64 在线编码器",
+    hero_sub: "最快的在线 Base64 编码器。即时将文本、文件和图片编码为 Base64 — UTF-8 完美，支持 Base64URL，最大 100MB。无需服务器，100% 私密。",
     input_label: "待编码的文本或数据",
     input_placeholder: "在此粘贴您的文本...",
     output_label: "Base64 编码输出",
@@ -1413,6 +1585,18 @@ const T = {
     <tbody><tr><td>M</td><td>77</td><td>01001101</td><td>010011/01…</td><td>T/W</td></tr>
     <tr><td>a</td><td>97</td><td>01100001</td><td>…0110/0001…</td><td>W/F</td></tr>
     <tr><td>n</td><td>110</td><td>01101110</td><td>…011011/10</td><td>F/u</td></tr></tbody></table>`,
+    faq_title: "常见问题",
+    faq_q1: "什么是 Base64 编码？",
+    faq_a1: "Base64 是一种二进制到文本的编码方案，将二进制数据转换为 64 个可打印的 ASCII 字符（A–Z、a–z、0–9、+、/）。广泛用于 JWT 令牌、CSS 图片嵌入、电子邮件附件（MIME）、API 身份验证和 Webhooks。",
+    faq_q2: "Base64 适合用于密码吗？",
+    faq_a2: "不。Base64 是编码，不是加密。任何人都可以立即解码。对于密码，请使用 bcrypt、SHA-256、Argon2 或类似的带盐哈希算法。",
+    faq_q3: "如何将图片转换为 Base64？",
+    faq_a3: "使用我们的图片转 Base64 工具：拖放图片，点击转换，立即获得 Base64 字符串。完美适用于 CSS、HTML 和 API。",
+    faq_q4: "Base64 编码会增加文件大小吗？",
+    faq_a4: "是的，增加约 33%。三个二进制字节被编码为四个 ASCII 字符。当您需要在基于文本的格式（JSON、XML、CSS）中使用二进制数据时，请使用 Base64。",
+    faq_q5: "什么是 Base64URL 安全编码？",
+    faq_a5: "Base64URL 将 + 替换为 -，/ 替换为 _，并删除 = 填充。在 RFC 4648 §5 中定义。非常适合 JWT 令牌、URL 参数、文件名和 Webhooks。",
+    other_tools_title: "其他工具",
     footer_about: "关于",
     footer_privacy: "隐私政策",
     footer_terms: "使用条款",
@@ -1420,12 +1604,12 @@ const T = {
     footer_also_try: "也可以试试：",
   },
   ru: {
-    page_title: "Кодировщик Base64 онлайн — encodeb64.com",
+    page_title: "Кодировщик Base64 Онлайн — Бесплатно | encodeb64.com",
     nav_encode: "Кодировать",
     nav_decode: "Декодировать",
     nav_image: "Изображение в Base64",
-    hero_h1: "Кодировать в Base64",
-    hero_sub: "Самый быстрый способ кодировать текст или файлы в Base64, прямо в вашем браузере.",
+    hero_h1: "Кодировщик Base64 Онлайн",
+    hero_sub: "Самый быстрый онлайн-кодировщик Base64. Кодируйте текст, файлы и изображения в Base64 мгновенно — UTF-8 идеально, Base64URL, до 100 МБ. Без сервера, 100% приватно.",
     input_label: "Текст или данные для кодирования",
     input_placeholder: "Вставьте ваш текст сюда...",
     output_label: "Закодированный вывод Base64",
@@ -1462,6 +1646,18 @@ const T = {
     <tbody><tr><td>M</td><td>77</td><td>01001101</td><td>010011/01…</td><td>T/W</td></tr>
     <tr><td>a</td><td>97</td><td>01100001</td><td>…0110/0001…</td><td>W/F</td></tr>
     <tr><td>n</td><td>110</td><td>01101110</td><td>…011011/10</td><td>F/u</td></tr></tbody></table>`,
+    faq_title: "Часто задаваемые вопросы",
+    faq_q1: "Что такое кодирование Base64?",
+    faq_a1: "Base64 — это схема кодирования из двоичных данных в текст, которая преобразует бинарные данные в 64 печатных ASCII-символа. Используется в JWT-токенах, встраивании изображений в CSS, email-вложениях (MIME), аутентификации API и вебхуках.",
+    faq_q2: "Безопасен ли Base64 для паролей?",
+    faq_a2: "Нет. Base64 — это кодирование, а не шифрование. Любой может мгновенно декодировать его. Для паролей используйте bcrypt, SHA-256, Argon2 или аналогичные алгоритмы хеширования с солью.",
+    faq_q3: "Как конвертировать изображение в Base64?",
+    faq_a3: "Используйте наш инструмент Image to Base64: перетащите изображение, нажмите «Конвертировать» и мгновенно получите строку Base64. Идеально для CSS, HTML и API.",
+    faq_q4: "Увеличивает ли Base64 размер файла?",
+    faq_a4: "Да, примерно на 33%. Три байта двоичных данных кодируются как четыре ASCII-символа. Используйте Base64, когда вам нужны бинарные данные в текстовых форматах (JSON, XML, CSS).",
+    faq_q5: "Что такое URL-безопасное кодирование Base64URL?",
+    faq_a5: "Base64URL заменяет + на -, / на _ и удаляет дополнение =. Определено в RFC 4648 §5. Идеально для JWT-токенов, URL-параметров, имён файлов и вебхуков.",
+    other_tools_title: "Другие инструменты",
     footer_about: "О нас",
     footer_privacy: "Политика конфиденциальности",
     footer_terms: "Условия использования",
@@ -1752,6 +1948,71 @@ function toggleAccordion(header) {
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 applyLang(currentLang);
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Base64 Encoder Online",
+  "url": "https://encodeb64.com/",
+  "description": "Free online Base64 encoder for developers. Encode text, files, and images to Base64 — UTF-8 perfect, Base64URL safe, up to 100MB. Works in 8 languages.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Base64 encode, Image to Base64, File encoding, UTF-8, Base64URL safe (RFC 4648), 100MB limit"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Base64 encoding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Base64 is a binary-to-text encoding scheme that converts binary data into 64 printable ASCII characters (A–Z, a–z, 0–9, +, /). It is used in JWT tokens, CSS image embedding, email attachments (MIME), API authentication, and webhooks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Base64 safe for passwords?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Base64 is encoding, not encryption. Anyone can decode it instantly. For passwords, use bcrypt, SHA-256, Argon2, or similar hashing algorithms with a salt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I convert an image to Base64?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use our Image to Base64 converter: drag and drop your image, click Convert, and get the Base64 string instantly. Perfect for embedding in CSS, HTML, and API payloads."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Base64 encoding increase file size?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, by approximately 33%. Three binary bytes are encoded as four ASCII characters. Use Base64 when you need binary data in text-based formats such as JSON, XML, or CSS."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Base64URL safe encoding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Base64URL is a variant of Base64 that replaces + with -, / with _, and removes = padding. Defined in RFC 4648 §5. Ideal for JWT tokens, URL parameters, filenames, and webhooks."
+      }
+    }
+  ]
+}
 </script>
 </body>
 </html>

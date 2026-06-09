@@ -1,0 +1,2348 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image to Base64 Converter — Free Online Tool | encodeb64.com</title>
+  <meta name="description" content="Free online image to Base64 converter. Convert JPG, PNG, GIF, WebP, SVG and more to Base64 instantly — right in your browser. No uploads, 100% private." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://encodeb64.com/zh/image-to-base64.html" />
+  <link rel="alternate" hreflang="en" href="https://encodeb64.com/en/image-to-base64.html" />
+  <link rel="alternate" hreflang="es" href="https://encodeb64.com/es/image-to-base64.html" />
+  <link rel="alternate" hreflang="pt" href="https://encodeb64.com/pt/image-to-base64.html" />
+  <link rel="alternate" hreflang="fr" href="https://encodeb64.com/fr/image-to-base64.html" />
+  <link rel="alternate" hreflang="de" href="https://encodeb64.com/de/image-to-base64.html" />
+  <link rel="alternate" hreflang="it" href="https://encodeb64.com/it/image-to-base64.html" />
+  <link rel="alternate" hreflang="zh" href="https://encodeb64.com/zh/image-to-base64.html" />
+  <link rel="alternate" hreflang="ru" href="https://encodeb64.com/ru/image-to-base64.html" />
+  <link rel="alternate" hreflang="x-default" href="https://encodeb64.com/image-to-base64" />
+  <meta property="og:title" content="Image to Base64 Converter — Free Online Tool | encodeb64.com" />
+  <meta property="og:description" content="Free online image to Base64 converter. Convert JPG, PNG, GIF, WebP, SVG and more to Base64 instantly — right in your browser. No uploads, 100% private." />
+  <meta property="og:url" content="https://encodeb64.com/zh/image-to-base64.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://encodeb64.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Image to Base64 Converter — Free Online Tool | encodeb64.com" />
+  <meta name="twitter:description" content="Free online image to Base64 converter. Convert JPG, PNG, GIF, WebP, SVG and more to Base64 instantly. No uploads, 100% private." />
+  <meta name="google-site-verification" content="zw27fsekxX4vNdkOvHfQkWX5v1hB-HBlqchzUv6ejl8" />
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      // CookieHub
+      var _ch = document.createElement('script');
+      _ch.async = true;
+      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      document.head.appendChild(_ch);
+      document.addEventListener('DOMContentLoaded', function() { var cpm = {}; window.cookiehub && window.cookiehub.load(cpm); });
+      // Google Consent Mode v2
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      // Google Analytics
+      var _ga = document.createElement('script');
+      _ga.async = true;
+      _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
+      document.head.appendChild(_ga);
+      window.dataLayer = window.dataLayer || [];
+      gtag('js', new Date());
+      gtag('config', 'G-MYEHD96X9Q');
+      // AdSense
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
+    }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --bg: #0d0d14;
+      --bg2: #12121c;
+      --bg3: #1a1a28;
+      --cyan: #00e5cc;
+      --cyan-dim: rgba(0,229,204,0.12);
+      --cyan-glow: rgba(0,229,204,0.3);
+      --cyan-light: #5ef5e5;
+      --glass-bg: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.09);
+      --text: #e8e8f0;
+      --text-muted: #7a7a9a;
+      --text-dim: #4a4a6a;
+      --green: #3ecf7e;
+      --red: #ff5a5a;
+      --red-dim: rgba(255,90,90,0.15);
+      --radius: 14px;
+      --radius-sm: 8px;
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Sora', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(0,229,204,0.1) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(0,229,204,0.055) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,13,20,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 0 24px;
+      height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      font-family: var(--mono);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .logo span.encode { color: #ffffff; }
+    .logo span.b64 { color: var(--cyan); }
+
+    .header-right { display: flex; align-items: center; gap: 10px; }
+
+    .nav-pills { display: flex; gap: 6px; }
+
+    .nav-pill {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+    .nav-pill.inactive {
+      color: var(--text-muted);
+      border-color: var(--glass-border);
+      background: transparent;
+    }
+    .nav-pill.inactive:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .nav-pill.active {
+      color: #0d0d14;
+      background: var(--cyan);
+      font-weight: 600;
+    }
+
+    .lang-selector { position: relative; }
+
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .lang-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .lang-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    .lang-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: #1a1a2e;
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      min-width: 160px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+      z-index: 200;
+    }
+    .lang-dropdown.open { display: block; }
+
+    .lang-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      transition: all 0.15s;
+    }
+    .lang-option:hover { background: var(--cyan-dim); color: var(--text); }
+    .lang-option.selected { color: var(--cyan); }
+
+    /* ─── MAIN ─── */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    /* ─── BREADCRUMB ─── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 0 0;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--cyan); }
+    .breadcrumb-sep { color: var(--text-dim); }
+    .breadcrumb-current { color: var(--text-muted); }
+
+    /* ─── HERO ─── */
+    .hero {
+      text-align: center;
+      padding: 48px 20px 36px;
+      position: relative;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(0,229,204,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      color: var(--text-muted);
+      font-weight: 300;
+      max-width: 580px;
+      margin: 0 auto 20px;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    .format-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      position: relative;
+    }
+
+    .format-badge {
+      padding: 4px 12px;
+      background: rgba(0,229,204,0.08);
+      border: 1px solid rgba(0,229,204,0.2);
+      border-radius: 20px;
+      font-size: 0.73rem;
+      font-family: var(--mono);
+      color: var(--cyan);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    /* ─── GLASS CARD ─── */
+    .glass-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+
+    /* ─── TAB SWITCHER ─── */
+    .tab-switcher {
+      display: flex;
+      gap: 0;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      padding: 3px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 8px 16px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s;
+      position: relative;
+      z-index: 1;
+    }
+    .tab-btn.active {
+      color: var(--text);
+      background: rgba(255,255,255,0.07);
+      box-shadow: 0 1px 6px rgba(0,0,0,0.3);
+    }
+    .tab-btn:hover:not(.active) { color: var(--text); }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ─── DROP ZONE ─── */
+    .img-drop-zone {
+      border: 2px dashed rgba(0,229,204,0.22);
+      border-radius: var(--radius);
+      padding: 40px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s;
+      background: rgba(0,229,204,0.02);
+      position: relative;
+      overflow: hidden;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .img-drop-zone:hover, .img-drop-zone.dragover {
+      border-color: var(--cyan);
+      background: var(--cyan-dim);
+      box-shadow: 0 0 24px rgba(0,229,204,0.14), inset 0 0 24px rgba(0,229,204,0.03);
+    }
+    .img-drop-zone.has-image {
+      border-style: solid;
+      border-color: rgba(0,229,204,0.3);
+      padding: 16px;
+    }
+
+    .drop-icon-wrap {
+      color: var(--cyan);
+      opacity: 0.5;
+      margin-bottom: 12px;
+      transition: opacity 0.2s;
+    }
+    .img-drop-zone:hover .drop-icon-wrap { opacity: 0.9; }
+    .drop-icon-wrap svg { width: 44px; height: 44px; }
+
+    .drop-main-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .drop-main-text strong { color: var(--cyan); }
+
+    .drop-sub-text {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .img-preview-wrap {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+    .img-preview-wrap.visible { display: flex; }
+
+    .img-preview {
+      max-height: 300px;
+      max-width: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .img-file-info {
+      padding: 10px 16px;
+      background: rgba(0,229,204,0.07);
+      border: 1px solid rgba(0,229,204,0.18);
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      color: var(--cyan-light);
+      font-family: var(--mono);
+      text-align: left;
+      width: 100%;
+      line-height: 1.7;
+    }
+
+    .change-img-btn {
+      padding: 6px 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      color: var(--text-muted);
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .change-img-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+
+    /* ─── URL PANEL ─── */
+    .url-input-wrap {
+      display: flex;
+      gap: 10px;
+    }
+
+    .url-input {
+      flex: 1;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      padding: 11px 14px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .url-input:focus {
+      border-color: rgba(0,229,204,0.4);
+      box-shadow: 0 0 0 3px rgba(0,229,204,0.07);
+    }
+    .url-input::placeholder { color: var(--text-dim); }
+
+    .btn-load-url {
+      padding: 11px 20px;
+      background: linear-gradient(135deg, #00e5cc 0%, #00b8a4 100%);
+      border: none;
+      border-radius: var(--radius-sm);
+      color: #0d0d14;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-load-url:hover {
+      box-shadow: 0 0 18px rgba(0,229,204,0.4);
+      transform: translateY(-1px);
+    }
+    .btn-load-url:active { transform: scale(0.97); }
+
+    .url-preview-area {
+      margin-top: 16px;
+    }
+
+    /* ─── OPTIONS ROW ─── */
+    .options-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: flex-end;
+      margin: 20px 0 16px;
+    }
+
+    .select-wrap { display: flex; flex-direction: column; gap: 6px; }
+    .select-wrap label {
+      font-size: 0.73rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    select {
+      background: rgba(0,0,0,0.35);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      padding: 9px 30px 9px 12px;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%237a7a9a' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      min-width: 220px;
+    }
+    select:focus { border-color: rgba(0,229,204,0.4); }
+    select option { background: #1a1a2e; }
+
+    .option-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 2px;
+    }
+    .option-group label {
+      font-size: 0.82rem;
+      color: var(--text);
+      cursor: pointer;
+      font-weight: 400;
+    }
+
+    .custom-checkbox {
+      width: 16px;
+      height: 16px;
+      border: 1.5px solid var(--glass-border);
+      border-radius: 4px;
+      background: rgba(0,0,0,0.3);
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: all 0.15s;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .custom-checkbox:checked { background: var(--cyan); border-color: var(--cyan); }
+    .custom-checkbox:checked::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 1px;
+      width: 5px;
+      height: 9px;
+      border: 2px solid #0d0d14;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg);
+    }
+
+    /* ─── ENCODE BUTTON ─── */
+    .btn-encode {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #00e5cc 0%, #00b8a4 100%);
+      border: none;
+      border-radius: var(--radius-sm);
+      color: #0d0d14;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin: 8px 0 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-encode::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.18) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .btn-encode:hover {
+      box-shadow: 0 0 24px rgba(0,229,204,0.4);
+      transform: translateY(-1px);
+    }
+    .btn-encode:hover::after { opacity: 1; }
+    .btn-encode:active {
+      transform: scale(0.97);
+      box-shadow: 0 0 36px rgba(0,229,204,0.55);
+    }
+
+    /* ─── OUTPUT SECTION ─── */
+    .output-section {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .output-section.visible { opacity: 1; transform: translateY(0); }
+
+    .output-label-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .output-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .format-tag {
+      font-size: 0.7rem;
+      font-family: var(--mono);
+      padding: 2px 10px;
+      background: rgba(0,229,204,0.1);
+      border: 1px solid rgba(0,229,204,0.25);
+      border-radius: 20px;
+      color: var(--cyan);
+    }
+
+    .output-textarea {
+      width: 100%;
+      background: rgba(0,0,0,0.45);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      padding: 12px 14px;
+      min-height: 150px;
+      line-height: 1.6;
+      resize: vertical;
+      outline: none;
+      cursor: default;
+    }
+
+    .char-count {
+      font-size: 0.73rem;
+      color: var(--text-dim);
+      font-family: var(--mono);
+      margin-top: 5px;
+    }
+
+    .action-btns {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-secondary {
+      flex: 1;
+      min-width: 120px;
+      padding: 9px 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .btn-secondary:hover {
+      border-color: rgba(255,255,255,0.2);
+      color: var(--text);
+      background: rgba(255,255,255,0.07);
+    }
+    .btn-secondary:active { transform: scale(0.97); }
+    .btn-copy.success {
+      background: rgba(62,207,126,0.15);
+      border-color: rgba(62,207,126,0.4);
+      color: var(--green);
+    }
+
+    /* ─── LIVE PREVIEW ─── */
+    .live-preview-section {
+      margin-top: 20px;
+      display: none;
+    }
+    .live-preview-section.visible { display: block; }
+
+    .live-preview-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 10px;
+    }
+
+    .live-preview-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80px;
+      background-image:
+        linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.03) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.03) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.03) 75%);
+      background-size: 16px 16px;
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+    }
+
+    .live-preview-img {
+      max-width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    /* ─── ERROR MSG ─── */
+    .error-msg {
+      display: none;
+      background: var(--red-dim);
+      border: 1px solid rgba(255,90,90,0.3);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      color: var(--red);
+      font-size: 0.82rem;
+      margin-top: 12px;
+      animation: slideIn 0.2s ease;
+    }
+    .error-msg.show { display: block; }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── OTHER TOOLS ─── */
+    .other-tools {
+      margin-top: 8px;
+      margin-bottom: 32px;
+    }
+    .other-tools-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .other-tools-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .tool-link {
+      padding: 10px 20px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tool-link:hover {
+      border-color: rgba(0,229,204,0.35);
+      color: var(--cyan);
+      background: rgba(0,229,204,0.05);
+    }
+
+    /* ─── CONTENT SECTIONS ─── */
+    .content-h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      letter-spacing: -0.2px;
+    }
+
+    /* ─── ACCORDION ─── */
+    .accordion-item {
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin-bottom: 8px;
+      background: var(--glass-bg);
+    }
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      transition: background 0.2s;
+      user-select: none;
+    }
+    .accordion-header:hover { background: rgba(255,255,255,0.03); }
+    .accordion-header.open { color: var(--cyan); }
+    .accordion-arrow {
+      width: 18px;
+      height: 18px;
+      color: var(--text-dim);
+      transition: transform 0.25s;
+      flex-shrink: 0;
+    }
+    .accordion-header.open .accordion-arrow { transform: rotate(180deg); color: var(--cyan); }
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    .accordion-body.open { max-height: 2000px; }
+    .accordion-content {
+      padding: 0 20px 20px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+    .accordion-content p + p { margin-top: 10px; }
+    .accordion-content ul { padding-left: 20px; margin-top: 8px; }
+    .accordion-content ul li { margin-bottom: 4px; }
+    .accordion-content strong { color: var(--text); }
+    .accordion-content code {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      background: rgba(0,229,204,0.08);
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: var(--cyan-light);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--glass-border);
+      padding: 24px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a, footer a {
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover, footer a:hover { color: var(--cyan); }
+    footer .footer-right a { color: var(--cyan); }
+
+    .lang-transition { animation: langFade 0.15s ease; }
+    @keyframes langFade { from { opacity: 0; } to { opacity: 1; } }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      header { padding: 0 16px; }
+      .logo { font-size: 1rem; }
+      .nav-pill { padding: 4px 10px; font-size: 0.73rem; }
+      .lang-btn span { display: none; }
+      main { padding: 0 16px 60px; }
+      .hero { padding: 32px 10px 28px; }
+      .glass-card { padding: 18px 14px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .url-input-wrap { flex-direction: column; }
+      .btn-load-url { width: 100%; }
+      select { min-width: 100%; }
+      .options-row { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="./" class="logo">
+    <span class="encode">encode</span><span class="b64">B64</span>
+  </a>
+  <div class="header-right">
+    <nav class="nav-pills">
+      <a href="./" class="nav-pill inactive" data-i18n="nav_encode">Encode</a>
+      <a href="https://decodeb64.com" class="nav-pill inactive" data-i18n="nav_decode" rel="noopener noreferrer" target="_blank">Decode</a>
+      <span class="nav-pill active" data-i18n="nav_image">Image to Base64</span>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="langLabel">English</span>
+        <svg viewBox="0 0 10 6" fill="currentColor" width="10" height="6"><path d="M0 0l5 6 5-6z"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown" role="listbox">
+        <div class="lang-option selected" data-lang="en" role="option">🇺🇸 English</div>
+        <div class="lang-option" data-lang="es" role="option">🇪🇸 Español</div>
+        <div class="lang-option" data-lang="pt" role="option">🇧🇷 Português</div>
+        <div class="lang-option" data-lang="fr" role="option">🇫🇷 Français</div>
+        <div class="lang-option" data-lang="de" role="option">🇩🇪 Deutsch</div>
+        <div class="lang-option" data-lang="it" role="option">🇮🇹 Italiano</div>
+        <div class="lang-option" data-lang="zh" role="option">🇨🇳 中文</div>
+        <div class="lang-option" data-lang="ru" role="option">🇷🇺 Русский</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb" aria-label="breadcrumb">
+    <a href="./">encodeb64.com</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current" data-i18n="nav_image">Image to Base64</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <h1 data-i18n="hero_h1">Image to Base64 Encoder Online</h1>
+    <p class="hero-sub" data-i18n="hero_sub">Encode any image to Base64 instantly — right in your browser. No uploads, no servers, 100% private.</p>
+    <div class="format-badges">
+      <span class="format-badge">JPG</span>
+      <span class="format-badge">PNG</span>
+      <span class="format-badge">GIF</span>
+      <span class="format-badge">WebP</span>
+      <span class="format-badge">SVG</span>
+      <span class="format-badge">BMP</span>
+      <span class="format-badge">ICO</span>
+      <span class="format-badge">TIFF</span>
+      <span class="format-badge">AVIF</span>
+    </div>
+  </section>
+
+  <!-- TOOL CARD -->
+  <div class="glass-card">
+
+    <!-- STEP 1: Input method tabs -->
+    <div class="tab-switcher">
+      <button class="tab-btn active" id="tabUpload" onclick="switchTab('upload')" data-i18n="tab_upload">Upload Image</button>
+      <button class="tab-btn" id="tabUrl" onclick="switchTab('url')" data-i18n="tab_url">Paste URL</button>
+    </div>
+
+    <!-- Tab: Upload -->
+    <div class="tab-panel active" id="panelUpload">
+      <div class="img-drop-zone" id="imgDropZone">
+        <div class="drop-placeholder" id="dropPlaceholder">
+          <div class="drop-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </div>
+          <p class="drop-main-text" data-i18n-html="drop_zone_text"><strong>Drop your image here</strong>, or click to browse</p>
+          <p class="drop-sub-text" data-i18n="max_size_notice">Maximum file size: 10MB</p>
+        </div>
+        <div class="img-preview-wrap" id="uploadPreviewWrap">
+          <img class="img-preview" id="uploadPreviewImg" src="" alt="" />
+          <div class="img-file-info" id="uploadFileInfo"></div>
+          <button class="change-img-btn" onclick="resetUpload()" data-i18n="change_image">Change image</button>
+        </div>
+      </div>
+      <input type="file" id="fileInput" accept=".jpg,.jpeg,.png,.gif,.webp,.svg,.bmp,.ico,.tiff,.tif,.avif" style="display:none" />
+      <div class="error-msg" id="uploadError"></div>
+    </div>
+
+    <!-- Tab: URL -->
+    <div class="tab-panel" id="panelUrl">
+      <div class="url-input-wrap">
+        <input type="url" class="url-input" id="urlInput" data-i18n-placeholder="url_placeholder" placeholder="Enter image URL (https://...)" />
+        <button class="btn-load-url" id="loadUrlBtn" onclick="loadFromUrl()" data-i18n="load_btn">Load Image</button>
+      </div>
+      <div class="url-preview-area" id="urlPreviewArea" style="display:none">
+        <div class="img-drop-zone has-image" style="cursor:default; padding: 16px;">
+          <div class="img-preview-wrap visible">
+            <img class="img-preview" id="urlPreviewImg" src="" alt="" />
+            <div class="img-file-info" id="urlFileInfo"></div>
+          </div>
+        </div>
+      </div>
+      <div class="error-msg" id="urlError"></div>
+    </div>
+
+    <!-- STEP 2: Options -->
+    <div class="options-row">
+      <div class="select-wrap">
+        <label for="outputFormat" data-i18n="format_label">Output format</label>
+        <select id="outputFormat" onchange="onFormatChange()">
+          <option value="datauri" data-i18n-opt="format_datauri">Data URI (HTML/CSS)</option>
+          <option value="raw" data-i18n-opt="format_raw">Raw Base64</option>
+          <option value="css" data-i18n-opt="format_css">CSS background-image</option>
+          <option value="html" data-i18n-opt="format_html">HTML img tag</option>
+          <option value="markdown" data-i18n-opt="format_markdown">Markdown image</option>
+        </select>
+      </div>
+      <div class="option-group">
+        <input type="checkbox" class="custom-checkbox" id="lineBreaks" />
+        <label for="lineBreaks" data-i18n="line_breaks_label">Add line breaks every 76 chars</label>
+      </div>
+    </div>
+
+    <!-- STEP 3: Encode button -->
+    <button class="btn-encode" id="encodeBtn" onclick="encodeImage()" data-i18n="encode_btn">Convert to Base64</button>
+
+    <!-- Error (general) -->
+    <div class="error-msg" id="generalError"></div>
+
+    <!-- STEP 4: Output -->
+    <div class="output-section" id="outputSection">
+      <div class="output-label-row">
+        <span class="output-label" data-i18n="output_label">Base64 output</span>
+        <span class="format-tag" id="formatTag">Data URI</span>
+      </div>
+      <textarea class="output-textarea" id="outputText" readonly spellcheck="false"></textarea>
+      <div class="char-count" id="charCount"></div>
+      <div class="action-btns">
+        <button class="btn-secondary btn-copy" id="copyBtn" onclick="copyOutput()" data-i18n="copy_btn">Copy to clipboard</button>
+        <button class="btn-secondary" id="downloadBtn" onclick="downloadOutput()" data-i18n="download_btn">Download as .txt</button>
+        <button class="btn-secondary" id="clearBtn" onclick="clearAll()" data-i18n="clear_btn">Clear all</button>
+      </div>
+
+      <!-- Live preview -->
+      <div class="live-preview-section" id="livePreviewSection">
+        <p class="live-preview-label" data-i18n="live_preview_label">Live preview — rendered from Base64</p>
+        <div class="live-preview-card">
+          <img class="live-preview-img" id="livePreviewImg" src="" alt="Live preview" />
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- OTHER TOOLS -->
+  <div class="other-tools">
+    <p class="other-tools-title" data-i18n="other_tools_title">Other tools</p>
+    <div class="other-tools-row">
+      <a href="./" class="tool-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+        <span data-i18n="tool_text_encode">Text to Base64</span>
+      </a>
+      <a href="https://decodeb64.com" class="tool-link" rel="noopener noreferrer" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 17 20 20 4 20 4 17"/><line x1="9" y1="4" x2="15" y2="4"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+        <span data-i18n="tool_base64_decode">Base64 Decode</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- INFO ACCORDION -->
+  <section>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc1_title">What is Base64 image encoding?</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc1_body"></div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc2_title">Which output format should I use?</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc2_body"></div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc3_title">Supported formats</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc3_body"></div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc4_title">Privacy &amp; Security</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc4_body"></div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc5_title">File size considerations</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc5_body"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="margin-top:8px;" itemscope itemtype="https://schema.org/FAQPage">
+    <h2 class="content-h2" data-i18n="faq_title">Frequently Asked Questions</h2>
+    <div class="accordion-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="faq_q1" itemprop="name">What image formats are supported?</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div class="accordion-content" data-i18n="faq_a1" itemprop="text">The converter supports JPG/JPEG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF/TIF, and AVIF. SVG files are vector-based XML, so their Base64 output tends to be compact.</div>
+      </div>
+    </div>
+    <div class="accordion-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="faq_q2" itemprop="name">Is my image uploaded to a server?</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div class="accordion-content" data-i18n="faq_a2" itemprop="text">No. All conversion happens entirely in your browser using the FileReader API. Your image never leaves your device — no uploads, no server, 100% private.</div>
+      </div>
+    </div>
+    <div class="accordion-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="faq_q3" itemprop="name">Does converting to Base64 increase file size?</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div class="accordion-content" data-i18n="faq_a3" itemprop="text">Yes, by approximately 33%. Base64 encodes every 3 bytes as 4 ASCII characters. For small icons under 5 KB, embedding as Base64 can eliminate an HTTP request. For larger images, a regular URL is better.</div>
+      </div>
+    </div>
+    <div class="accordion-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="faq_q4" itemprop="name">How do I use the Base64 output in HTML or CSS?</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div class="accordion-content" data-i18n="faq_a4" itemprop="text">Use the Data URI format for an img src attribute or CSS background-image. The HTML img tag format gives you a ready-to-paste tag. The CSS background-image format gives you a ready-to-paste stylesheet rule.</div>
+      </div>
+    </div>
+    <div class="accordion-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="faq_q5" itemprop="name">What is the maximum image size?</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div class="accordion-content" data-i18n="faq_a5" itemprop="text">The tool supports images up to 10 MB. Larger images produce very long Base64 strings that may be impractical for use in HTML, CSS, or API payloads.</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <span>encodeb64.com &copy; 2025</span>
+  <div class="footer-links">
+    <a href="/about" data-i18n="footer_about">About</a>
+    <a href="/privacy-policy" data-i18n="footer_privacy">Privacy Policy</a>
+    <a href="/terms-of-use" data-i18n="footer_terms">Terms of Use</a>
+    <a href="/contact" data-i18n="footer_contact">Contact</a>
+  </div>
+  <span class="footer-right">
+    <span data-i18n="footer_also_try">Also try:</span>
+    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+  </span>
+</footer>
+
+<script>
+// ─── TRANSLATIONS ──────────────────────────────────────────────────────────────
+const T = {
+  en: {
+    page_title: "Image to Base64 Converter — Free Online Tool | encodeb64.com",
+    nav_encode: "Encode",
+    nav_decode: "Decode",
+    nav_image: "Image to Base64",
+    hero_h1: "Image to Base64 Converter",
+    hero_sub: "Convert any image to Base64 instantly — right in your browser. Supports JPG, PNG, GIF, WebP, SVG, AVIF and more. No uploads, no servers, 100% private.",
+    tab_upload: "Upload Image",
+    tab_url: "Paste URL",
+    drop_zone_text: "<strong>Drop your image here</strong>, or click to browse",
+    max_size_notice: "Maximum file size: 10MB",
+    change_image: "Change image",
+    url_placeholder: "Enter image URL (https://...)",
+    load_btn: "Load Image",
+    format_label: "Output format",
+    format_datauri: "Data URI (HTML/CSS)",
+    format_raw: "Raw Base64",
+    format_css: "CSS background-image",
+    format_html: "HTML img tag",
+    format_markdown: "Markdown image",
+    line_breaks_label: "Add line breaks every 76 chars",
+    encode_btn: "Convert to Base64",
+    output_label: "Base64 output",
+    copy_btn: "Copy to clipboard",
+    copied_state: "Copied! ✓",
+    download_btn: "Download as .txt",
+    clear_btn: "Clear all",
+    live_preview_label: "Live preview — rendered from Base64",
+    cors_error: "Could not load image from this URL. Try downloading the image and uploading it directly.",
+    size_error: "File is too large. Maximum size is 10MB.",
+    no_image_error: "Please select or load an image first.",
+    chars_label: "characters",
+    file_name_label: "Name",
+    file_size_label: "Size",
+    file_dims_label: "Dimensions",
+    file_type_label: "Type",
+    other_tools_title: "Other tools",
+    tool_text_encode: "Text to Base64",
+    tool_base64_decode: "Base64 Decode",
+    acc1_title: "What is Base64 image encoding?",
+    acc1_body: `<p>Base64 image encoding converts binary image data into a string of ASCII characters that can be embedded directly into HTML, CSS, JSON, or any text-based format. Instead of referencing an external image file via a URL, you embed the image data inline.</p>
+    <p>Common use cases include: inline images in HTML emails (no external file dependency), CSS data URIs for small icons or backgrounds (eliminates an HTTP request), embedding images in JSON APIs, and storing images in text-based data formats.</p>
+    <p>A Data URI looks like: <code>data:image/png;base64,iVBOR...</code> — the browser decodes and renders it like any normal image.</p>`,
+    acc2_title: "Which output format should I use?",
+    acc2_body: `<p><strong>Data URI (HTML/CSS)</strong> — The most versatile format. Use it anywhere you'd use an image URL: <code>&lt;img src="data:..."&gt;</code>, CSS <code>background-image</code>, etc.</p>
+    <p><strong>Raw Base64</strong> — Just the Base64 string with no prefix. Use this when the receiving system adds its own prefix, or for API payloads that expect raw Base64.</p>
+    <p><strong>CSS background-image</strong> — Ready to paste directly into your stylesheet. Perfect for embedding small icons or decorative images without extra HTTP requests.</p>
+    <p><strong>HTML img tag</strong> — A complete <code>&lt;img&gt;</code> element ready to paste into HTML.</p>
+    <p><strong>Markdown image</strong> — Embeds the image inline in Markdown documents. Note that many Markdown renderers don't support data URIs.</p>`,
+    acc3_title: "Supported formats",
+    acc3_body: `<p>This tool supports all major image formats that browsers can read:</p>
+    <ul>
+      <li><strong>JPG/JPEG</strong> — Most common photographic format. Lossy compression, no transparency.</li>
+      <li><strong>PNG</strong> — Lossless compression with full alpha transparency support.</li>
+      <li><strong>GIF</strong> — Supports animation and limited transparency. 256 colors max.</li>
+      <li><strong>WebP</strong> — Modern format with superior compression for both photos and graphics.</li>
+      <li><strong>SVG</strong> — Vector graphics. Already text-based (XML), but Base64 encoding allows safe embedding in data URIs.</li>
+      <li><strong>BMP</strong> — Uncompressed bitmap. Large file sizes.</li>
+      <li><strong>ICO</strong> — Windows icon format, often used for favicons.</li>
+      <li><strong>TIFF/TIF</strong> — High-quality format used in print and photography.</li>
+      <li><strong>AVIF</strong> — Next-generation format with excellent compression. Browser support is modern-only.</li>
+    </ul>`,
+    acc4_title: "Privacy & Security",
+    acc4_body: `<p>Your image never leaves your browser. All conversion happens locally using JavaScript's <code>FileReader</code> API — your image data is processed entirely on your device and is never uploaded to any server.</p>
+    <p>For URL loading, your browser fetches the image directly. The image is then processed locally — we never see the image content or its data.</p>
+    <p>Base64 encoding is <strong>not encryption</strong>. The encoded string can be trivially decoded by anyone who has it. Do not encode sensitive images expecting confidentiality.</p>`,
+    acc5_title: "File size considerations",
+    acc5_body: `<p>Base64 encoding increases file size by approximately <strong>33%</strong> compared to the original binary. This is an inherent property of the encoding: every 3 bytes become 4 ASCII characters.</p>
+    <p>For small images (icons, logos, small decorative graphics under ~5KB), Base64 embedding is usually beneficial — you eliminate an HTTP request and the overhead is minimal.</p>
+    <p>For larger images, embedding as Base64 is generally not recommended because: the HTML/CSS file becomes significantly larger, the Base64 string cannot be cached separately by the browser, and it increases page parse time.</p>
+    <p>As a rule of thumb: use Base64 for images under 5–10KB, and use regular image files with URLs for anything larger.</p>`,
+    faq_title: "Frequently Asked Questions",
+    faq_q1: "What image formats are supported?",
+    faq_a1: "The converter supports JPG/JPEG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF/TIF, and AVIF. SVG files are vector-based XML, so their Base64 output tends to be compact.",
+    faq_q2: "Is my image uploaded to a server?",
+    faq_a2: "No. All conversion happens entirely in your browser using the FileReader API. Your image never leaves your device — no uploads, no server, 100% private.",
+    faq_q3: "Does converting to Base64 increase file size?",
+    faq_a3: "Yes, by approximately 33%. Base64 encodes every 3 bytes as 4 ASCII characters. For small icons under 5 KB, embedding as Base64 can eliminate an HTTP request. For larger images, a regular URL is better.",
+    faq_q4: "How do I use the Base64 output in HTML or CSS?",
+    faq_a4: "Use the Data URI format for an img src attribute or CSS background-image. The HTML img tag format gives you a ready-to-paste tag. The CSS background-image format gives you a ready-to-paste stylesheet rule.",
+    faq_q5: "What is the maximum image size?",
+    faq_a5: "The tool supports images up to 10 MB. Larger images produce very long Base64 strings that may be impractical for use in HTML, CSS, or API payloads.",
+    footer_about: "About",
+    footer_privacy: "Privacy Policy",
+    footer_terms: "Terms of Use",
+    footer_contact: "Contact",
+    footer_also_try: "Also try:",
+  },
+  es: {
+    page_title: "Convertidor de Imagen a Base64 — Gratis Online | encodeb64.com",
+    nav_encode: "Codificar",
+    nav_decode: "Decodificar",
+    nav_image: "Imagen a Base64",
+    hero_h1: "Convertidor de Imagen a Base64",
+    hero_sub: "Convierte cualquier imagen a Base64 al instante — en tu navegador. Compatible con JPG, PNG, GIF, WebP, SVG, AVIF y más. Sin subidas, sin servidores, 100% privado.",
+    tab_upload: "Subir Imagen",
+    tab_url: "Pegar URL",
+    drop_zone_text: "<strong>Suelta tu imagen aquí</strong>, o haz clic para explorar",
+    max_size_notice: "Tamaño máximo: 10MB",
+    change_image: "Cambiar imagen",
+    url_placeholder: "Introduce la URL de la imagen (https://...)",
+    load_btn: "Cargar Imagen",
+    format_label: "Formato de salida",
+    format_datauri: "Data URI (HTML/CSS)",
+    format_raw: "Base64 puro",
+    format_css: "CSS background-image",
+    format_html: "Etiqueta HTML img",
+    format_markdown: "Imagen Markdown",
+    line_breaks_label: "Añadir saltos de línea cada 76 chars",
+    encode_btn: "Convertir a Base64",
+    output_label: "Salida Base64",
+    copy_btn: "Copiar al portapapeles",
+    copied_state: "¡Copiado! ✓",
+    download_btn: "Descargar como .txt",
+    clear_btn: "Limpiar todo",
+    live_preview_label: "Vista previa en vivo — renderizada desde Base64",
+    cors_error: "No se pudo cargar la imagen desde esta URL. Intenta descargar la imagen y subirla directamente.",
+    size_error: "El archivo es demasiado grande. El tamaño máximo es 10MB.",
+    no_image_error: "Por favor, selecciona o carga una imagen primero.",
+    chars_label: "caracteres",
+    file_name_label: "Nombre",
+    file_size_label: "Tamaño",
+    file_dims_label: "Dimensiones",
+    file_type_label: "Tipo",
+    other_tools_title: "Otras herramientas",
+    tool_text_encode: "Texto a Base64",
+    tool_base64_decode: "Decodificar Base64",
+    acc1_title: "¿Qué es la codificación Base64 de imágenes?",
+    acc1_body: `<p>La codificación Base64 de imágenes convierte los datos binarios de la imagen en una cadena de caracteres ASCII que puede incrustarse directamente en HTML, CSS, JSON o cualquier formato basado en texto.</p>
+    <p>Casos de uso comunes: imágenes en correos HTML, Data URIs en CSS para iconos pequeños, incrustar imágenes en APIs JSON y almacenar imágenes en formatos de texto.</p>
+    <p>Una Data URI tiene este aspecto: <code>data:image/png;base64,iVBOR...</code></p>`,
+    acc2_title: "¿Qué formato de salida debo usar?",
+    acc2_body: `<p><strong>Data URI (HTML/CSS)</strong> — El más versátil. Úsalo donde usarías una URL de imagen.</p>
+    <p><strong>Base64 puro</strong> — Solo la cadena Base64 sin prefijo. Útil para APIs que esperan Base64 puro.</p>
+    <p><strong>CSS background-image</strong> — Listo para pegar en tu hoja de estilos.</p>
+    <p><strong>Etiqueta HTML img</strong> — Un elemento <code>&lt;img&gt;</code> completo listo para pegar en HTML.</p>
+    <p><strong>Imagen Markdown</strong> — Incrusta la imagen en documentos Markdown.</p>`,
+    acc3_title: "Formatos soportados",
+    acc3_body: `<p>Esta herramienta soporta todos los formatos de imagen principales:</p>
+    <ul>
+      <li><strong>JPG/JPEG</strong> — Formato fotográfico más común. Compresión con pérdida, sin transparencia.</li>
+      <li><strong>PNG</strong> — Compresión sin pérdida con soporte completo de transparencia.</li>
+      <li><strong>GIF</strong> — Soporta animación y transparencia limitada.</li>
+      <li><strong>WebP</strong> — Formato moderno con compresión superior.</li>
+      <li><strong>SVG</strong> — Gráficos vectoriales basados en texto (XML).</li>
+      <li><strong>BMP</strong> — Bitmap sin comprimir. Archivos grandes.</li>
+      <li><strong>ICO</strong> — Formato de icono Windows, usado en favicons.</li>
+      <li><strong>TIFF/TIF</strong> — Formato de alta calidad para impresión y fotografía.</li>
+      <li><strong>AVIF</strong> — Formato de nueva generación con excelente compresión.</li>
+    </ul>`,
+    acc4_title: "Privacidad y Seguridad",
+    acc4_body: `<p>Tu imagen nunca sale de tu navegador. Toda la conversión ocurre localmente usando la API <code>FileReader</code> de JavaScript.</p>
+    <p>La codificación Base64 <strong>no es cifrado</strong>. No codifiques imágenes sensibles esperando confidencialidad.</p>`,
+    acc5_title: "Consideraciones sobre el tamaño del archivo",
+    acc5_body: `<p>La codificación Base64 aumenta el tamaño del archivo aproximadamente un <strong>33%</strong> respecto al binario original.</p>
+    <p>Para imágenes pequeñas (menos de ~5KB), el embedding en Base64 suele ser beneficioso — eliminas una petición HTTP.</p>
+    <p>Para imágenes más grandes, generalmente no se recomienda por el aumento de tamaño y la imposibilidad de caché separada.</p>`,
+    faq_title: "Preguntas Frecuentes",
+    faq_q1: "¿Qué formatos de imagen son compatibles?",
+    faq_a1: "El convertidor admite JPG/JPEG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF/TIF y AVIF. Los archivos SVG son XML vectorial, por lo que su salida Base64 suele ser compacta.",
+    faq_q2: "¿Mi imagen se sube a un servidor?",
+    faq_a2: "No. Toda la conversión ocurre en tu navegador usando la API FileReader. Tu imagen nunca sale de tu dispositivo — sin subidas, sin servidor, 100% privado.",
+    faq_q3: "¿Convertir a Base64 aumenta el tamaño del archivo?",
+    faq_a3: "Sí, aproximadamente un 33%. Base64 codifica cada 3 bytes como 4 caracteres ASCII. Para iconos pequeños menores de 5 KB puede eliminar una petición HTTP. Para imágenes grandes es mejor usar una URL normal.",
+    faq_q4: "¿Cómo uso la salida Base64 en HTML o CSS?",
+    faq_a4: "Usa el formato Data URI para el atributo src de img o background-image en CSS. El formato HTML img tag te da una etiqueta lista para pegar. El formato CSS background-image te da una regla de hoja de estilos lista.",
+    faq_q5: "¿Cuál es el tamaño máximo de imagen?",
+    faq_a5: "La herramienta admite imágenes de hasta 10 MB. Las imágenes más grandes generan strings Base64 muy largos que pueden ser poco prácticos para HTML, CSS o APIs.",
+    footer_about: "Acerca de",
+    footer_privacy: "Política de privacidad",
+    footer_terms: "Términos de uso",
+    footer_contact: "Contacto",
+    footer_also_try: "Prueba también:",
+  },
+  pt: {
+    page_title: "Conversor de Imagem para Base64 — Grátis Online | encodeb64.com",
+    nav_encode: "Codificar",
+    nav_decode: "Decodificar",
+    nav_image: "Imagem para Base64",
+    hero_h1: "Conversor de Imagem para Base64",
+    hero_sub: "Converta qualquer imagem para Base64 instantaneamente — no seu navegador. Suporta JPG, PNG, GIF, WebP, SVG, AVIF e mais. Sem uploads, sem servidores, 100% privado.",
+    tab_upload: "Enviar Imagem",
+    tab_url: "Colar URL",
+    drop_zone_text: "<strong>Solte sua imagem aqui</strong>, ou clique para navegar",
+    max_size_notice: "Tamanho máximo: 10MB",
+    change_image: "Trocar imagem",
+    url_placeholder: "Digite a URL da imagem (https://...)",
+    load_btn: "Carregar Imagem",
+    format_label: "Formato de saída",
+    format_datauri: "Data URI (HTML/CSS)",
+    format_raw: "Base64 puro",
+    format_css: "CSS background-image",
+    format_html: "Tag HTML img",
+    format_markdown: "Imagem Markdown",
+    line_breaks_label: "Adicionar quebras de linha a cada 76 chars",
+    encode_btn: "Converter para Base64",
+    output_label: "Saída Base64",
+    copy_btn: "Copiar para a área de transferência",
+    copied_state: "Copiado! ✓",
+    download_btn: "Baixar como .txt",
+    clear_btn: "Limpar tudo",
+    live_preview_label: "Pré-visualização — renderizada do Base64",
+    cors_error: "Não foi possível carregar a imagem desta URL. Tente baixar a imagem e enviá-la diretamente.",
+    size_error: "O arquivo é muito grande. O tamanho máximo é 10MB.",
+    no_image_error: "Por favor, selecione ou carregue uma imagem primeiro.",
+    chars_label: "caracteres",
+    file_name_label: "Nome",
+    file_size_label: "Tamanho",
+    file_dims_label: "Dimensões",
+    file_type_label: "Tipo",
+    other_tools_title: "Outras ferramentas",
+    tool_text_encode: "Texto para Base64",
+    tool_base64_decode: "Decodificar Base64",
+    acc1_title: "O que é codificação Base64 de imagens?",
+    acc1_body: `<p>A codificação Base64 de imagens converte dados binários em uma string de caracteres ASCII que pode ser incorporada diretamente em HTML, CSS ou JSON.</p>
+    <p>Casos de uso: imagens em emails HTML, Data URIs em CSS para ícones pequenos, incorporar imagens em APIs JSON.</p>
+    <p>Uma Data URI fica assim: <code>data:image/png;base64,iVBOR...</code></p>`,
+    acc2_title: "Qual formato de saída devo usar?",
+    acc2_body: `<p><strong>Data URI (HTML/CSS)</strong> — O mais versátil. Use onde usaria uma URL de imagem.</p>
+    <p><strong>Base64 puro</strong> — Apenas a string Base64 sem prefixo.</p>
+    <p><strong>CSS background-image</strong> — Pronto para colar na sua folha de estilos.</p>
+    <p><strong>Tag HTML img</strong> — Um elemento <code>&lt;img&gt;</code> completo.</p>
+    <p><strong>Imagem Markdown</strong> — Incorpora a imagem em documentos Markdown.</p>`,
+    acc3_title: "Formatos suportados",
+    acc3_body: `<p>Esta ferramenta suporta os principais formatos de imagem:</p>
+    <ul>
+      <li><strong>JPG/JPEG</strong> — Formato fotográfico mais comum.</li>
+      <li><strong>PNG</strong> — Compressão sem perdas com transparência total.</li>
+      <li><strong>GIF</strong> — Suporta animação e transparência limitada.</li>
+      <li><strong>WebP</strong> — Formato moderno com compressão superior.</li>
+      <li><strong>SVG</strong> — Gráficos vetoriais baseados em XML.</li>
+      <li><strong>BMP</strong> — Bitmap não comprimido.</li>
+      <li><strong>ICO</strong> — Formato de ícone Windows.</li>
+      <li><strong>TIFF/TIF</strong> — Alta qualidade para impressão.</li>
+      <li><strong>AVIF</strong> — Formato de próxima geração.</li>
+    </ul>`,
+    acc4_title: "Privacidade e Segurança",
+    acc4_body: `<p>Sua imagem nunca sai do seu navegador. Toda a conversão acontece localmente.</p>
+    <p>A codificação Base64 <strong>não é criptografia</strong>. Não codifique imagens sensíveis esperando confidencialidade.</p>`,
+    acc5_title: "Considerações sobre tamanho de arquivo",
+    acc5_body: `<p>A codificação Base64 aumenta o tamanho do arquivo em aproximadamente <strong>33%</strong>.</p>
+    <p>Para imagens pequenas (menos de ~5KB), incorporar em Base64 é geralmente benéfico.</p>
+    <p>Para imagens maiores, não é recomendado devido ao aumento de tamanho e impossibilidade de cache separado.</p>`,
+    faq_title: "Perguntas Frequentes",
+    faq_q1: "Quais formatos de imagem são suportados?",
+    faq_a1: "O conversor suporta JPG/JPEG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF/TIF e AVIF. Arquivos SVG são XML vetorial, então sua saída Base64 tende a ser compacta.",
+    faq_q2: "Minha imagem é enviada para um servidor?",
+    faq_a2: "Não. Toda a conversão acontece no seu navegador usando a API FileReader. Sua imagem nunca sai do seu dispositivo — sem uploads, sem servidor, 100% privado.",
+    faq_q3: "Converter para Base64 aumenta o tamanho do arquivo?",
+    faq_a3: "Sim, aproximadamente 33%. O Base64 codifica cada 3 bytes como 4 caracteres ASCII. Para ícones pequenos abaixo de 5 KB pode eliminar uma requisição HTTP. Para imagens maiores é melhor usar uma URL normal.",
+    faq_q4: "Como uso a saída Base64 em HTML ou CSS?",
+    faq_a4: "Use o formato Data URI para o atributo src de img ou background-image no CSS. O formato HTML img tag fornece uma tag pronta para colar. O formato CSS background-image fornece uma regra de folha de estilos pronta.",
+    faq_q5: "Qual é o tamanho máximo de imagem?",
+    faq_a5: "A ferramenta suporta imagens de até 10 MB. Imagens maiores geram strings Base64 muito longos que podem ser impraticáveis para HTML, CSS ou APIs.",
+    footer_about: "Sobre",
+    footer_privacy: "Política de Privacidade",
+    footer_terms: "Termos de Uso",
+    footer_contact: "Contato",
+    footer_also_try: "Experimente também:",
+  },
+  fr: {
+    page_title: "Convertisseur Image en Base64 — Outil Gratuit | encodeb64.com",
+    nav_encode: "Encoder",
+    nav_decode: "Décoder",
+    nav_image: "Image en Base64",
+    hero_h1: "Convertisseur Image en Base64",
+    hero_sub: "Convertissez n'importe quelle image en Base64 instantanément — dans votre navigateur. JPG, PNG, GIF, WebP, SVG, AVIF pris en charge. Sans upload, sans serveur, 100% privé.",
+    tab_upload: "Télécharger l'image",
+    tab_url: "Coller l'URL",
+    drop_zone_text: "<strong>Déposez votre image ici</strong>, ou cliquez pour parcourir",
+    max_size_notice: "Taille maximale : 10 Mo",
+    change_image: "Changer l'image",
+    url_placeholder: "Entrez l'URL de l'image (https://...)",
+    load_btn: "Charger l'image",
+    format_label: "Format de sortie",
+    format_datauri: "Data URI (HTML/CSS)",
+    format_raw: "Base64 brut",
+    format_css: "CSS background-image",
+    format_html: "Balise HTML img",
+    format_markdown: "Image Markdown",
+    line_breaks_label: "Ajouter des sauts de ligne tous les 76 chars",
+    encode_btn: "Convertir en Base64",
+    output_label: "Sortie Base64",
+    copy_btn: "Copier dans le presse-papiers",
+    copied_state: "Copié ! ✓",
+    download_btn: "Télécharger en .txt",
+    clear_btn: "Tout effacer",
+    live_preview_label: "Aperçu en direct — rendu depuis Base64",
+    cors_error: "Impossible de charger l'image depuis cette URL. Essayez de télécharger l'image et de la téléverser directement.",
+    size_error: "Le fichier est trop volumineux. La taille maximale est 10 Mo.",
+    no_image_error: "Veuillez d'abord sélectionner ou charger une image.",
+    chars_label: "caractères",
+    file_name_label: "Nom",
+    file_size_label: "Taille",
+    file_dims_label: "Dimensions",
+    file_type_label: "Type",
+    other_tools_title: "Autres outils",
+    tool_text_encode: "Texte en Base64",
+    tool_base64_decode: "Décoder Base64",
+    acc1_title: "Qu'est-ce que l'encodage Base64 d'images ?",
+    acc1_body: `<p>L'encodage Base64 d'images convertit les données binaires en une chaîne de caractères ASCII pouvant être intégrée directement dans HTML, CSS ou JSON.</p>
+    <p>Cas d'usage : images dans les emails HTML, Data URIs en CSS pour de petites icônes, intégrer des images dans des APIs JSON.</p>
+    <p>Une Data URI ressemble à : <code>data:image/png;base64,iVBOR...</code></p>`,
+    acc2_title: "Quel format de sortie choisir ?",
+    acc2_body: `<p><strong>Data URI (HTML/CSS)</strong> — Le plus polyvalent.</p>
+    <p><strong>Base64 brut</strong> — Uniquement la chaîne Base64 sans préfixe.</p>
+    <p><strong>CSS background-image</strong> — Prêt à coller dans votre feuille de style.</p>
+    <p><strong>Balise HTML img</strong> — Un élément <code>&lt;img&gt;</code> complet.</p>
+    <p><strong>Image Markdown</strong> — Intègre l'image dans des documents Markdown.</p>`,
+    acc3_title: "Formats supportés",
+    acc3_body: `<p>Cet outil supporte tous les principaux formats d'image :</p>
+    <ul>
+      <li><strong>JPG/JPEG</strong> — Format photographique le plus courant.</li>
+      <li><strong>PNG</strong> — Compression sans perte avec transparence complète.</li>
+      <li><strong>GIF</strong> — Supporte l'animation et la transparence limitée.</li>
+      <li><strong>WebP</strong> — Format moderne avec compression supérieure.</li>
+      <li><strong>SVG</strong> — Graphiques vectoriels basés sur XML.</li>
+      <li><strong>BMP</strong> — Bitmap non compressé.</li>
+      <li><strong>ICO</strong> — Format d'icône Windows.</li>
+      <li><strong>TIFF/TIF</strong> — Haute qualité pour l'impression.</li>
+      <li><strong>AVIF</strong> — Format de nouvelle génération.</li>
+    </ul>`,
+    acc4_title: "Confidentialité et Sécurité",
+    acc4_body: `<p>Votre image ne quitte jamais votre navigateur. Toute la conversion se fait localement.</p>
+    <p>L'encodage Base64 <strong>n'est pas du chiffrement</strong>. Ne l'utilisez pas pour protéger des images sensibles.</p>`,
+    acc5_title: "Considérations sur la taille des fichiers",
+    acc5_body: `<p>L'encodage Base64 augmente la taille du fichier d'environ <strong>33%</strong>.</p>
+    <p>Pour les petites images (moins de ~5 Ko), l'intégration en Base64 est généralement bénéfique.</p>
+    <p>Pour les images plus grandes, ce n'est généralement pas recommandé.</p>`,
+    faq_title: "Foire aux questions",
+    faq_q1: "Quels formats d'image sont pris en charge ?",
+    faq_a1: "Le convertisseur supporte JPG/JPEG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF/TIF et AVIF. Les fichiers SVG sont du XML vectoriel, donc leur sortie Base64 tend à être compacte.",
+    faq_q2: "Mon image est-elle envoyée à un serveur ?",
+    faq_a2: "Non. Toute la conversion s'effectue dans votre navigateur via l'API FileReader. Votre image ne quitte jamais votre appareil — sans upload, sans serveur, 100% privé.",
+    faq_q3: "La conversion en Base64 augmente-t-elle la taille du fichier ?",
+    faq_a3: "Oui, d'environ 33%. Base64 encode chaque 3 octets en 4 caractères ASCII. Pour les petites icônes de moins de 5 Ko, l'incorporation peut éliminer une requête HTTP. Pour les grandes images, une URL est préférable.",
+    faq_q4: "Comment utiliser la sortie Base64 en HTML ou CSS ?",
+    faq_a4: "Utilisez le format Data URI pour l'attribut src d'une balise img ou background-image en CSS. Le format HTML img tag donne une balise prête à coller. Le format CSS background-image donne une règle de feuille de style prête.",
+    faq_q5: "Quelle est la taille maximale d'image ?",
+    faq_a5: "L'outil supporte les images jusqu'à 10 Mo. Les images plus grandes produisent des chaînes Base64 très longues, peu pratiques pour HTML, CSS ou les APIs.",
+    footer_about: "À propos",
+    footer_privacy: "Politique de confidentialité",
+    footer_terms: "Conditions d'utilisation",
+    footer_contact: "Contact",
+    footer_also_try: "Essayez aussi :",
+  },
+  de: {
+    page_title: "Bild zu Base64 Konverter — Kostenloses Online-Tool | encodeb64.com",
+    nav_encode: "Kodieren",
+    nav_decode: "Dekodieren",
+    nav_image: "Bild zu Base64",
+    hero_h1: "Bild zu Base64 Konverter",
+    hero_sub: "Konvertieren Sie jedes Bild sofort zu Base64 — direkt in Ihrem Browser. JPG, PNG, GIF, WebP, SVG, AVIF und mehr. Keine Uploads, keine Server, 100% privat.",
+    tab_upload: "Bild hochladen",
+    tab_url: "URL einfügen",
+    drop_zone_text: "<strong>Bild hier ablegen</strong>, oder klicken zum Durchsuchen",
+    max_size_notice: "Maximale Dateigröße: 10 MB",
+    change_image: "Bild ändern",
+    url_placeholder: "Bild-URL eingeben (https://...)",
+    load_btn: "Bild laden",
+    format_label: "Ausgabeformat",
+    format_datauri: "Data URI (HTML/CSS)",
+    format_raw: "Reines Base64",
+    format_css: "CSS background-image",
+    format_html: "HTML img-Tag",
+    format_markdown: "Markdown-Bild",
+    line_breaks_label: "Zeilenumbrüche alle 76 Zeichen einfügen",
+    encode_btn: "Zu Base64 konvertieren",
+    output_label: "Base64-Ausgabe",
+    copy_btn: "In Zwischenablage kopieren",
+    copied_state: "Kopiert! ✓",
+    download_btn: "Als .txt herunterladen",
+    clear_btn: "Alles löschen",
+    live_preview_label: "Live-Vorschau — aus Base64 gerendert",
+    cors_error: "Bild konnte nicht von dieser URL geladen werden. Laden Sie das Bild herunter und laden Sie es direkt hoch.",
+    size_error: "Datei ist zu groß. Maximale Größe ist 10 MB.",
+    no_image_error: "Bitte wählen oder laden Sie zuerst ein Bild.",
+    chars_label: "Zeichen",
+    file_name_label: "Name",
+    file_size_label: "Größe",
+    file_dims_label: "Abmessungen",
+    file_type_label: "Typ",
+    other_tools_title: "Andere Werkzeuge",
+    tool_text_encode: "Text zu Base64",
+    tool_base64_decode: "Base64 dekodieren",
+    acc1_title: "Was ist Base64-Bildkodierung?",
+    acc1_body: `<p>Die Base64-Bildkodierung konvertiert binäre Bilddaten in eine ASCII-Zeichenkette, die direkt in HTML, CSS oder JSON eingebettet werden kann.</p>
+    <p>Anwendungsfälle: Bilder in HTML-E-Mails, Data URIs in CSS für kleine Icons, Bilder in JSON-APIs einbetten.</p>
+    <p>Eine Data URI sieht so aus: <code>data:image/png;base64,iVBOR...</code></p>`,
+    acc2_title: "Welches Ausgabeformat soll ich verwenden?",
+    acc2_body: `<p><strong>Data URI (HTML/CSS)</strong> — Das vielseitigste Format.</p>
+    <p><strong>Reines Base64</strong> — Nur der Base64-String ohne Präfix.</p>
+    <p><strong>CSS background-image</strong> — Direkt in Ihr Stylesheet einfügen.</p>
+    <p><strong>HTML img-Tag</strong> — Ein vollständiges <code>&lt;img&gt;</code>-Element.</p>
+    <p><strong>Markdown-Bild</strong> — Bettet das Bild in Markdown-Dokumente ein.</p>`,
+    acc3_title: "Unterstützte Formate",
+    acc3_body: `<p>Dieses Tool unterstützt alle gängigen Bildformate:</p>
+    <ul>
+      <li><strong>JPG/JPEG</strong> — Häufigstes Fotoformat.</li>
+      <li><strong>PNG</strong> — Verlustfreie Komprimierung mit voller Transparenz.</li>
+      <li><strong>GIF</strong> — Unterstützt Animation und begrenzte Transparenz.</li>
+      <li><strong>WebP</strong> — Modernes Format mit überlegener Komprimierung.</li>
+      <li><strong>SVG</strong> — XML-basierte Vektorgrafiken.</li>
+      <li><strong>BMP</strong> — Unkomprimiertes Bitmap.</li>
+      <li><strong>ICO</strong> — Windows-Symbolformat.</li>
+      <li><strong>TIFF/TIF</strong> — Hohe Qualität für Druck und Fotografie.</li>
+      <li><strong>AVIF</strong> — Nächste-Generation-Format.</li>
+    </ul>`,
+    acc4_title: "Datenschutz & Sicherheit",
+    acc4_body: `<p>Ihr Bild verlässt niemals Ihren Browser. Die gesamte Konvertierung erfolgt lokal.</p>
+    <p>Base64-Kodierung ist <strong>keine Verschlüsselung</strong>. Kodieren Sie keine sensiblen Bilder in Erwartung von Vertraulichkeit.</p>`,
+    acc5_title: "Überlegungen zur Dateigröße",
+    acc5_body: `<p>Die Base64-Kodierung erhöht die Dateigröße um ca. <strong>33%</strong>.</p>
+    <p>Für kleine Bilder (unter ~5 KB) ist Base64-Einbettung meist vorteilhaft.</p>
+    <p>Für größere Bilder wird es aufgrund der Größenzunahme generell nicht empfohlen.</p>`,
+    faq_title: "Häufig gestellte Fragen",
+    faq_q1: "Welche Bildformate werden unterstützt?",
+    faq_a1: "Der Konverter unterstützt JPG/JPEG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF/TIF und AVIF. SVG-Dateien sind vektorbasiertes XML, daher ist die Base64-Ausgabe meist kompakt.",
+    faq_q2: "Wird mein Bild auf einen Server hochgeladen?",
+    faq_a2: "Nein. Alle Konvertierung erfolgt in Ihrem Browser über die FileReader-API. Ihr Bild verlässt Ihr Gerät nie — keine Uploads, kein Server, 100% privat.",
+    faq_q3: "Erhöht die Base64-Konvertierung die Dateigröße?",
+    faq_a3: "Ja, um etwa 33%. Base64 kodiert je 3 Bytes als 4 ASCII-Zeichen. Für kleine Icons unter 5 KB kann die Base64-Einbettung eine HTTP-Anfrage einsparen. Für größere Bilder ist eine normale URL besser.",
+    faq_q4: "Wie verwende ich die Base64-Ausgabe in HTML oder CSS?",
+    faq_a4: "Nutzen Sie das Data-URI-Format für das src-Attribut eines img-Tags oder background-image in CSS. Das HTML-img-Tag-Format gibt Ihnen ein fertiges Tag. Das CSS-Format gibt Ihnen eine fertige Stylesheet-Regel.",
+    faq_q5: "Was ist die maximale Bildgröße?",
+    faq_a5: "Das Tool unterstützt Bilder bis zu 10 MB. Größere Bilder erzeugen sehr lange Base64-Strings, die in HTML, CSS oder APIs unpraktisch sein können.",
+    footer_about: "Über uns",
+    footer_privacy: "Datenschutzrichtlinie",
+    footer_terms: "Nutzungsbedingungen",
+    footer_contact: "Kontakt",
+    footer_also_try: "Auch ausprobieren:",
+  },
+  it: {
+    page_title: "Convertitore Immagine in Base64 — Strumento Gratuito | encodeb64.com",
+    nav_encode: "Codifica",
+    nav_decode: "Decodifica",
+    nav_image: "Immagine in Base64",
+    hero_h1: "Convertitore Immagine in Base64",
+    hero_sub: "Converti qualsiasi immagine in Base64 istantaneamente — nel tuo browser. Supporta JPG, PNG, GIF, WebP, SVG, AVIF e altri. Nessun upload, nessun server, 100% privato.",
+    tab_upload: "Carica Immagine",
+    tab_url: "Incolla URL",
+    drop_zone_text: "<strong>Trascina la tua immagine qui</strong>, o clicca per sfogliare",
+    max_size_notice: "Dimensione massima: 10 MB",
+    change_image: "Cambia immagine",
+    url_placeholder: "Inserisci l'URL dell'immagine (https://...)",
+    load_btn: "Carica Immagine",
+    format_label: "Formato di output",
+    format_datauri: "Data URI (HTML/CSS)",
+    format_raw: "Base64 grezzo",
+    format_css: "CSS background-image",
+    format_html: "Tag HTML img",
+    format_markdown: "Immagine Markdown",
+    line_breaks_label: "Aggiungi interruzioni di riga ogni 76 chars",
+    encode_btn: "Converti in Base64",
+    output_label: "Output Base64",
+    copy_btn: "Copia negli appunti",
+    copied_state: "Copiato! ✓",
+    download_btn: "Scarica come .txt",
+    clear_btn: "Cancella tutto",
+    live_preview_label: "Anteprima dal vivo — renderizzata da Base64",
+    cors_error: "Impossibile caricare l'immagine da questo URL. Prova a scaricare l'immagine e caricarla direttamente.",
+    size_error: "Il file è troppo grande. La dimensione massima è 10 MB.",
+    no_image_error: "Seleziona o carica prima un'immagine.",
+    chars_label: "caratteri",
+    file_name_label: "Nome",
+    file_size_label: "Dimensione",
+    file_dims_label: "Dimensioni",
+    file_type_label: "Tipo",
+    other_tools_title: "Altri strumenti",
+    tool_text_encode: "Testo in Base64",
+    tool_base64_decode: "Decodifica Base64",
+    acc1_title: "Cos'è la codifica Base64 delle immagini?",
+    acc1_body: `<p>La codifica Base64 delle immagini converte i dati binari in una stringa di caratteri ASCII incorporabile direttamente in HTML, CSS o JSON.</p>
+    <p>Casi d'uso: immagini in email HTML, Data URI in CSS per piccole icone, incorporare immagini in API JSON.</p>
+    <p>Una Data URI ha questo aspetto: <code>data:image/png;base64,iVBOR...</code></p>`,
+    acc2_title: "Quale formato di output usare?",
+    acc2_body: `<p><strong>Data URI (HTML/CSS)</strong> — Il più versatile.</p>
+    <p><strong>Base64 grezzo</strong> — Solo la stringa Base64 senza prefisso.</p>
+    <p><strong>CSS background-image</strong> — Pronto da incollare nel foglio di stile.</p>
+    <p><strong>Tag HTML img</strong> — Un elemento <code>&lt;img&gt;</code> completo.</p>
+    <p><strong>Immagine Markdown</strong> — Incorpora l'immagine in documenti Markdown.</p>`,
+    acc3_title: "Formati supportati",
+    acc3_body: `<p>Questo strumento supporta tutti i principali formati immagine:</p>
+    <ul>
+      <li><strong>JPG/JPEG</strong> — Formato fotografico più comune.</li>
+      <li><strong>PNG</strong> — Compressione senza perdita con piena trasparenza.</li>
+      <li><strong>GIF</strong> — Supporta animazione e trasparenza limitata.</li>
+      <li><strong>WebP</strong> — Formato moderno con compressione superiore.</li>
+      <li><strong>SVG</strong> — Grafica vettoriale basata su XML.</li>
+      <li><strong>BMP</strong> — Bitmap non compresso.</li>
+      <li><strong>ICO</strong> — Formato icona Windows.</li>
+      <li><strong>TIFF/TIF</strong> — Alta qualità per stampa e fotografia.</li>
+      <li><strong>AVIF</strong> — Formato di prossima generazione.</li>
+    </ul>`,
+    acc4_title: "Privacy e Sicurezza",
+    acc4_body: `<p>La tua immagine non lascia mai il tuo browser. Tutta la conversione avviene localmente.</p>
+    <p>La codifica Base64 <strong>non è crittografia</strong>. Non codificare immagini sensibili aspettandosi riservatezza.</p>`,
+    acc5_title: "Considerazioni sulla dimensione del file",
+    acc5_body: `<p>La codifica Base64 aumenta la dimensione del file di circa il <strong>33%</strong>.</p>
+    <p>Per immagini piccole (meno di ~5 KB), l'incorporamento in Base64 è solitamente vantaggioso.</p>
+    <p>Per immagini più grandi, non è generalmente raccomandato.</p>`,
+    faq_title: "Domande frequenti",
+    faq_q1: "Quali formati di immagine sono supportati?",
+    faq_a1: "Il convertitore supporta JPG/JPEG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF/TIF e AVIF. I file SVG sono XML vettoriale, quindi la loro uscita Base64 tende ad essere compatta.",
+    faq_q2: "La mia immagine viene caricata su un server?",
+    faq_a2: "No. Tutta la conversione avviene nel tuo browser tramite l'API FileReader. La tua immagine non lascia mai il tuo dispositivo — nessun upload, nessun server, 100% privato.",
+    faq_q3: "La conversione in Base64 aumenta le dimensioni del file?",
+    faq_a3: "Sì, di circa il 33%. Base64 codifica ogni 3 byte come 4 caratteri ASCII. Per icone piccole sotto i 5 KB, l'incorporamento può eliminare una richiesta HTTP. Per immagini grandi è meglio usare un URL normale.",
+    faq_q4: "Come uso l'output Base64 in HTML o CSS?",
+    faq_a4: "Usa il formato Data URI per l'attributo src di un tag img o background-image in CSS. Il formato HTML img tag fornisce un tag pronto da incollare. Il formato CSS background-image fornisce una regola pronta.",
+    faq_q5: "Qual è la dimensione massima dell'immagine?",
+    faq_a5: "Lo strumento supporta immagini fino a 10 MB. Immagini più grandi producono stringhe Base64 molto lunghe, poco pratiche per HTML, CSS o API.",
+    footer_about: "Chi siamo",
+    footer_privacy: "Informativa sulla privacy",
+    footer_terms: "Termini di utilizzo",
+    footer_contact: "Contatto",
+    footer_also_try: "Prova anche:",
+  },
+  zh: {
+    page_title: "图片转Base64编码器 — 免费在线工具 | encodeb64.com",
+    nav_encode: "编码",
+    nav_decode: "解码",
+    nav_image: "图片转Base64",
+    hero_h1: "图片转Base64编码器",
+    hero_sub: "即时将任何图片转换为Base64 — 完全在浏览器中完成。支持 JPG、PNG、GIF、WebP、SVG、AVIF 等格式。无需上传，无需服务器，100%私密。",
+    tab_upload: "上传图片",
+    tab_url: "粘贴URL",
+    drop_zone_text: "<strong>将图片拖放到此处</strong>，或点击浏览",
+    max_size_notice: "最大文件大小：10MB",
+    change_image: "更换图片",
+    url_placeholder: "输入图片URL（https://...）",
+    load_btn: "加载图片",
+    format_label: "输出格式",
+    format_datauri: "Data URI（HTML/CSS）",
+    format_raw: "纯Base64",
+    format_css: "CSS background-image",
+    format_html: "HTML img标签",
+    format_markdown: "Markdown图片",
+    line_breaks_label: "每76个字符添加换行符",
+    encode_btn: "转换为Base64",
+    output_label: "Base64输出",
+    copy_btn: "复制到剪贴板",
+    copied_state: "已复制！✓",
+    download_btn: "下载为.txt",
+    clear_btn: "清除全部",
+    live_preview_label: "实时预览 — 从Base64渲染",
+    cors_error: "无法从此URL加载图片。请尝试下载图片后直接上传。",
+    size_error: "文件太大。最大大小为10MB。",
+    no_image_error: "请先选择或加载一张图片。",
+    chars_label: "个字符",
+    file_name_label: "文件名",
+    file_size_label: "大小",
+    file_dims_label: "尺寸",
+    file_type_label: "类型",
+    other_tools_title: "其他工具",
+    tool_text_encode: "文本转Base64",
+    tool_base64_decode: "Base64解码",
+    acc1_title: "什么是图片Base64编码？",
+    acc1_body: `<p>图片Base64编码将二进制图片数据转换为ASCII字符串，可直接嵌入HTML、CSS或JSON等文本格式中。</p>
+    <p>常见用途：HTML邮件中的内联图片、CSS中的Data URI（避免额外HTTP请求）、在JSON API中嵌入图片。</p>
+    <p>Data URI格式如下：<code>data:image/png;base64,iVBOR...</code></p>`,
+    acc2_title: "应该使用哪种输出格式？",
+    acc2_body: `<p><strong>Data URI（HTML/CSS）</strong> — 最通用的格式。</p>
+    <p><strong>纯Base64</strong> — 仅Base64字符串，不带前缀。</p>
+    <p><strong>CSS background-image</strong> — 可直接粘贴到样式表。</p>
+    <p><strong>HTML img标签</strong> — 完整的<code>&lt;img&gt;</code>元素。</p>
+    <p><strong>Markdown图片</strong> — 在Markdown文档中嵌入图片。</p>`,
+    acc3_title: "支持的格式",
+    acc3_body: `<p>本工具支持所有主流图片格式：</p>
+    <ul>
+      <li><strong>JPG/JPEG</strong> — 最常见的照片格式。有损压缩，不支持透明。</li>
+      <li><strong>PNG</strong> — 无损压缩，完整透明度支持。</li>
+      <li><strong>GIF</strong> — 支持动画和有限透明度。</li>
+      <li><strong>WebP</strong> — 现代格式，压缩效率更高。</li>
+      <li><strong>SVG</strong> — 基于XML的矢量图形。</li>
+      <li><strong>BMP</strong> — 未压缩的位图，文件较大。</li>
+      <li><strong>ICO</strong> — Windows图标格式，常用于网站图标。</li>
+      <li><strong>TIFF/TIF</strong> — 印刷和摄影领域的高质量格式。</li>
+      <li><strong>AVIF</strong> — 下一代格式，压缩率极佳。</li>
+    </ul>`,
+    acc4_title: "隐私与安全",
+    acc4_body: `<p>您的图片永远不会离开您的浏览器。所有转换均在本地使用JavaScript的<code>FileReader</code> API完成。</p>
+    <p>Base64编码<strong>不是加密</strong>。请勿期望通过Base64编码来保护敏感图片的机密性。</p>`,
+    acc5_title: "文件大小注意事项",
+    acc5_body: `<p>Base64编码会使文件大小增加约<strong>33%</strong>。</p>
+    <p>对于小图片（小于约5KB），Base64嵌入通常是有益的——可以减少一次HTTP请求。</p>
+    <p>对于较大的图片，通常不推荐使用Base64，因为会显著增加HTML/CSS文件大小，且无法单独缓存。</p>`,
+    faq_title: "常见问题",
+    faq_q1: "支持哪些图片格式？",
+    faq_a1: "转换器支持 JPG/JPEG、PNG、GIF、WebP、SVG、BMP、ICO、TIFF/TIF 和 AVIF。SVG 文件是基于 XML 的矢量格式，其 Base64 输出通常较为紧凑。",
+    faq_q2: "我的图片会上传到服务器吗？",
+    faq_a2: "不会。所有转换完全在您的浏览器中通过 FileReader API 完成。您的图片永远不会离开您的设备——无需上传，无服务器，100% 私密。",
+    faq_q3: "转换为 Base64 会增加文件大小吗？",
+    faq_a3: "是的，增加约 33%。Base64 将每 3 个字节编码为 4 个 ASCII 字符。对于小于 5 KB 的小图标，嵌入 Base64 可以减少一次 HTTP 请求。对于较大的图片，使用普通 URL 更好。",
+    faq_q4: "如何在 HTML 或 CSS 中使用 Base64 输出？",
+    faq_a4: "使用 Data URI 格式作为 img 标签的 src 属性或 CSS 的 background-image。HTML img 标签格式提供可直接粘贴的标签。CSS background-image 格式提供可直接粘贴的样式表规则。",
+    faq_q5: "最大图片大小是多少？",
+    faq_a5: "该工具支持最大 10 MB 的图片。更大的图片会产生非常长的 Base64 字符串，在 HTML、CSS 或 API 中使用可能不实际。",
+    footer_about: "关于",
+    footer_privacy: "隐私政策",
+    footer_terms: "使用条款",
+    footer_contact: "联系我们",
+    footer_also_try: "也可以试试：",
+  },
+  ru: {
+    page_title: "Конвертер изображений в Base64 — Бесплатный инструмент | encodeb64.com",
+    nav_encode: "Кодировать",
+    nav_decode: "Декодировать",
+    nav_image: "Изображение в Base64",
+    hero_h1: "Конвертер изображений в Base64",
+    hero_sub: "Конвертируйте любое изображение в Base64 мгновенно — прямо в браузере. JPG, PNG, GIF, WebP, SVG, AVIF и другие. Без загрузок, без серверов, 100% конфиденциально.",
+    tab_upload: "Загрузить изображение",
+    tab_url: "Вставить URL",
+    drop_zone_text: "<strong>Перетащите изображение сюда</strong>, или нажмите для выбора",
+    max_size_notice: "Максимальный размер файла: 10 МБ",
+    change_image: "Изменить изображение",
+    url_placeholder: "Введите URL изображения (https://...)",
+    load_btn: "Загрузить изображение",
+    format_label: "Формат вывода",
+    format_datauri: "Data URI (HTML/CSS)",
+    format_raw: "Чистый Base64",
+    format_css: "CSS background-image",
+    format_html: "HTML тег img",
+    format_markdown: "Изображение Markdown",
+    line_breaks_label: "Добавлять переносы строк каждые 76 символов",
+    encode_btn: "Конвертировать в Base64",
+    output_label: "Вывод Base64",
+    copy_btn: "Скопировать в буфер обмена",
+    copied_state: "Скопировано! ✓",
+    download_btn: "Скачать как .txt",
+    clear_btn: "Очистить всё",
+    live_preview_label: "Предпросмотр — отрисовка из Base64",
+    cors_error: "Не удалось загрузить изображение по этому URL. Попробуйте скачать изображение и загрузить его напрямую.",
+    size_error: "Файл слишком большой. Максимальный размер — 10 МБ.",
+    no_image_error: "Пожалуйста, сначала выберите или загрузите изображение.",
+    chars_label: "символов",
+    file_name_label: "Имя",
+    file_size_label: "Размер",
+    file_dims_label: "Размеры",
+    file_type_label: "Тип",
+    other_tools_title: "Другие инструменты",
+    tool_text_encode: "Текст в Base64",
+    tool_base64_decode: "Декодировать Base64",
+    acc1_title: "Что такое кодирование изображений в Base64?",
+    acc1_body: `<p>Кодирование изображений в Base64 преобразует бинарные данные изображения в строку ASCII-символов, которую можно встроить непосредственно в HTML, CSS или JSON.</p>
+    <p>Распространённые случаи использования: встроенные изображения в HTML-письмах, Data URI в CSS для маленьких иконок, встраивание изображений в JSON API.</p>
+    <p>Data URI выглядит так: <code>data:image/png;base64,iVBOR...</code></p>`,
+    acc2_title: "Какой формат вывода использовать?",
+    acc2_body: `<p><strong>Data URI (HTML/CSS)</strong> — Самый универсальный формат.</p>
+    <p><strong>Чистый Base64</strong> — Только строка Base64 без префикса.</p>
+    <p><strong>CSS background-image</strong> — Готово для вставки в таблицу стилей.</p>
+    <p><strong>HTML тег img</strong> — Готовый элемент <code>&lt;img&gt;</code>.</p>
+    <p><strong>Изображение Markdown</strong> — Встраивает изображение в документы Markdown.</p>`,
+    acc3_title: "Поддерживаемые форматы",
+    acc3_body: `<p>Инструмент поддерживает все основные форматы изображений:</p>
+    <ul>
+      <li><strong>JPG/JPEG</strong> — Самый распространённый фотоформат.</li>
+      <li><strong>PNG</strong> — Сжатие без потерь с полной прозрачностью.</li>
+      <li><strong>GIF</strong> — Поддерживает анимацию и ограниченную прозрачность.</li>
+      <li><strong>WebP</strong> — Современный формат с превосходным сжатием.</li>
+      <li><strong>SVG</strong> — Векторная графика на основе XML.</li>
+      <li><strong>BMP</strong> — Несжатый растровый формат.</li>
+      <li><strong>ICO</strong> — Формат иконок Windows.</li>
+      <li><strong>TIFF/TIF</strong> — Высококачественный формат для печати.</li>
+      <li><strong>AVIF</strong> — Формат следующего поколения.</li>
+    </ul>`,
+    acc4_title: "Конфиденциальность и Безопасность",
+    acc4_body: `<p>Ваше изображение никогда не покидает ваш браузер. Вся конвертация происходит локально с помощью API <code>FileReader</code>.</p>
+    <p>Кодирование Base64 — <strong>не шифрование</strong>. Не кодируйте конфиденциальные изображения, рассчитывая на защиту данных.</p>`,
+    acc5_title: "Соображения о размере файла",
+    acc5_body: `<p>Кодирование Base64 увеличивает размер файла примерно на <strong>33%</strong>.</p>
+    <p>Для маленьких изображений (менее ~5 КБ) встраивание в Base64 обычно выгодно — устраняется один HTTP-запрос.</p>
+    <p>Для больших изображений это, как правило, не рекомендуется из-за увеличения размера и невозможности отдельного кэширования.</p>`,
+    faq_title: "Часто задаваемые вопросы",
+    faq_q1: "Какие форматы изображений поддерживаются?",
+    faq_a1: "Конвертер поддерживает JPG/JPEG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF/TIF и AVIF. Файлы SVG — это XML-векторная графика, поэтому их Base64-вывод обычно компактен.",
+    faq_q2: "Загружается ли моё изображение на сервер?",
+    faq_a2: "Нет. Вся конвертация выполняется в вашем браузере через API FileReader. Ваше изображение никогда не покидает устройство — без загрузок, без сервера, 100% конфиденциально.",
+    faq_q3: "Увеличивает ли конвертация в Base64 размер файла?",
+    faq_a3: "Да, примерно на 33%. Base64 кодирует каждые 3 байта как 4 ASCII-символа. Для маленьких иконок до 5 КБ встраивание в Base64 может исключить HTTP-запрос. Для больших изображений лучше использовать обычный URL.",
+    faq_q4: "Как использовать Base64-вывод в HTML или CSS?",
+    faq_a4: "Используйте формат Data URI для атрибута src тега img или background-image в CSS. Формат HTML img tag даёт готовый тег для вставки. Формат CSS background-image даёт готовое правило таблицы стилей.",
+    faq_q5: "Каков максимальный размер изображения?",
+    faq_a5: "Инструмент поддерживает изображения до 10 МБ. Более крупные изображения дают очень длинные строки Base64, которые могут быть непрактичны для HTML, CSS или API.",
+    footer_about: "О нас",
+    footer_privacy: "Политика конфиденциальности",
+    footer_terms: "Условия использования",
+    footer_contact: "Контакт",
+    footer_also_try: "Также попробуйте:",
+  },
+};
+
+// ─── STATE ──────────────────────────────────────────────────────────────────────
+const pageLang = 'zh'; let currentLang = pageLang;
+let currentDataURI = null;
+let currentMime = null;
+let currentTab = 'upload';
+
+// ─── LANGUAGE ───────────────────────────────────────────────────────────────────
+function t(key) { return T[currentLang][key] || T['en'][key] || key; }
+
+function applyLang(lang) {
+  document.documentElement.lang = lang;
+  currentLang = lang;
+  localStorage.setItem('b64_lang', lang);
+
+  document.title = t('page_title');
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    el.textContent = t(key);
+  });
+
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    el.innerHTML = t(key);
+  });
+
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    el.placeholder = t(key);
+  });
+
+  document.querySelectorAll('[data-i18n-opt]').forEach(el => {
+    const key = el.getAttribute('data-i18n-opt');
+    el.textContent = t(key);
+  });
+
+  document.querySelector('#dropPlaceholder [data-i18n-html="drop_zone_text"]').innerHTML = t('drop_zone_text');
+
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.classList.toggle('selected', opt.dataset.lang === lang);
+  });
+  document.getElementById('langLabel').textContent = getLangLabel(lang);
+
+  updateFormatTag();
+  if (currentDataURI) updateCharCount();
+}
+
+function getLangLabel(lang) {
+  const labels = { en:'English', es:'Español', pt:'Português', fr:'Français', de:'Deutsch', it:'Italiano', zh:'中文', ru:'Русский' };
+  return labels[lang] || 'English';
+}
+
+// ─── LANGUAGE DROPDOWN ──────────────────────────────────────────────────────────
+const langBtn = document.getElementById('langBtn');
+const langDropdown = document.getElementById('langDropdown');
+
+langBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const open = langDropdown.classList.toggle('open');
+  langBtn.setAttribute('aria-expanded', open);
+});
+
+document.addEventListener('click', () => {
+  langDropdown.classList.remove('open');
+  langBtn.setAttribute('aria-expanded', 'false');
+});
+
+document.querySelectorAll('.lang-option').forEach(opt => {
+  opt.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const sel = opt.dataset.lang;
+    localStorage.setItem('b64_lang', sel);
+    window.location.href = '/' + sel + '/image-to-base64.html';
+  });
+});
+
+// ─── TABS ───────────────────────────────────────────────────────────────────────
+function switchTab(tab) {
+  currentTab = tab;
+  document.getElementById('tabUpload').classList.toggle('active', tab === 'upload');
+  document.getElementById('tabUrl').classList.toggle('active', tab === 'url');
+  document.getElementById('panelUpload').classList.toggle('active', tab === 'upload');
+  document.getElementById('panelUrl').classList.toggle('active', tab === 'url');
+}
+
+// ─── FILE UPLOAD ────────────────────────────────────────────────────────────────
+const imgDropZone = document.getElementById('imgDropZone');
+const fileInput = document.getElementById('fileInput');
+
+imgDropZone.addEventListener('click', () => {
+  if (!currentDataURI || currentTab === 'upload') fileInput.click();
+});
+
+fileInput.addEventListener('change', () => {
+  if (fileInput.files[0]) handleFile(fileInput.files[0]);
+});
+
+imgDropZone.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  imgDropZone.classList.add('dragover');
+});
+
+imgDropZone.addEventListener('dragleave', () => imgDropZone.classList.remove('dragover'));
+
+imgDropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  imgDropZone.classList.remove('dragover');
+  const file = e.dataTransfer.files[0];
+  if (file) handleFile(file);
+});
+
+function handleFile(file) {
+  hideError('uploadError');
+
+  if (file.size > 10 * 1024 * 1024) {
+    showError('uploadError', t('size_error'));
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const dataURI = e.target.result;
+    currentDataURI = dataURI;
+    currentMime = dataURI.split(';')[0].split(':')[1];
+
+    const img = document.getElementById('uploadPreviewImg');
+    img.src = dataURI;
+    img.style.animation = 'none';
+    img.offsetHeight;
+    img.style.animation = '';
+
+    img.onload = () => {
+      showUploadPreview(file.name, file.size, img.naturalWidth, img.naturalHeight, currentMime);
+    };
+  };
+  reader.readAsDataURL(file);
+}
+
+function showUploadPreview(name, size, w, h, mime) {
+  document.getElementById('dropPlaceholder').style.display = 'none';
+  const previewWrap = document.getElementById('uploadPreviewWrap');
+  previewWrap.classList.add('visible');
+  imgDropZone.classList.add('has-image');
+
+  const info = document.getElementById('uploadFileInfo');
+  info.innerHTML = `${t('file_name_label')}: ${name}<br>${t('file_size_label')}: ${formatSize(size)}<br>${t('file_dims_label')}: ${w} × ${h} px<br>${t('file_type_label')}: ${mime}`;
+}
+
+function resetUpload() {
+  currentDataURI = null;
+  currentMime = null;
+  fileInput.value = '';
+  document.getElementById('dropPlaceholder').style.display = '';
+  document.getElementById('uploadPreviewWrap').classList.remove('visible');
+  document.getElementById('uploadPreviewImg').src = '';
+  imgDropZone.classList.remove('has-image');
+  hideError('uploadError');
+  hideOutput();
+}
+
+// ─── URL LOAD ───────────────────────────────────────────────────────────────────
+async function loadFromUrl() {
+  const url = document.getElementById('urlInput').value.trim();
+  hideError('urlError');
+
+  if (!url) return;
+
+  const btn = document.getElementById('loadUrlBtn');
+  btn.textContent = '...';
+  btn.disabled = true;
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('fetch failed');
+    const blob = await response.blob();
+
+    if (blob.size > 10 * 1024 * 1024) {
+      showError('urlError', t('size_error'));
+      btn.textContent = t('load_btn');
+      btn.disabled = false;
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const dataURI = e.target.result;
+      currentDataURI = dataURI;
+      currentMime = blob.type || dataURI.split(';')[0].split(':')[1];
+
+      const img = document.getElementById('urlPreviewImg');
+      img.src = dataURI;
+      img.onload = () => {
+        document.getElementById('urlPreviewArea').style.display = 'block';
+        const info = document.getElementById('urlFileInfo');
+        const filename = url.split('/').pop().split('?')[0] || 'image';
+        info.innerHTML = `${t('file_name_label')}: ${filename}<br>${t('file_size_label')}: ${formatSize(blob.size)}<br>${t('file_dims_label')}: ${img.naturalWidth} × ${img.naturalHeight} px<br>${t('file_type_label')}: ${currentMime}`;
+      };
+    };
+    reader.readAsDataURL(blob);
+  } catch (err) {
+    showError('urlError', t('cors_error'));
+  }
+
+  btn.textContent = t('load_btn');
+  btn.disabled = false;
+}
+
+// ─── ENCODE ─────────────────────────────────────────────────────────────────────
+function encodeImage() {
+  hideError('generalError');
+
+  if (!currentDataURI) {
+    showError('generalError', t('no_image_error'));
+    return;
+  }
+
+  const btn = document.getElementById('encodeBtn');
+  btn.style.transform = 'scale(0.97)';
+  btn.style.boxShadow = '0 0 36px rgba(0,229,204,0.55)';
+  setTimeout(() => {
+    btn.style.transform = '';
+    btn.style.boxShadow = '';
+  }, 200);
+
+  const rawBase64 = currentDataURI.split(',')[1];
+  const mime = currentMime || 'image/png';
+  const addLineBreaks = document.getElementById('lineBreaks').checked;
+
+  let base64 = rawBase64;
+  if (addLineBreaks) {
+    base64 = base64.match(/.{1,76}/g).join('\n');
+  }
+
+  const format = document.getElementById('outputFormat').value;
+  let output = '';
+
+  const dataUri = `data:${mime};base64,${base64}`;
+
+  switch (format) {
+    case 'datauri':
+      output = dataUri;
+      break;
+    case 'raw':
+      output = base64;
+      break;
+    case 'css':
+      output = `background-image: url('${dataUri}');`;
+      break;
+    case 'html':
+      output = `<img src="${dataUri}" alt="image" />`;
+      break;
+    case 'markdown':
+      output = `![image](${dataUri})`;
+      break;
+  }
+
+  const textarea = document.getElementById('outputText');
+  textarea.value = output;
+
+  updateCharCount();
+  updateFormatTag();
+  updateLivePreview(dataUri, format);
+
+  const section = document.getElementById('outputSection');
+  section.classList.add('visible');
+  section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function updateCharCount() {
+  const val = document.getElementById('outputText').value;
+  document.getElementById('charCount').textContent = val ? `${val.length.toLocaleString()} ${t('chars_label')}` : '';
+}
+
+function updateFormatTag() {
+  const format = document.getElementById('outputFormat').value;
+  const labels = {
+    datauri: t('format_datauri'),
+    raw: t('format_raw'),
+    css: t('format_css'),
+    html: t('format_html'),
+    markdown: t('format_markdown'),
+  };
+  document.getElementById('formatTag').textContent = labels[format] || format;
+}
+
+function onFormatChange() {
+  updateFormatTag();
+  if (currentDataURI && document.getElementById('outputSection').classList.contains('visible')) {
+    encodeImage();
+  }
+}
+
+// ─── LIVE PREVIEW ───────────────────────────────────────────────────────────────
+function updateLivePreview(dataUri, format) {
+  const previewSection = document.getElementById('livePreviewSection');
+  const previewImg = document.getElementById('livePreviewImg');
+
+  if (['datauri', 'html', 'css'].includes(format)) {
+    previewImg.src = dataUri;
+    previewSection.classList.add('visible');
+  } else {
+    previewSection.classList.remove('visible');
+  }
+}
+
+// ─── COPY ───────────────────────────────────────────────────────────────────────
+function copyOutput() {
+  const text = document.getElementById('outputText').value;
+  if (!text) return;
+
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copyBtn');
+    const orig = t('copy_btn');
+    btn.textContent = t('copied_state');
+    btn.classList.add('success');
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.classList.remove('success');
+    }, 2000);
+  });
+}
+
+// ─── DOWNLOAD ───────────────────────────────────────────────────────────────────
+function downloadOutput() {
+  const text = document.getElementById('outputText').value;
+  if (!text) return;
+
+  const blob = new Blob([text], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'base64-image.txt';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ─── CLEAR ──────────────────────────────────────────────────────────────────────
+function clearAll() {
+  resetUpload();
+  document.getElementById('urlInput').value = '';
+  document.getElementById('urlPreviewArea').style.display = 'none';
+  document.getElementById('urlPreviewImg').src = '';
+  hideError('urlError');
+  hideOutput();
+}
+
+function hideOutput() {
+  const section = document.getElementById('outputSection');
+  section.classList.remove('visible');
+  document.getElementById('outputText').value = '';
+  document.getElementById('charCount').textContent = '';
+  document.getElementById('livePreviewSection').classList.remove('visible');
+}
+
+// ─── ERRORS ─────────────────────────────────────────────────────────────────────
+function showError(id, msg) {
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.classList.add('show');
+}
+
+function hideError(id) {
+  const el = document.getElementById(id);
+  el.classList.remove('show');
+}
+
+// ─── ACCORDION ──────────────────────────────────────────────────────────────────
+function toggleAccordion(header) {
+  const body = header.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+  document.querySelectorAll('.accordion-body.open').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.accordion-header.open').forEach(h => h.classList.remove('open'));
+  if (!isOpen) {
+    body.classList.add('open');
+    header.classList.add('open');
+  }
+}
+
+// ─── HELPERS ────────────────────────────────────────────────────────────────────
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / 1048576).toFixed(2) + ' MB';
+}
+
+// ─── INIT ───────────────────────────────────────────────────────────────────────
+applyLang(currentLang);
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Image to Base64 Converter",
+  "url": "https://encodeb64.com/zh/image-to-base64.html",
+  "description": "Free online image to Base64 converter. Convert JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF, AVIF to Base64 instantly — right in your browser. No uploads, 100% private.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Image to Base64, Data URI, Raw Base64, CSS background-image, HTML img tag, Markdown image, JPG PNG GIF WebP SVG BMP ICO TIFF AVIF support, 10MB limit"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What image formats are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The converter supports JPG/JPEG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF/TIF, and AVIF. SVG files are vector-based XML, so their Base64 output tends to be compact."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my image uploaded to a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All conversion happens entirely in your browser using the FileReader API. Your image never leaves your device — no uploads, no server, 100% private."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does converting to Base64 increase file size?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, by approximately 33%. Base64 encodes every 3 bytes as 4 ASCII characters. For small icons under 5 KB, embedding as Base64 can eliminate an HTTP request. For larger images, a regular URL is better."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I use the Base64 output in HTML or CSS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the Data URI format for an img src attribute or CSS background-image. The HTML img tag format gives you a ready-to-paste tag. The CSS background-image format gives you a ready-to-paste stylesheet rule."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the maximum image size?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool supports images up to 10 MB. Larger images produce very long Base64 strings that may be impractical for use in HTML, CSS, or API payloads."
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>

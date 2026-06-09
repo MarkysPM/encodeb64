@@ -2290,64 +2290,66 @@ applyLang(currentLang);
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Image to Base64 Converter",
-  "url": "https://encodeb64.com/zh/image-to-base64.html",
-  "description": "Free online image to Base64 converter. Convert JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF, AVIF to Base64 instantly — right in your browser. No uploads, 100% private.",
-  "applicationCategory": "DeveloperApplication",
-  "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "featureList": "Image to Base64, Data URI, Raw Base64, CSS background-image, HTML img tag, Markdown image, JPG PNG GIF WebP SVG BMP ICO TIFF AVIF support, 10MB limit"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "What image formats are supported?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The converter supports JPG/JPEG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF/TIF, and AVIF. SVG files are vector-based XML, so their Base64 output tends to be compact."
-      }
+      "@type": "WebApplication",
+      "@id": "https://encodeb64.com/#img-webapp",
+      "name": "图片转Base64转换器",
+      "url": "https://encodeb64.com/zh/image-to-base64.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "免费在线图片转Base64转换工具。在浏览器中即时将JPG、PNG、GIF、WebP、SVG、BMP、ICO、TIFF、AVIF转换为Base64。无需上传，100%隐私。"
     },
     {
-      "@type": "Question",
-      "name": "Is my image uploaded to a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. All conversion happens entirely in your browser using the FileReader API. Your image never leaves your device — no uploads, no server, 100% private."
+      "@type": "FAQPage",
+      "@id": "https://encodeb64.com/#img-faq",
+      "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "支持哪些图片格式？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "转换器支持JPG/JPEG、PNG、GIF、WebP、SVG、BMP、ICO、TIFF/TIF和AVIF。SVG文件是基于矢量的XML，因此其Base64输出通常较为紧凑。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "我的图片会上传到服务器吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不会。所有转换完全在您的浏览器中使用FileReader API进行。您的图片永远不会离开您的设备——无需上传，无需服务器，100%隐私。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "转换为Base64会增加文件大小吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "是的，大约增加33%。Base64将每3个字节编码为4个ASCII字符。对于5KB以下的小图标，嵌入Base64可以减少一次HTTP请求。对于较大的图片，使用普通URL更好。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "如何在HTML或CSS中使用Base64输出？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "使用Data URI格式作为img src属性或CSS background-image。HTML img标签格式提供即用型标签。CSS background-image格式提供即用型样式规则。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "最大图片大小是多少？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "该工具支持最大10MB的图片。较大的图片会产生非常长的Base64字符串，在HTML、CSS或API载荷中使用可能不实用。"
+        }
       }
-    },
-    {
-      "@type": "Question",
-      "name": "Does converting to Base64 increase file size?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, by approximately 33%. Base64 encodes every 3 bytes as 4 ASCII characters. For small icons under 5 KB, embedding as Base64 can eliminate an HTTP request. For larger images, a regular URL is better."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I use the Base64 output in HTML or CSS?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Use the Data URI format for an img src attribute or CSS background-image. The HTML img tag format gives you a ready-to-paste tag. The CSS background-image format gives you a ready-to-paste stylesheet rule."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the maximum image size?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool supports images up to 10 MB. Larger images produce very long Base64 strings that may be impractical for use in HTML, CSS, or API payloads."
-      }
+      ]
     }
   ]
 }

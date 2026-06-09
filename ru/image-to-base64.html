@@ -2290,64 +2290,66 @@ applyLang(currentLang);
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Image to Base64 Converter",
-  "url": "https://encodeb64.com/ru/image-to-base64.html",
-  "description": "Free online image to Base64 converter. Convert JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF, AVIF to Base64 instantly — right in your browser. No uploads, 100% private.",
-  "applicationCategory": "DeveloperApplication",
-  "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "featureList": "Image to Base64, Data URI, Raw Base64, CSS background-image, HTML img tag, Markdown image, JPG PNG GIF WebP SVG BMP ICO TIFF AVIF support, 10MB limit"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "What image formats are supported?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The converter supports JPG/JPEG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF/TIF, and AVIF. SVG files are vector-based XML, so their Base64 output tends to be compact."
-      }
+      "@type": "WebApplication",
+      "@id": "https://encodeb64.com/#img-webapp",
+      "name": "Конвертер изображений в Base64",
+      "url": "https://encodeb64.com/ru/image-to-base64.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Бесплатный онлайн-конвертер изображений в Base64. Конвертируйте JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF, AVIF в Base64 мгновенно в браузере. Без загрузок, 100% конфиденциально."
     },
     {
-      "@type": "Question",
-      "name": "Is my image uploaded to a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. All conversion happens entirely in your browser using the FileReader API. Your image never leaves your device — no uploads, no server, 100% private."
+      "@type": "FAQPage",
+      "@id": "https://encodeb64.com/#img-faq",
+      "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Какие форматы изображений поддерживаются?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Конвертер поддерживает JPG/JPEG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF/TIF и AVIF. SVG-файлы являются векторным XML, поэтому их вывод Base64 обычно компактен."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Загружается ли моё изображение на сервер?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Нет. Вся конвертация происходит полностью в вашем браузере с использованием FileReader API. Ваше изображение никогда не покидает ваше устройство — без загрузок, без сервера, 100% конфиденциально."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Увеличивает ли конвертация в Base64 размер файла?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да, примерно на 33%. Base64 кодирует каждые 3 байта как 4 ASCII-символа. Для маленьких значков менее 5 КБ встраивание в Base64 может устранить HTTP-запрос. Для больших изображений лучше использовать обычный URL."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Как использовать вывод Base64 в HTML или CSS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Используйте формат Data URI для атрибута img src или CSS background-image. Формат тега img HTML даёт готовый к вставке тег. Формат CSS background-image даёт готовое к вставке правило таблицы стилей."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Каков максимальный размер изображения?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Инструмент поддерживает изображения до 10 МБ. Более крупные изображения создают очень длинные строки Base64, которые могут быть непрактичны для использования в HTML, CSS или данных API."
+        }
       }
-    },
-    {
-      "@type": "Question",
-      "name": "Does converting to Base64 increase file size?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, by approximately 33%. Base64 encodes every 3 bytes as 4 ASCII characters. For small icons under 5 KB, embedding as Base64 can eliminate an HTTP request. For larger images, a regular URL is better."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I use the Base64 output in HTML or CSS?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Use the Data URI format for an img src attribute or CSS background-image. The HTML img tag format gives you a ready-to-paste tag. The CSS background-image format gives you a ready-to-paste stylesheet rule."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the maximum image size?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool supports images up to 10 MB. Larger images produce very long Base64 strings that may be impractical for use in HTML, CSS, or API payloads."
-      }
+      ]
     }
   ]
 }

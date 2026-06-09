@@ -101,7 +101,7 @@
         "@id": "https://encodeb64.com/#website",
         "url": "https://encodeb64.com/ru/",
         "name": "encodeb64.com",
-        "inLanguage": "en",
+        "inLanguage": "ru",
         "potentialAction": {
           "@type": "SearchAction",
           "target": "https://encodeb64.com/?q={search_term_string}",
@@ -111,12 +111,12 @@
       {
         "@type": "WebApplication",
         "@id": "https://encodeb64.com/#webapp",
-        "name": "Base64 Encoder Online",
-        "url": "https://encodeb64.com/",
+        "name": "Онлайн-кодировщик Base64",
+        "url": "https://encodeb64.com/ru/",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Any",
         "browserRequirements": "Requires JavaScript",
-        "description": "Free online Base64 encoder for text, files, and images. UTF-8 perfect, Base64URL safe, up to 100MB, no server upload, 100% private.",
+        "description": "Бесплатный онлайн-кодировщик Base64 для текста, файлов и изображений. Идеальный UTF-8, безопасный Base64URL, до 100 МБ, без загрузки на сервер, 100% конфиденциально.",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -137,46 +137,46 @@
         "@type": "FAQPage",
         "@id": "https://encodeb64.com/#faq",
         "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is Base64 encoding?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Base64 is a binary-to-text encoding scheme that converts binary data into printable ASCII characters. It is commonly used in JWT tokens, CSS image embedding, email attachments, API authentication, and webhooks."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is Base64 safe for passwords?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No. Base64 is encoding, not encryption. Anyone can decode it instantly. For passwords, use proper password hashing algorithms such as bcrypt or Argon2."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do I convert an image to Base64?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Use the Image to Base64 tool to upload or drag and drop your image, then convert it instantly into a Base64 string for HTML, CSS, or API payloads."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does Base64 encoding increase file size?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. Base64 typically increases file size by about 33 percent because 3 binary bytes are encoded as 4 ASCII characters."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is Base64URL safe encoding?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Base64URL is a variant of Base64 that replaces plus and slash characters and removes padding, making it safe for URLs, filenames, and JWT tokens."
-            }
-          }
+      {
+        "@type": "Question",
+        "name": "Что такое кодирование Base64?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Base64 — это схема кодирования двоичных данных в текст, преобразующая бинарные данные в печатные ASCII-символы. Широко используется в JWT-токенах, встраивании изображений в CSS, вложениях электронной почты, аутентификации API и вебхуках."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Безопасен ли Base64 для паролей?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Нет. Base64 — это кодирование, а не шифрование. Любой может мгновенно его декодировать. Для паролей используйте алгоритмы хеширования, такие как bcrypt или Argon2."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Как преобразовать изображение в Base64?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Используйте инструмент «Изображение в Base64» для загрузки или перетаскивания изображения и мгновенного его преобразования в строку Base64 для HTML, CSS или данных API."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Увеличивает ли кодирование Base64 размер файла?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да. Base64 обычно увеличивает размер файла примерно на 33 процента, поскольку 3 байта двоичных данных кодируются в 4 ASCII-символа."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Что такое безопасное кодирование Base64URL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Base64URL — вариант Base64, в котором символы «плюс» и «косая черта» заменены, а дополнение удалено, что делает его безопасным для URL, имён файлов и JWT-токенов."
+        }
+      }
         ]
       },
       {
@@ -186,13 +186,13 @@
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Home",
+            "name": "Главная",
             "item": "https://encodeb64.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Base64 Encoder Online",
+            "name": "Онлайн-кодировщик Base64",
             "item": "https://encodeb64.com/"
           }
         ]
@@ -2069,71 +2069,6 @@ function toggleAccordion(header) {
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 applyLang(currentLang);
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Base64 Encoder Online",
-  "url": "https://encodeb64.com/",
-  "description": "Free online Base64 encoder for developers. Encode text, files, and images to Base64 — UTF-8 perfect, Base64URL safe, up to 100MB. Works in 8 languages.",
-  "applicationCategory": "DeveloperApplication",
-  "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "featureList": "Base64 encode, Image to Base64, File encoding, UTF-8, Base64URL safe (RFC 4648), 100MB limit"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is Base64 encoding?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Base64 is a binary-to-text encoding scheme that converts binary data into 64 printable ASCII characters (A–Z, a–z, 0–9, +, /). It is used in JWT tokens, CSS image embedding, email attachments (MIME), API authentication, and webhooks."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Base64 safe for passwords?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Base64 is encoding, not encryption. Anyone can decode it instantly. For passwords, use bcrypt, SHA-256, Argon2, or similar hashing algorithms with a salt."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I convert an image to Base64?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Use our Image to Base64 converter: drag and drop your image, click Convert, and get the Base64 string instantly. Perfect for embedding in CSS, HTML, and API payloads."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does Base64 encoding increase file size?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, by approximately 33%. Three binary bytes are encoded as four ASCII characters. Use Base64 when you need binary data in text-based formats such as JSON, XML, or CSS."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is Base64URL safe encoding?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Base64URL is a variant of Base64 that replaces + with -, / with _, and removes = padding. Defined in RFC 4648 §5. Ideal for JWT tokens, URL parameters, filenames, and webhooks."
-      }
-    }
-  ]
-}
 </script>
 </body>
 </html>

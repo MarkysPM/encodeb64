@@ -1869,7 +1869,8 @@ langDropdown.addEventListener('click', (e) => {
   if (opt) {
     const sel = opt.dataset.lang;
     localStorage.setItem('b64_lang', sel);
-    window.location.href = '/' + sel + '/';
+		const path = sel === 'en' ? '/' : '/' + sel + '/';
+		window.location.href = path;
   }
 });
 

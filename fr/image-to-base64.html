@@ -1995,7 +1995,8 @@ document.querySelectorAll('.lang-option').forEach(opt => {
     e.stopPropagation();
     const sel = opt.dataset.lang;
     localStorage.setItem('b64_lang', sel);
-    window.location.href = '/' + sel + '/image-to-base64.html';
+		const path = sel === 'en' ? '/image-to-base64.html' : '/' + sel + '/image-to-base64.html';
+		window.location.href = path;
   });
 });
 

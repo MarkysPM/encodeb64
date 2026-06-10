@@ -1,1 +1,11 @@
+#Ads.txt encodeb64.com
+#Ads.txt managed by AdsTxtManager.com - the free ads.txt management tool for publishers
+ownerdomain=encodeb64.com
+contact=directsales@ezoic.com
+managerdomain=ezoic.ai
+
+ezoic.ai, 3aa6e9e746a4d5209e017d7888f2952d, DIRECT
+# 35
+google.com, pub-6644558441501035, DIRECT, f08c47fec0942fa0
+google.com, pub-1175987143200523, RESELLER, f08c47fec0942fa0
 google.com, pub-7602115974474104, DIRECT, f08c47fec0942fa0

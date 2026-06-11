@@ -1027,7 +1027,7 @@
   <!-- HERO -->
 	<section class="hero">
 	  <div class="hero-glow"></div>
-	  <h1 data-i18n="hero_h1">Base64 Encoder Online</h1>
+	  <h1 data-i18n="hero_h1">Base64 온라인 인코더</h1>
 	  <p class="hero-sub" data-i18n="hero_sub">
 	    Encode text, files, and images to Base64 instantly — UTF-8 perfect, Base64URL safe, up to 100MB, and 100% private in your browser.
 	  </p>
@@ -1278,6 +1278,35 @@
         <div class="accordion-content" data-i18n="faq_a5" itemprop="text">Base64URL is a variant of Base64 that replaces + with -, / with _, and removes = padding. Defined in RFC 4648 §5. Ideal for JWT tokens, URL parameters, filenames, and webhooks.</div>
       </div>
     </div>
+  </section>
+
+  <!-- H2 CONTENT SECTIONS -->
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Base64 인코딩이란?</h2>
+    <p>Base64는 64개의 인쇄 가능한 ASCII 문자(A–Z, a–z, 0–9, 더하기(+), 슬래시(/))를 사용하여 이진 데이터를 표현하고, 패딩에 등호(=)를 사용하는 이진-텍스트 인코딩 방식입니다. "Base64"라는 이름은 각 Base64 자리가 정확히 6비트의 데이터를 나타내며, 2^6 = 64이기 때문에 붙여졌습니다.</p>
+    <p>Base64는 암호화가 아닙니다. 이메일(MIME), JSON 페이로드, XML 문서, HTTP 헤더 등 텍스트만 지원하는 채널을 통해 이진 데이터를 안전하게 전송하기 위해 설계된 가역적 인코딩입니다.</p>
+    <p>일반적인 사용 사례: CSS와 HTML에 Data URI로 이미지 삽입, 이메일 첨부 파일 인코딩, JSON 및 XML API에서 이진 데이터 전송, HTTP 기본 인증 헤더에서 자격 증명 인코딩.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">텍스트를 온라인으로 Base64로 인코딩하는 방법</h2>
+    <p>encodeb64.com 사용법은 간단합니다. 입력 필드에 텍스트를 붙여넣고, 문자 집합을 선택한 후(대부분의 현대 텍스트에는 UTF-8이 적합합니다), 인코딩 버튼을 클릭하세요. Base64 출력이 즉시 결과 필드에 나타나며, 바로 복사할 수 있습니다.</p>
+    <p>특수한 사용 사례의 경우 고급 옵션에서 출력 형식을 제어할 수 있습니다. JWT 토큰과 URL 매개변수에 안전한 출력을 얻으려면 URL 안전 인코딩(Base64URL)을 활성화하세요. RFC 2045에 따라 출력을 76자로 줄바꿈하려면 MIME 줄 분할을 활성화하세요.</p>
+    <p>모든 인코딩은 JavaScript의 TextEncoder API와 btoa() 함수를 사용하여 브라우저에서 완전히 이루어집니다. 서버로 데이터가 전송되지 않습니다.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">JWT 토큰을 위한 Base64URL 인코딩</h2>
+    <p>표준 Base64는 URL에서 안전하지 않은 + 와 / 문자를 사용합니다 — %2B와 %2F로 퍼센트 인코딩해야 합니다. Base64URL(RFC 4648 §5)은 +를 -로, /를 _로 대체하고 = 패딩 문자를 완전히 생략하여 이 문제를 해결합니다.</p>
+    <p>JWT(JSON Web Token)는 헤더와 페이로드 섹션에 Base64URL 인코딩을 사용합니다. JWT를 사용하는 경우 인코딩 전에 "URL 안전 인코딩(Base64URL)" 옵션을 선택하세요.</p>
+    <p>Base64URL은 OAuth 2.0 PKCE 챌린지와 클라우드 스토리지 시스템의 파일 이름에도 사용됩니다. Base64 문자열을 추가 인코딩 없이 URL에 직접 포함해야 하는 모든 컨텍스트에 적합합니다.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">파일 및 이미지를 Base64로 인코딩</h2>
+    <p>텍스트 인코딩 외에도 encodeb64.com은 모든 파일 형식을 Base64로 인코딩할 수 있습니다 — 문서, 이미지, 오디오 파일, 최대 100MB의 바이너리 데이터. 파일을 업로드 영역에 드래그 앤 드롭하거나 클릭하여 찾아보세요.</p>
+    <p>인코딩은 FileReader API를 사용하여 브라우저에서 완전히 이루어지므로 파일이 기기를 벗어나지 않습니다. 이미지의 경우 JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF 및 AVIF 형식을 지원하며 다섯 가지 다른 출력 형식을 생성합니다.</p>
+    <p>이미지를 Base64로 삽입하는 것은 외부 이미지 호스팅이 불안정한 HTML 이메일, 독립적인 HTML 문서, HTTP 요청을 줄이기 위해 작은 아이콘을 인라인으로 처리해야 하는 CSS 스타일시트에 유용합니다.</p>
   </section>
 
   <!-- OTHER TOOLS -->

@@ -1027,7 +1027,7 @@
   <!-- HERO -->
 	<section class="hero">
 	  <div class="hero-glow"></div>
-	  <h1 data-i18n="hero_h1">Base64 Encoder Online</h1>
+	  <h1 data-i18n="hero_h1">Base64 オンラインエンコーダー</h1>
 	  <p class="hero-sub" data-i18n="hero_sub">
 	    Encode text, files, and images to Base64 instantly — UTF-8 perfect, Base64URL safe, up to 100MB, and 100% private in your browser.
 	  </p>
@@ -1278,6 +1278,35 @@
         <div class="accordion-content" data-i18n="faq_a5" itemprop="text">Base64URL is a variant of Base64 that replaces + with -, / with _, and removes = padding. Defined in RFC 4648 §5. Ideal for JWT tokens, URL parameters, filenames, and webhooks.</div>
       </div>
     </div>
+  </section>
+
+  <!-- H2 CONTENT SECTIONS -->
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Base64エンコードとは？</h2>
+    <p>Base64は、バイナリデータを64種類の印刷可能なASCII文字（A–Z、a–z、0–9、プラス記号（+）、スラッシュ（/））で表現し、パディングに等号（=）を使用するバイナリ-テキスト変換方式です。「Base64」という名称は、各Base64桁がちょうど6ビットのデータを表し、2^6 = 64であることに由来しています。</p>
+    <p>Base64は暗号化ではありません。電子メール（MIME）、JSONペイロード、XMLドキュメント、HTTPヘッダーなど、テキストのみをサポートするチャネルでバイナリデータを安全に送信するために設計された可逆エンコードです。</p>
+    <p>主な用途：CSSとHTMLへのData URIとしての画像埋め込み、メール添付ファイルのエンコード、JSONおよびXML APIでのバイナリデータ送信、HTTP基本認証ヘッダーでの認証情報エンコードなどです。</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">テキストをBase64にオンラインでエンコードする方法</h2>
+    <p>encodeb64.comの使い方はシンプルです。入力フィールドにテキストを貼り付け、文字セットを選択し（現代のテキストにはUTF-8が適切です）、「エンコード」をクリックしてください。Base64出力が結果フィールドに即座に表示され、コピーできます。</p>
+    <p>特殊なユースケースには、詳細オプションで出力形式を制御できます。JWTトークンやURLパラメータに安全な出力を得るにはURLセーフエンコード（Base64URL）を有効にしてください。RFC 2045に従って76文字ごとに出力を折り返すにはMIMEライン分割を有効にしてください。</p>
+    <p>すべてのエンコードはJavaScriptのTextEncoder APIとbtoa()関数を使用してブラウザ内で完全に行われます。データがサーバーに送信されることはありません。</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">JWTトークンのためのBase64URLエンコード</h2>
+    <p>標準のBase64は+と/を使用しますが、これらはURLで安全ではなく、%2Bと%2Fとしてパーセントエンコードする必要があります。Base64URL（RFC 4648 §5）は、+を-に、/を_に置き換え、=パディング文字を完全に省略することでこの問題を解決します。</p>
+    <p>JWT（JSON Web Token）はヘッダーとペイロードにBase64URLエンコードを使用します。JWTを扱う場合は、エンコード前に「URLセーフエンコード（Base64URL）」オプションを選択してください。</p>
+    <p>Base64URLはOAuth 2.0 PKCEチャレンジやクラウドストレージのファイル名にも使用されます。Base64URLはBase64URLが追加のエンコードなしにURLに直接埋め込まれる必要がある場合に最適です。</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">ファイルと画像をBase64にエンコード</h2>
+    <p>テキストエンコードに加えて、encodeb64.comはあらゆるファイル形式をBase64にエンコードすることができます — ドキュメント、画像、音声ファイル、最大100MBのバイナリデータに対応しています。ファイルをアップロードゾーンにドラッグ＆ドロップするか、クリックしてファイルを選択してください。</p>
+    <p>エンコードはFileReader APIを使用してブラウザ内で完全に行われるため、ファイルがデバイスから外に出ることはありません。画像については、JPG、PNG、GIF、WebP、SVG、BMP、ICO、TIFFおよびAVIF形式をサポートし、5種類の出力形式を生成します。</p>
+    <p>画像をBase64として埋め込むことは、外部画像ホスティングが信頼できないHTMLメール、自己完結型のHTMLドキュメント、およびHTTPリクエストを削減するために小さなアイコンをインライン化する必要があるCSSスタイルシートに役立ちます。</p>
   </section>
 
   <!-- OTHER TOOLS -->

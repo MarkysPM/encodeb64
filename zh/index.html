@@ -1033,7 +1033,7 @@
   <!-- HERO -->
 	<section class="hero">
 	  <div class="hero-glow"></div>
-	  <h1 data-i18n="hero_h1">Base64 Encoder Online</h1>
+	  <h1 data-i18n="hero_h1">Base64 在线编码器</h1>
 	  <p class="hero-sub" data-i18n="hero_sub">
 	    Encode text, files, and images to Base64 instantly — UTF-8 perfect, Base64URL safe, up to 100MB, and 100% private in your browser.
 	  </p>
@@ -1284,6 +1284,35 @@
         <div class="accordion-content" data-i18n="faq_a5" itemprop="text">Base64URL is a variant of Base64 that replaces + with -, / with _, and removes = padding. Defined in RFC 4648 §5. Ideal for JWT tokens, URL parameters, filenames, and webhooks.</div>
       </div>
     </div>
+  </section>
+
+  <!-- H2 CONTENT SECTIONS -->
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">什么是 Base64 编码？</h2>
+    <p>Base64 是一种二进制到文本的编码方案，使用 64 个可打印的 ASCII 字符表示二进制数据：A–Z、a–z、0–9、加号（+）和斜杠（/），并使用等号（=）进行填充。"Base64"这个名称来源于每个 Base64 数字恰好代表 6 位数据，而 2^6 = 64。</p>
+    <p>Base64 不是加密——它是一种可逆编码，旨在通过仅支持文本的渠道安全传输二进制数据，例如电子邮件（MIME）、JSON 载荷、XML 文档和 HTTP 标头。任何人都可以在没有密钥或密码的情况下解码 Base64 字符串。</p>
+    <p>常见用途包括：在 CSS 和 HTML 中将图片嵌入为 Data URI、对电子邮件附件进行编码、在 JSON 和 XML API 中传输二进制数据，以及在 HTTP 基本认证标头中编码凭据。</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">如何在线将文本编码为 Base64</h2>
+    <p>使用 encodeb64.com 非常简单：将文本粘贴到输入框中，选择字符集（UTF-8 适用于大多数现代文本），然后点击"编码"。Base64 输出立即显示在结果框中，可直接复制。</p>
+    <p>对于特殊用例，高级选项可让您控制输出格式。启用 URL 安全编码（Base64URL）可获得适用于 JWT 令牌和 URL 参数的安全输出。启用 MIME 行分割可按 RFC 2045 将输出限制为每行 76 个字符。</p>
+    <p>所有编码完全在您的浏览器中使用 JavaScript 的 TextEncoder API 和 btoa() 函数进行。不会向服务器传输任何数据。</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">用于 JWT 令牌的 Base64URL 编码</h2>
+    <p>标准 Base64 使用 + 和 / 字符，这些字符在 URL 中不安全——必须将其百分比编码为 %2B 和 %2F，使字符串更长。Base64URL（RFC 4648 §5）通过将 + 替换为 -、/ 替换为 _ 并完全省略 = 填充字符来解决此问题。</p>
+    <p>JWT（JSON Web Token）对其标头和负载部分使用 Base64URL 编码。如果您使用 JWT，请确保在编码前选择"URL 安全编码（Base64URL）"选项，否则生成的字符串将不适用于授权标头或 URL 查询参数。</p>
+    <p>Base64URL 还用于 OAuth 2.0 PKCE 挑战和云存储系统中的文件名，在这些场景中 Base64 字符串需要直接嵌入 URL 而无需额外编码。</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">将文件和图片编码为 Base64</h2>
+    <p>除了文本编码，encodeb64.com 还支持将任何文件类型编码为 Base64——文档、图片、音频文件和最大 100MB 的二进制数据。将文件拖放到上传区域，或点击浏览。</p>
+    <p>编码完全在您的浏览器中使用 FileReader API 完成，因此您的文件永远不会离开您的设备。对于图片，转换器支持 JPG、PNG、GIF、WebP、SVG、BMP、ICO、TIFF 和 AVIF 格式，并生成五种不同的输出格式。</p>
+    <p>将图片嵌入为 Base64 适用于外部图片托管不可靠的 HTML 电子邮件、需要自包含的单文件 HTML 文档，以及需要内联小图标或背景以减少 HTTP 请求的 CSS 样式表。</p>
   </section>
 
   <!-- OTHER TOOLS -->

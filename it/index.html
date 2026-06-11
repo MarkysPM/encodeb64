@@ -1033,7 +1033,7 @@
   <!-- HERO -->
 	<section class="hero">
 	  <div class="hero-glow"></div>
-	  <h1 data-i18n="hero_h1">Base64 Encoder Online</h1>
+	  <h1 data-i18n="hero_h1">Codificatore Base64 Online</h1>
 	  <p class="hero-sub" data-i18n="hero_sub">
 	    Encode text, files, and images to Base64 instantly — UTF-8 perfect, Base64URL safe, up to 100MB, and 100% private in your browser.
 	  </p>
@@ -1284,6 +1284,64 @@
         <div class="accordion-content" data-i18n="faq_a5" itemprop="text">Base64URL is a variant of Base64 that replaces + with -, / with _, and removes = padding. Defined in RFC 4648 §5. Ideal for JWT tokens, URL parameters, filenames, and webhooks.</div>
       </div>
     </div>
+  </section>
+
+  <!-- H2 CONTENT SECTIONS -->
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Cos'è la Codifica Base64?</h2>
+    <p>Base64 è uno schema di codifica da binario a testo che rappresenta dati binari usando 64 caratteri ASCII stampabili: A–Z, a–z, 0–9, più (+) e barra (/), con il segno uguale (=) per il padding. Il nome "Base64" deriva dal fatto che ogni cifra Base64 rappresenta esattamente 6 bit di dati, e 2^6 = 64.</p>
+    <p>Base64 non è crittografia — è una codifica reversibile progettata per trasmettere dati binari in modo sicuro attraverso canali che supportano solo testo, come e-mail (MIME), payload JSON, documenti XML e intestazioni HTTP.</p>
+    <p>Usi comuni: incorporare immagini in CSS e HTML come Data URI, codificare allegati e-mail, trasmettere dati binari in API JSON e XML, e codificare credenziali in intestazioni di autenticazione HTTP Basic.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Come codificare testo in Base64 online</h2>
+    <p>Usare encodeb64.com è semplice: incolla il tuo testo nel campo di input, seleziona il set di caratteri (UTF-8 è corretto per la maggior parte dei testi moderni) e clicca su Codifica. L'output Base64 appare istantaneamente nel campo dei risultati, pronto per essere copiato.</p>
+    <p>Per casi d'uso speciali, le opzioni avanzate ti permettono di controllare il formato di output. Abilita la codifica URL-safe (Base64URL) per ottenere output sicuro per token JWT e parametri URL. Abilita la divisione delle righe MIME per limitare l'output a 76 caratteri secondo RFC 2045.</p>
+    <p>Tutta la codifica avviene interamente nel tuo browser usando l'API TextEncoder e la funzione btoa() di JavaScript. Nessun dato viene trasmesso a un server.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Codifica Base64URL per i Token JWT</h2>
+    <p>Il Base64 standard usa i caratteri + e / che non sono sicuri negli URL — devono essere codificati come %2B e %2F. Base64URL (RFC 4648 §5) risolve questo problema sostituendo + con - e / con _, e omettendo completamente il carattere di padding =.</p>
+    <p>I JWT (JSON Web Token) usano la codifica Base64URL per le loro sezioni header e payload. Se lavori con JWT, assicurati di selezionare l'opzione "Codifica URL-safe (Base64URL)" prima di codificare.</p>
+    <p>Base64URL viene usato anche nelle challenge OAuth 2.0 PKCE e nei nomi file nei sistemi di archiviazione cloud, dove la stringa Base64 deve essere incorporata in un URL senza codifica aggiuntiva.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Codificare file e immagini in Base64</h2>
+    <p>Oltre alla codifica del testo, encodeb64.com supporta la codifica di qualsiasi tipo di file in Base64 — documenti, immagini, file audio e dati binari fino a 100 MB. Trascina il tuo file nella zona di caricamento, o clicca per sfogliare.</p>
+    <p>La codifica avviene interamente nel tuo browser usando l'API FileReader, quindi il tuo file non lascia mai il tuo dispositivo. Per le immagini, il convertitore supporta JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF e AVIF, e genera cinque diversi formati di output.</p>
+    <p>Incorporare immagini come Base64 è utile per e-mail HTML dove l'hosting esterno di immagini è inaffidabile, per documenti HTML autocontenuti e per fogli di stile CSS dove una piccola icona deve essere inline per ridurre le richieste HTTP.</p>
+  </section>
+
+  <!-- H2 CONTENT SECTIONS -->
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Cos'è la Codifica Base64?</h2>
+    <p>Base64 è uno schema di codifica da binario a testo che rappresenta dati binari usando 64 caratteri ASCII stampabili: A–Z, a–z, 0–9, più (+) e barra (/), con il segno uguale (=) per il padding. Il nome "Base64" deriva dal fatto che ogni cifra Base64 rappresenta esattamente 6 bit di dati, e 2^6 = 64.</p>
+    <p>Base64 non è crittografia — è una codifica reversibile progettata per trasmettere dati binari in modo sicuro attraverso canali che supportano solo testo, come e-mail (MIME), payload JSON, documenti XML e intestazioni HTTP.</p>
+    <p>Usi comuni: incorporare immagini in CSS e HTML come Data URI, codificare allegati e-mail, trasmettere dati binari in API JSON e XML, e codificare credenziali in intestazioni di autenticazione HTTP Basic.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Come codificare testo in Base64 online</h2>
+    <p>Usare encodeb64.com è semplice: incolla il tuo testo nel campo di input, seleziona il set di caratteri (UTF-8 è corretto per la maggior parte dei testi moderni) e clicca su Codifica. L'output Base64 appare istantaneamente nel campo dei risultati, pronto per essere copiato.</p>
+    <p>Per casi d'uso speciali, le opzioni avanzate ti permettono di controllare il formato di output. Abilita la codifica URL-safe (Base64URL) per ottenere output sicuro per token JWT e parametri URL. Abilita la divisione delle righe MIME per limitare l'output a 76 caratteri secondo RFC 2045.</p>
+    <p>Tutta la codifica avviene interamente nel tuo browser usando l'API TextEncoder e la funzione btoa() di JavaScript. Nessun dato viene trasmesso a un server.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Codifica Base64URL per i Token JWT</h2>
+    <p>Il Base64 standard usa i caratteri + e / che non sono sicuri negli URL — devono essere codificati come %2B e %2F. Base64URL (RFC 4648 §5) risolve questo problema sostituendo + con - e / con _, e omettendo completamente il carattere di padding =.</p>
+    <p>I JWT (JSON Web Token) usano la codifica Base64URL per le loro sezioni header e payload. Se lavori con JWT, assicurati di selezionare l'opzione "Codifica URL-safe (Base64URL)" prima di codificare.</p>
+    <p>Base64URL viene usato anche nelle challenge OAuth 2.0 PKCE e nei nomi file nei sistemi di archiviazione cloud, dove la stringa Base64 deve essere incorporata in un URL senza codifica aggiuntiva.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Codificare file e immagini in Base64</h2>
+    <p>Oltre alla codifica del testo, encodeb64.com supporta la codifica di qualsiasi tipo di file in Base64 — documenti, immagini, file audio e dati binari fino a 100 MB. Trascina il tuo file nella zona di caricamento, o clicca per sfogliare.</p>
+    <p>La codifica avviene interamente nel tuo browser usando l'API FileReader, quindi il tuo file non lascia mai il tuo dispositivo. Per le immagini, il convertitore supporta JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF e AVIF, e genera cinque diversi formati di output.</p>
+    <p>Incorporare immagini come Base64 è utile per e-mail HTML dove l'hosting esterno di immagini è inaffidabile, per documenti HTML autocontenuti e per fogli di stile CSS dove una piccola icona deve essere inline per ridurre le richieste HTTP.</p>
   </section>
 
   <!-- OTHER TOOLS -->

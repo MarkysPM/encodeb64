@@ -1033,7 +1033,7 @@
   <!-- HERO -->
 	<section class="hero">
 	  <div class="hero-glow"></div>
-	  <h1 data-i18n="hero_h1">Base64 Encoder Online</h1>
+	  <h1 data-i18n="hero_h1">Encodeur Base64 en Ligne</h1>
 	  <p class="hero-sub" data-i18n="hero_sub">
 	    Encode text, files, and images to Base64 instantly — UTF-8 perfect, Base64URL safe, up to 100MB, and 100% private in your browser.
 	  </p>
@@ -1284,6 +1284,64 @@
         <div class="accordion-content" data-i18n="faq_a5" itemprop="text">Base64URL is a variant of Base64 that replaces + with -, / with _, and removes = padding. Defined in RFC 4648 §5. Ideal for JWT tokens, URL parameters, filenames, and webhooks.</div>
       </div>
     </div>
+  </section>
+
+  <!-- H2 CONTENT SECTIONS -->
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Qu'est-ce que l'encodage Base64 ?</h2>
+    <p>Base64 est un schéma d'encodage binaire-vers-texte qui représente des données binaires à l'aide de 64 caractères ASCII imprimables : A–Z, a–z, 0–9, plus (+) et barre oblique (/), avec le signe égal (=) pour le rembourrage. Le nom "Base64" vient du fait que chaque chiffre Base64 représente exactement 6 bits de données, et 2^6 = 64.</p>
+    <p>Base64 n'est pas du chiffrement — c'est un encodage réversible conçu pour transmettre des données binaires en toute sécurité via des canaux qui ne supportent que le texte, comme les e-mails (MIME), les charges JSON, les documents XML et les en-têtes HTTP.</p>
+    <p>Utilisations courantes : intégrer des images en CSS et HTML comme Data URIs, encoder des pièces jointes d'e-mail, transmettre des données binaires dans des APIs JSON et XML, et encoder des identifiants dans les en-têtes d'authentification HTTP Basic.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Comment encoder du texte en Base64 en ligne</h2>
+    <p>Utiliser encodeb64.com est simple : collez votre texte dans le champ de saisie, sélectionnez le jeu de caractères (UTF-8 convient à la plupart des textes modernes) et cliquez sur Encoder. La sortie Base64 apparaît instantanément dans le champ de résultat, prête à être copiée.</p>
+    <p>Pour les cas d'utilisation spéciaux, les options avancées vous permettent de contrôler le format de sortie. Activez l'encodage sécurisé pour les URL (Base64URL) pour obtenir une sortie sûre pour les tokens JWT et les paramètres d'URL. Activez le découpage de lignes MIME pour limiter la sortie à 76 caractères selon RFC 2045.</p>
+    <p>Tout l'encodage se fait entièrement dans votre navigateur à l'aide de l'API TextEncoder et de la fonction btoa() de JavaScript. Aucune donnée n'est transmise à un serveur.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Encodage Base64URL pour les tokens JWT</h2>
+    <p>Le Base64 standard utilise les caractères + et / qui ne sont pas sûrs dans les URL — ils doivent être encodés en pourcentage comme %2B et %2F. Le Base64URL (RFC 4648 §5) résout ce problème en remplaçant + par - et / par _, et en omettant complètement le caractère de rembourrage =.</p>
+    <p>Les JWT (JSON Web Tokens) utilisent l'encodage Base64URL pour leurs sections d'en-tête et de charge utile. Si vous travaillez avec des JWT, assurez-vous de sélectionner l'option "Encodage sécurisé pour les URL (Base64URL)" avant d'encoder.</p>
+    <p>Le Base64URL est également utilisé dans les défis OAuth 2.0 PKCE et les noms de fichiers dans les systèmes de stockage cloud, où la chaîne Base64 doit être intégrée dans une URL sans encodage supplémentaire.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Encoder des fichiers et des images en Base64</h2>
+    <p>Au-delà de l'encodage de texte, encodeb64.com prend en charge l'encodage de tout type de fichier en Base64 — documents, images, fichiers audio et données binaires jusqu'à 100 Mo. Glissez-déposez votre fichier dans la zone de téléchargement, ou cliquez pour parcourir.</p>
+    <p>L'encodage se fait entièrement dans votre navigateur à l'aide de l'API FileReader, donc votre fichier ne quitte jamais votre appareil. Pour les images, le convertisseur prend en charge JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF et AVIF, et génère cinq formats de sortie différents.</p>
+    <p>Intégrer des images en Base64 est utile pour les e-mails HTML où l'hébergement externe d'images est peu fiable, pour les documents HTML autonomes et pour les feuilles de style CSS où une petite icône doit être intégrée pour réduire les requêtes HTTP.</p>
+  </section>
+
+  <!-- H2 CONTENT SECTIONS -->
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Qu'est-ce que l'encodage Base64 ?</h2>
+    <p>Base64 est un schéma d'encodage binaire-vers-texte qui représente des données binaires à l'aide de 64 caractères ASCII imprimables : A–Z, a–z, 0–9, plus (+) et barre oblique (/), avec le signe égal (=) pour le rembourrage. Le nom "Base64" vient du fait que chaque chiffre Base64 représente exactement 6 bits de données, et 2^6 = 64.</p>
+    <p>Base64 n'est pas du chiffrement — c'est un encodage réversible conçu pour transmettre des données binaires en toute sécurité via des canaux qui ne supportent que le texte, comme les e-mails (MIME), les charges JSON, les documents XML et les en-têtes HTTP.</p>
+    <p>Utilisations courantes : intégrer des images en CSS et HTML comme Data URIs, encoder des pièces jointes d'e-mail, transmettre des données binaires dans des APIs JSON et XML, et encoder des identifiants dans les en-têtes d'authentification HTTP Basic.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Comment encoder du texte en Base64 en ligne</h2>
+    <p>Utiliser encodeb64.com est simple : collez votre texte dans le champ de saisie, sélectionnez le jeu de caractères (UTF-8 convient à la plupart des textes modernes) et cliquez sur Encoder. La sortie Base64 apparaît instantanément dans le champ de résultat, prête à être copiée.</p>
+    <p>Pour les cas d'utilisation spéciaux, les options avancées vous permettent de contrôler le format de sortie. Activez l'encodage sécurisé pour les URL (Base64URL) pour obtenir une sortie sûre pour les tokens JWT et les paramètres d'URL. Activez le découpage de lignes MIME pour limiter la sortie à 76 caractères selon RFC 2045.</p>
+    <p>Tout l'encodage se fait entièrement dans votre navigateur à l'aide de l'API TextEncoder et de la fonction btoa() de JavaScript. Aucune donnée n'est transmise à un serveur.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Encodage Base64URL pour les tokens JWT</h2>
+    <p>Le Base64 standard utilise les caractères + et / qui ne sont pas sûrs dans les URL — ils doivent être encodés en pourcentage comme %2B et %2F. Le Base64URL (RFC 4648 §5) résout ce problème en remplaçant + par - et / par _, et en omettant complètement le caractère de rembourrage =.</p>
+    <p>Les JWT (JSON Web Tokens) utilisent l'encodage Base64URL pour leurs sections d'en-tête et de charge utile. Si vous travaillez avec des JWT, assurez-vous de sélectionner l'option "Encodage sécurisé pour les URL (Base64URL)" avant d'encoder.</p>
+    <p>Le Base64URL est également utilisé dans les défis OAuth 2.0 PKCE et les noms de fichiers dans les systèmes de stockage cloud, où la chaîne Base64 doit être intégrée dans une URL sans encodage supplémentaire.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Encoder des fichiers et des images en Base64</h2>
+    <p>Au-delà de l'encodage de texte, encodeb64.com prend en charge l'encodage de tout type de fichier en Base64 — documents, images, fichiers audio et données binaires jusqu'à 100 Mo. Glissez-déposez votre fichier dans la zone de téléchargement, ou cliquez pour parcourir.</p>
+    <p>L'encodage se fait entièrement dans votre navigateur à l'aide de l'API FileReader, donc votre fichier ne quitte jamais votre appareil. Pour les images, le convertisseur prend en charge JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF et AVIF, et génère cinq formats de sortie différents.</p>
+    <p>Intégrer des images en Base64 est utile pour les e-mails HTML où l'hébergement externe d'images est peu fiable, pour les documents HTML autonomes et pour les feuilles de style CSS où une petite icône doit être intégrée pour réduire les requêtes HTTP.</p>
   </section>
 
   <!-- OTHER TOOLS -->

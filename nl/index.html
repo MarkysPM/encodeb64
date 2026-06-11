@@ -1280,6 +1280,35 @@
     </div>
   </section>
 
+  <!-- H2 CONTENT SECTIONS -->
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Wat is Base64-codering?</h2>
+    <p>Base64 is een binair-naar-tekst codeerschema dat binaire gegevens weergeeft met behulp van 64 afdrukbare ASCII-tekens: A–Z, a–z, 0–9, plus (+) en schuine streep (/), met het gelijkteken (=) voor opvulling. De naam "Base64" komt van het feit dat elk Base64-cijfer precies 6 bits aan data vertegenwoordigt, en 2^6 = 64.</p>
+    <p>Base64 is geen versleuteling — het is een omkeerbare codering die is ontworpen om binaire gegevens veilig te verzenden via kanalen die alleen tekst ondersteunen, zoals e-mail (MIME), JSON-payloads, XML-documenten en HTTP-headers.</p>
+    <p>Veelvoorkomende toepassingen: afbeeldingen insluiten in CSS en HTML als Data URI's, e-mailbijlagen coderen, binaire gegevens verzenden in JSON- en XML-API's, en inloggegevens coderen in HTTP Basic Authentication-headers.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Hoe tekst online naar Base64 coderen</h2>
+    <p>encodeb64.com gebruiken is eenvoudig: plak uw tekst in het invoerveld, selecteer de tekenset (UTF-8 is correct voor de meeste moderne tekst) en klik op Coderen. De Base64-uitvoer verschijnt onmiddellijk in het resultaatveld, klaar om te kopiëren.</p>
+    <p>Voor speciale gevallen kunt u met de geavanceerde opties het uitvoerformaat instellen. Activeer URL-veilige codering (Base64URL) voor uitvoer die veilig is voor JWT-tokens en URL-parameters. Activeer MIME-regelomloop om de uitvoer op 76 tekens per RFC 2045 te beperken.</p>
+    <p>Alle codering vindt volledig in uw browser plaats met behulp van de TextEncoder API en de btoa()-functie van JavaScript. Er worden geen gegevens naar een server verzonden.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Base64URL-codering voor JWT-tokens</h2>
+    <p>Standaard Base64 gebruikt de tekens + en / die niet veilig zijn in URL's — ze moeten worden geprocenteerd als %2B en %2F. Base64URL (RFC 4648 §5) lost dit op door + te vervangen door - en / door _, en het =-opvulteken volledig weg te laten.</p>
+    <p>JWT's (JSON Web Tokens) gebruiken Base64URL-codering voor hun header- en payload-secties. Als u met JWT's werkt, selecteer dan de optie "URL-veilige codering (Base64URL)" voor het coderen.</p>
+    <p>Base64URL wordt ook gebruikt in OAuth 2.0 PKCE-uitdagingen en bestandsnamen in cloudopslagsystemen, waar de Base64-string zonder extra codering in een URL moet worden ingesloten.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Bestanden en afbeeldingen coderen naar Base64</h2>
+    <p>Naast tekstcodering ondersteunt encodeb64.com het coderen van elk bestandstype naar Base64 — documenten, afbeeldingen, audiobestanden en binaire gegevens tot 100 MB. Sleep uw bestand naar de uploadzone of klik om te bladeren.</p>
+    <p>De codering vindt volledig in uw browser plaats via de FileReader API, zodat uw bestand uw apparaat nooit verlaat. Voor afbeeldingen ondersteunt de converter JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF en AVIF-formaten en genereert vijf verschillende uitvoerformaten.</p>
+    <p>Het insluiten van afbeeldingen als Base64 is handig voor HTML-e-mails waar extern beeldhosting onbetrouwbaar is, voor op zichzelf staande HTML-documenten en voor CSS-stijlbladen waar een klein pictogram inline moet worden geplaatst om HTTP-verzoeken te verminderen.</p>
+  </section>
+
   <!-- OTHER TOOLS -->
   <section style="margin-top:28px;margin-bottom:8px;">
     <h2 class="content-h2" data-i18n="other_tools_title">Other Tools</h2>

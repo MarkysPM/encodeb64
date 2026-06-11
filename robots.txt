@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://encodeb64.com/sitemap.xml

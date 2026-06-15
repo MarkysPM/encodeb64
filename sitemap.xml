@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <!-- Root redirect page -->
   <url>
     <loc>https://encodeb64.com/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/en/" />
@@ -23,10 +23,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://encodeb64.com/en/" />
   </url>
 
-  <!-- Encoder — language versions -->
+  <!-- Encoder â€” language versions -->
   <url>
     <loc>https://encodeb64.com/en/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/en/" />
@@ -45,7 +45,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/es/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/en/" />
@@ -64,7 +64,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/pt/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/en/" />
@@ -83,7 +83,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/fr/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/en/" />
@@ -102,7 +102,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/de/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/en/" />
@@ -121,7 +121,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/it/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/en/" />
@@ -140,7 +140,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/zh/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/en/" />
@@ -159,7 +159,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/ru/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/en/" />
@@ -178,7 +178,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/ja/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/en/" />
@@ -197,7 +197,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/ko/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/en/" />
@@ -216,7 +216,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/nl/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/en/" />
@@ -235,7 +235,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/hi/</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/en/" />
@@ -253,10 +253,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://encodeb64.com/en/" />
   </url>
 
-  <!-- Image-to-Base64 — language versions -->
+  <!-- Image-to-Base64 â€” language versions -->
   <url>
     <loc>https://encodeb64.com/image-to-base64.html</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/image-to-base64.html" />
@@ -275,7 +275,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/es/image-to-base64.html</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/image-to-base64.html" />
@@ -294,7 +294,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/pt/image-to-base64.html</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/image-to-base64.html" />
@@ -313,7 +313,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/fr/image-to-base64.html</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/image-to-base64.html" />
@@ -332,7 +332,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/de/image-to-base64.html</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/image-to-base64.html" />
@@ -351,7 +351,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/it/image-to-base64.html</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/image-to-base64.html" />
@@ -370,7 +370,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/zh/image-to-base64.html</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/image-to-base64.html" />
@@ -389,7 +389,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/ru/image-to-base64.html</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/image-to-base64.html" />
@@ -408,7 +408,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/ja/image-to-base64.html</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/image-to-base64.html" />
@@ -427,7 +427,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/ko/image-to-base64.html</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/image-to-base64.html" />
@@ -446,7 +446,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/nl/image-to-base64.html</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/image-to-base64.html" />
@@ -465,7 +465,7 @@
   </url>
   <url>
     <loc>https://encodeb64.com/hi/image-to-base64.html</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://encodeb64.com/image-to-base64.html" />

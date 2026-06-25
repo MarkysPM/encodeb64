@@ -1041,6 +1041,14 @@
 
   <div id="ezoic-pub-ad-placeholder-101"></div>
 
+  <!-- H2 CONTENT SECTIONS -->
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">What is Base64 Encoding?</h2>
+    <p>Base64 is a binary-to-text encoding scheme that represents binary data using 64 printable ASCII characters: A–Z, a–z, 0–9, plus (+) and slash (/), with equals (=) used for padding. The name "Base64" comes from the fact that each Base64 digit represents exactly 6 bits of data, and 2^6 = 64.</p>
+    <p>Base64 is not encryption — it is a reversible encoding designed to safely transmit binary data over channels that only support text, such as email (MIME), JSON payloads, XML documents, and HTTP headers. Anyone can decode a Base64 string without a key or password.</p>
+    <p>Common use cases include embedding images in CSS and HTML as Data URIs, encoding binary attachments in email (MIME), transmitting binary data in JSON and XML APIs, and encoding credentials in HTTP Basic Authentication headers.</p>
+  </section>
+
 <!-- TOOL CARD -->
   <div class="glass-card">
 
@@ -1181,60 +1189,28 @@
 
   </div>
 
-  <!-- INFO ACCORDION -->
-  <section>
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc1_title">What is Base64 encoding?</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc1_body"></div>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc2_title">Advanced options explained</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc2_body"></div>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc3_title">Security &amp; Privacy</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc3_body"></div>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc4_title">Completely free</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc4_body"></div>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc5_title">How Base64 works</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc5_body"></div>
-      </div>
-    </div>
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">How to Encode Text to Base64 Online</h2>
+    <p>Using encodeb64.com is straightforward: paste your text into the input field, select your character set (UTF-8 is correct for most modern text), and click Encode. The Base64 output appears instantly in the result field, ready to copy.</p>
+    <p>For special use cases, the advanced options let you control the output format. Enable URL-safe encoding (Base64URL) to get output safe for JWT tokens and URL parameters. Enable MIME line splitting to wrap the output at 76 characters per RFC 2045. Enable per-line encoding to encode each line of your input independently.</p>
+    <p>All encoding happens entirely in your browser using JavaScript's TextEncoder API and btoa() function. No data is ever transmitted to a server. This makes encodeb64.com safe for encoding sensitive data like API keys, credentials, or private configuration values.</p>
   </section>
 
-  
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Base64URL Encoding for JWT Tokens</h2>
+    <p>Standard Base64 uses the characters + and / which are not safe in URLs — they must be percent-encoded as %2B and %2F, making strings longer and harder to read. Base64URL (RFC 4648 §5) solves this by replacing + with - and / with _, and omitting the = padding character entirely.</p>
+    <p>JWT (JSON Web Tokens) use Base64URL encoding for their header and payload sections. If you are working with JWTs, make sure to select the "URL-safe encoding (Base64URL)" option before encoding, or the resulting string will not be valid for use in Authorization headers or URL query parameters.</p>
+    <p>Base64URL is also used in OAuth 2.0 PKCE challenges, file names in cloud storage systems, and any context where the Base64 string needs to be embedded in a URL without additional encoding.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Encode Files and Images to Base64</h2>
+    <p>Beyond text encoding, encodeb64.com supports encoding any file type to Base64 — documents, images, audio files, and binary data up to 100MB. Drag and drop your file onto the upload zone, or click to browse. The encoding happens entirely in your browser using the FileReader API, so your file never leaves your device.</p>
+    <p>For images specifically, the Image to Base64 converter supports JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF, and AVIF formats. It outputs five different formats: raw Base64, Data URI (for use in HTML src attributes), CSS background-image syntax, a complete HTML img tag, and Markdown image syntax. A live preview rendered from the Base64 output itself confirms the encoding worked correctly.</p>
+    <p>Embedding images as Base64 is useful for HTML emails where external image hosting is unreliable, for single-file HTML documents that need to be self-contained, and for CSS stylesheets where a small icon or background needs to be inlined to reduce HTTP requests.</p>
+  </section>
+
+
   <div id="ezoic-pub-ad-placeholder-102"></div>
 <!-- FAQ -->
   <section style="margin-top:8px;" itemscope itemtype="https://schema.org/FAQPage">
@@ -1286,62 +1262,57 @@
     </div>
   </section>
 
-  <!-- H2 CONTENT SECTIONS -->
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">What is Base64 Encoding?</h2>
-    <p>Base64 is a binary-to-text encoding scheme that represents binary data using 64 printable ASCII characters: A–Z, a–z, 0–9, plus (+) and slash (/), with equals (=) used for padding. The name "Base64" comes from the fact that each Base64 digit represents exactly 6 bits of data, and 2^6 = 64.</p>
-    <p>Base64 is not encryption — it is a reversible encoding designed to safely transmit binary data over channels that only support text, such as email (MIME), JSON payloads, XML documents, and HTTP headers. Anyone can decode a Base64 string without a key or password.</p>
-    <p>Common use cases include embedding images in CSS and HTML as Data URIs, encoding binary attachments in email (MIME), transmitting binary data in JSON and XML APIs, and encoding credentials in HTTP Basic Authentication headers.</p>
-  </section>
+  <!-- INFO ACCORDION -->
+  <section>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc1_title">What is Base64 encoding?</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc1_body"></div>
+      </div>
+    </div>
 
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">How to Encode Text to Base64 Online</h2>
-    <p>Using encodeb64.com is straightforward: paste your text into the input field, select your character set (UTF-8 is correct for most modern text), and click Encode. The Base64 output appears instantly in the result field, ready to copy.</p>
-    <p>For special use cases, the advanced options let you control the output format. Enable URL-safe encoding (Base64URL) to get output safe for JWT tokens and URL parameters. Enable MIME line splitting to wrap the output at 76 characters per RFC 2045. Enable per-line encoding to encode each line of your input independently.</p>
-    <p>All encoding happens entirely in your browser using JavaScript's TextEncoder API and btoa() function. No data is ever transmitted to a server. This makes encodeb64.com safe for encoding sensitive data like API keys, credentials, or private configuration values.</p>
-  </section>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc2_title">Advanced options explained</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc2_body"></div>
+      </div>
+    </div>
 
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">Base64URL Encoding for JWT Tokens</h2>
-    <p>Standard Base64 uses the characters + and / which are not safe in URLs — they must be percent-encoded as %2B and %2F, making strings longer and harder to read. Base64URL (RFC 4648 §5) solves this by replacing + with - and / with _, and omitting the = padding character entirely.</p>
-    <p>JWT (JSON Web Tokens) use Base64URL encoding for their header and payload sections. If you are working with JWTs, make sure to select the "URL-safe encoding (Base64URL)" option before encoding, or the resulting string will not be valid for use in Authorization headers or URL query parameters.</p>
-    <p>Base64URL is also used in OAuth 2.0 PKCE challenges, file names in cloud storage systems, and any context where the Base64 string needs to be embedded in a URL without additional encoding.</p>
-  </section>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc3_title">Security &amp; Privacy</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc3_body"></div>
+      </div>
+    </div>
 
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">Encode Files and Images to Base64</h2>
-    <p>Beyond text encoding, encodeb64.com supports encoding any file type to Base64 — documents, images, audio files, and binary data up to 100MB. Drag and drop your file onto the upload zone, or click to browse. The encoding happens entirely in your browser using the FileReader API, so your file never leaves your device.</p>
-    <p>For images specifically, the Image to Base64 converter supports JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF, and AVIF formats. It outputs five different formats: raw Base64, Data URI (for use in HTML src attributes), CSS background-image syntax, a complete HTML img tag, and Markdown image syntax. A live preview rendered from the Base64 output itself confirms the encoding worked correctly.</p>
-    <p>Embedding images as Base64 is useful for HTML emails where external image hosting is unreliable, for single-file HTML documents that need to be self-contained, and for CSS stylesheets where a small icon or background needs to be inlined to reduce HTTP requests.</p>
-  </section>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc4_title">Completely free</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc4_body"></div>
+      </div>
+    </div>
 
-  <!-- H2 CONTENT SECTIONS -->
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">What is Base64 Encoding?</h2>
-    <p>Base64 is a binary-to-text encoding scheme that represents binary data using 64 printable ASCII characters: A–Z, a–z, 0–9, plus (+) and slash (/), with equals (=) used for padding. The name "Base64" comes from the fact that each Base64 digit represents exactly 6 bits of data, and 2^6 = 64.</p>
-    <p>Base64 is not encryption — it is a reversible encoding designed to safely transmit binary data over channels that only support text, such as email (MIME), JSON payloads, XML documents, and HTTP headers. Anyone can decode a Base64 string without a key or password.</p>
-    <p>Common use cases include embedding images in CSS and HTML as Data URIs, encoding binary attachments in email (MIME), transmitting binary data in JSON and XML APIs, and encoding credentials in HTTP Basic Authentication headers.</p>
-  </section>
-
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">How to Encode Text to Base64 Online</h2>
-    <p>Using encodeb64.com is straightforward: paste your text into the input field, select your character set (UTF-8 is correct for most modern text), and click Encode. The Base64 output appears instantly in the result field, ready to copy.</p>
-    <p>For special use cases, the advanced options let you control the output format. Enable URL-safe encoding (Base64URL) to get output safe for JWT tokens and URL parameters. Enable MIME line splitting to wrap the output at 76 characters per RFC 2045. Enable per-line encoding to encode each line of your input independently.</p>
-    <p>All encoding happens entirely in your browser using JavaScript's TextEncoder API and btoa() function. No data is ever transmitted to a server. This makes encodeb64.com safe for encoding sensitive data like API keys, credentials, or private configuration values.</p>
-  </section>
-
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">Base64URL Encoding for JWT Tokens</h2>
-    <p>Standard Base64 uses the characters + and / which are not safe in URLs — they must be percent-encoded as %2B and %2F, making strings longer and harder to read. Base64URL (RFC 4648 §5) solves this by replacing + with - and / with _, and omitting the = padding character entirely.</p>
-    <p>JWT (JSON Web Tokens) use Base64URL encoding for their header and payload sections. If you are working with JWTs, make sure to select the "URL-safe encoding (Base64URL)" option before encoding, or the resulting string will not be valid for use in Authorization headers or URL query parameters.</p>
-    <p>Base64URL is also used in OAuth 2.0 PKCE challenges, file names in cloud storage systems, and any context where the Base64 string needs to be embedded in a URL without additional encoding.</p>
-  </section>
-
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">Encode Files and Images to Base64</h2>
-    <p>Beyond text encoding, encodeb64.com supports encoding any file type to Base64 — documents, images, audio files, and binary data up to 100MB. Drag and drop your file onto the upload zone, or click to browse. The encoding happens entirely in your browser using the FileReader API, so your file never leaves your device.</p>
-    <p>For images specifically, the Image to Base64 converter supports JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF, and AVIF formats. It outputs five different formats: raw Base64, Data URI (for use in HTML src attributes), CSS background-image syntax, a complete HTML img tag, and Markdown image syntax. A live preview rendered from the Base64 output itself confirms the encoding worked correctly.</p>
-    <p>Embedding images as Base64 is useful for HTML emails where external image hosting is unreliable, for single-file HTML documents that need to be self-contained, and for CSS stylesheets where a small icon or background needs to be inlined to reduce HTTP requests.</p>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc5_title">How Base64 works</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc5_body"></div>
+      </div>
+    </div>
   </section>
 
   <!-- OTHER TOOLS -->

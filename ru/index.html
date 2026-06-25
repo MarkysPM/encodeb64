@@ -1041,6 +1041,14 @@
 
   <div id="ezoic-pub-ad-placeholder-101"></div>
 
+  <!-- H2 CONTENT SECTIONS -->
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Что такое кодирование Base64?</h2>
+    <p>Base64 — это схема кодирования двоичных данных в текст, представляющая бинарные данные с помощью 64 печатных символов ASCII: A–Z, a–z, 0–9, плюс (+) и косая черта (/), со знаком равенства (=) для дополнения. Название "Base64" происходит от того, что каждая цифра Base64 представляет ровно 6 бит данных, а 2^6 = 64.</p>
+    <p>Base64 — не шифрование: это обратимое кодирование, разработанное для безопасной передачи бинарных данных по каналам, поддерживающим только текст, таким как электронная почта (MIME), JSON-данные, XML-документы и HTTP-заголовки.</p>
+    <p>Распространённые случаи использования: встраивание изображений в CSS и HTML в виде Data URI, кодирование вложений электронной почты, передача бинарных данных в JSON и XML API, кодирование учётных данных в заголовках HTTP Basic Authentication.</p>
+  </section>
+
 <!-- TOOL CARD -->
   <div class="glass-card">
 
@@ -1181,60 +1189,28 @@
 
   </div>
 
-  <!-- INFO ACCORDION -->
-  <section>
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc1_title">What is Base64 encoding?</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc1_body"></div>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc2_title">Advanced options explained</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc2_body"></div>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc3_title">Security &amp; Privacy</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc3_body"></div>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc4_title">Completely free</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc4_body"></div>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc5_title">How Base64 works</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc5_body"></div>
-      </div>
-    </div>
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Как закодировать текст в Base64 онлайн</h2>
+    <p>Использовать encodeb64.com очень просто: вставьте текст в поле ввода, выберите набор символов (UTF-8 подходит для большинства современных текстов) и нажмите «Кодировать». Вывод Base64 мгновенно появится в поле результата, готовый к копированию.</p>
+    <p>Для специальных случаев расширенные параметры позволяют управлять форматом вывода. Включите URL-безопасное кодирование (Base64URL) для получения вывода, безопасного для JWT-токенов и параметров URL. Включите разбивку строк MIME для ограничения вывода 76 символами согласно RFC 2045.</p>
+    <p>Всё кодирование происходит полностью в вашем браузере с использованием API TextEncoder и функции btoa() JavaScript. Никакие данные не передаются на сервер.</p>
   </section>
 
-  
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Кодирование Base64URL для JWT-токенов</h2>
+    <p>Стандартный Base64 использует символы + и /, которые небезопасны в URL — их нужно процентно кодировать как %2B и %2F. Base64URL (RFC 4648 §5) решает эту проблему, заменяя + на - и / на _, и полностью опуская символ заполнения =.</p>
+    <p>JWT (JSON Web Tokens) используют кодирование Base64URL для разделов заголовка и полезной нагрузки. При работе с JWT обязательно выберите опцию «URL-безопасное кодирование (Base64URL)» перед кодированием.</p>
+    <p>Base64URL также используется в задачах OAuth 2.0 PKCE и именах файлов в системах облачного хранения, где Base64-строка должна быть встроена в URL без дополнительного кодирования.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Кодирование файлов и изображений в Base64</h2>
+    <p>Помимо кодирования текста, encodeb64.com поддерживает кодирование любого типа файлов в Base64 — документов, изображений, аудиофайлов и бинарных данных объёмом до 100 МБ. Перетащите файл в зону загрузки или нажмите для выбора.</p>
+    <p>Кодирование происходит полностью в вашем браузере с использованием API FileReader, поэтому ваш файл никогда не покидает устройство. Для изображений конвертер поддерживает форматы JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF и AVIF и генерирует пять различных форматов вывода.</p>
+    <p>Встраивание изображений как Base64 полезно для HTML-писем, где внешний хостинг ненадёжен, для автономных HTML-документов и для CSS-стилей, где небольшой значок нужно встроить inline для сокращения HTTP-запросов.</p>
+  </section>
+
+
   <div id="ezoic-pub-ad-placeholder-102"></div>
 <!-- FAQ -->
   <section style="margin-top:8px;" itemscope itemtype="https://schema.org/FAQPage">
@@ -1286,33 +1262,57 @@
     </div>
   </section>
 
-  <!-- H2 CONTENT SECTIONS -->
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">Что такое кодирование Base64?</h2>
-    <p>Base64 — это схема кодирования двоичных данных в текст, представляющая бинарные данные с помощью 64 печатных символов ASCII: A–Z, a–z, 0–9, плюс (+) и косая черта (/), со знаком равенства (=) для дополнения. Название "Base64" происходит от того, что каждая цифра Base64 представляет ровно 6 бит данных, а 2^6 = 64.</p>
-    <p>Base64 — не шифрование: это обратимое кодирование, разработанное для безопасной передачи бинарных данных по каналам, поддерживающим только текст, таким как электронная почта (MIME), JSON-данные, XML-документы и HTTP-заголовки.</p>
-    <p>Распространённые случаи использования: встраивание изображений в CSS и HTML в виде Data URI, кодирование вложений электронной почты, передача бинарных данных в JSON и XML API, кодирование учётных данных в заголовках HTTP Basic Authentication.</p>
-  </section>
+  <!-- INFO ACCORDION -->
+  <section>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc1_title">What is Base64 encoding?</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc1_body"></div>
+      </div>
+    </div>
 
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">Как закодировать текст в Base64 онлайн</h2>
-    <p>Использовать encodeb64.com очень просто: вставьте текст в поле ввода, выберите набор символов (UTF-8 подходит для большинства современных текстов) и нажмите «Кодировать». Вывод Base64 мгновенно появится в поле результата, готовый к копированию.</p>
-    <p>Для специальных случаев расширенные параметры позволяют управлять форматом вывода. Включите URL-безопасное кодирование (Base64URL) для получения вывода, безопасного для JWT-токенов и параметров URL. Включите разбивку строк MIME для ограничения вывода 76 символами согласно RFC 2045.</p>
-    <p>Всё кодирование происходит полностью в вашем браузере с использованием API TextEncoder и функции btoa() JavaScript. Никакие данные не передаются на сервер.</p>
-  </section>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc2_title">Advanced options explained</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc2_body"></div>
+      </div>
+    </div>
 
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">Кодирование Base64URL для JWT-токенов</h2>
-    <p>Стандартный Base64 использует символы + и /, которые небезопасны в URL — их нужно процентно кодировать как %2B и %2F. Base64URL (RFC 4648 §5) решает эту проблему, заменяя + на - и / на _, и полностью опуская символ заполнения =.</p>
-    <p>JWT (JSON Web Tokens) используют кодирование Base64URL для разделов заголовка и полезной нагрузки. При работе с JWT обязательно выберите опцию «URL-безопасное кодирование (Base64URL)» перед кодированием.</p>
-    <p>Base64URL также используется в задачах OAuth 2.0 PKCE и именах файлов в системах облачного хранения, где Base64-строка должна быть встроена в URL без дополнительного кодирования.</p>
-  </section>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc3_title">Security &amp; Privacy</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc3_body"></div>
+      </div>
+    </div>
 
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">Кодирование файлов и изображений в Base64</h2>
-    <p>Помимо кодирования текста, encodeb64.com поддерживает кодирование любого типа файлов в Base64 — документов, изображений, аудиофайлов и бинарных данных объёмом до 100 МБ. Перетащите файл в зону загрузки или нажмите для выбора.</p>
-    <p>Кодирование происходит полностью в вашем браузере с использованием API FileReader, поэтому ваш файл никогда не покидает устройство. Для изображений конвертер поддерживает форматы JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF и AVIF и генерирует пять различных форматов вывода.</p>
-    <p>Встраивание изображений как Base64 полезно для HTML-писем, где внешний хостинг ненадёжен, для автономных HTML-документов и для CSS-стилей, где небольшой значок нужно встроить inline для сокращения HTTP-запросов.</p>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc4_title">Completely free</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc4_body"></div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc5_title">How Base64 works</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc5_body"></div>
+      </div>
+    </div>
   </section>
 
   <!-- OTHER TOOLS -->

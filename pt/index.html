@@ -1041,6 +1041,14 @@
 
   <div id="ezoic-pub-ad-placeholder-101"></div>
 
+  <!-- H2 CONTENT SECTIONS -->
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">O que é Codificação Base64?</h2>
+    <p>Base64 é um esquema de codificação binário-para-texto que representa dados binários usando 64 caracteres ASCII imprimíveis: A–Z, a–z, 0–9, mais (+) e barra (/), com o sinal de igual (=) para preenchimento. O nome "Base64" vem do fato de que cada dígito Base64 representa exatamente 6 bits de dados, e 2^6 = 64.</p>
+    <p>Base64 não é criptografia — é uma codificação reversível projetada para transmitir dados binários com segurança por canais que suportam apenas texto, como e-mail (MIME), payloads JSON, documentos XML e cabeçalhos HTTP.</p>
+    <p>Usos comuns: incorporar imagens em CSS e HTML como Data URIs, codificar anexos de e-mail, transmitir dados binários em APIs JSON e XML, e codificar credenciais em cabeçalhos de Autenticação Básica HTTP.</p>
+  </section>
+
 <!-- TOOL CARD -->
   <div class="glass-card">
 
@@ -1181,60 +1189,28 @@
 
   </div>
 
-  <!-- INFO ACCORDION -->
-  <section>
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc1_title">What is Base64 encoding?</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc1_body"></div>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc2_title">Advanced options explained</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc2_body"></div>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc3_title">Security &amp; Privacy</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc3_body"></div>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc4_title">Completely free</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc4_body"></div>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc5_title">How Base64 works</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc5_body"></div>
-      </div>
-    </div>
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Como Codificar Texto para Base64 Online</h2>
+    <p>Usar o encodeb64.com é simples: cole seu texto no campo de entrada, selecione o conjunto de caracteres (UTF-8 é correto para a maioria dos textos modernos) e clique em Codificar. A saída Base64 aparece instantaneamente no campo de resultado, pronta para copiar.</p>
+    <p>Para casos de uso especiais, as opções avançadas permitem controlar o formato de saída. Ative a codificação URL-safe (Base64URL) para obter saída segura para tokens JWT e parâmetros de URL. Ative a divisão de linhas MIME para quebrar a saída em 76 caracteres conforme RFC 2045.</p>
+    <p>Toda a codificação acontece completamente no seu navegador usando a API TextEncoder e a função btoa() do JavaScript. Nenhum dado é transmitido para um servidor.</p>
   </section>
 
-  
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Codificação Base64URL para Tokens JWT</h2>
+    <p>O Base64 padrão usa os caracteres + e / que não são seguros em URLs — eles precisam ser codificados como %2B e %2F. O Base64URL (RFC 4648 §5) resolve isso substituindo + por - e / por _, e omitindo o caractere de preenchimento = completamente.</p>
+    <p>JWT (JSON Web Tokens) usam codificação Base64URL para suas seções de cabeçalho e payload. Se você trabalha com JWTs, certifique-se de selecionar a opção "Codificação URL-safe (Base64URL)" antes de codificar.</p>
+    <p>O Base64URL também é usado em desafios OAuth 2.0 PKCE e nomes de arquivos em sistemas de armazenamento em nuvem, onde a string Base64 precisa ser incorporada em uma URL sem codificação adicional.</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Codificar Arquivos e Imagens para Base64</h2>
+    <p>Além da codificação de texto, encodeb64.com suporta a codificação de qualquer tipo de arquivo para Base64 — documentos, imagens, arquivos de áudio e dados binários de até 100 MB. Arraste e solte seu arquivo na zona de upload, ou clique para procurar.</p>
+    <p>A codificação acontece completamente no seu navegador usando a API FileReader, então seu arquivo nunca sai do seu dispositivo. Para imagens, o conversor suporta JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF e AVIF, e gera cinco formatos de saída diferentes.</p>
+    <p>Incorporar imagens como Base64 é útil para e-mails HTML onde a hospedagem externa de imagens é não confiável, para documentos HTML autocontidos e para folhas de estilo CSS onde um ícone pequeno precisa estar inline para reduzir requisições HTTP.</p>
+  </section>
+
+
   <div id="ezoic-pub-ad-placeholder-102"></div>
 <!-- FAQ -->
   <section style="margin-top:8px;" itemscope itemtype="https://schema.org/FAQPage">
@@ -1286,62 +1262,57 @@
     </div>
   </section>
 
-  <!-- H2 CONTENT SECTIONS -->
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">O que é Codificação Base64?</h2>
-    <p>Base64 é um esquema de codificação binário-para-texto que representa dados binários usando 64 caracteres ASCII imprimíveis: A–Z, a–z, 0–9, mais (+) e barra (/), com o sinal de igual (=) para preenchimento. O nome "Base64" vem do fato de que cada dígito Base64 representa exatamente 6 bits de dados, e 2^6 = 64.</p>
-    <p>Base64 não é criptografia — é uma codificação reversível projetada para transmitir dados binários com segurança por canais que suportam apenas texto, como e-mail (MIME), payloads JSON, documentos XML e cabeçalhos HTTP.</p>
-    <p>Usos comuns: incorporar imagens em CSS e HTML como Data URIs, codificar anexos de e-mail, transmitir dados binários em APIs JSON e XML, e codificar credenciais em cabeçalhos de Autenticação Básica HTTP.</p>
-  </section>
+  <!-- INFO ACCORDION -->
+  <section>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc1_title">What is Base64 encoding?</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc1_body"></div>
+      </div>
+    </div>
 
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">Como Codificar Texto para Base64 Online</h2>
-    <p>Usar o encodeb64.com é simples: cole seu texto no campo de entrada, selecione o conjunto de caracteres (UTF-8 é correto para a maioria dos textos modernos) e clique em Codificar. A saída Base64 aparece instantaneamente no campo de resultado, pronta para copiar.</p>
-    <p>Para casos de uso especiais, as opções avançadas permitem controlar o formato de saída. Ative a codificação URL-safe (Base64URL) para obter saída segura para tokens JWT e parâmetros de URL. Ative a divisão de linhas MIME para quebrar a saída em 76 caracteres conforme RFC 2045.</p>
-    <p>Toda a codificação acontece completamente no seu navegador usando a API TextEncoder e a função btoa() do JavaScript. Nenhum dado é transmitido para um servidor.</p>
-  </section>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc2_title">Advanced options explained</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc2_body"></div>
+      </div>
+    </div>
 
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">Codificação Base64URL para Tokens JWT</h2>
-    <p>O Base64 padrão usa os caracteres + e / que não são seguros em URLs — eles precisam ser codificados como %2B e %2F. O Base64URL (RFC 4648 §5) resolve isso substituindo + por - e / por _, e omitindo o caractere de preenchimento = completamente.</p>
-    <p>JWT (JSON Web Tokens) usam codificação Base64URL para suas seções de cabeçalho e payload. Se você trabalha com JWTs, certifique-se de selecionar a opção "Codificação URL-safe (Base64URL)" antes de codificar.</p>
-    <p>O Base64URL também é usado em desafios OAuth 2.0 PKCE e nomes de arquivos em sistemas de armazenamento em nuvem, onde a string Base64 precisa ser incorporada em uma URL sem codificação adicional.</p>
-  </section>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc3_title">Security &amp; Privacy</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc3_body"></div>
+      </div>
+    </div>
 
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">Codificar Arquivos e Imagens para Base64</h2>
-    <p>Além da codificação de texto, encodeb64.com suporta a codificação de qualquer tipo de arquivo para Base64 — documentos, imagens, arquivos de áudio e dados binários de até 100 MB. Arraste e solte seu arquivo na zona de upload, ou clique para procurar.</p>
-    <p>A codificação acontece completamente no seu navegador usando a API FileReader, então seu arquivo nunca sai do seu dispositivo. Para imagens, o conversor suporta JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF e AVIF, e gera cinco formatos de saída diferentes.</p>
-    <p>Incorporar imagens como Base64 é útil para e-mails HTML onde a hospedagem externa de imagens é não confiável, para documentos HTML autocontidos e para folhas de estilo CSS onde um ícone pequeno precisa estar inline para reduzir requisições HTTP.</p>
-  </section>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc4_title">Completely free</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc4_body"></div>
+      </div>
+    </div>
 
-  <!-- H2 CONTENT SECTIONS -->
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">O que é Codificação Base64?</h2>
-    <p>Base64 é um esquema de codificação binário-para-texto que representa dados binários usando 64 caracteres ASCII imprimíveis: A–Z, a–z, 0–9, mais (+) e barra (/), com o sinal de igual (=) para preenchimento. O nome "Base64" vem do fato de que cada dígito Base64 representa exatamente 6 bits de dados, e 2^6 = 64.</p>
-    <p>Base64 não é criptografia — é uma codificação reversível projetada para transmitir dados binários com segurança por canais que suportam apenas texto, como e-mail (MIME), payloads JSON, documentos XML e cabeçalhos HTTP.</p>
-    <p>Usos comuns: incorporar imagens em CSS e HTML como Data URIs, codificar anexos de e-mail, transmitir dados binários em APIs JSON e XML, e codificar credenciais em cabeçalhos de Autenticação Básica HTTP.</p>
-  </section>
-
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">Como Codificar Texto para Base64 Online</h2>
-    <p>Usar o encodeb64.com é simples: cole seu texto no campo de entrada, selecione o conjunto de caracteres (UTF-8 é correto para a maioria dos textos modernos) e clique em Codificar. A saída Base64 aparece instantaneamente no campo de resultado, pronta para copiar.</p>
-    <p>Para casos de uso especiais, as opções avançadas permitem controlar o formato de saída. Ative a codificação URL-safe (Base64URL) para obter saída segura para tokens JWT e parâmetros de URL. Ative a divisão de linhas MIME para quebrar a saída em 76 caracteres conforme RFC 2045.</p>
-    <p>Toda a codificação acontece completamente no seu navegador usando a API TextEncoder e a função btoa() do JavaScript. Nenhum dado é transmitido para um servidor.</p>
-  </section>
-
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">Codificação Base64URL para Tokens JWT</h2>
-    <p>O Base64 padrão usa os caracteres + e / que não são seguros em URLs — eles precisam ser codificados como %2B e %2F. O Base64URL (RFC 4648 §5) resolve isso substituindo + por - e / por _, e omitindo o caractere de preenchimento = completamente.</p>
-    <p>JWT (JSON Web Tokens) usam codificação Base64URL para suas seções de cabeçalho e payload. Se você trabalha com JWTs, certifique-se de selecionar a opção "Codificação URL-safe (Base64URL)" antes de codificar.</p>
-    <p>O Base64URL também é usado em desafios OAuth 2.0 PKCE e nomes de arquivos em sistemas de armazenamento em nuvem, onde a string Base64 precisa ser incorporada em uma URL sem codificação adicional.</p>
-  </section>
-
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">Codificar Arquivos e Imagens para Base64</h2>
-    <p>Além da codificação de texto, encodeb64.com suporta a codificação de qualquer tipo de arquivo para Base64 — documentos, imagens, arquivos de áudio e dados binários de até 100 MB. Arraste e solte seu arquivo na zona de upload, ou clique para procurar.</p>
-    <p>A codificação acontece completamente no seu navegador usando a API FileReader, então seu arquivo nunca sai do seu dispositivo. Para imagens, o conversor suporta JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF e AVIF, e gera cinco formatos de saída diferentes.</p>
-    <p>Incorporar imagens como Base64 é útil para e-mails HTML onde a hospedagem externa de imagens é não confiável, para documentos HTML autocontidos e para folhas de estilo CSS onde um ícone pequeno precisa estar inline para reduzir requisições HTTP.</p>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc5_title">How Base64 works</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc5_body"></div>
+      </div>
+    </div>
   </section>
 
   <!-- OTHER TOOLS -->

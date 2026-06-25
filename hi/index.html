@@ -1035,6 +1035,14 @@
 
   <div id="ezoic-pub-ad-placeholder-101"></div>
 
+  <!-- H2 CONTENT SECTIONS -->
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">Base64 एन्कोडिंग क्या है?</h2>
+    <p>Base64 एक बाइनरी-से-टेक्स्ट एन्कोडिंग स्कीम है जो 64 प्रिंट करने योग्य ASCII कैरेक्टर का उपयोग करके बाइनरी डेटा को दर्शाती है: A–Z, a–z, 0–9, प्लस (+) और स्लैश (/), पैडिंग के लिए बराबर का चिह्न (=) के साथ। "Base64" नाम इस तथ्य से आता है कि प्रत्येक Base64 अंक ठीक 6 बिट डेटा का प्रतिनिधित्व करता है, और 2^6 = 64।</p>
+    <p>Base64 एन्क्रिप्शन नहीं है — यह एक प्रतिवर्ती एन्कोडिंग है जो केवल टेक्स्ट का समर्थन करने वाले चैनलों, जैसे ईमेल (MIME), JSON पेलोड, XML दस्तावेज़ और HTTP हेडर के माध्यम से बाइनरी डेटा को सुरक्षित रूप से प्रसारित करने के लिए डिज़ाइन की गई है।</p>
+    <p>सामान्य उपयोग: CSS और HTML में Data URI के रूप में इमेज एम्बेड करना, ईमेल अटैचमेंट एन्कोड करना, JSON और XML API में बाइनरी डेटा ट्रांसमिट करना, और HTTP Basic Authentication हेडर में क्रेडेंशियल एन्कोड करना।</p>
+  </section>
+
 <!-- TOOL CARD -->
   <div class="glass-card">
 
@@ -1175,60 +1183,28 @@
 
   </div>
 
-  <!-- INFO ACCORDION -->
-  <section>
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc1_title">What is Base64 encoding?</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc1_body"></div>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc2_title">Advanced options explained</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc2_body"></div>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc3_title">Security &amp; Privacy</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc3_body"></div>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc4_title">Completely free</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc4_body"></div>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-header" onclick="toggleAccordion(this)">
-        <span data-i18n="acc5_title">How Base64 works</span>
-        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content" data-i18n-html="acc5_body"></div>
-      </div>
-    </div>
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">टेक्स्ट को ऑनलाइन Base64 में कैसे एन्कोड करें</h2>
+    <p>encodeb64.com का उपयोग करना सरल है: अपना टेक्स्ट इनपुट फ़ील्ड में पेस्ट करें, कैरेक्टर सेट चुनें (अधिकांश आधुनिक टेक्स्ट के लिए UTF-8 सही है), और एन्कोड बटन क्लिक करें। Base64 आउटपुट तुरंत रिज़ल्ट फ़ील्ड में दिखाई देता है, कॉपी करने के लिए तैयार।</p>
+    <p>विशेष उपयोग के मामलों के लिए, उन्नत विकल्प आउटपुट फ़ॉर्मेट को नियंत्रित करने देते हैं। JWT टोकन और URL पैरामीटर के लिए सुरक्षित आउटपुट प्राप्त करने के लिए URL-safe एन्कोडिंग (Base64URL) सक्षम करें। RFC 2045 के अनुसार आउटपुट को 76 कैरेक्टर पर रैप करने के लिए MIME लाइन स्प्लिटिंग सक्षम करें।</p>
+    <p>सभी एन्कोडिंग JavaScript के TextEncoder API और btoa() फ़ंक्शन का उपयोग करके पूरी तरह आपके ब्राउज़र में होती है। कोई डेटा सर्वर पर नहीं भेजा जाता।</p>
   </section>
 
-  
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">JWT टोकन के लिए Base64URL एन्कोडिंग</h2>
+    <p>मानक Base64 + और / कैरेक्टर का उपयोग करता है जो URL में सुरक्षित नहीं हैं — इन्हें %2B और %2F के रूप में percent-encode करना पड़ता है। Base64URL (RFC 4648 §5) इसे + को - से और / को _ से बदलकर, और = पैडिंग कैरेक्टर को पूरी तरह हटाकर हल करता है।</p>
+    <p>JWT (JSON Web Token) अपने हेडर और पेलोड सेक्शन के लिए Base64URL एन्कोडिंग का उपयोग करते हैं। JWT के साथ काम करते समय, एन्कोड करने से पहले "URL-safe एन्कोडिंग (Base64URL)" विकल्प चुनना सुनिश्चित करें।</p>
+    <p>Base64URL का उपयोग OAuth 2.0 PKCE चैलेंज और क्लाउड स्टोरेज सिस्टम में फ़ाइलनाम में भी होता है, जहाँ Base64 स्ट्रिंग को अतिरिक्त एन्कोडिंग के बिना URL में एम्बेड करने की आवश्यकता होती है।</p>
+  </section>
+
+  <section class="glass-card" style="margin-top:8px;">
+    <h2 class="content-h2">फ़ाइलें और इमेज को Base64 में एन्कोड करें</h2>
+    <p>टेक्स्ट एन्कोडिंग के अलावा, encodeb64.com किसी भी फ़ाइल प्रकार को Base64 में एन्कोड करने का समर्थन करता है — दस्तावेज़, इमेज, ऑडियो फ़ाइलें और 100MB तक का बाइनरी डेटा। अपनी फ़ाइल को अपलोड ज़ोन पर ड्रैग और ड्रॉप करें, या ब्राउज़ करने के लिए क्लिक करें।</p>
+    <p>एन्कोडिंग FileReader API का उपयोग करके पूरी तरह आपके ब्राउज़र में होती है, इसलिए आपकी फ़ाइल कभी आपके डिवाइस से बाहर नहीं जाती। इमेज के लिए, कनवर्टर JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF और AVIF फ़ॉर्मेट का समर्थन करता है और पाँच अलग-अलग आउटपुट फ़ॉर्मेट जेनरेट करता है।</p>
+    <p>इमेज को Base64 के रूप में एम्बेड करना उन HTML ईमेल के लिए उपयोगी है जहाँ बाहरी इमेज होस्टिंग अविश्वसनीय है, स्व-निहित HTML दस्तावेज़ों के लिए, और CSS स्टाइलशीट के लिए जहाँ HTTP अनुरोधों को कम करने के लिए एक छोटे आइकन को इनलाइन करना आवश्यक है।</p>
+  </section>
+
+
   <div id="ezoic-pub-ad-placeholder-102"></div>
 <!-- FAQ -->
   <section style="margin-top:8px;" itemscope itemtype="https://schema.org/FAQPage">
@@ -1280,33 +1256,57 @@
     </div>
   </section>
 
-  <!-- H2 CONTENT SECTIONS -->
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">Base64 एन्कोडिंग क्या है?</h2>
-    <p>Base64 एक बाइनरी-से-टेक्स्ट एन्कोडिंग स्कीम है जो 64 प्रिंट करने योग्य ASCII कैरेक्टर का उपयोग करके बाइनरी डेटा को दर्शाती है: A–Z, a–z, 0–9, प्लस (+) और स्लैश (/), पैडिंग के लिए बराबर का चिह्न (=) के साथ। "Base64" नाम इस तथ्य से आता है कि प्रत्येक Base64 अंक ठीक 6 बिट डेटा का प्रतिनिधित्व करता है, और 2^6 = 64।</p>
-    <p>Base64 एन्क्रिप्शन नहीं है — यह एक प्रतिवर्ती एन्कोडिंग है जो केवल टेक्स्ट का समर्थन करने वाले चैनलों, जैसे ईमेल (MIME), JSON पेलोड, XML दस्तावेज़ और HTTP हेडर के माध्यम से बाइनरी डेटा को सुरक्षित रूप से प्रसारित करने के लिए डिज़ाइन की गई है।</p>
-    <p>सामान्य उपयोग: CSS और HTML में Data URI के रूप में इमेज एम्बेड करना, ईमेल अटैचमेंट एन्कोड करना, JSON और XML API में बाइनरी डेटा ट्रांसमिट करना, और HTTP Basic Authentication हेडर में क्रेडेंशियल एन्कोड करना।</p>
-  </section>
+  <!-- INFO ACCORDION -->
+  <section>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc1_title">What is Base64 encoding?</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc1_body"></div>
+      </div>
+    </div>
 
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">टेक्स्ट को ऑनलाइन Base64 में कैसे एन्कोड करें</h2>
-    <p>encodeb64.com का उपयोग करना सरल है: अपना टेक्स्ट इनपुट फ़ील्ड में पेस्ट करें, कैरेक्टर सेट चुनें (अधिकांश आधुनिक टेक्स्ट के लिए UTF-8 सही है), और एन्कोड बटन क्लिक करें। Base64 आउटपुट तुरंत रिज़ल्ट फ़ील्ड में दिखाई देता है, कॉपी करने के लिए तैयार।</p>
-    <p>विशेष उपयोग के मामलों के लिए, उन्नत विकल्प आउटपुट फ़ॉर्मेट को नियंत्रित करने देते हैं। JWT टोकन और URL पैरामीटर के लिए सुरक्षित आउटपुट प्राप्त करने के लिए URL-safe एन्कोडिंग (Base64URL) सक्षम करें। RFC 2045 के अनुसार आउटपुट को 76 कैरेक्टर पर रैप करने के लिए MIME लाइन स्प्लिटिंग सक्षम करें।</p>
-    <p>सभी एन्कोडिंग JavaScript के TextEncoder API और btoa() फ़ंक्शन का उपयोग करके पूरी तरह आपके ब्राउज़र में होती है। कोई डेटा सर्वर पर नहीं भेजा जाता।</p>
-  </section>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc2_title">Advanced options explained</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc2_body"></div>
+      </div>
+    </div>
 
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">JWT टोकन के लिए Base64URL एन्कोडिंग</h2>
-    <p>मानक Base64 + और / कैरेक्टर का उपयोग करता है जो URL में सुरक्षित नहीं हैं — इन्हें %2B और %2F के रूप में percent-encode करना पड़ता है। Base64URL (RFC 4648 §5) इसे + को - से और / को _ से बदलकर, और = पैडिंग कैरेक्टर को पूरी तरह हटाकर हल करता है।</p>
-    <p>JWT (JSON Web Token) अपने हेडर और पेलोड सेक्शन के लिए Base64URL एन्कोडिंग का उपयोग करते हैं। JWT के साथ काम करते समय, एन्कोड करने से पहले "URL-safe एन्कोडिंग (Base64URL)" विकल्प चुनना सुनिश्चित करें।</p>
-    <p>Base64URL का उपयोग OAuth 2.0 PKCE चैलेंज और क्लाउड स्टोरेज सिस्टम में फ़ाइलनाम में भी होता है, जहाँ Base64 स्ट्रिंग को अतिरिक्त एन्कोडिंग के बिना URL में एम्बेड करने की आवश्यकता होती है।</p>
-  </section>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc3_title">Security &amp; Privacy</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc3_body"></div>
+      </div>
+    </div>
 
-  <section class="glass-card" style="margin-top:8px;">
-    <h2 class="content-h2">फ़ाइलें और इमेज को Base64 में एन्कोड करें</h2>
-    <p>टेक्स्ट एन्कोडिंग के अलावा, encodeb64.com किसी भी फ़ाइल प्रकार को Base64 में एन्कोड करने का समर्थन करता है — दस्तावेज़, इमेज, ऑडियो फ़ाइलें और 100MB तक का बाइनरी डेटा। अपनी फ़ाइल को अपलोड ज़ोन पर ड्रैग और ड्रॉप करें, या ब्राउज़ करने के लिए क्लिक करें।</p>
-    <p>एन्कोडिंग FileReader API का उपयोग करके पूरी तरह आपके ब्राउज़र में होती है, इसलिए आपकी फ़ाइल कभी आपके डिवाइस से बाहर नहीं जाती। इमेज के लिए, कनवर्टर JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF और AVIF फ़ॉर्मेट का समर्थन करता है और पाँच अलग-अलग आउटपुट फ़ॉर्मेट जेनरेट करता है।</p>
-    <p>इमेज को Base64 के रूप में एम्बेड करना उन HTML ईमेल के लिए उपयोगी है जहाँ बाहरी इमेज होस्टिंग अविश्वसनीय है, स्व-निहित HTML दस्तावेज़ों के लिए, और CSS स्टाइलशीट के लिए जहाँ HTTP अनुरोधों को कम करने के लिए एक छोटे आइकन को इनलाइन करना आवश्यक है।</p>
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc4_title">Completely free</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc4_body"></div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span data-i18n="acc5_title">How Base64 works</span>
+        <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content" data-i18n-html="acc5_body"></div>
+      </div>
+    </div>
   </section>
 
   <!-- OTHER TOOLS -->

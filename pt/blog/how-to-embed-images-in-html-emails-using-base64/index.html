@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <!-- Ezoic privacy scripts -->
+  <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+  <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+  <!-- Ezoic main script -->
+  <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+  <script>
+    window.ezstandalone = window.ezstandalone || {};
+    ezstandalone.cmd = ezstandalone.cmd || [];
+  </script>
+  <!-- Ezoic analytics -->
+  <script src="//ezoicanalytics.com/analytics.js"></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Como incorporar imagens em e-mails HTML usando Base64 | encodeb64.com</title>
+  <meta name="description" content="Aprenda a incorporar imagens diretamente em e-mails HTML usando Data URIs em Base64. Evite imagens quebradas, melhore a entregabilidade e codifique imagens em segundos." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d0d14" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://encodeb64.com/pt/blog/how-to-embed-images-in-html-emails-using-base64" />
+  <link rel="alternate" hreflang="en" href="https://encodeb64.com/blog/how-to-embed-images-in-html-emails-using-base64" />
+  <link rel="alternate" hreflang="es" href="https://encodeb64.com/es/blog/how-to-embed-images-in-html-emails-using-base64" />
+  <link rel="alternate" hreflang="pt" href="https://encodeb64.com/pt/blog/how-to-embed-images-in-html-emails-using-base64" />
+  <link rel="alternate" hreflang="fr" href="https://encodeb64.com/fr/blog/how-to-embed-images-in-html-emails-using-base64" />
+  <link rel="alternate" hreflang="de" href="https://encodeb64.com/de/blog/how-to-embed-images-in-html-emails-using-base64" />
+  <link rel="alternate" hreflang="it" href="https://encodeb64.com/it/blog/how-to-embed-images-in-html-emails-using-base64" />
+  <link rel="alternate" hreflang="zh" href="https://encodeb64.com/zh/blog/how-to-embed-images-in-html-emails-using-base64" />
+  <link rel="alternate" hreflang="ru" href="https://encodeb64.com/ru/blog/how-to-embed-images-in-html-emails-using-base64" />
+  <link rel="alternate" hreflang="ja" href="https://encodeb64.com/ja/blog/how-to-embed-images-in-html-emails-using-base64" />
+  <link rel="alternate" hreflang="ko" href="https://encodeb64.com/ko/blog/how-to-embed-images-in-html-emails-using-base64" />
+  <link rel="alternate" hreflang="nl" href="https://encodeb64.com/nl/blog/how-to-embed-images-in-html-emails-using-base64" />
+  <link rel="alternate" hreflang="hi" href="https://encodeb64.com/hi/blog/how-to-embed-images-in-html-emails-using-base64" />
+  <link rel="alternate" hreflang="x-default" href="https://encodeb64.com/blog/how-to-embed-images-in-html-emails-using-base64" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="encodeb64.com" />
+  <meta property="og:title" content="Como incorporar imagens em e-mails HTML usando Base64" />
+  <meta property="og:description" content="Aprenda a incorporar imagens diretamente em e-mails HTML usando Data URIs em Base64. Evite imagens quebradas, melhore a entregabilidade e codifique imagens em segundos." />
+  <meta property="og:url" content="https://encodeb64.com/pt/blog/how-to-embed-images-in-html-emails-using-base64" />
+  <meta property="og:image" content="https://encodeb64.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Como incorporar imagens em e-mails HTML usando Base64" />
+  <meta name="twitter:description" content="Aprenda a incorporar imagens diretamente em e-mails HTML usando Data URIs em Base64. Evite imagens quebradas, melhore a entregabilidade e codifique imagens em segundos." />
+  <meta name="twitter:image" content="https://encodeb64.com/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
+
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      var _ch = document.createElement('script');
+      _ch.async = true;
+      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      document.head.appendChild(_ch);
+      document.addEventListener('DOMContentLoaded', function () {
+        window.cookiehub && window.cookiehub.load({});
+      });
+    }
+  </script>
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      var _ga = document.createElement('script');
+      _ga.async = true;
+      _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
+      document.head.appendChild(_ga);
+      gtag('js', new Date());
+      gtag('config', 'G-MYEHD96X9Q');
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d0d14; --bg2: #12121c; --bg3: #1a1a28;
+      --cyan: #00e5cc; --cyan-dim: rgba(0,229,204,0.12); --cyan-glow: rgba(0,229,204,0.3); --cyan-light: #5ef5e5;
+      --glass-bg: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+      --text: #e8e8f0; --text-muted: #7a7a9a; --text-dim: #4a4a6a;
+      --radius: 14px; --radius-sm: 8px;
+      --mono: 'JetBrains Mono', monospace; --sans: 'Sora', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background-color: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(0,229,204,0.1) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; z-index: 0; }
+    body::after { content: ''; position: fixed; top: -20%; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse, rgba(0,229,204,0.055) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(13,13,20,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 0 24px; height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; flex-shrink: 0; }
+    .logo span.encode { color: #ffffff; } .logo span.b64 { color: var(--cyan); }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .nav-pills { display: flex; gap: 6px; }
+    .nav-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; padding: 5px 14px; border-radius: 20px; text-decoration: none; transition: all 0.2s; border: 1px solid var(--glass-border); color: var(--text-muted); background: transparent; }
+    .nav-pill:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .nav-pill.current { color: #0d0d14; background: var(--cyan); font-weight: 600; border-color: transparent; }
+    .lang-selector { position: relative; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 5px 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; color: var(--text-muted); cursor: pointer; font-family: var(--sans); font-size: 0.78rem; transition: all 0.2s; white-space: nowrap; }
+    .lang-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .lang-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 200; max-height: 60vh; overflow-y: auto; }
+    .lang-dropdown.open { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 8px; padding: 9px 14px; cursor: pointer; font-size: 0.82rem; color: var(--text-muted); transition: all 0.15s; }
+    .lang-option:hover { background: var(--cyan-dim); color: var(--text); }
+    .lang-option.selected { color: var(--cyan); }
+    main { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px 0 8px; font-size: 0.78rem; color: var(--text-dim); flex-wrap: wrap; text-align: center; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; } .breadcrumb a:hover { color: var(--cyan); }
+    .breadcrumb-sep { color: var(--text-dim); } .breadcrumb-current { color: var(--text-muted); }
+    .page-hero { padding: 40px 0 28px; text-align: center; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; line-height: 1.15; margin-bottom: 10px; }
+    .page-hero p.sub { color: var(--text-muted); font-size: 1rem; font-weight: 300; }
+    .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 20px; }
+    .glass-card h2 { font-size: 1.1rem; font-weight: 600; color: var(--cyan); margin: 28px 0 10px; }
+    .glass-card h2:first-of-type { margin-top: 0; }
+    .glass-card p { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 10px; }
+    .glass-card p:last-child { margin-bottom: 0; }
+    .glass-card ul, .glass-card ol { list-style: none; padding: 0; margin: 6px 0 12px; }
+    .glass-card ol { counter-reset: step; }
+    .glass-card ul li, .glass-card ol li { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); padding: 2px 0 2px 22px; position: relative; }
+    .glass-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+    .glass-card ol li { counter-increment: step; }
+    .glass-card ol li::before { content: counter(step) '.'; position: absolute; left: 0; color: var(--cyan); font-weight: 600; }
+    .glass-card a { color: var(--cyan); text-decoration: none; } .glass-card a:hover { text-decoration: underline; }
+    .glass-card code { font-family: var(--mono); background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px; color: var(--cyan-light); font-size: 0.85em; word-break: break-all; }
+    .code-block { font-family: var(--mono); background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 14px 16px; border-radius: var(--radius-sm); color: var(--cyan-light); font-size: 0.82rem; overflow-x: auto; margin: 12px 0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; }
+    .article-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 8px; }
+    .blog-card { display: block; }
+    .blog-card h2 { margin-top: 0 !important; }
+    .blog-card h2 a { color: var(--text); }
+    .blog-card h2 a:hover { color: var(--cyan); text-decoration: none; }
+    .blog-card + .blog-card { margin-top: 4px; }
+    .readmore { display: inline-block; margin-top: 6px; font-weight: 600; }
+    footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px 24px; border-top: 1px solid var(--glass-border); font-size: 0.82rem; color: var(--text-dim); max-width: 900px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a, footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover, footer a:hover { color: var(--cyan); }
+    footer .footer-right a { color: var(--cyan); }
+    @media (max-width: 640px) {
+      header { padding: 0 16px; }
+      .nav-pill { padding: 4px 10px; font-size: 0.73rem; }
+      .lang-btn span { display: none; }
+      .glass-card { padding: 22px 20px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Como incorporar imagens em e-mails HTML usando Base64",
+    "author": {"@type": "Organization", "name": "MpmDigital", "url": "https://mpmdigital.es/"},
+    "publisher": {"@type": "Organization", "name": "encodeb64.com", "url": "https://encodeb64.com/"},
+    "datePublished": "2026-08-01",
+    "inLanguage": "pt",
+    "url": "https://encodeb64.com/pt/blog/how-to-embed-images-in-html-emails-using-base64"
+  }
+  </script>
+</head>
+<body>
+<header>
+  <a href="/pt/" class="logo">
+    <span class="encode">encode</span><span class="b64">B64</span>
+  </a>
+  <div class="header-right">
+    <nav class="nav-pills">
+      <a href="/pt/" class="nav-pill">Codificar</a>
+      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">Decodificar</a>
+      <a href="/pt/image-to-base64" class="nav-pill">Imagem para Base64</a>
+      <a href="/pt/blog" class="nav-pill current">Blog</a>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="langLabel">Português</span>
+        <svg viewBox="0 0 10 6" fill="currentColor" width="10" height="6"><path d="M0 0l5 6 5-6z"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown" role="listbox">
+        <div class="lang-option" data-lang="en" role="option">🇺🇸 English</div>
+        <div class="lang-option" data-lang="es" role="option">🇪🇸 Español</div>
+        <div class="lang-option selected" data-lang="pt" role="option">🇧🇷 Português</div>
+        <div class="lang-option" data-lang="fr" role="option">🇫🇷 Français</div>
+        <div class="lang-option" data-lang="de" role="option">🇩🇪 Deutsch</div>
+        <div class="lang-option" data-lang="it" role="option">🇮🇹 Italiano</div>
+        <div class="lang-option" data-lang="zh" role="option">🇨🇳 中文</div>
+        <div class="lang-option" data-lang="ru" role="option">🇷🇺 Русский</div>
+        <div class="lang-option" data-lang="ja" role="option">🇯🇵 日本語</div>
+        <div class="lang-option" data-lang="ko" role="option">🇰🇷 한국어</div>
+        <div class="lang-option" data-lang="nl" role="option">🇳🇱 Nederlands</div>
+        <div class="lang-option" data-lang="hi" role="option">🇮🇳 हिन्दी</div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <nav class="breadcrumb">
+    <a href="/pt/">encodeb64.com</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <a href="/pt/blog">Blog</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <span class="breadcrumb-current">Como incorporar imagens em e-mails HTML usando Base64</span>
+  </nav>
+  <div class="page-hero">
+    <h1>Como incorporar imagens em e-mails HTML usando Base64</h1>
+    <div class="article-meta"><span>Agosto de 2026</span><span>5 min de leitura</span></div>
+  </div>
+  <article class="glass-card">
+
+<p>Se você já enviou um e-mail HTML com imagens e descobriu que elas apareciam quebradas na caixa de entrada do destinatário, você não está sozinho. Muitos clientes de e-mail bloqueiam por padrão imagens hospedadas externamente. Uma solução confiável é incorporar as imagens diretamente no e-mail usando codificação Base64 — uma técnica que converte os dados binários de uma imagem em uma string de texto que pode ser colocada em linha no HTML.</p>
+<h2>Por que as imagens quebram em e-mails HTML</h2>
+<p>Imagens externas em e-mails dependem de o cliente de e-mail do destinatário fazer uma requisição HTTP para carregá-las. Muitos clientes — incluindo Microsoft Outlook, Apple Mail e sistemas de e-mail corporativos — bloqueiam essas requisições por padrão por motivos de segurança. O resultado é um ícone de imagem quebrada onde deveria aparecer seu banner ou logotipo cuidadosamente projetado.</p>
+<h2>O que é a incorporação de imagens em Base64?</h2>
+<p>A codificação Base64 converte dados binários (como um arquivo de imagem) em uma string de caracteres ASCII. Ao incorporar uma imagem codificada em Base64 em um e-mail HTML, os dados da imagem viajam junto com o próprio e-mail — nenhuma requisição HTTP externa é necessária. O HTML fica assim:</p>
+<div class="code-block">&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..." alt="Logotipo da empresa" /&gt;</div>
+<p>O prefixo <code>data:</code> seguido do tipo MIME e da string Base64 é chamado de Data URI. Todos os principais clientes de e-mail que renderizam HTML exibirão corretamente uma imagem a partir de um Data URI.</p>
+<h2>Passo a passo: codificando uma imagem em Base64</h2>
+<p><strong>Passo 1 — Escolha sua imagem.</strong> Mantenha-a pequena. A codificação Base64 aumenta o tamanho do arquivo em aproximadamente 33%, e imagens incorporadas grandes vão inflar o tamanho do seu e-mail, o que pode acionar filtros de spam. Procure imagens com menos de 50KB antes da codificação.</p>
+<p><strong>Passo 2 — Codifique a imagem.</strong> Acesse <a href="/image-to-base64">encodeb64.com/image-to-base64</a>, arraste e solte sua imagem na área de upload e selecione "Data URI (HTML/CSS)" como formato de saída. Clique em Converter. A ferramenta processa tudo no seu navegador — sua imagem nunca sai do seu dispositivo.</p>
+<p><strong>Passo 3 — Copie o Data URI.</strong> O resultado terá esta aparência: <code>data:image/png;base64,iVBORw0KGgo...</code> Copie a string inteira.</p>
+<p><strong>Passo 4 — Cole no seu modelo de e-mail HTML.</strong> Substitua o src externo da imagem pelo Data URI:</p>
+<div class="code-block">&lt;img src="data:image/png;base64,iVBORw0KGgo..." alt="Descrição" width="200" height="60" /&gt;</div>
+<p>Sempre inclua os atributos width e height explícitos — alguns clientes de e-mail precisam deles para renderizar a imagem no tamanho correto.</p>
+<h2>Formatos de imagem suportados</h2>
+<p>A maioria dos clientes de e-mail suporta Data URIs em PNG e JPEG. Para logotipos e ícones, o PNG é recomendado porque suporta transparência. Evite GIFs animados em Data URIs — a maioria dos clientes exibirá apenas o primeiro quadro. Data URIs em SVG têm pouco suporte em clientes de e-mail e devem ser evitados.</p>
+<h2>Considerações sobre o tamanho do arquivo</h2>
+<p>A incorporação em Base64 é ideal para imagens pequenas: logotipos, ícones, assinaturas e divisores decorativos. Para imagens de destaque grandes ou banners fotográficos, considere hospedá-las externamente e usar um texto alt de fallback, já que incorporar imagens grandes pode fazer seu e-mail exceder os limites de tamanho (muitos servidores rejeitam e-mails com mais de 10MB) e aumentar significativamente o tempo de carregamento.</p>
+<h2>Quando não usar Base64 em e-mails</h2>
+<ul>
+<li>Imagens de destaque de newsletter maiores que 100KB — use imagens hospedadas em um CDN</li>
+<li>GIFs animados — o Base64 perde a animação na maioria dos clientes</li>
+<li>E-mails com muitas imagens — incorporar todas vai inflar o arquivo drasticamente</li>
+</ul>
+<h2>Experimente você mesmo</h2>
+<p>Use o conversor gratuito de Imagem para Base64 em <a href="/image-to-base64">encodeb64.com/image-to-base64</a> para codificar suas imagens instantaneamente. Suporta JPG, PNG, GIF, WebP, SVG, BMP, ICO, TIFF e AVIF. Sem necessidade de conta, sem limite de tamanho para imagens abaixo de 10MB, e seus dados nunca saem do seu navegador.</p>
+<p>A incorporação de imagens em Base64 é uma técnica comprovada, usada por desenvolvedores e profissionais de e-mail marketing em todo o mundo. Para imagens pequenas como logotipos e ícones, costuma ser a forma mais confiável de garantir que seus elementos visuais cheguem a todos os destinatários, independentemente das configurações do cliente de e-mail.</p>
+
+  </article>
+</main>
+<footer>
+<span>encodeb64.com &copy; 2026</span>
+  <div class="footer-links">
+    <a href="/about">Sobre</a>
+    <a href="/privacy-policy">Política de Privacidade</a>
+    <a href="/terms-of-use">Termos de Uso</a>
+    <a href="/contact">Contato</a>
+    <a href="/pt/blog">Blog</a>
+  </div>
+  <span class="footer-right">
+    <span>Experimente também:</span>
+    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+  </span>
+<span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
+  Desenvolvido por <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>
+</span>
+</footer>
+<script>
+  const langBtn = document.getElementById('langBtn');
+  const langDropdown = document.getElementById('langDropdown');
+  langBtn.addEventListener('click', () => {
+    const open = langDropdown.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.lang-selector')) {
+      langDropdown.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', false);
+    }
+  });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      window.location.href = ({en:'/blog/how-to-embed-images-in-html-emails-using-base64',es:'/es/blog/how-to-embed-images-in-html-emails-using-base64',pt:'/pt/blog/how-to-embed-images-in-html-emails-using-base64',fr:'/fr/blog/how-to-embed-images-in-html-emails-using-base64',de:'/de/blog/how-to-embed-images-in-html-emails-using-base64',it:'/it/blog/how-to-embed-images-in-html-emails-using-base64',zh:'/zh/blog/how-to-embed-images-in-html-emails-using-base64',ru:'/ru/blog/how-to-embed-images-in-html-emails-using-base64',ja:'/ja/blog/how-to-embed-images-in-html-emails-using-base64',ko:'/ko/blog/how-to-embed-images-in-html-emails-using-base64',nl:'/nl/blog/how-to-embed-images-in-html-emails-using-base64',hi:'/hi/blog/how-to-embed-images-in-html-emails-using-base64'})[lang] || '/blog/how-to-embed-images-in-html-emails-using-base64';;
+    });
+  });
+</script>
+</body>
+</html>

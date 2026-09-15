@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <!-- Ezoic privacy scripts -->
+  <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+  <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+  <!-- Ezoic main script -->
+  <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+  <script>
+    window.ezstandalone = window.ezstandalone || {};
+    ezstandalone.cmd = ezstandalone.cmd || [];
+  </script>
+  <!-- Ezoic analytics -->
+  <script src="//ezoicanalytics.com/analytics.js"></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>JWT 令牌如何使用 Base64URL 编码 | encodeb64.com</title>
+  <meta name="description" content="了解 JWT 令牌的结构，以及为什么 header 和 payload 使用 Base64URL 编码。包含示例和解码技巧。" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d0d14" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://encodeb64.com/zh/blog/how-jwt-tokens-use-base64url-encoding" />
+  <link rel="alternate" hreflang="en" href="https://encodeb64.com/blog/how-jwt-tokens-use-base64url-encoding" />
+  <link rel="alternate" hreflang="es" href="https://encodeb64.com/es/blog/how-jwt-tokens-use-base64url-encoding" />
+  <link rel="alternate" hreflang="pt" href="https://encodeb64.com/pt/blog/how-jwt-tokens-use-base64url-encoding" />
+  <link rel="alternate" hreflang="fr" href="https://encodeb64.com/fr/blog/how-jwt-tokens-use-base64url-encoding" />
+  <link rel="alternate" hreflang="de" href="https://encodeb64.com/de/blog/how-jwt-tokens-use-base64url-encoding" />
+  <link rel="alternate" hreflang="it" href="https://encodeb64.com/it/blog/how-jwt-tokens-use-base64url-encoding" />
+  <link rel="alternate" hreflang="zh" href="https://encodeb64.com/zh/blog/how-jwt-tokens-use-base64url-encoding" />
+  <link rel="alternate" hreflang="ru" href="https://encodeb64.com/ru/blog/how-jwt-tokens-use-base64url-encoding" />
+  <link rel="alternate" hreflang="ja" href="https://encodeb64.com/ja/blog/how-jwt-tokens-use-base64url-encoding" />
+  <link rel="alternate" hreflang="ko" href="https://encodeb64.com/ko/blog/how-jwt-tokens-use-base64url-encoding" />
+  <link rel="alternate" hreflang="nl" href="https://encodeb64.com/nl/blog/how-jwt-tokens-use-base64url-encoding" />
+  <link rel="alternate" hreflang="hi" href="https://encodeb64.com/hi/blog/how-jwt-tokens-use-base64url-encoding" />
+  <link rel="alternate" hreflang="x-default" href="https://encodeb64.com/blog/how-jwt-tokens-use-base64url-encoding" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="encodeb64.com" />
+  <meta property="og:title" content="JWT 令牌如何使用 Base64URL 编码" />
+  <meta property="og:description" content="了解 JWT 令牌的结构，以及为什么 header 和 payload 使用 Base64URL 编码。包含示例和解码技巧。" />
+  <meta property="og:url" content="https://encodeb64.com/zh/blog/how-jwt-tokens-use-base64url-encoding" />
+  <meta property="og:image" content="https://encodeb64.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="JWT 令牌如何使用 Base64URL 编码" />
+  <meta name="twitter:description" content="了解 JWT 令牌的结构，以及为什么 header 和 payload 使用 Base64URL 编码。包含示例和解码技巧。" />
+  <meta name="twitter:image" content="https://encodeb64.com/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
+
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      var _ch = document.createElement('script');
+      _ch.async = true;
+      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      document.head.appendChild(_ch);
+      document.addEventListener('DOMContentLoaded', function () {
+        window.cookiehub && window.cookiehub.load({});
+      });
+    }
+  </script>
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      var _ga = document.createElement('script');
+      _ga.async = true;
+      _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
+      document.head.appendChild(_ga);
+      gtag('js', new Date());
+      gtag('config', 'G-MYEHD96X9Q');
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d0d14; --bg2: #12121c; --bg3: #1a1a28;
+      --cyan: #00e5cc; --cyan-dim: rgba(0,229,204,0.12); --cyan-glow: rgba(0,229,204,0.3); --cyan-light: #5ef5e5;
+      --glass-bg: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+      --text: #e8e8f0; --text-muted: #7a7a9a; --text-dim: #4a4a6a;
+      --radius: 14px; --radius-sm: 8px;
+      --mono: 'JetBrains Mono', monospace; --sans: 'Sora', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background-color: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(0,229,204,0.1) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; z-index: 0; }
+    body::after { content: ''; position: fixed; top: -20%; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse, rgba(0,229,204,0.055) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(13,13,20,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 0 24px; height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; flex-shrink: 0; }
+    .logo span.encode { color: #ffffff; } .logo span.b64 { color: var(--cyan); }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .nav-pills { display: flex; gap: 6px; }
+    .nav-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; padding: 5px 14px; border-radius: 20px; text-decoration: none; transition: all 0.2s; border: 1px solid var(--glass-border); color: var(--text-muted); background: transparent; }
+    .nav-pill:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .nav-pill.current { color: #0d0d14; background: var(--cyan); font-weight: 600; border-color: transparent; }
+    .lang-selector { position: relative; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 5px 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; color: var(--text-muted); cursor: pointer; font-family: var(--sans); font-size: 0.78rem; transition: all 0.2s; white-space: nowrap; }
+    .lang-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .lang-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 200; max-height: 60vh; overflow-y: auto; }
+    .lang-dropdown.open { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 8px; padding: 9px 14px; cursor: pointer; font-size: 0.82rem; color: var(--text-muted); transition: all 0.15s; }
+    .lang-option:hover { background: var(--cyan-dim); color: var(--text); }
+    .lang-option.selected { color: var(--cyan); }
+    main { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px 0 8px; font-size: 0.78rem; color: var(--text-dim); flex-wrap: wrap; text-align: center; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; } .breadcrumb a:hover { color: var(--cyan); }
+    .breadcrumb-sep { color: var(--text-dim); } .breadcrumb-current { color: var(--text-muted); }
+    .page-hero { padding: 40px 0 28px; text-align: center; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; line-height: 1.15; margin-bottom: 10px; }
+    .page-hero p.sub { color: var(--text-muted); font-size: 1rem; font-weight: 300; }
+    .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 20px; }
+    .glass-card h2 { font-size: 1.1rem; font-weight: 600; color: var(--cyan); margin: 28px 0 10px; }
+    .glass-card h2:first-of-type { margin-top: 0; }
+    .glass-card p { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 10px; }
+    .glass-card p:last-child { margin-bottom: 0; }
+    .glass-card ul, .glass-card ol { list-style: none; padding: 0; margin: 6px 0 12px; }
+    .glass-card ol { counter-reset: step; }
+    .glass-card ul li, .glass-card ol li { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); padding: 2px 0 2px 22px; position: relative; }
+    .glass-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+    .glass-card ol li { counter-increment: step; }
+    .glass-card ol li::before { content: counter(step) '.'; position: absolute; left: 0; color: var(--cyan); font-weight: 600; }
+    .glass-card a { color: var(--cyan); text-decoration: none; } .glass-card a:hover { text-decoration: underline; }
+    .glass-card code { font-family: var(--mono); background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px; color: var(--cyan-light); font-size: 0.85em; word-break: break-all; }
+    .code-block { font-family: var(--mono); background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 14px 16px; border-radius: var(--radius-sm); color: var(--cyan-light); font-size: 0.82rem; overflow-x: auto; margin: 12px 0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; }
+    .article-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 8px; }
+    .blog-card { display: block; }
+    .blog-card h2 { margin-top: 0 !important; }
+    .blog-card h2 a { color: var(--text); }
+    .blog-card h2 a:hover { color: var(--cyan); text-decoration: none; }
+    .blog-card + .blog-card { margin-top: 4px; }
+    .readmore { display: inline-block; margin-top: 6px; font-weight: 600; }
+    footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px 24px; border-top: 1px solid var(--glass-border); font-size: 0.82rem; color: var(--text-dim); max-width: 900px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a, footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover, footer a:hover { color: var(--cyan); }
+    footer .footer-right a { color: var(--cyan); }
+    @media (max-width: 640px) {
+      header { padding: 0 16px; }
+      .nav-pill { padding: 4px 10px; font-size: 0.73rem; }
+      .lang-btn span { display: none; }
+      .glass-card { padding: 22px 20px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "JWT 令牌如何使用 Base64URL 编码",
+    "author": {"@type": "Organization", "name": "MpmDigital", "url": "https://mpmdigital.es/"},
+    "publisher": {"@type": "Organization", "name": "encodeb64.com", "url": "https://encodeb64.com/"},
+    "datePublished": "2026-08-01",
+    "inLanguage": "zh",
+    "url": "https://encodeb64.com/zh/blog/how-jwt-tokens-use-base64url-encoding"
+  }
+  </script>
+</head>
+<body>
+<header>
+  <a href="/zh/" class="logo">
+    <span class="encode">encode</span><span class="b64">B64</span>
+  </a>
+  <div class="header-right">
+    <nav class="nav-pills">
+      <a href="/zh/" class="nav-pill">编码</a>
+      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">解码</a>
+      <a href="/zh/image-to-base64" class="nav-pill">图片转Base64</a>
+      <a href="/zh/blog" class="nav-pill current">博客</a>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="langLabel">中文</span>
+        <svg viewBox="0 0 10 6" fill="currentColor" width="10" height="6"><path d="M0 0l5 6 5-6z"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown" role="listbox">
+        <div class="lang-option" data-lang="en" role="option">🇺🇸 English</div>
+        <div class="lang-option" data-lang="es" role="option">🇪🇸 Español</div>
+        <div class="lang-option" data-lang="pt" role="option">🇧🇷 Português</div>
+        <div class="lang-option" data-lang="fr" role="option">🇫🇷 Français</div>
+        <div class="lang-option" data-lang="de" role="option">🇩🇪 Deutsch</div>
+        <div class="lang-option" data-lang="it" role="option">🇮🇹 Italiano</div>
+        <div class="lang-option selected" data-lang="zh" role="option">🇨🇳 中文</div>
+        <div class="lang-option" data-lang="ru" role="option">🇷🇺 Русский</div>
+        <div class="lang-option" data-lang="ja" role="option">🇯🇵 日本語</div>
+        <div class="lang-option" data-lang="ko" role="option">🇰🇷 한국어</div>
+        <div class="lang-option" data-lang="nl" role="option">🇳🇱 Nederlands</div>
+        <div class="lang-option" data-lang="hi" role="option">🇮🇳 हिन्दी</div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <nav class="breadcrumb">
+    <a href="/zh/">encodeb64.com</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <a href="/zh/blog">博客</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <span class="breadcrumb-current">JWT 令牌如何使用 Base64URL 编码</span>
+  </nav>
+  <div class="page-hero">
+    <h1>JWT 令牌如何使用 Base64URL 编码</h1>
+    <div class="article-meta"><span>2026年8月</span><span>阅读时间约 6 分钟</span></div>
+  </div>
+  <article class="glass-card">
+
+<p>JSON Web Token（JWT）在现代 Web 开发中随处可见——用于身份验证、授权以及服务之间的信息交换。如果你仔细观察过一个 JWT 字符串，会发现它由三段以点分隔的部分组成，看起来像是随机的 Base64 文本。理解 JWT 的结构以及为什么使用 Base64URL，能帮助你排查身份验证问题，并更自信地处理令牌。</p>
+<h2>JWT 的结构</h2>
+<p>一个 JWT 看起来像这样：</p>
+<div class="code-block">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</div>
+<p>由点分隔的三部分分别是：</p>
+<ol>
+<li>Header——描述令牌类型和签名算法</li>
+<li>Payload——包含令牌中编码的 claim（数据）</li>
+<li>Signature——用于验证令牌未被篡改</li>
+</ol>
+<h2>为什么使用 Base64URL 而不是标准 Base64？</h2>
+<p>JWT 通常在 HTTP 头（Authorization: Bearer ...）、URL 查询参数和 Cookie 中传输。标准 Base64 使用 + 和 /，在这些场景中会出问题——+ 在 URL 中会被解释为空格，/ 是路径分隔符。Base64URL 用 - 和 _ 替换它们，并去除 = 填充，使整个 JWT 无需百分号编码即可安全地放入任何 HTTP 上下文中。</p>
+<h2>解码 Header</h2>
+<p>上面示例 JWT 的第一部分——<code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</code>——是经过 Base64URL 编码的 header。解码后得到：</p>
+<div class="code-block">{"alg":"HS256","typ":"JWT"}</div>
+<p>这表明该令牌是使用 HMAC SHA-256 签名的 JWT。"alg" 字段至关重要——它告诉接收服务器在验证签名时应使用哪种算法。</p>
+<h2>解码 Payload</h2>
+<p>第二部分——<code>eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ</code>——解码后得到：</p>
+<div class="code-block">{"sub":"1234567890","name":"John Doe","iat":1516239022}</div>
+<p>这些就是令牌的 claim。标准 claim 包括：</p>
+<ul>
+<li>sub（subject）——通常是用户 ID</li>
+<li>iat（issued at）——令牌创建时的 Unix 时间戳</li>
+<li>exp（expiration）——令牌过期时的 Unix 时间戳</li>
+<li>iss（issuer）——创建该令牌的服务</li>
+</ul>
+<h2>签名无法解码（它不是 Base64URL 数据）</h2>
+<p>第三部分是签名——由 header 和 payload 结合密钥计算出的密码学哈希值。它用于验证令牌确实由可信方创建，且未被修改。你无法把签名解码成可读文本，因为它是二进制密码学数据，而不是 JSON。只有持有密钥的服务器才能验证它。</p>
+<h2>重要提示：解码不等于验证</h2>
+<p>一个常见的误解是：任何人都可以解码 JWT 的 payload 并读取其中的 claim。Base64URL 编码本身不提供任何安全性——它只是一种将 JSON 表示为 URL 安全字符串的方式。真正提供安全性的是签名验证。在信任 payload 中的任何 claim 之前，请务必在你的服务器上验证 JWT 的签名。</p>
+<h2>如何为调试解码 JWT</h2>
+<p>在开发过程中检查 JWT：</p>
+<ol>
+<li>复制 JWT 字符串</li>
+<li>将 header 或 payload 部分（第一个或第二个点之前的文本）粘贴到 <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a></li>
+<li>解码后的 JSON 会显示其中的 claim</li>
+</ol>
+<p>你也可以直接粘贴完整的 JWT——该工具会解码它能解析的第一部分。对于生产环境调试，建议使用专门的 JWT 检查工具，它同时还能显示签名相关信息。</p>
+<h2>常见的 JWT 编码错误</h2>
+<p><strong>错误：解码 JWT 时出现“Invalid Base64 input”</strong><br>原因：你使用的是不支持 - 和 _ 字符的标准 Base64 解码器。请使用支持 Base64URL 的解码器。</p>
+<p><strong>错误：payload 显示出意外字符或乱码</strong><br>原因：JWT 的 claim 可能使用了非 UTF-8 编码，或字符串在传输过程中被损坏。请检查是否存在截断或字符替换问题。</p>
+<h2>现在就试着解码一个 JWT</h2>
+<p>将任意 JWT 的 payload 粘贴到 <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>——解码器会自动处理 Base64URL 输入，在解码前把 - 转换为 +、把 _ 转换为 /，无需手动替换字符。</p>
+<p>JWT 的优雅之处在于其简洁性：三段以点分隔的 Base64URL 编码内容，并经过签名以防止篡改。理解其结构能让你更轻松地调试身份验证流程、在开发过程中检查令牌 claim，并与使用基于 JWT 的身份验证的第三方 API 进行集成。</p>
+
+  </article>
+</main>
+<footer>
+<span>encodeb64.com &copy; 2026</span>
+  <div class="footer-links">
+    <a href="/about">关于</a>
+    <a href="/privacy-policy">隐私政策</a>
+    <a href="/terms-of-use">使用条款</a>
+    <a href="/contact">联系</a>
+    <a href="/zh/blog">博客</a>
+  </div>
+  <span class="footer-right">
+    <span>也可以试试：</span>
+    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+  </span>
+<span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
+  开发者： <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>
+</span>
+</footer>
+<script>
+  const langBtn = document.getElementById('langBtn');
+  const langDropdown = document.getElementById('langDropdown');
+  langBtn.addEventListener('click', () => {
+    const open = langDropdown.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.lang-selector')) {
+      langDropdown.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', false);
+    }
+  });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      window.location.href = ({en:'/blog/how-jwt-tokens-use-base64url-encoding',es:'/es/blog/how-jwt-tokens-use-base64url-encoding',pt:'/pt/blog/how-jwt-tokens-use-base64url-encoding',fr:'/fr/blog/how-jwt-tokens-use-base64url-encoding',de:'/de/blog/how-jwt-tokens-use-base64url-encoding',it:'/it/blog/how-jwt-tokens-use-base64url-encoding',zh:'/zh/blog/how-jwt-tokens-use-base64url-encoding',ru:'/ru/blog/how-jwt-tokens-use-base64url-encoding',ja:'/ja/blog/how-jwt-tokens-use-base64url-encoding',ko:'/ko/blog/how-jwt-tokens-use-base64url-encoding',nl:'/nl/blog/how-jwt-tokens-use-base64url-encoding',hi:'/hi/blog/how-jwt-tokens-use-base64url-encoding'})[lang] || '/blog/how-jwt-tokens-use-base64url-encoding';;
+    });
+  });
+</script>
+</body>
+</html>

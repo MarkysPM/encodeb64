@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Ezoic privacy scripts -->
+  <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+  <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+  <!-- Ezoic main script -->
+  <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+  <script>
+    window.ezstandalone = window.ezstandalone || {};
+    ezstandalone.cmd = ezstandalone.cmd || [];
+  </script>
+  <!-- Ezoic analytics -->
+  <script src="//ezoicanalytics.com/analytics.js"></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Base64URL vs Base64 : différences et quand utiliser chacun | encodeb64.com</title>
+  <meta name="description" content="Base64URL et Base64 se ressemblent mais se comportent différemment dans les URL et les jetons JWT. Découvrez les différences clés et quand utiliser chaque variante." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d0d14" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://encodeb64.com/fr/blog/base64url-vs-base64-differences-and-when-to-use-each" />
+  <link rel="alternate" hreflang="en" href="https://encodeb64.com/blog/base64url-vs-base64-differences-and-when-to-use-each" />
+  <link rel="alternate" hreflang="es" href="https://encodeb64.com/es/blog/base64url-vs-base64-differences-and-when-to-use-each" />
+  <link rel="alternate" hreflang="pt" href="https://encodeb64.com/pt/blog/base64url-vs-base64-differences-and-when-to-use-each" />
+  <link rel="alternate" hreflang="fr" href="https://encodeb64.com/fr/blog/base64url-vs-base64-differences-and-when-to-use-each" />
+  <link rel="alternate" hreflang="de" href="https://encodeb64.com/de/blog/base64url-vs-base64-differences-and-when-to-use-each" />
+  <link rel="alternate" hreflang="it" href="https://encodeb64.com/it/blog/base64url-vs-base64-differences-and-when-to-use-each" />
+  <link rel="alternate" hreflang="zh" href="https://encodeb64.com/zh/blog/base64url-vs-base64-differences-and-when-to-use-each" />
+  <link rel="alternate" hreflang="ru" href="https://encodeb64.com/ru/blog/base64url-vs-base64-differences-and-when-to-use-each" />
+  <link rel="alternate" hreflang="ja" href="https://encodeb64.com/ja/blog/base64url-vs-base64-differences-and-when-to-use-each" />
+  <link rel="alternate" hreflang="ko" href="https://encodeb64.com/ko/blog/base64url-vs-base64-differences-and-when-to-use-each" />
+  <link rel="alternate" hreflang="nl" href="https://encodeb64.com/nl/blog/base64url-vs-base64-differences-and-when-to-use-each" />
+  <link rel="alternate" hreflang="hi" href="https://encodeb64.com/hi/blog/base64url-vs-base64-differences-and-when-to-use-each" />
+  <link rel="alternate" hreflang="x-default" href="https://encodeb64.com/blog/base64url-vs-base64-differences-and-when-to-use-each" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="encodeb64.com" />
+  <meta property="og:title" content="Base64URL vs Base64 : différences et quand utiliser chacun" />
+  <meta property="og:description" content="Base64URL et Base64 se ressemblent mais se comportent différemment dans les URL et les jetons JWT. Découvrez les différences clés et quand utiliser chaque variante." />
+  <meta property="og:url" content="https://encodeb64.com/fr/blog/base64url-vs-base64-differences-and-when-to-use-each" />
+  <meta property="og:image" content="https://encodeb64.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Base64URL vs Base64 : différences et quand utiliser chacun" />
+  <meta name="twitter:description" content="Base64URL et Base64 se ressemblent mais se comportent différemment dans les URL et les jetons JWT. Découvrez les différences clés et quand utiliser chaque variante." />
+  <meta name="twitter:image" content="https://encodeb64.com/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
+
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      var _ch = document.createElement('script');
+      _ch.async = true;
+      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      document.head.appendChild(_ch);
+      document.addEventListener('DOMContentLoaded', function () {
+        window.cookiehub && window.cookiehub.load({});
+      });
+    }
+  </script>
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      var _ga = document.createElement('script');
+      _ga.async = true;
+      _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
+      document.head.appendChild(_ga);
+      gtag('js', new Date());
+      gtag('config', 'G-MYEHD96X9Q');
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d0d14; --bg2: #12121c; --bg3: #1a1a28;
+      --cyan: #00e5cc; --cyan-dim: rgba(0,229,204,0.12); --cyan-glow: rgba(0,229,204,0.3); --cyan-light: #5ef5e5;
+      --glass-bg: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+      --text: #e8e8f0; --text-muted: #7a7a9a; --text-dim: #4a4a6a;
+      --radius: 14px; --radius-sm: 8px;
+      --mono: 'JetBrains Mono', monospace; --sans: 'Sora', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background-color: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(0,229,204,0.1) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; z-index: 0; }
+    body::after { content: ''; position: fixed; top: -20%; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse, rgba(0,229,204,0.055) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(13,13,20,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 0 24px; height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; flex-shrink: 0; }
+    .logo span.encode { color: #ffffff; } .logo span.b64 { color: var(--cyan); }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .nav-pills { display: flex; gap: 6px; }
+    .nav-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; padding: 5px 14px; border-radius: 20px; text-decoration: none; transition: all 0.2s; border: 1px solid var(--glass-border); color: var(--text-muted); background: transparent; }
+    .nav-pill:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .nav-pill.current { color: #0d0d14; background: var(--cyan); font-weight: 600; border-color: transparent; }
+    .lang-selector { position: relative; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 5px 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; color: var(--text-muted); cursor: pointer; font-family: var(--sans); font-size: 0.78rem; transition: all 0.2s; white-space: nowrap; }
+    .lang-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .lang-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 200; max-height: 60vh; overflow-y: auto; }
+    .lang-dropdown.open { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 8px; padding: 9px 14px; cursor: pointer; font-size: 0.82rem; color: var(--text-muted); transition: all 0.15s; }
+    .lang-option:hover { background: var(--cyan-dim); color: var(--text); }
+    .lang-option.selected { color: var(--cyan); }
+    main { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px 0 8px; font-size: 0.78rem; color: var(--text-dim); flex-wrap: wrap; text-align: center; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; } .breadcrumb a:hover { color: var(--cyan); }
+    .breadcrumb-sep { color: var(--text-dim); } .breadcrumb-current { color: var(--text-muted); }
+    .page-hero { padding: 40px 0 28px; text-align: center; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; line-height: 1.15; margin-bottom: 10px; }
+    .page-hero p.sub { color: var(--text-muted); font-size: 1rem; font-weight: 300; }
+    .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 20px; }
+    .glass-card h2 { font-size: 1.1rem; font-weight: 600; color: var(--cyan); margin: 28px 0 10px; }
+    .glass-card h2:first-of-type { margin-top: 0; }
+    .glass-card p { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 10px; }
+    .glass-card p:last-child { margin-bottom: 0; }
+    .glass-card ul, .glass-card ol { list-style: none; padding: 0; margin: 6px 0 12px; }
+    .glass-card ol { counter-reset: step; }
+    .glass-card ul li, .glass-card ol li { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); padding: 2px 0 2px 22px; position: relative; }
+    .glass-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+    .glass-card ol li { counter-increment: step; }
+    .glass-card ol li::before { content: counter(step) '.'; position: absolute; left: 0; color: var(--cyan); font-weight: 600; }
+    .glass-card a { color: var(--cyan); text-decoration: none; } .glass-card a:hover { text-decoration: underline; }
+    .glass-card code { font-family: var(--mono); background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px; color: var(--cyan-light); font-size: 0.85em; word-break: break-all; }
+    .code-block { font-family: var(--mono); background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 14px 16px; border-radius: var(--radius-sm); color: var(--cyan-light); font-size: 0.82rem; overflow-x: auto; margin: 12px 0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; }
+    .article-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 8px; }
+    .blog-card { display: block; }
+    .blog-card h2 { margin-top: 0 !important; }
+    .blog-card h2 a { color: var(--text); }
+    .blog-card h2 a:hover { color: var(--cyan); text-decoration: none; }
+    .blog-card + .blog-card { margin-top: 4px; }
+    .readmore { display: inline-block; margin-top: 6px; font-weight: 600; }
+    footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px 24px; border-top: 1px solid var(--glass-border); font-size: 0.82rem; color: var(--text-dim); max-width: 900px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a, footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover, footer a:hover { color: var(--cyan); }
+    footer .footer-right a { color: var(--cyan); }
+    @media (max-width: 640px) {
+      header { padding: 0 16px; }
+      .nav-pill { padding: 4px 10px; font-size: 0.73rem; }
+      .lang-btn span { display: none; }
+      .glass-card { padding: 22px 20px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Base64URL vs Base64 : différences et quand utiliser chacun",
+    "author": {"@type": "Organization", "name": "MpmDigital", "url": "https://mpmdigital.es/"},
+    "publisher": {"@type": "Organization", "name": "encodeb64.com", "url": "https://encodeb64.com/"},
+    "datePublished": "2026-08-01",
+    "inLanguage": "fr",
+    "url": "https://encodeb64.com/fr/blog/base64url-vs-base64-differences-and-when-to-use-each"
+  }
+  </script>
+</head>
+<body>
+<header>
+  <a href="/fr/" class="logo">
+    <span class="encode">encode</span><span class="b64">B64</span>
+  </a>
+  <div class="header-right">
+    <nav class="nav-pills">
+      <a href="/fr/" class="nav-pill">Encoder</a>
+      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">Décoder</a>
+      <a href="/fr/image-to-base64" class="nav-pill">Image en Base64</a>
+      <a href="/fr/blog" class="nav-pill current">Blog</a>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="langLabel">Français</span>
+        <svg viewBox="0 0 10 6" fill="currentColor" width="10" height="6"><path d="M0 0l5 6 5-6z"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown" role="listbox">
+        <div class="lang-option" data-lang="en" role="option">🇺🇸 English</div>
+        <div class="lang-option" data-lang="es" role="option">🇪🇸 Español</div>
+        <div class="lang-option" data-lang="pt" role="option">🇧🇷 Português</div>
+        <div class="lang-option selected" data-lang="fr" role="option">🇫🇷 Français</div>
+        <div class="lang-option" data-lang="de" role="option">🇩🇪 Deutsch</div>
+        <div class="lang-option" data-lang="it" role="option">🇮🇹 Italiano</div>
+        <div class="lang-option" data-lang="zh" role="option">🇨🇳 中文</div>
+        <div class="lang-option" data-lang="ru" role="option">🇷🇺 Русский</div>
+        <div class="lang-option" data-lang="ja" role="option">🇯🇵 日本語</div>
+        <div class="lang-option" data-lang="ko" role="option">🇰🇷 한국어</div>
+        <div class="lang-option" data-lang="nl" role="option">🇳🇱 Nederlands</div>
+        <div class="lang-option" data-lang="hi" role="option">🇮🇳 हिन्दी</div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <nav class="breadcrumb">
+    <a href="/fr/">encodeb64.com</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <a href="/fr/blog">Blog</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <span class="breadcrumb-current">Base64URL vs Base64 : différences et quand utiliser chacun</span>
+  </nav>
+  <div class="page-hero">
+    <h1>Base64URL vs Base64 : différences et quand utiliser chacun</h1>
+    <div class="article-meta"><span>Août 2026</span><span>4 min de lecture</span></div>
+  </div>
+  <article class="glass-card">
+
+<p>Si vous avez déjà travaillé avec des jetons JWT, OAuth 2.0 ou des paramètres d'URL, vous avez probablement rencontré Base64URL — une variante du Base64 standard qui semble presque identique mais se comporte différemment dans certains contextes. Comprendre cette distinction peut vous faire gagner des heures de débogage d'erreurs d'encodage cryptiques.</p>
+<h2>Qu'est-ce que le Base64 standard ?</h2>
+<p>Le Base64 standard, défini dans la RFC 4648 §4, encode les données binaires en utilisant 64 caractères : A–Z, a–z, 0–9, plus (+) et barre oblique (/). La sortie est complétée par des signes égal (=) pour que la longueur soit un multiple de 4. Par exemple, encoder « Man » donne « TWFu ».</p>
+<p>Le problème survient lorsque vous essayez d'utiliser une chaîne Base64 standard dans une URL. Le caractère + est interprété comme un espace dans les chaînes de requête d'URL, et / est un séparateur de chemin. Une chaîne Base64 comme « abc+def/ghi= » placée dans une URL sera mal interprétée par les serveurs web et les navigateurs.</p>
+<h2>Qu'est-ce que Base64URL ?</h2>
+<p>Base64URL, défini dans la RFC 4648 §5, résout ce problème en effectuant deux substitutions :</p>
+<ul>
+<li>+ est remplacé par - (tiret)</li>
+<li>/ est remplacé par _ (underscore)</li>
+<li>le padding = est totalement omis</li>
+</ul>
+<p>Ces caractères sont tous sûrs dans les URL et les noms de fichiers sans encodage en pourcentage. Le même exemple « Man » s'encode en « TWFu » dans les deux variantes (aucun caractère spécial dans ce cas), mais une chaîne comme « i+Uo/A== » en Base64 standard devient « i-Uo_A » en Base64URL.</p>
+<h2>Les jetons JWT utilisent Base64URL</h2>
+<p>Les JSON Web Tokens (JWT) sont l'endroit le plus courant où les développeurs rencontrent Base64URL. Un JWT se compose de trois parties séparées par des points : header.payload.signature. Le header et le payload sont tous deux encodés en Base64URL — pas en Base64 standard. C'est pourquoi les chaînes JWT contiennent des tirets et des underscores, mais jamais de signes plus ni de barres obliques.</p>
+<p>Si vous collez un JWT dans un décodeur Base64 standard sans convertir les caractères au préalable, vous obtiendrez une erreur de décodage ou un résultat illisible. Utilisez toujours un décodeur compatible Base64URL pour les JWT.</p>
+<h2>Convertir entre les deux</h2>
+<p>Pour convertir une chaîne Base64 standard en Base64URL :</p>
+<ol>
+<li>Remplacez tous les + par -</li>
+<li>Remplacez tous les / par _</li>
+<li>Supprimez tous les caractères de padding =</li>
+</ol>
+<p>Pour reconvertir Base64URL en Base64 standard :</p>
+<ol>
+<li>Remplacez tous les - par +</li>
+<li>Remplacez tous les _ par /</li>
+<li>Ajoutez du padding = jusqu'à ce que la longueur de la chaîne soit un multiple de 4</li>
+</ol>
+<h2>Quand utiliser chacun</h2>
+<p>Utilisez Base64 standard pour :</p>
+<ul>
+<li>Encoder les pièces jointes d'e-mails (MIME, RFC 2045)</li>
+<li>Intégrer des images en tant que Data URI dans HTML et CSS</li>
+<li>Stocker des données binaires dans des payloads JSON ou XML où la valeur est entre guillemets</li>
+<li>Travailler avec des systèmes exigeant spécifiquement le Base64 standard</li>
+</ul>
+<p>Utilisez Base64URL pour :</p>
+<ul>
+<li>Générer ou analyser des jetons JWT</li>
+<li>Créer des jetons compatibles URL pour les challenges PKCE d'OAuth 2.0</li>
+<li>Encoder des données pour des paramètres de requête d'URL ou des segments de chemin</li>
+<li>Créer des noms de fichiers à partir de données binaires (les noms de fichiers ne peuvent pas contenir / sur la plupart des systèmes)</li>
+<li>Travailler avec des API de cryptographie web, qui produisent généralement du Base64URL</li>
+</ul>
+<h2>Encoder avec la bonne variante</h2>
+<p>Sur <a href="/">encodeb64.com</a>, vous pouvez basculer entre Base64 standard et Base64URL grâce à la case « URL-safe encoding (Base64URL) » dans les options avancées. L'outil applique automatiquement les substitutions de caractères et supprime le padding lorsque cette option est activée. Pour décoder l'une ou l'autre variante, utilisez <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>.</p>
+<p>La différence entre Base64 et Base64URL est minime mais importante. En cas de doute, vérifiez la spécification du système avec lequel vous intégrez — JWT signifie toujours Base64URL, tandis que MIME signifie toujours Base64 standard avec retours à la ligne. Utiliser la mauvaise variante est l'une des causes les plus fréquentes de bugs d'encodage dans les applications web.</p>
+
+  </article>
+</main>
+<footer>
+<span>encodeb64.com &copy; 2026</span>
+  <div class="footer-links">
+    <a href="/about">À propos</a>
+    <a href="/privacy-policy">Politique de confidentialité</a>
+    <a href="/terms-of-use">Conditions d'utilisation</a>
+    <a href="/contact">Contact</a>
+    <a href="/fr/blog">Blog</a>
+  </div>
+  <span class="footer-right">
+    <span>Essayez aussi :</span>
+    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+  </span>
+<span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
+  Développé par <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>
+</span>
+</footer>
+<script>
+  const langBtn = document.getElementById('langBtn');
+  const langDropdown = document.getElementById('langDropdown');
+  langBtn.addEventListener('click', () => {
+    const open = langDropdown.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.lang-selector')) {
+      langDropdown.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', false);
+    }
+  });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      window.location.href = ({en:'/blog/base64url-vs-base64-differences-and-when-to-use-each',es:'/es/blog/base64url-vs-base64-differences-and-when-to-use-each',pt:'/pt/blog/base64url-vs-base64-differences-and-when-to-use-each',fr:'/fr/blog/base64url-vs-base64-differences-and-when-to-use-each',de:'/de/blog/base64url-vs-base64-differences-and-when-to-use-each',it:'/it/blog/base64url-vs-base64-differences-and-when-to-use-each',zh:'/zh/blog/base64url-vs-base64-differences-and-when-to-use-each',ru:'/ru/blog/base64url-vs-base64-differences-and-when-to-use-each',ja:'/ja/blog/base64url-vs-base64-differences-and-when-to-use-each',ko:'/ko/blog/base64url-vs-base64-differences-and-when-to-use-each',nl:'/nl/blog/base64url-vs-base64-differences-and-when-to-use-each',hi:'/hi/blog/base64url-vs-base64-differences-and-when-to-use-each'})[lang] || '/blog/base64url-vs-base64-differences-and-when-to-use-each';;
+    });
+  });
+</script>
+</body>
+</html>

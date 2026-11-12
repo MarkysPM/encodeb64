@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Base64 data URI：何时在 HTML 和 CSS 中内嵌图片</title>
+  <meta name="description" content="了解 data URI 的工作原理、确切语法，以及何时内嵌 Base64 图片有益或有害。包含体积参考、缓存和 CSP 建议。" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d0d14" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://encodeb64.com/zh/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="en" href="https://encodeb64.com/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="es" href="https://encodeb64.com/es/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="pt" href="https://encodeb64.com/pt/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="fr" href="https://encodeb64.com/fr/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="de" href="https://encodeb64.com/de/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="it" href="https://encodeb64.com/it/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="zh" href="https://encodeb64.com/zh/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="ru" href="https://encodeb64.com/ru/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="ja" href="https://encodeb64.com/ja/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="ko" href="https://encodeb64.com/ko/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="nl" href="https://encodeb64.com/nl/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="hi" href="https://encodeb64.com/hi/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="x-default" href="https://encodeb64.com/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="encodeb64.com" />
+  <meta property="og:title" content="Base64 data URI：何时在 HTML 和 CSS 中内嵌图片" />
+  <meta property="og:description" content="了解 data URI 的工作原理、确切语法，以及何时内嵌 Base64 图片有益或有害。包含体积参考、缓存和 CSP 建议。" />
+  <meta property="og:url" content="https://encodeb64.com/zh/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <meta property="og:image" content="https://encodeb64.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Base64 data URI：何时在 HTML 和 CSS 中内嵌图片" />
+  <meta name="twitter:description" content="了解 data URI 的工作原理、确切语法，以及何时内嵌 Base64 图片有益或有害。包含体积参考、缓存和 CSP 建议。" />
+  <meta name="twitter:image" content="https://encodeb64.com/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
+
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      var _ch = document.createElement('script');
+      _ch.async = true;
+      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      document.head.appendChild(_ch);
+      document.addEventListener('DOMContentLoaded', function () {
+        window.cookiehub && window.cookiehub.load({});
+      });
+    }
+  </script>
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      var _ga = document.createElement('script');
+      _ga.async = true;
+      _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
+      document.head.appendChild(_ga);
+      gtag('js', new Date());
+      gtag('config', 'G-MYEHD96X9Q');
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d0d14; --bg2: #12121c; --bg3: #1a1a28;
+      --cyan: #00e5cc; --cyan-dim: rgba(0,229,204,0.12); --cyan-glow: rgba(0,229,204,0.3); --cyan-light: #5ef5e5;
+      --glass-bg: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+      --text: #e8e8f0; --text-muted: #7a7a9a; --text-dim: #4a4a6a;
+      --radius: 14px; --radius-sm: 8px;
+      --mono: 'JetBrains Mono', monospace; --sans: 'Sora', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background-color: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(0,229,204,0.1) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; z-index: 0; }
+    body::after { content: ''; position: fixed; top: -20%; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse, rgba(0,229,204,0.055) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(13,13,20,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 0 24px; height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; flex-shrink: 0; }
+    .logo span.encode { color: #ffffff; } .logo span.b64 { color: var(--cyan); }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .nav-pills { display: flex; gap: 6px; }
+    .nav-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; padding: 5px 14px; border-radius: 20px; text-decoration: none; transition: all 0.2s; border: 1px solid var(--glass-border); color: var(--text-muted); background: transparent; }
+    .nav-pill:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .nav-pill.current { color: #0d0d14; background: var(--cyan); font-weight: 600; border-color: transparent; }
+    .lang-selector { position: relative; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 5px 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; color: var(--text-muted); cursor: pointer; font-family: var(--sans); font-size: 0.78rem; transition: all 0.2s; white-space: nowrap; }
+    .lang-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .lang-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 200; max-height: 60vh; overflow-y: auto; }
+    .lang-dropdown.open { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 8px; padding: 9px 14px; cursor: pointer; font-size: 0.82rem; color: var(--text-muted); transition: all 0.15s; }
+    .lang-option:hover { background: var(--cyan-dim); color: var(--text); }
+    .lang-option.selected { color: var(--cyan); }
+    main { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px 0 8px; font-size: 0.78rem; color: var(--text-dim); flex-wrap: wrap; text-align: center; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; } .breadcrumb a:hover { color: var(--cyan); }
+    .breadcrumb-sep { color: var(--text-dim); } .breadcrumb-current { color: var(--text-muted); }
+    .page-hero { padding: 40px 0 28px; text-align: center; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; line-height: 1.15; margin-bottom: 10px; }
+    .page-hero p.sub { color: var(--text-muted); font-size: 1rem; font-weight: 300; }
+    .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 20px; }
+    .glass-card h2 { font-size: 1.1rem; font-weight: 600; color: var(--cyan); margin: 28px 0 10px; }
+    .glass-card h2:first-of-type { margin-top: 0; }
+    .glass-card p { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 10px; }
+    .glass-card p:last-child { margin-bottom: 0; }
+    .glass-card ul, .glass-card ol { list-style: none; padding: 0; margin: 6px 0 12px; }
+    .glass-card ol { counter-reset: step; }
+    .glass-card ul li, .glass-card ol li { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); padding: 2px 0 2px 22px; position: relative; }
+    .glass-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+    .glass-card ol li { counter-increment: step; }
+    .glass-card ol li::before { content: counter(step) '.'; position: absolute; left: 0; color: var(--cyan); font-weight: 600; }
+    .glass-card a { color: var(--cyan); text-decoration: none; } .glass-card a:hover { text-decoration: underline; }
+    .glass-card code { font-family: var(--mono); background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px; color: var(--cyan-light); font-size: 0.85em; word-break: break-all; }
+    .code-block { font-family: var(--mono); background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 14px 16px; border-radius: var(--radius-sm); color: var(--cyan-light); font-size: 0.82rem; overflow-x: auto; margin: 12px 0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; }
+    .article-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 8px; }
+    .blog-card { display: block; }
+    .blog-card h2 { margin-top: 0 !important; }
+    .blog-card h2 a { color: var(--text); }
+    .blog-card h2 a:hover { color: var(--cyan); text-decoration: none; }
+    .blog-card + .blog-card { margin-top: 4px; }
+    .readmore { display: inline-block; margin-top: 6px; font-weight: 600; }
+    footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px 24px; border-top: 1px solid var(--glass-border); font-size: 0.82rem; color: var(--text-dim); max-width: 900px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a, footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover, footer a:hover { color: var(--cyan); }
+    footer .footer-right a { color: var(--cyan); }
+    @media (max-width: 640px) {
+      header { padding: 0 16px; }
+      .nav-pill { padding: 4px 10px; font-size: 0.73rem; }
+      .lang-btn span { display: none; }
+      .glass-card { padding: 22px 20px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Base64 data URI：何时在 HTML 和 CSS 中内嵌图片",
+    "author": {"@type": "Organization", "name": "MpmDigital", "url": "https://mpmdigital.es/"},
+    "publisher": {"@type": "Organization", "name": "encodeb64.com", "url": "https://encodeb64.com/"},
+    "datePublished": "2026-11-12",
+    "inLanguage": "zh",
+    "url": "https://encodeb64.com/zh/blog/base64-data-uris-when-to-inline-images-css-html/"
+  }
+  </script>
+</head>
+<body>
+<header>
+  <a href="/zh/" class="logo">
+    <span class="encode">encode</span><span class="b64">B64</span>
+  </a>
+  <div class="header-right">
+    <nav class="nav-pills">
+      <a href="/zh/" class="nav-pill">编码</a>
+      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">解码</a>
+      <a href="/zh/image-to-base64" class="nav-pill">图片转Base64</a>
+      <a href="/zh/blog/" class="nav-pill current">博客</a>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="langLabel">中文</span>
+        <svg viewBox="0 0 10 6" fill="currentColor" width="10" height="6"><path d="M0 0l5 6 5-6z"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown" role="listbox">
+        <div class="lang-option" data-lang="en" role="option">🇺🇸 English</div>
+        <div class="lang-option" data-lang="es" role="option">🇪🇸 Español</div>
+        <div class="lang-option" data-lang="pt" role="option">🇧🇷 Português</div>
+        <div class="lang-option" data-lang="fr" role="option">🇫🇷 Français</div>
+        <div class="lang-option" data-lang="de" role="option">🇩🇪 Deutsch</div>
+        <div class="lang-option" data-lang="it" role="option">🇮🇹 Italiano</div>
+        <div class="lang-option selected" data-lang="zh" role="option">🇨🇳 中文</div>
+        <div class="lang-option" data-lang="ru" role="option">🇷🇺 Русский</div>
+        <div class="lang-option" data-lang="ja" role="option">🇯🇵 日本語</div>
+        <div class="lang-option" data-lang="ko" role="option">🇰🇷 한국어</div>
+        <div class="lang-option" data-lang="nl" role="option">🇳🇱 Nederlands</div>
+        <div class="lang-option" data-lang="hi" role="option">🇮🇳 हिन्दी</div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <nav class="breadcrumb">
+    <a href="/zh/">encodeb64.com</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <a href="/zh/blog/">博客</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <span class="breadcrumb-current">Base64 data URI：何时在 HTML 和 CSS 中内嵌图片</span>
+  </nav>
+  <div class="page-hero">
+    <h1>Base64 data URI：何时在 HTML 和 CSS 中内嵌图片</h1>
+    <div class="article-meta"><span>2026年11月</span><span>阅读时间约 7 分钟</span></div>
+  </div>
+  <article class="glass-card">
+<p>data URI 可以把文件内容直接放进 URL，这样浏览器无需单独发起网络请求，就能显示图片、字体或文档。Base64 是在 data URI 中书写二进制数据的常用方式。内嵌既可能是一种聪明的优化，也可能是一个性能错误，具体取决于文件和页面。本文说明 data URI 的工作原理，并给出何时使用它的实用规则。</p>
+
+<h2>data URI 语法</h2>
+<p>data URI 的结构如下：</p>
+<div class="code-block">data:[&lt;media type&gt;][;base64],&lt;data&gt;</div>
+<ul>
+<li><code>data:</code> 是协议头。</li>
+<li>可选的媒体类型是 MIME 类型，例如 <code>image/png</code>。省略时默认为 <code>text/plain</code>。</li>
+<li><code>;base64</code> 告诉浏览器数据是 Base64 编码的。没有它，数据会被当作 URL 编码的文本。</li>
+<li>逗号之后就是数据本身。</li>
+</ul>
+<p>下面是一个完整可用的示例：1×1 的透明 GIF。</p>
+<div class="code-block">data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7</div>
+
+<h2>在 HTML 中使用 data URI</h2>
+<p>可以把 data URI 放在任何接受 URL 的地方。在图片标签中：</p>
+<div class="code-block">&lt;img alt="Pixel" width="1" height="1"
+     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"&gt;</div>
+<p>它也适用于网站图标、<code>&lt;source&gt;</code> 元素，甚至是可下载文件的链接。</p>
+
+<h2>在 CSS 中使用 data URI</h2>
+<p>在样式表中，用 <code>url()</code> 包裹该 URI：</p>
+<div class="code-block">.icon-check {
+  width: 16px;
+  height: 16px;
+  background: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") no-repeat center;
+}</div>
+<p>在 CSS 中内嵌小图标和背景图，可以避免每张图片一次请求，并且样式表一加载完图片就可用。</p>
+
+<h2>优点</h2>
+<ul>
+<li><strong>请求更少。</strong>每内嵌一个文件就少一次 HTTP 请求。这在 HTTP/1.1 时代影响很大，在慢速或高延迟的网络上依然有帮助。</li>
+<li><strong>不会出现破图。</strong>图片不会因为文件缺失或被拦截而加载失败。</li>
+<li><strong>文档自包含。</strong>单个 HTML 文件即可包含它所需的全部内容，适用于报告、离线页面和部分邮件客户端。</li>
+</ul>
+
+<h2>缺点</h2>
+<ul>
+<li><strong>体积大约增加 33%。</strong>Base64 把每 3 个字节变成 4 个字符，所以一张 30 KB 的图片会变成约 40 KB 的文本。原因请参阅 <a href="/zh/blog/what-is-base64-encoding-and-how-it-works/">Base64 的工作原理</a>。</li>
+<li><strong>无法单独缓存。</strong>普通图片会被浏览器缓存并在各页面间复用。内嵌图片则会在每次下载包含它的 HTML 或 CSS 时重新下载。</li>
+<li><strong>文件更大，解析更慢。</strong>样式表中的内嵌数据会延迟整个页面的显示，因为 CSS 在下载并解析完成前会阻塞渲染。</li>
+<li><strong>更难维护。</strong>代码中间夹着一长串编码字符串，难以阅读、审查和更新。</li>
+<li><strong>压缩效果变差。</strong>JPEG、PNG 和 WebP 等已压缩的格式在经过 Base64 编码后，几乎无法从 gzip 或 Brotli 中获益。</li>
+</ul>
+
+<h2>实用经验法则</h2>
+<p>只内嵌体积小、很少变化、只使用一次的资源：</p>
+<ul>
+<li><strong>适合内嵌：</strong>极小的图标、加载动画、小型装饰背景、占位图，以及几 KB 以内的任何资源。</li>
+<li><strong>不适合内嵌：</strong>照片、头图、超过约 10 KB 的内容，以及在许多页面中出现的任何图片。</li>
+</ul>
+<p>确切的阈值取决于你的具体情况，但原则始终不变：文件越大、复用越多，内嵌带来的损失就越大。如有疑问，请在修改前后分别测量页面体积和加载时间。</p>
+
+<h2>SVG：不必使用 Base64</h2>
+<p>SVG 本身就是文本，因此不需要 Base64。你可以把它作为 URL 编码的文本放进 data URI，通常体积更小：</p>
+<div class="code-block">background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Ccircle cx='5' cy='5' r='4' fill='teal'/%3E%3C/svg%3E");</div>
+<p>对 SVG 进行 Base64 编码会让它比必要的体积大约三分之一，还会妨碍 gzip 有效压缩它。</p>
+
+<h2>内容安全策略（CSP）</h2>
+<p>如果你的网站发送了 Content Security Policy 标头，除非你允许，否则 data URI 会被拦截。对于图片，需要在 <code>img-src</code> 指令中加入 <code>data:</code>：</p>
+<div class="code-block">Content-Security-Policy: img-src 'self' data:</div>
+<p>只在确实需要的指令中允许 <code>data:</code>。为脚本放开它会削弱你对注入攻击的防护。</p>
+
+<h2>电子邮件是特例</h2>
+<p>HTML 邮件对 data URI 的支持并不一致：有些客户端会显示它们，而另一些（尤其是多个网页邮箱服务）会将其移除。想详细了解哪些做法可行，请阅读<a href="/zh/blog/how-to-embed-images-in-html-emails-using-base64/">如何使用 Base64 在 HTML 邮件中嵌入图片</a>。</p>
+
+<h2>如何创建 data URI</h2>
+<p>最快的方式是使用<a href="/zh/image-to-base64">图片转 Base64 工具</a>：拖入图片，复制现成的 data URI。如果你更想用代码完成，请参阅 <a href="/zh/blog/how-to-encode-and-decode-base64-in-javascript/">JavaScript</a>、<a href="/zh/blog/how-to-encode-and-decode-base64-in-python/">Python</a> 或<a href="/zh/blog/base64-encode-decode-command-line-linux-macos-windows/">命令行</a>指南。要从 data URI 中还原原始文件，请把 Base64 部分粘贴到 <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>。</p>
+
+  </article>
+</main>
+<footer>
+<span>encodeb64.com &copy; 2026</span>
+  <div class="footer-links">
+    <a href="/about/">关于</a>
+    <a href="/privacy-policy/">隐私政策</a>
+    <a href="/terms-of-use/">使用条款</a>
+    <a href="/contact/">联系</a>
+    <a href="/zh/blog/">博客</a>
+  </div>
+  <span class="footer-right">
+    <span>也可以试试：</span>
+    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+  </span>
+<span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
+  开发者： <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>
+</span>
+</footer>
+<script>
+  const langBtn = document.getElementById('langBtn');
+  const langDropdown = document.getElementById('langDropdown');
+  langBtn.addEventListener('click', () => {
+    const open = langDropdown.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.lang-selector')) {
+      langDropdown.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', false);
+    }
+  });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      window.location.href = ({en:'/blog/base64-data-uris-when-to-inline-images-css-html/',es:'/es/blog/base64-data-uris-when-to-inline-images-css-html/',pt:'/pt/blog/base64-data-uris-when-to-inline-images-css-html/',fr:'/fr/blog/base64-data-uris-when-to-inline-images-css-html/',de:'/de/blog/base64-data-uris-when-to-inline-images-css-html/',it:'/it/blog/base64-data-uris-when-to-inline-images-css-html/',zh:'/zh/blog/base64-data-uris-when-to-inline-images-css-html/',ru:'/ru/blog/base64-data-uris-when-to-inline-images-css-html/',ja:'/ja/blog/base64-data-uris-when-to-inline-images-css-html/',ko:'/ko/blog/base64-data-uris-when-to-inline-images-css-html/',nl:'/nl/blog/base64-data-uris-when-to-inline-images-css-html/',hi:'/hi/blog/base64-data-uris-when-to-inline-images-css-html/'})[lang] || '/blog/base64-data-uris-when-to-inline-images-css-html/';;
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Data URI в Base64: когда встраивать изображения в HTML и CSS</title>
+  <meta name="description" content="Как работают data URI, их точный синтаксис и когда встраивание изображений в Base64 помогает или вредит. Рекомендации по размеру, кэш и CSP." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d0d14" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://encodeb64.com/ru/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="en" href="https://encodeb64.com/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="es" href="https://encodeb64.com/es/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="pt" href="https://encodeb64.com/pt/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="fr" href="https://encodeb64.com/fr/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="de" href="https://encodeb64.com/de/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="it" href="https://encodeb64.com/it/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="zh" href="https://encodeb64.com/zh/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="ru" href="https://encodeb64.com/ru/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="ja" href="https://encodeb64.com/ja/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="ko" href="https://encodeb64.com/ko/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="nl" href="https://encodeb64.com/nl/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="hi" href="https://encodeb64.com/hi/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <link rel="alternate" hreflang="x-default" href="https://encodeb64.com/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="encodeb64.com" />
+  <meta property="og:title" content="Data URI в Base64: когда встраивать изображения в HTML и CSS" />
+  <meta property="og:description" content="Как работают data URI, их точный синтаксис и когда встраивание изображений в Base64 помогает или вредит. Рекомендации по размеру, кэш и CSP." />
+  <meta property="og:url" content="https://encodeb64.com/ru/blog/base64-data-uris-when-to-inline-images-css-html/" />
+  <meta property="og:image" content="https://encodeb64.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Data URI в Base64: когда встраивать изображения в HTML и CSS" />
+  <meta name="twitter:description" content="Как работают data URI, их точный синтаксис и когда встраивание изображений в Base64 помогает или вредит. Рекомендации по размеру, кэш и CSP." />
+  <meta name="twitter:image" content="https://encodeb64.com/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
+
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      var _ch = document.createElement('script');
+      _ch.async = true;
+      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      document.head.appendChild(_ch);
+      document.addEventListener('DOMContentLoaded', function () {
+        window.cookiehub && window.cookiehub.load({});
+      });
+    }
+  </script>
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      var _ga = document.createElement('script');
+      _ga.async = true;
+      _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
+      document.head.appendChild(_ga);
+      gtag('js', new Date());
+      gtag('config', 'G-MYEHD96X9Q');
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d0d14; --bg2: #12121c; --bg3: #1a1a28;
+      --cyan: #00e5cc; --cyan-dim: rgba(0,229,204,0.12); --cyan-glow: rgba(0,229,204,0.3); --cyan-light: #5ef5e5;
+      --glass-bg: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+      --text: #e8e8f0; --text-muted: #7a7a9a; --text-dim: #4a4a6a;
+      --radius: 14px; --radius-sm: 8px;
+      --mono: 'JetBrains Mono', monospace; --sans: 'Sora', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background-color: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(0,229,204,0.1) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; z-index: 0; }
+    body::after { content: ''; position: fixed; top: -20%; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse, rgba(0,229,204,0.055) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(13,13,20,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 0 24px; height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; flex-shrink: 0; }
+    .logo span.encode { color: #ffffff; } .logo span.b64 { color: var(--cyan); }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .nav-pills { display: flex; gap: 6px; }
+    .nav-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; padding: 5px 14px; border-radius: 20px; text-decoration: none; transition: all 0.2s; border: 1px solid var(--glass-border); color: var(--text-muted); background: transparent; }
+    .nav-pill:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .nav-pill.current { color: #0d0d14; background: var(--cyan); font-weight: 600; border-color: transparent; }
+    .lang-selector { position: relative; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 5px 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; color: var(--text-muted); cursor: pointer; font-family: var(--sans); font-size: 0.78rem; transition: all 0.2s; white-space: nowrap; }
+    .lang-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .lang-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 200; max-height: 60vh; overflow-y: auto; }
+    .lang-dropdown.open { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 8px; padding: 9px 14px; cursor: pointer; font-size: 0.82rem; color: var(--text-muted); transition: all 0.15s; }
+    .lang-option:hover { background: var(--cyan-dim); color: var(--text); }
+    .lang-option.selected { color: var(--cyan); }
+    main { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px 0 8px; font-size: 0.78rem; color: var(--text-dim); flex-wrap: wrap; text-align: center; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; } .breadcrumb a:hover { color: var(--cyan); }
+    .breadcrumb-sep { color: var(--text-dim); } .breadcrumb-current { color: var(--text-muted); }
+    .page-hero { padding: 40px 0 28px; text-align: center; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; line-height: 1.15; margin-bottom: 10px; }
+    .page-hero p.sub { color: var(--text-muted); font-size: 1rem; font-weight: 300; }
+    .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 20px; }
+    .glass-card h2 { font-size: 1.1rem; font-weight: 600; color: var(--cyan); margin: 28px 0 10px; }
+    .glass-card h2:first-of-type { margin-top: 0; }
+    .glass-card p { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 10px; }
+    .glass-card p:last-child { margin-bottom: 0; }
+    .glass-card ul, .glass-card ol { list-style: none; padding: 0; margin: 6px 0 12px; }
+    .glass-card ol { counter-reset: step; }
+    .glass-card ul li, .glass-card ol li { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); padding: 2px 0 2px 22px; position: relative; }
+    .glass-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+    .glass-card ol li { counter-increment: step; }
+    .glass-card ol li::before { content: counter(step) '.'; position: absolute; left: 0; color: var(--cyan); font-weight: 600; }
+    .glass-card a { color: var(--cyan); text-decoration: none; } .glass-card a:hover { text-decoration: underline; }
+    .glass-card code { font-family: var(--mono); background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px; color: var(--cyan-light); font-size: 0.85em; word-break: break-all; }
+    .code-block { font-family: var(--mono); background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 14px 16px; border-radius: var(--radius-sm); color: var(--cyan-light); font-size: 0.82rem; overflow-x: auto; margin: 12px 0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; }
+    .article-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 8px; }
+    .blog-card { display: block; }
+    .blog-card h2 { margin-top: 0 !important; }
+    .blog-card h2 a { color: var(--text); }
+    .blog-card h2 a:hover { color: var(--cyan); text-decoration: none; }
+    .blog-card + .blog-card { margin-top: 4px; }
+    .readmore { display: inline-block; margin-top: 6px; font-weight: 600; }
+    footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px 24px; border-top: 1px solid var(--glass-border); font-size: 0.82rem; color: var(--text-dim); max-width: 900px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a, footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover, footer a:hover { color: var(--cyan); }
+    footer .footer-right a { color: var(--cyan); }
+    @media (max-width: 640px) {
+      header { padding: 0 16px; }
+      .nav-pill { padding: 4px 10px; font-size: 0.73rem; }
+      .lang-btn span { display: none; }
+      .glass-card { padding: 22px 20px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Data URI в Base64: когда встраивать изображения в HTML и CSS",
+    "author": {"@type": "Organization", "name": "MpmDigital", "url": "https://mpmdigital.es/"},
+    "publisher": {"@type": "Organization", "name": "encodeb64.com", "url": "https://encodeb64.com/"},
+    "datePublished": "2026-11-12",
+    "inLanguage": "ru",
+    "url": "https://encodeb64.com/ru/blog/base64-data-uris-when-to-inline-images-css-html/"
+  }
+  </script>
+</head>
+<body>
+<header>
+  <a href="/ru/" class="logo">
+    <span class="encode">encode</span><span class="b64">B64</span>
+  </a>
+  <div class="header-right">
+    <nav class="nav-pills">
+      <a href="/ru/" class="nav-pill">Кодировать</a>
+      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">Декодировать</a>
+      <a href="/ru/image-to-base64" class="nav-pill">Изображение в Base64</a>
+      <a href="/ru/blog/" class="nav-pill current">Блог</a>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="langLabel">Русский</span>
+        <svg viewBox="0 0 10 6" fill="currentColor" width="10" height="6"><path d="M0 0l5 6 5-6z"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown" role="listbox">
+        <div class="lang-option" data-lang="en" role="option">🇺🇸 English</div>
+        <div class="lang-option" data-lang="es" role="option">🇪🇸 Español</div>
+        <div class="lang-option" data-lang="pt" role="option">🇧🇷 Português</div>
+        <div class="lang-option" data-lang="fr" role="option">🇫🇷 Français</div>
+        <div class="lang-option" data-lang="de" role="option">🇩🇪 Deutsch</div>
+        <div class="lang-option" data-lang="it" role="option">🇮🇹 Italiano</div>
+        <div class="lang-option" data-lang="zh" role="option">🇨🇳 中文</div>
+        <div class="lang-option selected" data-lang="ru" role="option">🇷🇺 Русский</div>
+        <div class="lang-option" data-lang="ja" role="option">🇯🇵 日本語</div>
+        <div class="lang-option" data-lang="ko" role="option">🇰🇷 한국어</div>
+        <div class="lang-option" data-lang="nl" role="option">🇳🇱 Nederlands</div>
+        <div class="lang-option" data-lang="hi" role="option">🇮🇳 हिन्दी</div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <nav class="breadcrumb">
+    <a href="/ru/">encodeb64.com</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <a href="/ru/blog/">Блог</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <span class="breadcrumb-current">Data URI в Base64: когда встраивать изображения в HTML и CSS</span>
+  </nav>
+  <div class="page-hero">
+    <h1>Data URI в Base64: когда встраивать изображения в HTML и CSS</h1>
+    <div class="article-meta"><span>Ноябрь 2026</span><span>7 мин чтения</span></div>
+  </div>
+  <article class="glass-card">
+<p>Data URI позволяет поместить содержимое файла прямо в URL, чтобы браузер мог показать изображение, шрифт или документ без отдельного сетевого запроса. Base64 — обычный способ записи двоичных данных в data URI. Встраивание может быть удачной оптимизацией или ошибкой производительности — в зависимости от файла и страницы. В этом руководстве объясняется, как работают data URI, и даны практические правила их применения.</p>
+
+<h2>Синтаксис data URI</h2>
+<p>Data URI имеет такую структуру:</p>
+<div class="code-block">data:[&lt;media type&gt;][;base64],&lt;data&gt;</div>
+<ul>
+<li><code>data:</code> — схема.</li>
+<li>Необязательный тип носителя — это MIME-тип, например <code>image/png</code>. Если его опустить, по умолчанию используется <code>text/plain</code>.</li>
+<li><code>;base64</code> сообщает браузеру, что данные закодированы в Base64. Без него данные считаются текстом в URL-кодировке.</li>
+<li>После запятой идут сами данные.</li>
+</ul>
+<p>Вот полный рабочий пример: прозрачный GIF размером 1×1.</p>
+<div class="code-block">data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7</div>
+
+<h2>Data URI в HTML</h2>
+<p>Размещайте data URI везде, где допускается URL. В теге изображения:</p>
+<div class="code-block">&lt;img alt="Pixel" width="1" height="1"
+     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"&gt;</div>
+<p>Он работает и для фавиконок, элементов <code>&lt;source&gt;</code> и даже для ссылок на скачиваемые файлы.</p>
+
+<h2>Data URI в CSS</h2>
+<p>В таблице стилей оберните URI в <code>url()</code>:</p>
+<div class="code-block">.icon-check {
+  width: 16px;
+  height: 16px;
+  background: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") no-repeat center;
+}</div>
+<p>Встраивание небольших иконок и фоновых изображений в CSS избавляет от запроса на каждое изображение, а картинка доступна сразу после загрузки таблицы стилей.</p>
+
+<h2>Преимущества</h2>
+<ul>
+<li><strong>Меньше запросов.</strong> Каждый встроенный файл убирает один HTTP-запрос. При HTTP/1.1 это имело огромное значение и по-прежнему помогает на медленных соединениях или с высокой задержкой.</li>
+<li><strong>Нет «битых» изображений.</strong> Картинка не может не загрузиться из-за отсутствующего или заблокированного файла.</li>
+<li><strong>Самодостаточные документы.</strong> Один HTML-файл может содержать всё необходимое — удобно для отчётов, офлайн-страниц и некоторых почтовых клиентов.</li>
+</ul>
+
+<h2>Недостатки</h2>
+<ul>
+<li><strong>Примерно на 33 % больше.</strong> Base64 превращает каждые 3 байта в 4 символа, поэтому изображение в 30 КБ становится около 40 КБ текста. Причину смотрите в статье <a href="/ru/blog/what-is-base64-encoding-and-how-it-works/">как работает Base64</a>.</li>
+<li><strong>Нет отдельного кэша.</strong> Обычное изображение браузер кэширует и повторно использует на разных страницах. Встроенное изображение скачивается заново каждый раз, когда загружается содержащий его HTML или CSS.</li>
+<li><strong>Файлы больше и медленнее обрабатываются.</strong> Встроенные в таблицу стилей данные задерживают отображение всей страницы, поскольку CSS блокирует отрисовку, пока не будет загружен и разобран.</li>
+<li><strong>Сложнее сопровождать.</strong> Длинную закодированную строку посреди кода трудно читать, проверять и обновлять.</li>
+<li><strong>Сжатие помогает меньше.</strong> Уже сжатые форматы — JPEG, PNG и WebP — почти ничего не выигрывают от gzip или Brotli, если закодированы в Base64.</li>
+</ul>
+
+<h2>Практическое правило</h2>
+<p>Встраивайте только небольшие, редко меняющиеся ресурсы, которые используются один раз:</p>
+<ul>
+<li><strong>Хорошие кандидаты:</strong> крошечные иконки, индикаторы загрузки, небольшие декоративные фоны, изображения-заглушки и всё размером в несколько килобайт.</li>
+<li><strong>Плохие кандидаты:</strong> фотографии, главные изображения, всё, что больше примерно 10 КБ, и любые картинки, встречающиеся на многих страницах.</li>
+</ul>
+<p>Точный порог зависит от вашей конфигурации, но принцип неизменен: чем больше файл и чем чаще он используется повторно, тем больше вы теряете от встраивания. Если сомневаетесь, измерьте вес страницы и время загрузки до и после изменения.</p>
+
+<h2>SVG: обойдитесь без Base64</h2>
+<p>SVG — это текст, поэтому Base64 ему не нужен. Его можно поместить в data URI как текст в URL-кодировке, обычно это компактнее:</p>
+<div class="code-block">background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Ccircle cx='5' cy='5' r='4' fill='teal'/%3E%3C/svg%3E");</div>
+<p>Кодирование SVG в Base64 делает его примерно на треть больше необходимого и мешает gzip хорошо его сжимать.</p>
+
+<h2>Content Security Policy</h2>
+<p>Если ваш сайт отправляет заголовок Content Security Policy, data URI блокируются, пока вы их не разрешите. Для изображений добавьте <code>data:</code> в директиву <code>img-src</code>:</p>
+<div class="code-block">Content-Security-Policy: img-src 'self' data:</div>
+<p>Разрешайте <code>data:</code> только в тех директивах, где это необходимо. Разрешение для скриптов ослабило бы защиту от атак внедрения.</p>
+
+<h2>Электронная почта — особый случай</h2>
+<p>Поддержка data URI в HTML-письмах непоследовательна: одни клиенты их показывают, другие — в частности, несколько веб-почтовых сервисов — удаляют. Подробнее о том, что работает, читайте в статье <a href="/ru/blog/how-to-embed-images-in-html-emails-using-base64/">Как встроить изображения в HTML-письма с помощью Base64</a>.</p>
+
+<h2>Как создать data URI</h2>
+<p>Быстрее всего — <a href="/ru/image-to-base64">конвертер изображений в Base64</a>: перетащите картинку и скопируйте готовый data URI. Если хотите делать это в коде, смотрите руководства по <a href="/ru/blog/how-to-encode-and-decode-base64-in-javascript/">JavaScript</a>, <a href="/ru/blog/how-to-encode-and-decode-base64-in-python/">Python</a> или <a href="/ru/blog/base64-encode-decode-command-line-linux-macos-windows/">командной строке</a>. Чтобы получить исходный файл из data URI, вставьте часть Base64 на <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>.</p>
+
+  </article>
+</main>
+<footer>
+<span>encodeb64.com &copy; 2026</span>
+  <div class="footer-links">
+    <a href="/about/">О нас</a>
+    <a href="/privacy-policy/">Политика конфиденциальности</a>
+    <a href="/terms-of-use/">Условия использования</a>
+    <a href="/contact/">Контакты</a>
+    <a href="/ru/blog/">Блог</a>
+  </div>
+  <span class="footer-right">
+    <span>Попробуйте также:</span>
+    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+  </span>
+<span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
+  Разработано: <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>
+</span>
+</footer>
+<script>
+  const langBtn = document.getElementById('langBtn');
+  const langDropdown = document.getElementById('langDropdown');
+  langBtn.addEventListener('click', () => {
+    const open = langDropdown.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.lang-selector')) {
+      langDropdown.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', false);
+    }
+  });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      window.location.href = ({en:'/blog/base64-data-uris-when-to-inline-images-css-html/',es:'/es/blog/base64-data-uris-when-to-inline-images-css-html/',pt:'/pt/blog/base64-data-uris-when-to-inline-images-css-html/',fr:'/fr/blog/base64-data-uris-when-to-inline-images-css-html/',de:'/de/blog/base64-data-uris-when-to-inline-images-css-html/',it:'/it/blog/base64-data-uris-when-to-inline-images-css-html/',zh:'/zh/blog/base64-data-uris-when-to-inline-images-css-html/',ru:'/ru/blog/base64-data-uris-when-to-inline-images-css-html/',ja:'/ja/blog/base64-data-uris-when-to-inline-images-css-html/',ko:'/ko/blog/base64-data-uris-when-to-inline-images-css-html/',nl:'/nl/blog/base64-data-uris-when-to-inline-images-css-html/',hi:'/hi/blog/base64-data-uris-when-to-inline-images-css-html/'})[lang] || '/blog/base64-data-uris-when-to-inline-images-css-html/';;
+    });
+  });
+</script>
+</body>
+</html>

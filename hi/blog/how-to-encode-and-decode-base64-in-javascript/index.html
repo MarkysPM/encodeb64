@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>JavaScript में Base64 एन्कोड और डिकोड कैसे करें</title>
+  <meta name="description" content="ब्राउज़र और Node.js में btoa, atob, TextEncoder और Buffer से Base64 एन्कोड और डिकोड करें। Unicode, Base64URL, फ़ाइलें और आम त्रुटियाँ शामिल हैं।" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d0d14" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://encodeb64.com/hi/blog/how-to-encode-and-decode-base64-in-javascript/" />
+  <link rel="alternate" hreflang="en" href="https://encodeb64.com/blog/how-to-encode-and-decode-base64-in-javascript/" />
+  <link rel="alternate" hreflang="es" href="https://encodeb64.com/es/blog/how-to-encode-and-decode-base64-in-javascript/" />
+  <link rel="alternate" hreflang="pt" href="https://encodeb64.com/pt/blog/how-to-encode-and-decode-base64-in-javascript/" />
+  <link rel="alternate" hreflang="fr" href="https://encodeb64.com/fr/blog/how-to-encode-and-decode-base64-in-javascript/" />
+  <link rel="alternate" hreflang="de" href="https://encodeb64.com/de/blog/how-to-encode-and-decode-base64-in-javascript/" />
+  <link rel="alternate" hreflang="it" href="https://encodeb64.com/it/blog/how-to-encode-and-decode-base64-in-javascript/" />
+  <link rel="alternate" hreflang="zh" href="https://encodeb64.com/zh/blog/how-to-encode-and-decode-base64-in-javascript/" />
+  <link rel="alternate" hreflang="ru" href="https://encodeb64.com/ru/blog/how-to-encode-and-decode-base64-in-javascript/" />
+  <link rel="alternate" hreflang="ja" href="https://encodeb64.com/ja/blog/how-to-encode-and-decode-base64-in-javascript/" />
+  <link rel="alternate" hreflang="ko" href="https://encodeb64.com/ko/blog/how-to-encode-and-decode-base64-in-javascript/" />
+  <link rel="alternate" hreflang="nl" href="https://encodeb64.com/nl/blog/how-to-encode-and-decode-base64-in-javascript/" />
+  <link rel="alternate" hreflang="hi" href="https://encodeb64.com/hi/blog/how-to-encode-and-decode-base64-in-javascript/" />
+  <link rel="alternate" hreflang="x-default" href="https://encodeb64.com/blog/how-to-encode-and-decode-base64-in-javascript/" />
+  <meta property="og:locale" content="hi_IN" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="encodeb64.com" />
+  <meta property="og:title" content="JavaScript में Base64 एन्कोड और डिकोड कैसे करें" />
+  <meta property="og:description" content="ब्राउज़र और Node.js में btoa, atob, TextEncoder और Buffer से Base64 एन्कोड और डिकोड करें। Unicode, Base64URL, फ़ाइलें और आम त्रुटियाँ शामिल हैं।" />
+  <meta property="og:url" content="https://encodeb64.com/hi/blog/how-to-encode-and-decode-base64-in-javascript/" />
+  <meta property="og:image" content="https://encodeb64.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="JavaScript में Base64 एन्कोड और डिकोड कैसे करें" />
+  <meta name="twitter:description" content="ब्राउज़र और Node.js में btoa, atob, TextEncoder और Buffer से Base64 एन्कोड और डिकोड करें। Unicode, Base64URL, फ़ाइलें और आम त्रुटियाँ शामिल हैं।" />
+  <meta name="twitter:image" content="https://encodeb64.com/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
+
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      var _ch = document.createElement('script');
+      _ch.async = true;
+      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      document.head.appendChild(_ch);
+      document.addEventListener('DOMContentLoaded', function () {
+        window.cookiehub && window.cookiehub.load({});
+      });
+    }
+  </script>
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      var _ga = document.createElement('script');
+      _ga.async = true;
+      _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
+      document.head.appendChild(_ga);
+      gtag('js', new Date());
+      gtag('config', 'G-MYEHD96X9Q');
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d0d14; --bg2: #12121c; --bg3: #1a1a28;
+      --cyan: #00e5cc; --cyan-dim: rgba(0,229,204,0.12); --cyan-glow: rgba(0,229,204,0.3); --cyan-light: #5ef5e5;
+      --glass-bg: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+      --text: #e8e8f0; --text-muted: #7a7a9a; --text-dim: #4a4a6a;
+      --radius: 14px; --radius-sm: 8px;
+      --mono: 'JetBrains Mono', monospace; --sans: 'Sora', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background-color: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(0,229,204,0.1) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; z-index: 0; }
+    body::after { content: ''; position: fixed; top: -20%; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse, rgba(0,229,204,0.055) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(13,13,20,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 0 24px; height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; flex-shrink: 0; }
+    .logo span.encode { color: #ffffff; } .logo span.b64 { color: var(--cyan); }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .nav-pills { display: flex; gap: 6px; }
+    .nav-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; padding: 5px 14px; border-radius: 20px; text-decoration: none; transition: all 0.2s; border: 1px solid var(--glass-border); color: var(--text-muted); background: transparent; }
+    .nav-pill:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .nav-pill.current { color: #0d0d14; background: var(--cyan); font-weight: 600; border-color: transparent; }
+    .lang-selector { position: relative; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 5px 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; color: var(--text-muted); cursor: pointer; font-family: var(--sans); font-size: 0.78rem; transition: all 0.2s; white-space: nowrap; }
+    .lang-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .lang-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 200; max-height: 60vh; overflow-y: auto; }
+    .lang-dropdown.open { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 8px; padding: 9px 14px; cursor: pointer; font-size: 0.82rem; color: var(--text-muted); transition: all 0.15s; }
+    .lang-option:hover { background: var(--cyan-dim); color: var(--text); }
+    .lang-option.selected { color: var(--cyan); }
+    main { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px 0 8px; font-size: 0.78rem; color: var(--text-dim); flex-wrap: wrap; text-align: center; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; } .breadcrumb a:hover { color: var(--cyan); }
+    .breadcrumb-sep { color: var(--text-dim); } .breadcrumb-current { color: var(--text-muted); }
+    .page-hero { padding: 40px 0 28px; text-align: center; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; line-height: 1.15; margin-bottom: 10px; }
+    .page-hero p.sub { color: var(--text-muted); font-size: 1rem; font-weight: 300; }
+    .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 20px; }
+    .glass-card h2 { font-size: 1.1rem; font-weight: 600; color: var(--cyan); margin: 28px 0 10px; }
+    .glass-card h2:first-of-type { margin-top: 0; }
+    .glass-card p { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 10px; }
+    .glass-card p:last-child { margin-bottom: 0; }
+    .glass-card ul, .glass-card ol { list-style: none; padding: 0; margin: 6px 0 12px; }
+    .glass-card ol { counter-reset: step; }
+    .glass-card ul li, .glass-card ol li { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); padding: 2px 0 2px 22px; position: relative; }
+    .glass-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+    .glass-card ol li { counter-increment: step; }
+    .glass-card ol li::before { content: counter(step) '.'; position: absolute; left: 0; color: var(--cyan); font-weight: 600; }
+    .glass-card a { color: var(--cyan); text-decoration: none; } .glass-card a:hover { text-decoration: underline; }
+    .glass-card code { font-family: var(--mono); background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px; color: var(--cyan-light); font-size: 0.85em; word-break: break-all; }
+    .code-block { font-family: var(--mono); background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 14px 16px; border-radius: var(--radius-sm); color: var(--cyan-light); font-size: 0.82rem; overflow-x: auto; margin: 12px 0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; }
+    .article-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 8px; }
+    .blog-card { display: block; }
+    .blog-card h2 { margin-top: 0 !important; }
+    .blog-card h2 a { color: var(--text); }
+    .blog-card h2 a:hover { color: var(--cyan); text-decoration: none; }
+    .blog-card + .blog-card { margin-top: 4px; }
+    .readmore { display: inline-block; margin-top: 6px; font-weight: 600; }
+    footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px 24px; border-top: 1px solid var(--glass-border); font-size: 0.82rem; color: var(--text-dim); max-width: 900px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a, footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover, footer a:hover { color: var(--cyan); }
+    footer .footer-right a { color: var(--cyan); }
+    @media (max-width: 640px) {
+      header { padding: 0 16px; }
+      .nav-pill { padding: 4px 10px; font-size: 0.73rem; }
+      .lang-btn span { display: none; }
+      .glass-card { padding: 22px 20px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "JavaScript में Base64 एन्कोड और डिकोड कैसे करें",
+    "author": {"@type": "Organization", "name": "MpmDigital", "url": "https://mpmdigital.es/"},
+    "publisher": {"@type": "Organization", "name": "encodeb64.com", "url": "https://encodeb64.com/"},
+    "datePublished": "2026-11-12",
+    "inLanguage": "hi",
+    "url": "https://encodeb64.com/hi/blog/how-to-encode-and-decode-base64-in-javascript/"
+  }
+  </script>
+</head>
+<body>
+<header>
+  <a href="/hi/" class="logo">
+    <span class="encode">encode</span><span class="b64">B64</span>
+  </a>
+  <div class="header-right">
+    <nav class="nav-pills">
+      <a href="/hi/" class="nav-pill">एनकोड</a>
+      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">डीकोड</a>
+      <a href="/hi/image-to-base64" class="nav-pill">छवि से Base64</a>
+      <a href="/hi/blog/" class="nav-pill current">ब्लॉग</a>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="langLabel">हिन्दी</span>
+        <svg viewBox="0 0 10 6" fill="currentColor" width="10" height="6"><path d="M0 0l5 6 5-6z"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown" role="listbox">
+        <div class="lang-option" data-lang="en" role="option">🇺🇸 English</div>
+        <div class="lang-option" data-lang="es" role="option">🇪🇸 Español</div>
+        <div class="lang-option" data-lang="pt" role="option">🇧🇷 Português</div>
+        <div class="lang-option" data-lang="fr" role="option">🇫🇷 Français</div>
+        <div class="lang-option" data-lang="de" role="option">🇩🇪 Deutsch</div>
+        <div class="lang-option" data-lang="it" role="option">🇮🇹 Italiano</div>
+        <div class="lang-option" data-lang="zh" role="option">🇨🇳 中文</div>
+        <div class="lang-option" data-lang="ru" role="option">🇷🇺 Русский</div>
+        <div class="lang-option" data-lang="ja" role="option">🇯🇵 日本語</div>
+        <div class="lang-option" data-lang="ko" role="option">🇰🇷 한국어</div>
+        <div class="lang-option" data-lang="nl" role="option">🇳🇱 Nederlands</div>
+        <div class="lang-option selected" data-lang="hi" role="option">🇮🇳 हिन्दी</div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <nav class="breadcrumb">
+    <a href="/hi/">encodeb64.com</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <a href="/hi/blog/">ब्लॉग</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <span class="breadcrumb-current">JavaScript में Base64 एन्कोड और डिकोड कैसे करें</span>
+  </nav>
+  <div class="page-hero">
+    <h1>JavaScript में Base64 एन्कोड और डिकोड कैसे करें</h1>
+    <div class="article-meta"><span>नवंबर 2026</span><span>8 मिनट पढ़ने का समय</span></div>
+  </div>
+  <article class="glass-card">
+<p>JavaScript में Base64 के साथ काम करने के कई तरीके हैं, और सही तरीका इस पर निर्भर करता है कि आपका कोड कहाँ चलता है। ब्राउज़र <code>btoa()</code> और <code>atob()</code> देते हैं। Node.js <code>Buffer</code> देता है। दोनों वातावरणों में Unicode को सही ढंग से संभालने के लिए <code>TextEncoder</code> और <code>TextDecoder</code> भी इस्तेमाल किए जा सकते हैं। यह गाइड हर तरीके और उन जालों को कवर करती है जिनमें ज़्यादातर डेवलपर फँस जाते हैं।</p>
+
+<h2>btoa() और atob() से बुनियादी एन्कोडिंग</h2>
+<p><code>btoa()</code> (binary to ASCII) किसी स्ट्रिंग को Base64 में एन्कोड करता है, और <code>atob()</code> (ASCII to binary) उसे डिकोड करता है। ये सभी आधुनिक ब्राउज़रों और Node.js 16 व उसके बाद के संस्करणों में उपलब्ध हैं।</p>
+<div class="code-block">const encoded = btoa('Hello, World!');
+console.log(encoded); // "SGVsbG8sIFdvcmxkIQ=="
+
+const decoded = atob(encoded);
+console.log(decoded); // "Hello, World!"</div>
+<p>यह सादे ASCII टेक्स्ट के लिए काम करता है। समस्या किसी भी और चीज़ से शुरू होती है।</p>
+
+<h2>Unicode की समस्या</h2>
+<p><code>btoa()</code> हर वर्ण को एक बाइट मानता है, इसलिए यह केवल 0 से 255 कोड पॉइंट वाले वर्ण स्वीकार करता है। इमोजी या ज़्यादातर गैर-लैटिन टेक्स्ट देने पर त्रुटि आती है:</p>
+<div class="code-block">btoa('caf&eacute; &#9749;');
+// Uncaught InvalidCharacterError: String contains an invalid character</div>
+<p>समाधान यह है कि पहले स्ट्रिंग को UTF-8 बाइट्स में बदलें, फिर उन बाइट्स को एन्कोड करें।</p>
+
+<h2>Unicode टेक्स्ट को सही ढंग से एन्कोड करना</h2>
+<p><code>TextEncoder</code> किसी स्ट्रिंग को UTF-8 बाइट्स के <code>Uint8Array</code> में बदलता है। उन बाइट्स को बाइनरी स्ट्रिंग बनाएँ और <code>btoa()</code> को दें:</p>
+<div class="code-block">function encodeBase64(text) {
+  const bytes = new TextEncoder().encode(text);
+  let binary = '';
+  bytes.forEach((b) =&gt; (binary += String.fromCharCode(b)));
+  return btoa(binary);
+}
+
+function decodeBase64(base64) {
+  const binary = atob(base64);
+  const bytes = Uint8Array.from(binary, (c) =&gt; c.charCodeAt(0));
+  return new TextDecoder().decode(bytes);
+}
+
+encodeBase64('caf&eacute; &#9749;');            // "Y2Fmw6kg4piV"
+decodeBase64('Y2Fmw6kg4piV');       // "caf&eacute; &#9749;"</div>
+<p>जब भी इनपुट में सामान्य ASCII से ज़्यादा कुछ हो सकता है, इन दोनों फ़ंक्शन का उपयोग करें। ये उपयोगकर्ताओं द्वारा लिखे किसी भी टेक्स्ट, जैसे नाम, टिप्पणियाँ या संदेश, के लिए भी काम करते हैं।</p>
+
+<h2>Buffer के साथ Node.js में Base64</h2>
+<p>Node.js में सबसे सरल और तेज़ विकल्प <code>Buffer</code> है, जो आपके लिए UTF-8 संभाल लेता है:</p>
+<div class="code-block">const encoded = Buffer.from('caf&eacute; &#9749;', 'utf8').toString('base64');
+console.log(encoded); // "Y2Fmw6kg4piV"
+
+const decoded = Buffer.from(encoded, 'base64').toString('utf8');
+console.log(decoded); // "caf&eacute; &#9749;"</div>
+<p>Node.js में <code>btoa()</code> और <code>atob()</code> भी मौजूद हैं, लेकिन सर्वर कोड के लिए <code>Buffer</code> बेहतर है क्योंकि यह बाइनरी डेटा के साथ सीधे काम करता है और इसे स्ट्रिंग के रास्ते से गुज़रने की ज़रूरत नहीं पड़ती।</p>
+
+<h2>JavaScript में Base64URL</h2>
+<p>Base64URL <code>+</code> को <code>-</code>, <code>/</code> को <code>_</code> से बदलता है और आम तौर पर <code>=</code> पैडिंग हटा देता है। Node.js 15.7 और उसके बाद के संस्करणों में आप इसे सीधे माँग सकते हैं:</p>
+<div class="code-block">Buffer.from('subjects?_d').toString('base64url'); // "c3ViamVjdHM_X2Q"</div>
+<p>ब्राउज़र में मानक आउटपुट को खुद बदलें:</p>
+<div class="code-block">function toBase64Url(base64) {
+  return base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+function fromBase64Url(base64url) {
+  let base64 = base64url.replace(/-/g, '+').replace(/_/g, '/');
+  while (base64.length % 4) base64 += '=';
+  return base64;
+}</div>
+<p><code>atob()</code> को कॉल करने से पहले पैडिंग वापस जोड़ना न भूलें, क्योंकि कुछ डिकोडर ऐसे इनपुट अस्वीकार कर देते हैं जिनकी लंबाई चार का गुणज नहीं होती।</p>
+
+<h2>फ़ाइल या इमेज को एन्कोड करना</h2>
+<p>ब्राउज़र में <code>FileReader.readAsDataURL()</code> फ़ाइल पढ़कर पूरा data URI लौटाता है, जिसमें Base64 डेटा पहले से मौजूद होता है:</p>
+<div class="code-block">const input = document.querySelector('input[type="file"]');
+
+input.addEventListener('change', () =&gt; {
+  const reader = new FileReader();
+  reader.onload = () =&gt; {
+    console.log(reader.result);
+    // "data:image/png;base64,iVBORw0KGgo..."
+  };
+  reader.readAsDataURL(input.files[0]);
+});</div>
+<p>केवल Base64 वाला हिस्सा रखना हो तो पहले अल्पविराम तक का सब कुछ हटा दें: <code>reader.result.split(',')[1]</code>। बिना कोड के तेज़ रूपांतरण के लिए <a href="/hi/image-to-base64">इमेज से Base64 कन्वर्टर</a> का उपयोग करें।</p>
+<p>Node.js में फ़ाइल को बफ़र में पढ़ें और उसे एन्कोड करें:</p>
+<div class="code-block">import { readFileSync } from 'node:fs';
+
+const base64 = readFileSync('photo.png').toString('base64');</div>
+
+<h2>आम त्रुटियाँ और समाधान</h2>
+<p><strong>InvalidCharacterError: String contains an invalid character</strong><br>कारण: आपने <code>btoa()</code> को ऐसी स्ट्रिंग दी जिसमें कोड पॉइंट 255 से ऊपर के वर्ण हैं। समाधान: ऊपर दिखाए अनुसार पहले उसे UTF-8 बाइट्स में एन्कोड करें।</p>
+<p><strong>atob() कॉल करते समय InvalidCharacterError</strong><br>कारण: इनपुट में ऐसे वर्ण हैं जो Base64 वर्णमाला में नहीं हैं, अक्सर Base64URL स्ट्रिंग के <code>-</code> और <code>_</code>, या खाली स्थान और लाइन ब्रेक। समाधान: Base64URL को वापस मानक Base64 में बदलें और किनारों की खाली जगह हटाएँ।</p>
+<p><strong>डिकोड किए गए टेक्स्ट में Ã© जैसे अजीब वर्ण दिखना</strong><br>कारण: बाइट्स UTF-8 थे लेकिन उन्हें Latin-1 के रूप में पढ़ा गया, जो <code>atob()</code> डिफ़ॉल्ट रूप से लौटाता है। समाधान: बाइट्स को <code>TextDecoder</code> से डिकोड करें।</p>
+<p><strong>बड़ी फ़ाइलों में आउटपुट का खराब होना</strong><br>कारण: <code>String.fromCharCode(...bytes)</code> से एक विशाल स्ट्रिंग बनाने पर इंजन की आर्गुमेंट सीमा पार हो सकती है। समाधान: बाइट्स पर लूप चलाएँ, उन्हें हिस्सों में प्रोसेस करें, या <code>FileReader</code> अथवा <code>Buffer</code> का उपयोग करें।</p>
+
+<h2>नए API पर एक टिप्पणी</h2>
+<p>नए JavaScript इंजन <code>Uint8Array</code> पर Base64 से और में बदलने के अंतर्निहित मेथड जोड़ रहे हैं। ब्राउज़रों में इनका समर्थन अभी असमान है, इसलिए प्रोडक्शन में इन पर निर्भर होने से पहले ताज़ा संगतता तालिकाएँ देखें। इस गाइड के फ़ंक्शन आज हर जगह काम करते हैं।</p>
+
+<h2>अपने नतीजे जाँचें</h2>
+<p>डीबग करते समय अपने कोड के आउटपुट की तुलना किसी भरोसेमंद टूल से करें। टेक्स्ट को <a href="/hi/">होम पेज के एन्कोडर</a> से एन्कोड करें और स्ट्रिंग को <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a> से डिकोड करें। एन्कोडिंग के पीछे का सिद्धांत जानने के लिए <a href="/hi/blog/what-is-base64-encoding-and-how-it-works/">Base64 एन्कोडिंग क्या है और यह कैसे काम करती है?</a> पढ़ें।</p>
+
+  </article>
+</main>
+<footer>
+<span>encodeb64.com &copy; 2026</span>
+  <div class="footer-links">
+    <a href="/about/">हमारे बारे में</a>
+    <a href="/privacy-policy/">गोपनीयता नीति</a>
+    <a href="/terms-of-use/">उपयोग की शर्तें</a>
+    <a href="/contact/">संपर्क</a>
+    <a href="/hi/blog/">ब्लॉग</a>
+  </div>
+  <span class="footer-right">
+    <span>यह भी आज़माएं:</span>
+    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+  </span>
+<span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
+  द्वारा विकसित <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>
+</span>
+</footer>
+<script>
+  const langBtn = document.getElementById('langBtn');
+  const langDropdown = document.getElementById('langDropdown');
+  langBtn.addEventListener('click', () => {
+    const open = langDropdown.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.lang-selector')) {
+      langDropdown.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', false);
+    }
+  });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      window.location.href = ({en:'/blog/how-to-encode-and-decode-base64-in-javascript/',es:'/es/blog/how-to-encode-and-decode-base64-in-javascript/',pt:'/pt/blog/how-to-encode-and-decode-base64-in-javascript/',fr:'/fr/blog/how-to-encode-and-decode-base64-in-javascript/',de:'/de/blog/how-to-encode-and-decode-base64-in-javascript/',it:'/it/blog/how-to-encode-and-decode-base64-in-javascript/',zh:'/zh/blog/how-to-encode-and-decode-base64-in-javascript/',ru:'/ru/blog/how-to-encode-and-decode-base64-in-javascript/',ja:'/ja/blog/how-to-encode-and-decode-base64-in-javascript/',ko:'/ko/blog/how-to-encode-and-decode-base64-in-javascript/',nl:'/nl/blog/how-to-encode-and-decode-base64-in-javascript/',hi:'/hi/blog/how-to-encode-and-decode-base64-in-javascript/'})[lang] || '/blog/how-to-encode-and-decode-base64-in-javascript/';;
+    });
+  });
+</script>
+</body>
+</html>

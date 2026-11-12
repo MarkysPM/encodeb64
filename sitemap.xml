@@ -2518,6 +2518,36 @@
     <xhtml:link rel="alternate" hreflang="hi" href="https://encodeb64.com/hi/blog/base64-data-uris-when-to-inline-images-css-html/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://encodeb64.com/blog/base64-data-uris-when-to-inline-images-css-html/" />
   </url>
+  <url>
+    <loc>https://encodeb64.com/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://encodeb64.com/blog/base64-in-java-csharp-go-php-code-examples/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://encodeb64.com/blog/common-base64-errors-and-how-to-fix-them/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://encodeb64.com/blog/is-base64-secure-encoding-vs-encryption/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://encodeb64.com/blog/base64-size-overhead-and-compression-measured/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <!-- Legal pages -->
   <url>
     <loc>https://encodeb64.com/about/</loc>

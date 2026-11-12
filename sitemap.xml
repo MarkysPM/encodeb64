@@ -1378,6 +1378,36 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://encodeb64.com/blog/how-jwt-tokens-use-base64url-encoding/" />
   </url>
 
+  <url>
+    <loc>https://encodeb64.com/blog/what-is-base64-encoding-and-how-it-works/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://encodeb64.com/blog/how-to-encode-and-decode-base64-in-javascript/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://encodeb64.com/blog/how-to-encode-and-decode-base64-in-python/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://encodeb64.com/blog/base64-encode-decode-command-line-linux-macos-windows/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://encodeb64.com/blog/base64-data-uris-when-to-inline-images-css-html/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <!-- Legal pages -->
   <url>
     <loc>https://encodeb64.com/about/</loc>

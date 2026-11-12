@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>如何在 Python 中进行 Base64 编码和解码</title>
+  <meta name="description" content="使用 Python 的 base64 模块对字符串、文件和 URL 进行编码与解码。涵盖 bytes 与 str、urlsafe 变体、填充缺失和输入校验。" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d0d14" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://encodeb64.com/zh/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="en" href="https://encodeb64.com/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="es" href="https://encodeb64.com/es/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="pt" href="https://encodeb64.com/pt/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="fr" href="https://encodeb64.com/fr/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="de" href="https://encodeb64.com/de/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="it" href="https://encodeb64.com/it/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="zh" href="https://encodeb64.com/zh/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="ru" href="https://encodeb64.com/ru/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="ja" href="https://encodeb64.com/ja/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="ko" href="https://encodeb64.com/ko/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="nl" href="https://encodeb64.com/nl/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="hi" href="https://encodeb64.com/hi/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="x-default" href="https://encodeb64.com/blog/how-to-encode-and-decode-base64-in-python/" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="encodeb64.com" />
+  <meta property="og:title" content="如何在 Python 中进行 Base64 编码和解码" />
+  <meta property="og:description" content="使用 Python 的 base64 模块对字符串、文件和 URL 进行编码与解码。涵盖 bytes 与 str、urlsafe 变体、填充缺失和输入校验。" />
+  <meta property="og:url" content="https://encodeb64.com/zh/blog/how-to-encode-and-decode-base64-in-python/" />
+  <meta property="og:image" content="https://encodeb64.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="如何在 Python 中进行 Base64 编码和解码" />
+  <meta name="twitter:description" content="使用 Python 的 base64 模块对字符串、文件和 URL 进行编码与解码。涵盖 bytes 与 str、urlsafe 变体、填充缺失和输入校验。" />
+  <meta name="twitter:image" content="https://encodeb64.com/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
+
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      var _ch = document.createElement('script');
+      _ch.async = true;
+      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      document.head.appendChild(_ch);
+      document.addEventListener('DOMContentLoaded', function () {
+        window.cookiehub && window.cookiehub.load({});
+      });
+    }
+  </script>
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      var _ga = document.createElement('script');
+      _ga.async = true;
+      _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
+      document.head.appendChild(_ga);
+      gtag('js', new Date());
+      gtag('config', 'G-MYEHD96X9Q');
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d0d14; --bg2: #12121c; --bg3: #1a1a28;
+      --cyan: #00e5cc; --cyan-dim: rgba(0,229,204,0.12); --cyan-glow: rgba(0,229,204,0.3); --cyan-light: #5ef5e5;
+      --glass-bg: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+      --text: #e8e8f0; --text-muted: #7a7a9a; --text-dim: #4a4a6a;
+      --radius: 14px; --radius-sm: 8px;
+      --mono: 'JetBrains Mono', monospace; --sans: 'Sora', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background-color: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(0,229,204,0.1) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; z-index: 0; }
+    body::after { content: ''; position: fixed; top: -20%; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse, rgba(0,229,204,0.055) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(13,13,20,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 0 24px; height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; flex-shrink: 0; }
+    .logo span.encode { color: #ffffff; } .logo span.b64 { color: var(--cyan); }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .nav-pills { display: flex; gap: 6px; }
+    .nav-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; padding: 5px 14px; border-radius: 20px; text-decoration: none; transition: all 0.2s; border: 1px solid var(--glass-border); color: var(--text-muted); background: transparent; }
+    .nav-pill:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .nav-pill.current { color: #0d0d14; background: var(--cyan); font-weight: 600; border-color: transparent; }
+    .lang-selector { position: relative; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 5px 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; color: var(--text-muted); cursor: pointer; font-family: var(--sans); font-size: 0.78rem; transition: all 0.2s; white-space: nowrap; }
+    .lang-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .lang-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 200; max-height: 60vh; overflow-y: auto; }
+    .lang-dropdown.open { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 8px; padding: 9px 14px; cursor: pointer; font-size: 0.82rem; color: var(--text-muted); transition: all 0.15s; }
+    .lang-option:hover { background: var(--cyan-dim); color: var(--text); }
+    .lang-option.selected { color: var(--cyan); }
+    main { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px 0 8px; font-size: 0.78rem; color: var(--text-dim); flex-wrap: wrap; text-align: center; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; } .breadcrumb a:hover { color: var(--cyan); }
+    .breadcrumb-sep { color: var(--text-dim); } .breadcrumb-current { color: var(--text-muted); }
+    .page-hero { padding: 40px 0 28px; text-align: center; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; line-height: 1.15; margin-bottom: 10px; }
+    .page-hero p.sub { color: var(--text-muted); font-size: 1rem; font-weight: 300; }
+    .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 20px; }
+    .glass-card h2 { font-size: 1.1rem; font-weight: 600; color: var(--cyan); margin: 28px 0 10px; }
+    .glass-card h2:first-of-type { margin-top: 0; }
+    .glass-card p { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 10px; }
+    .glass-card p:last-child { margin-bottom: 0; }
+    .glass-card ul, .glass-card ol { list-style: none; padding: 0; margin: 6px 0 12px; }
+    .glass-card ol { counter-reset: step; }
+    .glass-card ul li, .glass-card ol li { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); padding: 2px 0 2px 22px; position: relative; }
+    .glass-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+    .glass-card ol li { counter-increment: step; }
+    .glass-card ol li::before { content: counter(step) '.'; position: absolute; left: 0; color: var(--cyan); font-weight: 600; }
+    .glass-card a { color: var(--cyan); text-decoration: none; } .glass-card a:hover { text-decoration: underline; }
+    .glass-card code { font-family: var(--mono); background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px; color: var(--cyan-light); font-size: 0.85em; word-break: break-all; }
+    .code-block { font-family: var(--mono); background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 14px 16px; border-radius: var(--radius-sm); color: var(--cyan-light); font-size: 0.82rem; overflow-x: auto; margin: 12px 0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; }
+    .article-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 8px; }
+    .blog-card { display: block; }
+    .blog-card h2 { margin-top: 0 !important; }
+    .blog-card h2 a { color: var(--text); }
+    .blog-card h2 a:hover { color: var(--cyan); text-decoration: none; }
+    .blog-card + .blog-card { margin-top: 4px; }
+    .readmore { display: inline-block; margin-top: 6px; font-weight: 600; }
+    footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px 24px; border-top: 1px solid var(--glass-border); font-size: 0.82rem; color: var(--text-dim); max-width: 900px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a, footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover, footer a:hover { color: var(--cyan); }
+    footer .footer-right a { color: var(--cyan); }
+    @media (max-width: 640px) {
+      header { padding: 0 16px; }
+      .nav-pill { padding: 4px 10px; font-size: 0.73rem; }
+      .lang-btn span { display: none; }
+      .glass-card { padding: 22px 20px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "如何在 Python 中进行 Base64 编码和解码",
+    "author": {"@type": "Organization", "name": "MpmDigital", "url": "https://mpmdigital.es/"},
+    "publisher": {"@type": "Organization", "name": "encodeb64.com", "url": "https://encodeb64.com/"},
+    "datePublished": "2026-11-12",
+    "inLanguage": "zh",
+    "url": "https://encodeb64.com/zh/blog/how-to-encode-and-decode-base64-in-python/"
+  }
+  </script>
+</head>
+<body>
+<header>
+  <a href="/zh/" class="logo">
+    <span class="encode">encode</span><span class="b64">B64</span>
+  </a>
+  <div class="header-right">
+    <nav class="nav-pills">
+      <a href="/zh/" class="nav-pill">编码</a>
+      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">解码</a>
+      <a href="/zh/image-to-base64" class="nav-pill">图片转Base64</a>
+      <a href="/zh/blog/" class="nav-pill current">博客</a>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="langLabel">中文</span>
+        <svg viewBox="0 0 10 6" fill="currentColor" width="10" height="6"><path d="M0 0l5 6 5-6z"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown" role="listbox">
+        <div class="lang-option" data-lang="en" role="option">🇺🇸 English</div>
+        <div class="lang-option" data-lang="es" role="option">🇪🇸 Español</div>
+        <div class="lang-option" data-lang="pt" role="option">🇧🇷 Português</div>
+        <div class="lang-option" data-lang="fr" role="option">🇫🇷 Français</div>
+        <div class="lang-option" data-lang="de" role="option">🇩🇪 Deutsch</div>
+        <div class="lang-option" data-lang="it" role="option">🇮🇹 Italiano</div>
+        <div class="lang-option selected" data-lang="zh" role="option">🇨🇳 中文</div>
+        <div class="lang-option" data-lang="ru" role="option">🇷🇺 Русский</div>
+        <div class="lang-option" data-lang="ja" role="option">🇯🇵 日本語</div>
+        <div class="lang-option" data-lang="ko" role="option">🇰🇷 한국어</div>
+        <div class="lang-option" data-lang="nl" role="option">🇳🇱 Nederlands</div>
+        <div class="lang-option" data-lang="hi" role="option">🇮🇳 हिन्दी</div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <nav class="breadcrumb">
+    <a href="/zh/">encodeb64.com</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <a href="/zh/blog/">博客</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <span class="breadcrumb-current">如何在 Python 中进行 Base64 编码和解码</span>
+  </nav>
+  <div class="page-hero">
+    <h1>如何在 Python 中进行 Base64 编码和解码</h1>
+    <div class="article-meta"><span>2026年11月</span><span>阅读时间约 7 分钟</span></div>
+  </div>
+  <article class="glass-card">
+<p>Python 标准库的 <code>base64</code> 模块已经包含了处理 Base64 所需的一切。最重要的一点是：它处理的是<strong>字节</strong>，而不是文本字符串。初学者的大多数错误都源于忘记了这一点。本文介绍如何编码和解码文本与文件、使用 URL 安全的变体，并处理你最可能遇到的错误。</p>
+
+<h2>编码字符串</h2>
+<p>用 <code>.encode()</code> 把字符串转换为字节，把字节传给 <code>b64encode()</code>，再用 <code>.decode()</code> 把结果转回字符串：</p>
+<div class="code-block">import base64
+
+text = 'Hello, World!'
+encoded = base64.b64encode(text.encode('utf-8')).decode('ascii')
+print(encoded)  # SGVsbG8sIFdvcmxkIQ==</div>
+<p><code>b64encode()</code> 返回的是 <code>bytes</code> 对象，例如 <code>b'SGVsbG8sIFdvcmxkIQ=='</code>。用 <code>'ascii'</code> 解码即可得到普通字符串，这样做是安全的，因为 Base64 的输出只包含 ASCII 字符。</p>
+
+<h2>解码字符串</h2>
+<div class="code-block">import base64
+
+encoded = 'SGVsbG8sIFdvcmxkIQ=='
+decoded = base64.b64decode(encoded).decode('utf-8')
+print(decoded)  # Hello, World!</div>
+<p><code>b64decode()</code> 既接受 <code>str</code>（仅含 ASCII 字符），也接受 <code>bytes</code>。它始终返回 <code>bytes</code>，所以在期望得到文本时请调用 <code>.decode('utf-8')</code>。如果原始数据是二进制的（例如图片），就保持为字节。</p>
+
+<h2>为什么会出现“a bytes-like object is required”</h2>
+<p>如果把普通字符串传给 <code>b64encode()</code>，你会看到：</p>
+<div class="code-block">TypeError: a bytes-like object is required, not 'str'</div>
+<p>解决办法是先把字符串编码为字节：<code>base64.b64encode('text'.encode('utf-8'))</code>。这是 Python 中最常见的 Base64 错误。</p>
+
+<h2>编码和解码文件</h2>
+<p>以二进制模式（<code>'rb'</code> 和 <code>'wb'</code>）打开文件，这样 Python 就不会尝试把字节当作文本来解释：</p>
+<div class="code-block">import base64
+
+# Encode a file
+with open('photo.png', 'rb') as f:
+    encoded = base64.b64encode(f.read()).decode('ascii')
+
+# Decode it back to a file
+with open('copy.png', 'wb') as f:
+    f.write(base64.b64decode(encoded))</div>
+<p>处理超大文件时，不要一次性全部读入内存。<code>base64.encode(input, output)</code> 和 <code>base64.decode(input, output)</code> 使用文件对象，并分块处理数据。</p>
+
+<h2>构建 data URI</h2>
+<p>要在 HTML 或 CSS 中内嵌图片，请在 Base64 文本前加上媒体类型：</p>
+<div class="code-block">import base64
+
+with open('logo.png', 'rb') as f:
+    data = base64.b64encode(f.read()).decode('ascii')
+
+data_uri = f'data:image/png;base64,{data}'</div>
+<p>如果你不想写代码，<a href="/zh/image-to-base64">图片转 Base64 工具</a>可以在浏览器中得到同样的结果。</p>
+
+<h2>URL 安全的 Base64</h2>
+<p>标准 Base64 使用 <code>+</code> 和 <code>/</code>，它们在 URL 中有特殊含义。该模块提供了 URL 安全的版本，改用 <code>-</code> 和 <code>_</code>：</p>
+<div class="code-block">import base64
+
+data = b'subjects?_d'
+safe = base64.urlsafe_b64encode(data).decode('ascii')
+print(safe)  # c3ViamVjdHM_X2Q=
+
+print(base64.urlsafe_b64decode(safe))  # b'subjects?_d'</div>
+<p>JWT 使用的就是这种变体，不过 JWT 还会去掉 <code>=</code> 填充（见下文）。更多背景请阅读 <a href="/zh/blog/base64url-vs-base64-differences-and-when-to-use-each/">Base64URL 与 Base64</a>。</p>
+
+<h2>修复“Incorrect padding”错误</h2>
+<p>缺少末尾 <code>=</code> 字符的 Base64 数据（在 JWT 和 URL 中很常见）会在解码时报错：</p>
+<div class="code-block">binascii.Error: Incorrect padding</div>
+<p>解码之前先恢复填充：</p>
+<div class="code-block">import base64
+
+def b64url_decode(value: str) -&gt; bytes:
+    value += '=' * (-len(value) % 4)
+    return base64.urlsafe_b64decode(value)
+
+def b64url_encode(raw: bytes) -&gt; str:
+    return base64.urlsafe_b64encode(raw).rstrip(b'=').decode('ascii')</div>
+<p>表达式 <code>-len(value) % 4</code> 给出需要补足的 <code>=</code> 字符数（0、1、2 或 3），使长度成为 4 的倍数。</p>
+
+<h2>校验输入</h2>
+<p>默认情况下，<code>b64decode()</code> 会悄悄丢弃不在 Base64 字母表中的字符。对于带换行的输入这很方便，但在需要拒绝格式错误的数据时就很危险。传入 <code>validate=True</code> 即可启用严格模式：</p>
+<div class="code-block">import base64, binascii
+
+try:
+    base64.b64decode('SGVs bG8=', validate=True)
+except binascii.Error:
+    print('Not valid Base64')</div>
+<p>启用 <code>validate=True</code> 后，字符串中的空格会引发错误，而不是被忽略。</p>
+
+<h2>其他有用的函数</h2>
+<ul>
+<li><code>base64.standard_b64encode()</code> 和 <code>standard_b64decode()</code> 是标准字母表的显式名称。</li>
+<li><code>base64.encodebytes()</code> 像 MIME 邮件一样，每 76 个字符插入一个换行。</li>
+<li><code>base64.b32encode()</code> 和 <code>b16encode()</code> 提供 Base32 和十六进制编码。</li>
+</ul>
+
+<h2>速查</h2>
+<ul>
+<li>编码前必须先把字符串转换为字节：<code>.encode('utf-8')</code>。</li>
+<li>编码后的输出是字节；调用 <code>.decode('ascii')</code> 得到字符串。</li>
+<li>用 <code>'rb'</code> 和 <code>'wb'</code> 打开文件。</li>
+<li>处理 URL 和令牌时使用 <code>urlsafe_b64encode</code>。</li>
+<li>输入来自不可信来源时使用 <code>validate=True</code>。</li>
+</ul>
+<p>想把输出与可靠工具对照，请使用<a href="/zh/">编码器</a>或 <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>。如果你刚接触这种格式，请先阅读<a href="/zh/blog/what-is-base64-encoding-and-how-it-works/">什么是 Base64 编码？它是如何工作的？</a></p>
+
+  </article>
+</main>
+<footer>
+<span>encodeb64.com &copy; 2026</span>
+  <div class="footer-links">
+    <a href="/about/">关于</a>
+    <a href="/privacy-policy/">隐私政策</a>
+    <a href="/terms-of-use/">使用条款</a>
+    <a href="/contact/">联系</a>
+    <a href="/zh/blog/">博客</a>
+  </div>
+  <span class="footer-right">
+    <span>也可以试试：</span>
+    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+  </span>
+<span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
+  开发者： <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>
+</span>
+</footer>
+<script>
+  const langBtn = document.getElementById('langBtn');
+  const langDropdown = document.getElementById('langDropdown');
+  langBtn.addEventListener('click', () => {
+    const open = langDropdown.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.lang-selector')) {
+      langDropdown.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', false);
+    }
+  });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      window.location.href = ({en:'/blog/how-to-encode-and-decode-base64-in-python/',es:'/es/blog/how-to-encode-and-decode-base64-in-python/',pt:'/pt/blog/how-to-encode-and-decode-base64-in-python/',fr:'/fr/blog/how-to-encode-and-decode-base64-in-python/',de:'/de/blog/how-to-encode-and-decode-base64-in-python/',it:'/it/blog/how-to-encode-and-decode-base64-in-python/',zh:'/zh/blog/how-to-encode-and-decode-base64-in-python/',ru:'/ru/blog/how-to-encode-and-decode-base64-in-python/',ja:'/ja/blog/how-to-encode-and-decode-base64-in-python/',ko:'/ko/blog/how-to-encode-and-decode-base64-in-python/',nl:'/nl/blog/how-to-encode-and-decode-base64-in-python/',hi:'/hi/blog/how-to-encode-and-decode-base64-in-python/'})[lang] || '/blog/how-to-encode-and-decode-base64-in-python/';;
+    });
+  });
+</script>
+</body>
+</html>

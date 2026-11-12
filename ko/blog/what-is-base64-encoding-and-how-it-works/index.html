@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Base64 인코딩이란 무엇이며 어떻게 동작할까?</title>
+  <meta name="description" content="Base64가 무엇이고 왜 필요한지, 바이트를 텍스트로 바꾸는 원리를 설명합니다. 단계별 예제, 패딩 규칙, 크기가 33% 늘어나는 이유까지 다룹니다." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d0d14" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://encodeb64.com/ko/blog/what-is-base64-encoding-and-how-it-works/" />
+  <link rel="alternate" hreflang="en" href="https://encodeb64.com/blog/what-is-base64-encoding-and-how-it-works/" />
+  <link rel="alternate" hreflang="es" href="https://encodeb64.com/es/blog/what-is-base64-encoding-and-how-it-works/" />
+  <link rel="alternate" hreflang="pt" href="https://encodeb64.com/pt/blog/what-is-base64-encoding-and-how-it-works/" />
+  <link rel="alternate" hreflang="fr" href="https://encodeb64.com/fr/blog/what-is-base64-encoding-and-how-it-works/" />
+  <link rel="alternate" hreflang="de" href="https://encodeb64.com/de/blog/what-is-base64-encoding-and-how-it-works/" />
+  <link rel="alternate" hreflang="it" href="https://encodeb64.com/it/blog/what-is-base64-encoding-and-how-it-works/" />
+  <link rel="alternate" hreflang="zh" href="https://encodeb64.com/zh/blog/what-is-base64-encoding-and-how-it-works/" />
+  <link rel="alternate" hreflang="ru" href="https://encodeb64.com/ru/blog/what-is-base64-encoding-and-how-it-works/" />
+  <link rel="alternate" hreflang="ja" href="https://encodeb64.com/ja/blog/what-is-base64-encoding-and-how-it-works/" />
+  <link rel="alternate" hreflang="ko" href="https://encodeb64.com/ko/blog/what-is-base64-encoding-and-how-it-works/" />
+  <link rel="alternate" hreflang="nl" href="https://encodeb64.com/nl/blog/what-is-base64-encoding-and-how-it-works/" />
+  <link rel="alternate" hreflang="hi" href="https://encodeb64.com/hi/blog/what-is-base64-encoding-and-how-it-works/" />
+  <link rel="alternate" hreflang="x-default" href="https://encodeb64.com/blog/what-is-base64-encoding-and-how-it-works/" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="encodeb64.com" />
+  <meta property="og:title" content="Base64 인코딩이란 무엇이며 어떻게 동작할까?" />
+  <meta property="og:description" content="Base64가 무엇이고 왜 필요한지, 바이트를 텍스트로 바꾸는 원리를 설명합니다. 단계별 예제, 패딩 규칙, 크기가 33% 늘어나는 이유까지 다룹니다." />
+  <meta property="og:url" content="https://encodeb64.com/ko/blog/what-is-base64-encoding-and-how-it-works/" />
+  <meta property="og:image" content="https://encodeb64.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Base64 인코딩이란 무엇이며 어떻게 동작할까?" />
+  <meta name="twitter:description" content="Base64가 무엇이고 왜 필요한지, 바이트를 텍스트로 바꾸는 원리를 설명합니다. 단계별 예제, 패딩 규칙, 크기가 33% 늘어나는 이유까지 다룹니다." />
+  <meta name="twitter:image" content="https://encodeb64.com/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
+
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      var _ch = document.createElement('script');
+      _ch.async = true;
+      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      document.head.appendChild(_ch);
+      document.addEventListener('DOMContentLoaded', function () {
+        window.cookiehub && window.cookiehub.load({});
+      });
+    }
+  </script>
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      var _ga = document.createElement('script');
+      _ga.async = true;
+      _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
+      document.head.appendChild(_ga);
+      gtag('js', new Date());
+      gtag('config', 'G-MYEHD96X9Q');
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d0d14; --bg2: #12121c; --bg3: #1a1a28;
+      --cyan: #00e5cc; --cyan-dim: rgba(0,229,204,0.12); --cyan-glow: rgba(0,229,204,0.3); --cyan-light: #5ef5e5;
+      --glass-bg: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+      --text: #e8e8f0; --text-muted: #7a7a9a; --text-dim: #4a4a6a;
+      --radius: 14px; --radius-sm: 8px;
+      --mono: 'JetBrains Mono', monospace; --sans: 'Sora', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background-color: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(0,229,204,0.1) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; z-index: 0; }
+    body::after { content: ''; position: fixed; top: -20%; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse, rgba(0,229,204,0.055) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(13,13,20,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 0 24px; height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; flex-shrink: 0; }
+    .logo span.encode { color: #ffffff; } .logo span.b64 { color: var(--cyan); }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .nav-pills { display: flex; gap: 6px; }
+    .nav-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; padding: 5px 14px; border-radius: 20px; text-decoration: none; transition: all 0.2s; border: 1px solid var(--glass-border); color: var(--text-muted); background: transparent; }
+    .nav-pill:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .nav-pill.current { color: #0d0d14; background: var(--cyan); font-weight: 600; border-color: transparent; }
+    .lang-selector { position: relative; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 5px 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; color: var(--text-muted); cursor: pointer; font-family: var(--sans); font-size: 0.78rem; transition: all 0.2s; white-space: nowrap; }
+    .lang-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .lang-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 200; max-height: 60vh; overflow-y: auto; }
+    .lang-dropdown.open { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 8px; padding: 9px 14px; cursor: pointer; font-size: 0.82rem; color: var(--text-muted); transition: all 0.15s; }
+    .lang-option:hover { background: var(--cyan-dim); color: var(--text); }
+    .lang-option.selected { color: var(--cyan); }
+    main { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px 0 8px; font-size: 0.78rem; color: var(--text-dim); flex-wrap: wrap; text-align: center; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; } .breadcrumb a:hover { color: var(--cyan); }
+    .breadcrumb-sep { color: var(--text-dim); } .breadcrumb-current { color: var(--text-muted); }
+    .page-hero { padding: 40px 0 28px; text-align: center; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; line-height: 1.15; margin-bottom: 10px; }
+    .page-hero p.sub { color: var(--text-muted); font-size: 1rem; font-weight: 300; }
+    .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 20px; }
+    .glass-card h2 { font-size: 1.1rem; font-weight: 600; color: var(--cyan); margin: 28px 0 10px; }
+    .glass-card h2:first-of-type { margin-top: 0; }
+    .glass-card p { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 10px; }
+    .glass-card p:last-child { margin-bottom: 0; }
+    .glass-card ul, .glass-card ol { list-style: none; padding: 0; margin: 6px 0 12px; }
+    .glass-card ol { counter-reset: step; }
+    .glass-card ul li, .glass-card ol li { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); padding: 2px 0 2px 22px; position: relative; }
+    .glass-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+    .glass-card ol li { counter-increment: step; }
+    .glass-card ol li::before { content: counter(step) '.'; position: absolute; left: 0; color: var(--cyan); font-weight: 600; }
+    .glass-card a { color: var(--cyan); text-decoration: none; } .glass-card a:hover { text-decoration: underline; }
+    .glass-card code { font-family: var(--mono); background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px; color: var(--cyan-light); font-size: 0.85em; word-break: break-all; }
+    .code-block { font-family: var(--mono); background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 14px 16px; border-radius: var(--radius-sm); color: var(--cyan-light); font-size: 0.82rem; overflow-x: auto; margin: 12px 0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; }
+    .article-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 8px; }
+    .blog-card { display: block; }
+    .blog-card h2 { margin-top: 0 !important; }
+    .blog-card h2 a { color: var(--text); }
+    .blog-card h2 a:hover { color: var(--cyan); text-decoration: none; }
+    .blog-card + .blog-card { margin-top: 4px; }
+    .readmore { display: inline-block; margin-top: 6px; font-weight: 600; }
+    footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px 24px; border-top: 1px solid var(--glass-border); font-size: 0.82rem; color: var(--text-dim); max-width: 900px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a, footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover, footer a:hover { color: var(--cyan); }
+    footer .footer-right a { color: var(--cyan); }
+    @media (max-width: 640px) {
+      header { padding: 0 16px; }
+      .nav-pill { padding: 4px 10px; font-size: 0.73rem; }
+      .lang-btn span { display: none; }
+      .glass-card { padding: 22px 20px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Base64 인코딩이란 무엇이며 어떻게 동작할까?",
+    "author": {"@type": "Organization", "name": "MpmDigital", "url": "https://mpmdigital.es/"},
+    "publisher": {"@type": "Organization", "name": "encodeb64.com", "url": "https://encodeb64.com/"},
+    "datePublished": "2026-11-12",
+    "inLanguage": "ko",
+    "url": "https://encodeb64.com/ko/blog/what-is-base64-encoding-and-how-it-works/"
+  }
+  </script>
+</head>
+<body>
+<header>
+  <a href="/ko/" class="logo">
+    <span class="encode">encode</span><span class="b64">B64</span>
+  </a>
+  <div class="header-right">
+    <nav class="nav-pills">
+      <a href="/ko/" class="nav-pill">인코드</a>
+      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">디코드</a>
+      <a href="/ko/image-to-base64" class="nav-pill">이미지를 Base64로</a>
+      <a href="/ko/blog/" class="nav-pill current">블로그</a>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="langLabel">한국어</span>
+        <svg viewBox="0 0 10 6" fill="currentColor" width="10" height="6"><path d="M0 0l5 6 5-6z"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown" role="listbox">
+        <div class="lang-option" data-lang="en" role="option">🇺🇸 English</div>
+        <div class="lang-option" data-lang="es" role="option">🇪🇸 Español</div>
+        <div class="lang-option" data-lang="pt" role="option">🇧🇷 Português</div>
+        <div class="lang-option" data-lang="fr" role="option">🇫🇷 Français</div>
+        <div class="lang-option" data-lang="de" role="option">🇩🇪 Deutsch</div>
+        <div class="lang-option" data-lang="it" role="option">🇮🇹 Italiano</div>
+        <div class="lang-option" data-lang="zh" role="option">🇨🇳 中文</div>
+        <div class="lang-option" data-lang="ru" role="option">🇷🇺 Русский</div>
+        <div class="lang-option" data-lang="ja" role="option">🇯🇵 日本語</div>
+        <div class="lang-option selected" data-lang="ko" role="option">🇰🇷 한국어</div>
+        <div class="lang-option" data-lang="nl" role="option">🇳🇱 Nederlands</div>
+        <div class="lang-option" data-lang="hi" role="option">🇮🇳 हिन्दी</div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <nav class="breadcrumb">
+    <a href="/ko/">encodeb64.com</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <a href="/ko/blog/">블로그</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <span class="breadcrumb-current">Base64 인코딩이란 무엇이며 어떻게 동작할까?</span>
+  </nav>
+  <div class="page-hero">
+    <h1>Base64 인코딩이란 무엇이며 어떻게 동작할까?</h1>
+    <div class="article-meta"><span>2026년 11월</span><span>읽는 시간 약 7분</span></div>
+  </div>
+  <article class="glass-card">
+<p>Base64는 인쇄 가능한 64개의 문자만으로 바이너리 데이터를 표현하는 방식입니다. 이메일 첨부 파일, JSON 페이로드, HTML과 CSS의 data URI, HTTP 헤더, JWT 토큰, 설정 파일처럼 텍스트만 이해하는 경로로 바이트를 옮겨야 하는 곳이면 어디서나 쓰입니다. 이렇게 흔한데도 Base64는 종종 블랙박스처럼 취급됩니다. 이 가이드에서는 Base64가 정확히 무엇을 하는지 한 단계씩 설명합니다.</p>
+
+<h2>Base64가 필요한 이유</h2>
+<p>많은 프로토콜은 임의의 바이트가 아니라 텍스트를 전제로 설계되었습니다. 초기 이메일 시스템(SMTP)이 보장한 것은 7비트 ASCII 텍스트가 온전히 전달된다는 사실뿐이었습니다. JPEG, PDF, 암호화된 데이터에는 제어 문자, 줄 바꿈, 메시지 종료 표시와 혼동될 수 있는 바이트 값이 들어 있고, 전송 과정에서 이런 값이 조용히 바뀌거나 거부될 수 있습니다.</p>
+<p>Base64는 임의의 바이트열을 영문자, 숫자, <code>+</code>, <code>/</code>로만 이루어진 문자열로 바꿔 이 문제를 해결합니다. 이 문자들은 거의 모든 텍스트 경로를 변하지 않고 통과합니다. 수신자는 과정을 거꾸로 수행해 원래 바이트를 정확히 복원합니다.</p>
+
+<h2>Base64 알파벳</h2>
+<p>표준 알파벳(RFC 4648)의 64개 문자는 다음과 같습니다.</p>
+<ul>
+<li>값 0–25: <code>A</code>부터 <code>Z</code></li>
+<li>값 26–51: <code>a</code>부터 <code>z</code></li>
+<li>값 52–61: <code>0</code>부터 <code>9</code></li>
+<li>값 62: <code>+</code></li>
+<li>값 63: <code>/</code></li>
+</ul>
+<p>65번째 문자인 <code>=</code>는 출력 끝의 패딩으로만 사용됩니다.</p>
+
+<h2>알고리즘의 동작 방식</h2>
+<p>1바이트는 8비트지만 Base64 문자 하나가 나타낼 수 있는 것은 6비트(2<sup>6</sup> = 64가지 값)뿐입니다. 그래서 알고리즘은 입력 비트를 다시 묶습니다.</p>
+<ol>
+<li>입력을 3바이트(24비트)씩 가져옵니다.</li>
+<li>그 24비트를 6비트씩 네 그룹으로 나눕니다.</li>
+<li>각 6비트 값을 알파벳에서 찾아 네 개의 출력 문자를 얻습니다.</li>
+</ol>
+<p>입력 3바이트가 출력 4문자가 됩니다. 이 비율이 아래에서 다룰 크기 증가의 이유입니다.</p>
+
+<h2>예제: “Man” 인코딩하기</h2>
+<p>텍스트 <code>Man</code>은 ASCII로 3바이트입니다. M = 77, a = 97, n = 110입니다. 이진수로 쓰면 다음과 같습니다.</p>
+<div class="code-block">M = 01001101
+a = 01100001
+n = 01101110</div>
+<p>24비트를 이어 붙인 뒤 6비트씩 네 그룹으로 나눕니다.</p>
+<div class="code-block">010011 010110 000101 101110</div>
+<p>이 그룹들은 숫자 19, 22, 5, 46에 해당합니다. 알파벳에서 찾으면 <code>T</code>, <code>W</code>, <code>F</code>, <code>u</code>입니다. 즉:</p>
+<div class="code-block">Man  &rarr;  TWFu</div>
+<p><code>Man</code>을 <a href="/ko/">홈페이지의 인코더</a>에 붙여 넣어 확인해 볼 수 있습니다.</p>
+
+<h2>=를 이용한 패딩</h2>
+<p>입력 길이가 3의 배수가 아니면 마지막 그룹이 불완전해집니다. Base64는 비트를 0으로 채우고 <code>=</code> 문자를 덧붙여 출력 길이가 항상 4의 배수가 되도록 합니다.</p>
+<ul>
+<li>남는 바이트가 1개면 2문자 뒤에 <code>==</code>가 붙습니다. 예: <code>M</code> → <code>TQ==</code></li>
+<li>남는 바이트가 2개면 3문자 뒤에 <code>=</code>가 붙습니다. 예: <code>Ma</code> → <code>TWE=</code></li>
+<li>남는 바이트가 없으면 패딩이 없습니다. 예: <code>Man</code> → <code>TWFu</code></li>
+</ul>
+<p>패딩 덕분에 디코더는 마지막 그룹에 실제 바이트가 몇 개 들어 있는지 알 수 있습니다. JWT에서 쓰는 Base64URL처럼 길이로 유추할 수 있어 패딩을 생략하는 형식도 있습니다.</p>
+
+<h2>33%의 크기 증가</h2>
+<p>3바이트가 4문자가 되므로 Base64 출력은 입력보다 약 33% 큽니다(원래 크기의 4/3을 4의 배수로 올림한 값). 300 KB 이미지는 약 400 KB의 텍스트가 됩니다. MIME 이메일처럼 76자마다 줄 바꿈을 넣으면 오버헤드가 조금 더 늘어납니다. 바이너리를 안전하게 전달하는 경로가 있다면 큰 파일을 Base64로 인코딩하지 말아야 하는 가장 큰 이유입니다.</p>
+
+<h2>Base64의 변형</h2>
+<ul>
+<li><strong>표준 Base64</strong>는 <code>+</code>와 <code>/</code>를 사용하고 <code>=</code>로 패딩합니다.</li>
+<li><strong>Base64URL</strong>은 <code>+</code>를 <code>-</code>로, <code>/</code>를 <code>_</code>로 바꿔 URL과 파일 이름에서 안전하게 쓸 수 있게 합니다. <a href="/ko/blog/base64url-vs-base64-differences-and-when-to-use-each/">Base64URL vs Base64</a>를 참고하세요.</li>
+<li><strong>MIME Base64</strong>는 이메일 규격에 따라 76자마다 줄 바꿈을 삽입합니다.</li>
+</ul>
+
+<h2>Base64가 아닌 것</h2>
+<p>Base64는 인코딩이지 암호화가 아닙니다. 누구나 즉시 되돌릴 수 있고 기밀성은 전혀 제공하지 않습니다. 비밀번호, API 키, 개인정보를 숨기는 데 절대 사용하지 마세요. 비밀 유지가 필요하다면 먼저 데이터를 암호화하고, 필요한 경우에만 전송을 위해 암호문을 Base64로 인코딩하세요.</p>
+
+<h2>Base64를 사용할 때</h2>
+<p>Base64는 텍스트만 허용하는 형식 안에 바이너리 데이터를 담아야 할 때 적합합니다. HTML이나 CSS에 작은 이미지를 포함하거나, API로 보내는 JSON 요청에 파일을 담거나, 설정 파일에 바이너리 키를 저장하거나, 이메일로 첨부 파일을 보낼 때가 그렇습니다. 큰 파일, 전송 경로가 이미 원시 바이트를 그대로 전달할 수 있는 데이터, 비밀로 유지해야 하는 정보에는 적합하지 않습니다.</p>
+
+<h2>직접 해보기</h2>
+<p>텍스트를 인코딩하려면 <a href="/ko/">Base64 인코더</a>를, 이미지를 data URI로 바꾸려면 <a href="/ko/image-to-base64">이미지 Base64 변환기</a>를, Base64 문자열을 원래 내용으로 되돌리려면 <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>을 사용하세요. 코드에서 Base64를 사용하려면 <a href="/ko/blog/how-to-encode-and-decode-base64-in-javascript/">JavaScript</a>, <a href="/ko/blog/how-to-encode-and-decode-base64-in-python/">Python</a>, <a href="/ko/blog/base64-encode-decode-command-line-linux-macos-windows/">명령줄</a> 가이드로 이어서 읽어 보세요.</p>
+
+  </article>
+</main>
+<footer>
+<span>encodeb64.com &copy; 2026</span>
+  <div class="footer-links">
+    <a href="/about/">소개</a>
+    <a href="/privacy-policy/">개인정보처리방침</a>
+    <a href="/terms-of-use/">이용약관</a>
+    <a href="/contact/">연락처</a>
+    <a href="/ko/blog/">블로그</a>
+  </div>
+  <span class="footer-right">
+    <span>이것도 사용해 보세요:</span>
+    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+  </span>
+<span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
+  개발: <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>
+</span>
+</footer>
+<script>
+  const langBtn = document.getElementById('langBtn');
+  const langDropdown = document.getElementById('langDropdown');
+  langBtn.addEventListener('click', () => {
+    const open = langDropdown.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.lang-selector')) {
+      langDropdown.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', false);
+    }
+  });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      window.location.href = ({en:'/blog/what-is-base64-encoding-and-how-it-works/',es:'/es/blog/what-is-base64-encoding-and-how-it-works/',pt:'/pt/blog/what-is-base64-encoding-and-how-it-works/',fr:'/fr/blog/what-is-base64-encoding-and-how-it-works/',de:'/de/blog/what-is-base64-encoding-and-how-it-works/',it:'/it/blog/what-is-base64-encoding-and-how-it-works/',zh:'/zh/blog/what-is-base64-encoding-and-how-it-works/',ru:'/ru/blog/what-is-base64-encoding-and-how-it-works/',ja:'/ja/blog/what-is-base64-encoding-and-how-it-works/',ko:'/ko/blog/what-is-base64-encoding-and-how-it-works/',nl:'/nl/blog/what-is-base64-encoding-and-how-it-works/',hi:'/hi/blog/what-is-base64-encoding-and-how-it-works/'})[lang] || '/blog/what-is-base64-encoding-and-how-it-works/';;
+    });
+  });
+</script>
+</body>
+</html>

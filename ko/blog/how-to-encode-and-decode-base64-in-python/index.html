@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Python에서 Base64 인코딩과 디코딩하는 방법</title>
+  <meta name="description" content="Python의 base64 모듈로 문자열, 파일, URL을 인코딩·디코딩하는 방법. bytes와 str, urlsafe 변형, 패딩 누락, 입력 검증까지 다룹니다." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d0d14" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://encodeb64.com/ko/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="en" href="https://encodeb64.com/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="es" href="https://encodeb64.com/es/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="pt" href="https://encodeb64.com/pt/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="fr" href="https://encodeb64.com/fr/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="de" href="https://encodeb64.com/de/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="it" href="https://encodeb64.com/it/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="zh" href="https://encodeb64.com/zh/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="ru" href="https://encodeb64.com/ru/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="ja" href="https://encodeb64.com/ja/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="ko" href="https://encodeb64.com/ko/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="nl" href="https://encodeb64.com/nl/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="hi" href="https://encodeb64.com/hi/blog/how-to-encode-and-decode-base64-in-python/" />
+  <link rel="alternate" hreflang="x-default" href="https://encodeb64.com/blog/how-to-encode-and-decode-base64-in-python/" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="encodeb64.com" />
+  <meta property="og:title" content="Python에서 Base64 인코딩과 디코딩하는 방법" />
+  <meta property="og:description" content="Python의 base64 모듈로 문자열, 파일, URL을 인코딩·디코딩하는 방법. bytes와 str, urlsafe 변형, 패딩 누락, 입력 검증까지 다룹니다." />
+  <meta property="og:url" content="https://encodeb64.com/ko/blog/how-to-encode-and-decode-base64-in-python/" />
+  <meta property="og:image" content="https://encodeb64.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Python에서 Base64 인코딩과 디코딩하는 방법" />
+  <meta name="twitter:description" content="Python의 base64 모듈로 문자열, 파일, URL을 인코딩·디코딩하는 방법. bytes와 str, urlsafe 변형, 패딩 누락, 입력 검증까지 다룹니다." />
+  <meta name="twitter:image" content="https://encodeb64.com/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
+
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      var _ch = document.createElement('script');
+      _ch.async = true;
+      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      document.head.appendChild(_ch);
+      document.addEventListener('DOMContentLoaded', function () {
+        window.cookiehub && window.cookiehub.load({});
+      });
+    }
+  </script>
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      var _ga = document.createElement('script');
+      _ga.async = true;
+      _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
+      document.head.appendChild(_ga);
+      gtag('js', new Date());
+      gtag('config', 'G-MYEHD96X9Q');
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d0d14; --bg2: #12121c; --bg3: #1a1a28;
+      --cyan: #00e5cc; --cyan-dim: rgba(0,229,204,0.12); --cyan-glow: rgba(0,229,204,0.3); --cyan-light: #5ef5e5;
+      --glass-bg: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+      --text: #e8e8f0; --text-muted: #7a7a9a; --text-dim: #4a4a6a;
+      --radius: 14px; --radius-sm: 8px;
+      --mono: 'JetBrains Mono', monospace; --sans: 'Sora', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background-color: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(0,229,204,0.1) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; z-index: 0; }
+    body::after { content: ''; position: fixed; top: -20%; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse, rgba(0,229,204,0.055) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(13,13,20,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 0 24px; height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; flex-shrink: 0; }
+    .logo span.encode { color: #ffffff; } .logo span.b64 { color: var(--cyan); }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .nav-pills { display: flex; gap: 6px; }
+    .nav-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; padding: 5px 14px; border-radius: 20px; text-decoration: none; transition: all 0.2s; border: 1px solid var(--glass-border); color: var(--text-muted); background: transparent; }
+    .nav-pill:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .nav-pill.current { color: #0d0d14; background: var(--cyan); font-weight: 600; border-color: transparent; }
+    .lang-selector { position: relative; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 5px 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; color: var(--text-muted); cursor: pointer; font-family: var(--sans); font-size: 0.78rem; transition: all 0.2s; white-space: nowrap; }
+    .lang-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .lang-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 200; max-height: 60vh; overflow-y: auto; }
+    .lang-dropdown.open { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 8px; padding: 9px 14px; cursor: pointer; font-size: 0.82rem; color: var(--text-muted); transition: all 0.15s; }
+    .lang-option:hover { background: var(--cyan-dim); color: var(--text); }
+    .lang-option.selected { color: var(--cyan); }
+    main { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px 0 8px; font-size: 0.78rem; color: var(--text-dim); flex-wrap: wrap; text-align: center; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; } .breadcrumb a:hover { color: var(--cyan); }
+    .breadcrumb-sep { color: var(--text-dim); } .breadcrumb-current { color: var(--text-muted); }
+    .page-hero { padding: 40px 0 28px; text-align: center; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; line-height: 1.15; margin-bottom: 10px; }
+    .page-hero p.sub { color: var(--text-muted); font-size: 1rem; font-weight: 300; }
+    .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 20px; }
+    .glass-card h2 { font-size: 1.1rem; font-weight: 600; color: var(--cyan); margin: 28px 0 10px; }
+    .glass-card h2:first-of-type { margin-top: 0; }
+    .glass-card p { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 10px; }
+    .glass-card p:last-child { margin-bottom: 0; }
+    .glass-card ul, .glass-card ol { list-style: none; padding: 0; margin: 6px 0 12px; }
+    .glass-card ol { counter-reset: step; }
+    .glass-card ul li, .glass-card ol li { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); padding: 2px 0 2px 22px; position: relative; }
+    .glass-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+    .glass-card ol li { counter-increment: step; }
+    .glass-card ol li::before { content: counter(step) '.'; position: absolute; left: 0; color: var(--cyan); font-weight: 600; }
+    .glass-card a { color: var(--cyan); text-decoration: none; } .glass-card a:hover { text-decoration: underline; }
+    .glass-card code { font-family: var(--mono); background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px; color: var(--cyan-light); font-size: 0.85em; word-break: break-all; }
+    .code-block { font-family: var(--mono); background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 14px 16px; border-radius: var(--radius-sm); color: var(--cyan-light); font-size: 0.82rem; overflow-x: auto; margin: 12px 0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; }
+    .article-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 8px; }
+    .blog-card { display: block; }
+    .blog-card h2 { margin-top: 0 !important; }
+    .blog-card h2 a { color: var(--text); }
+    .blog-card h2 a:hover { color: var(--cyan); text-decoration: none; }
+    .blog-card + .blog-card { margin-top: 4px; }
+    .readmore { display: inline-block; margin-top: 6px; font-weight: 600; }
+    footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px 24px; border-top: 1px solid var(--glass-border); font-size: 0.82rem; color: var(--text-dim); max-width: 900px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a, footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover, footer a:hover { color: var(--cyan); }
+    footer .footer-right a { color: var(--cyan); }
+    @media (max-width: 640px) {
+      header { padding: 0 16px; }
+      .nav-pill { padding: 4px 10px; font-size: 0.73rem; }
+      .lang-btn span { display: none; }
+      .glass-card { padding: 22px 20px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Python에서 Base64 인코딩과 디코딩하는 방법",
+    "author": {"@type": "Organization", "name": "MpmDigital", "url": "https://mpmdigital.es/"},
+    "publisher": {"@type": "Organization", "name": "encodeb64.com", "url": "https://encodeb64.com/"},
+    "datePublished": "2026-11-12",
+    "inLanguage": "ko",
+    "url": "https://encodeb64.com/ko/blog/how-to-encode-and-decode-base64-in-python/"
+  }
+  </script>
+</head>
+<body>
+<header>
+  <a href="/ko/" class="logo">
+    <span class="encode">encode</span><span class="b64">B64</span>
+  </a>
+  <div class="header-right">
+    <nav class="nav-pills">
+      <a href="/ko/" class="nav-pill">인코드</a>
+      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">디코드</a>
+      <a href="/ko/image-to-base64" class="nav-pill">이미지를 Base64로</a>
+      <a href="/ko/blog/" class="nav-pill current">블로그</a>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="langLabel">한국어</span>
+        <svg viewBox="0 0 10 6" fill="currentColor" width="10" height="6"><path d="M0 0l5 6 5-6z"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown" role="listbox">
+        <div class="lang-option" data-lang="en" role="option">🇺🇸 English</div>
+        <div class="lang-option" data-lang="es" role="option">🇪🇸 Español</div>
+        <div class="lang-option" data-lang="pt" role="option">🇧🇷 Português</div>
+        <div class="lang-option" data-lang="fr" role="option">🇫🇷 Français</div>
+        <div class="lang-option" data-lang="de" role="option">🇩🇪 Deutsch</div>
+        <div class="lang-option" data-lang="it" role="option">🇮🇹 Italiano</div>
+        <div class="lang-option" data-lang="zh" role="option">🇨🇳 中文</div>
+        <div class="lang-option" data-lang="ru" role="option">🇷🇺 Русский</div>
+        <div class="lang-option" data-lang="ja" role="option">🇯🇵 日本語</div>
+        <div class="lang-option selected" data-lang="ko" role="option">🇰🇷 한국어</div>
+        <div class="lang-option" data-lang="nl" role="option">🇳🇱 Nederlands</div>
+        <div class="lang-option" data-lang="hi" role="option">🇮🇳 हिन्दी</div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <nav class="breadcrumb">
+    <a href="/ko/">encodeb64.com</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <a href="/ko/blog/">블로그</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <span class="breadcrumb-current">Python에서 Base64 인코딩과 디코딩하는 방법</span>
+  </nav>
+  <div class="page-hero">
+    <h1>Python에서 Base64 인코딩과 디코딩하는 방법</h1>
+    <div class="article-meta"><span>2026년 11월</span><span>읽는 시간 약 7분</span></div>
+  </div>
+  <article class="glass-card">
+<p>Python은 표준 라이브러리의 <code>base64</code> 모듈에 Base64에 필요한 모든 것을 갖추고 있습니다. 가장 중요한 점은 텍스트 문자열이 아니라 <strong>바이트</strong>를 다룬다는 사실을 기억하는 것입니다. 초보자의 오류 대부분은 이를 잊어서 생깁니다. 이 가이드에서는 텍스트와 파일을 인코딩·디코딩하는 방법, URL 안전 변형을 사용하는 방법, 마주칠 가능성이 높은 오류를 해결하는 방법을 보여 줍니다.</p>
+
+<h2>문자열 인코딩하기</h2>
+<p><code>.encode()</code>로 문자열을 바이트로 변환하고, 그 바이트를 <code>b64encode()</code>에 넘긴 다음, 결과를 <code>.decode()</code>로 다시 문자열로 바꿉니다.</p>
+<div class="code-block">import base64
+
+text = 'Hello, World!'
+encoded = base64.b64encode(text.encode('utf-8')).decode('ascii')
+print(encoded)  # SGVsbG8sIFdvcmxkIQ==</div>
+<p><code>b64encode()</code>는 <code>b'SGVsbG8sIFdvcmxkIQ=='</code> 같은 <code>bytes</code> 객체를 반환합니다. <code>'ascii'</code>로 디코딩하면 일반 문자열이 되며, Base64 출력에는 ASCII 문자만 들어 있으므로 안전합니다.</p>
+
+<h2>문자열 디코딩하기</h2>
+<div class="code-block">import base64
+
+encoded = 'SGVsbG8sIFdvcmxkIQ=='
+decoded = base64.b64decode(encoded).decode('utf-8')
+print(decoded)  # Hello, World!</div>
+<p><code>b64decode()</code>는 <code>str</code>(ASCII 문자만 포함)과 <code>bytes</code> 모두 받을 수 있습니다. 항상 <code>bytes</code>를 반환하므로, 텍스트를 기대한다면 <code>.decode('utf-8')</code>을 호출하세요. 원본 데이터가 이미지 같은 바이너리였다면 바이트 그대로 두세요.</p>
+
+<h2>“a bytes-like object is required”가 나오는 이유</h2>
+<p>일반 문자열을 <code>b64encode()</code>에 넘기면 다음 오류가 나타납니다.</p>
+<div class="code-block">TypeError: a bytes-like object is required, not 'str'</div>
+<p>해결책은 문자열을 먼저 바이트로 변환하는 것입니다: <code>base64.b64encode('text'.encode('utf-8'))</code>. Python에서 가장 흔한 Base64 오류입니다.</p>
+
+<h2>파일 인코딩과 디코딩</h2>
+<p>Python이 바이트를 텍스트로 해석하려 하지 않도록 파일은 바이너리 모드(<code>'rb'</code>, <code>'wb'</code>)로 여세요.</p>
+<div class="code-block">import base64
+
+# Encode a file
+with open('photo.png', 'rb') as f:
+    encoded = base64.b64encode(f.read()).decode('ascii')
+
+# Decode it back to a file
+with open('copy.png', 'wb') as f:
+    f.write(base64.b64decode(encoded))</div>
+<p>아주 큰 파일은 전부 메모리로 읽지 마세요. <code>base64.encode(input, output)</code>와 <code>base64.decode(input, output)</code>는 파일 객체를 다루며 데이터를 청크 단위로 처리합니다.</p>
+
+<h2>data URI 만들기</h2>
+<p>HTML이나 CSS에 이미지를 포함하려면 Base64 텍스트 앞에 미디어 유형을 붙입니다.</p>
+<div class="code-block">import base64
+
+with open('logo.png', 'rb') as f:
+    data = base64.b64encode(f.read()).decode('ascii')
+
+data_uri = f'data:image/png;base64,{data}'</div>
+<p>코드 없이 하고 싶다면 <a href="/ko/image-to-base64">이미지 Base64 변환기</a>가 브라우저에서 같은 결과를 만들어 줍니다.</p>
+
+<h2>URL 안전 Base64</h2>
+<p>표준 Base64는 URL에서 특별한 의미를 갖는 <code>+</code>와 <code>/</code>를 사용합니다. 이 모듈은 대신 <code>-</code>와 <code>_</code>를 사용하는 URL 안전 버전을 제공합니다.</p>
+<div class="code-block">import base64
+
+data = b'subjects?_d'
+safe = base64.urlsafe_b64encode(data).decode('ascii')
+print(safe)  # c3ViamVjdHM_X2Q=
+
+print(base64.urlsafe_b64decode(safe))  # b'subjects?_d'</div>
+<p>JWT가 사용하는 변형이 바로 이것입니다. 다만 JWT는 <code>=</code> 패딩도 제거합니다(아래 참고). 배경 지식은 <a href="/ko/blog/base64url-vs-base64-differences-and-when-to-use-each/">Base64URL vs Base64</a>에서 확인하세요.</p>
+
+<h2>“Incorrect padding” 오류 해결하기</h2>
+<p>JWT와 URL에서 흔하듯 끝의 <code>=</code> 문자가 없는 Base64 데이터는 디코딩할 때 오류를 일으킵니다.</p>
+<div class="code-block">binascii.Error: Incorrect padding</div>
+<p>디코딩하기 전에 패딩을 복원하세요.</p>
+<div class="code-block">import base64
+
+def b64url_decode(value: str) -&gt; bytes:
+    value += '=' * (-len(value) % 4)
+    return base64.urlsafe_b64decode(value)
+
+def b64url_encode(raw: bytes) -&gt; str:
+    return base64.urlsafe_b64encode(raw).rstrip(b'=').decode('ascii')</div>
+<p>식 <code>-len(value) % 4</code>는 길이를 4의 배수로 맞추는 데 필요한 <code>=</code> 문자의 개수(0, 1, 2, 3)를 알려 줍니다.</p>
+
+<h2>입력 검증하기</h2>
+<p>기본적으로 <code>b64decode()</code>는 Base64 알파벳에 없는 문자를 조용히 버립니다. 줄 바꿈이 포함된 입력에는 편리하지만, 잘못된 데이터를 거부해야 할 때는 위험합니다. <code>validate=True</code>를 넘기면 엄격 모드가 됩니다.</p>
+<div class="code-block">import base64, binascii
+
+try:
+    base64.b64decode('SGVs bG8=', validate=True)
+except binascii.Error:
+    print('Not valid Base64')</div>
+<p><code>validate=True</code>를 지정하면 문자열 안의 공백이 무시되지 않고 오류를 일으킵니다.</p>
+
+<h2>그 밖의 유용한 함수</h2>
+<ul>
+<li><code>base64.standard_b64encode()</code>와 <code>standard_b64decode()</code>는 표준 알파벳을 명시하는 이름입니다.</li>
+<li><code>base64.encodebytes()</code>는 MIME 이메일처럼 76자마다 줄 바꿈을 삽입합니다.</li>
+<li><code>base64.b32encode()</code>와 <code>b16encode()</code>는 Base32와 16진수 인코딩을 제공합니다.</li>
+</ul>
+
+<h2>빠른 참고</h2>
+<ul>
+<li>인코딩 전에 문자열을 바이트로 변환해야 합니다: <code>.encode('utf-8')</code>.</li>
+<li>인코딩된 출력은 바이트입니다. 문자열이 필요하면 <code>.decode('ascii')</code>를 호출하세요.</li>
+<li>파일은 <code>'rb'</code>와 <code>'wb'</code>로 여세요.</li>
+<li>URL과 토큰에는 <code>urlsafe_b64encode</code>를 사용하세요.</li>
+<li>입력이 신뢰할 수 없는 출처에서 온다면 <code>validate=True</code>를 사용하세요.</li>
+</ul>
+<p>출력을 신뢰할 수 있는 도구와 비교하려면 <a href="/ko/">인코더</a>나 <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>을 사용하세요. 이 형식이 처음이라면 <a href="/ko/blog/what-is-base64-encoding-and-how-it-works/">Base64 인코딩이란 무엇이며 어떻게 동작할까?</a>부터 시작하세요.</p>
+
+  </article>
+</main>
+<footer>
+<span>encodeb64.com &copy; 2026</span>
+  <div class="footer-links">
+    <a href="/about/">소개</a>
+    <a href="/privacy-policy/">개인정보처리방침</a>
+    <a href="/terms-of-use/">이용약관</a>
+    <a href="/contact/">연락처</a>
+    <a href="/ko/blog/">블로그</a>
+  </div>
+  <span class="footer-right">
+    <span>이것도 사용해 보세요:</span>
+    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+  </span>
+<span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
+  개발: <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>
+</span>
+</footer>
+<script>
+  const langBtn = document.getElementById('langBtn');
+  const langDropdown = document.getElementById('langDropdown');
+  langBtn.addEventListener('click', () => {
+    const open = langDropdown.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.lang-selector')) {
+      langDropdown.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', false);
+    }
+  });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      window.location.href = ({en:'/blog/how-to-encode-and-decode-base64-in-python/',es:'/es/blog/how-to-encode-and-decode-base64-in-python/',pt:'/pt/blog/how-to-encode-and-decode-base64-in-python/',fr:'/fr/blog/how-to-encode-and-decode-base64-in-python/',de:'/de/blog/how-to-encode-and-decode-base64-in-python/',it:'/it/blog/how-to-encode-and-decode-base64-in-python/',zh:'/zh/blog/how-to-encode-and-decode-base64-in-python/',ru:'/ru/blog/how-to-encode-and-decode-base64-in-python/',ja:'/ja/blog/how-to-encode-and-decode-base64-in-python/',ko:'/ko/blog/how-to-encode-and-decode-base64-in-python/',nl:'/nl/blog/how-to-encode-and-decode-base64-in-python/',hi:'/hi/blog/how-to-encode-and-decode-base64-in-python/'})[lang] || '/blog/how-to-encode-and-decode-base64-in-python/';;
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Wie viel größer ist Base64? Größe und Kompression gemessen</title>
+  <meta name="description" content="Echte Messungen zum Größenaufschlag von Base64 und wie gzip ihn verändert, für zufällige Binärdaten und Text. Wann die 33 % ins Gewicht fallen und wann nicht." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d0d14" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://encodeb64.com/de/blog/base64-size-overhead-and-compression-measured/" />
+  <link rel="alternate" hreflang="en" href="https://encodeb64.com/blog/base64-size-overhead-and-compression-measured/" />
+  <link rel="alternate" hreflang="es" href="https://encodeb64.com/es/blog/base64-size-overhead-and-compression-measured/" />
+  <link rel="alternate" hreflang="pt" href="https://encodeb64.com/pt/blog/base64-size-overhead-and-compression-measured/" />
+  <link rel="alternate" hreflang="fr" href="https://encodeb64.com/fr/blog/base64-size-overhead-and-compression-measured/" />
+  <link rel="alternate" hreflang="de" href="https://encodeb64.com/de/blog/base64-size-overhead-and-compression-measured/" />
+  <link rel="alternate" hreflang="it" href="https://encodeb64.com/it/blog/base64-size-overhead-and-compression-measured/" />
+  <link rel="alternate" hreflang="zh" href="https://encodeb64.com/zh/blog/base64-size-overhead-and-compression-measured/" />
+  <link rel="alternate" hreflang="ru" href="https://encodeb64.com/ru/blog/base64-size-overhead-and-compression-measured/" />
+  <link rel="alternate" hreflang="ja" href="https://encodeb64.com/ja/blog/base64-size-overhead-and-compression-measured/" />
+  <link rel="alternate" hreflang="ko" href="https://encodeb64.com/ko/blog/base64-size-overhead-and-compression-measured/" />
+  <link rel="alternate" hreflang="nl" href="https://encodeb64.com/nl/blog/base64-size-overhead-and-compression-measured/" />
+  <link rel="alternate" hreflang="hi" href="https://encodeb64.com/hi/blog/base64-size-overhead-and-compression-measured/" />
+  <link rel="alternate" hreflang="x-default" href="https://encodeb64.com/blog/base64-size-overhead-and-compression-measured/" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="encodeb64.com" />
+  <meta property="og:title" content="Wie viel größer ist Base64? Größe und Kompression gemessen" />
+  <meta property="og:description" content="Echte Messungen zum Größenaufschlag von Base64 und wie gzip ihn verändert, für zufällige Binärdaten und Text. Wann die 33 % ins Gewicht fallen und wann nicht." />
+  <meta property="og:url" content="https://encodeb64.com/de/blog/base64-size-overhead-and-compression-measured/" />
+  <meta property="og:image" content="https://encodeb64.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Wie viel größer ist Base64? Größe und Kompression gemessen" />
+  <meta name="twitter:description" content="Echte Messungen zum Größenaufschlag von Base64 und wie gzip ihn verändert, für zufällige Binärdaten und Text. Wann die 33 % ins Gewicht fallen und wann nicht." />
+  <meta name="twitter:image" content="https://encodeb64.com/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
+
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      var _ch = document.createElement('script');
+      _ch.async = true;
+      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      document.head.appendChild(_ch);
+      document.addEventListener('DOMContentLoaded', function () {
+        window.cookiehub && window.cookiehub.load({});
+      });
+    }
+  </script>
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      var _ga = document.createElement('script');
+      _ga.async = true;
+      _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
+      document.head.appendChild(_ga);
+      gtag('js', new Date());
+      gtag('config', 'G-MYEHD96X9Q');
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d0d14; --bg2: #12121c; --bg3: #1a1a28;
+      --cyan: #00e5cc; --cyan-dim: rgba(0,229,204,0.12); --cyan-glow: rgba(0,229,204,0.3); --cyan-light: #5ef5e5;
+      --glass-bg: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+      --text: #e8e8f0; --text-muted: #7a7a9a; --text-dim: #4a4a6a;
+      --radius: 14px; --radius-sm: 8px;
+      --mono: 'JetBrains Mono', monospace; --sans: 'Sora', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background-color: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(0,229,204,0.1) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; z-index: 0; }
+    body::after { content: ''; position: fixed; top: -20%; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse, rgba(0,229,204,0.055) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(13,13,20,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 0 24px; height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; flex-shrink: 0; }
+    .logo span.encode { color: #ffffff; } .logo span.b64 { color: var(--cyan); }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .nav-pills { display: flex; gap: 6px; }
+    .nav-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; padding: 5px 14px; border-radius: 20px; text-decoration: none; transition: all 0.2s; border: 1px solid var(--glass-border); color: var(--text-muted); background: transparent; }
+    .nav-pill:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .nav-pill.current { color: #0d0d14; background: var(--cyan); font-weight: 600; border-color: transparent; }
+    .lang-selector { position: relative; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 5px 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; color: var(--text-muted); cursor: pointer; font-family: var(--sans); font-size: 0.78rem; transition: all 0.2s; white-space: nowrap; }
+    .lang-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .lang-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 200; max-height: 60vh; overflow-y: auto; }
+    .lang-dropdown.open { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 8px; padding: 9px 14px; cursor: pointer; font-size: 0.82rem; color: var(--text-muted); transition: all 0.15s; }
+    .lang-option:hover { background: var(--cyan-dim); color: var(--text); }
+    .lang-option.selected { color: var(--cyan); }
+    main { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px 0 8px; font-size: 0.78rem; color: var(--text-dim); flex-wrap: wrap; text-align: center; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; } .breadcrumb a:hover { color: var(--cyan); }
+    .breadcrumb-sep { color: var(--text-dim); } .breadcrumb-current { color: var(--text-muted); }
+    .page-hero { padding: 40px 0 28px; text-align: center; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; line-height: 1.15; margin-bottom: 10px; }
+    .page-hero p.sub { color: var(--text-muted); font-size: 1rem; font-weight: 300; }
+    .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 20px; }
+    .glass-card h2 { font-size: 1.1rem; font-weight: 600; color: var(--cyan); margin: 28px 0 10px; }
+    .glass-card h2:first-of-type { margin-top: 0; }
+    .glass-card p { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 10px; }
+    .glass-card p:last-child { margin-bottom: 0; }
+    .glass-card ul, .glass-card ol { list-style: none; padding: 0; margin: 6px 0 12px; }
+    .glass-card ol { counter-reset: step; }
+    .glass-card ul li, .glass-card ol li { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); padding: 2px 0 2px 22px; position: relative; }
+    .glass-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+    .glass-card ol li { counter-increment: step; }
+    .glass-card ol li::before { content: counter(step) '.'; position: absolute; left: 0; color: var(--cyan); font-weight: 600; }
+    .glass-card a { color: var(--cyan); text-decoration: none; } .glass-card a:hover { text-decoration: underline; }
+    .glass-card code { font-family: var(--mono); background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px; color: var(--cyan-light); font-size: 0.85em; word-break: break-all; }
+    .code-block { font-family: var(--mono); background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 14px 16px; border-radius: var(--radius-sm); color: var(--cyan-light); font-size: 0.82rem; overflow-x: auto; margin: 12px 0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; }
+    .article-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 8px; }
+    .blog-card { display: block; }
+    .blog-card h2 { margin-top: 0 !important; }
+    .blog-card h2 a { color: var(--text); }
+    .blog-card h2 a:hover { color: var(--cyan); text-decoration: none; }
+    .blog-card + .blog-card { margin-top: 4px; }
+    .readmore { display: inline-block; margin-top: 6px; font-weight: 600; }
+    footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px 24px; border-top: 1px solid var(--glass-border); font-size: 0.82rem; color: var(--text-dim); max-width: 900px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a, footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover, footer a:hover { color: var(--cyan); }
+    footer .footer-right a { color: var(--cyan); }
+    @media (max-width: 640px) {
+      header { padding: 0 16px; }
+      .nav-pill { padding: 4px 10px; font-size: 0.73rem; }
+      .lang-btn span { display: none; }
+      .glass-card { padding: 22px 20px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Wie viel größer ist Base64? Größe und Kompression gemessen",
+    "author": {"@type": "Organization", "name": "MpmDigital", "url": "https://mpmdigital.es/"},
+    "publisher": {"@type": "Organization", "name": "encodeb64.com", "url": "https://encodeb64.com/"},
+    "datePublished": "2026-11-12",
+    "inLanguage": "de",
+    "url": "https://encodeb64.com/de/blog/base64-size-overhead-and-compression-measured/"
+  }
+  </script>
+</head>
+<body>
+<header>
+  <a href="/de/" class="logo">
+    <span class="encode">encode</span><span class="b64">B64</span>
+  </a>
+  <div class="header-right">
+    <nav class="nav-pills">
+      <a href="/de/" class="nav-pill">Kodieren</a>
+      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">Dekodieren</a>
+      <a href="/de/image-to-base64" class="nav-pill">Bild zu Base64</a>
+      <a href="/de/blog/" class="nav-pill current">Blog</a>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="langLabel">Deutsch</span>
+        <svg viewBox="0 0 10 6" fill="currentColor" width="10" height="6"><path d="M0 0l5 6 5-6z"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown" role="listbox">
+        <div class="lang-option" data-lang="en" role="option">🇺🇸 English</div>
+        <div class="lang-option" data-lang="es" role="option">🇪🇸 Español</div>
+        <div class="lang-option" data-lang="pt" role="option">🇧🇷 Português</div>
+        <div class="lang-option" data-lang="fr" role="option">🇫🇷 Français</div>
+        <div class="lang-option selected" data-lang="de" role="option">🇩🇪 Deutsch</div>
+        <div class="lang-option" data-lang="it" role="option">🇮🇹 Italiano</div>
+        <div class="lang-option" data-lang="zh" role="option">🇨🇳 中文</div>
+        <div class="lang-option" data-lang="ru" role="option">🇷🇺 Русский</div>
+        <div class="lang-option" data-lang="ja" role="option">🇯🇵 日本語</div>
+        <div class="lang-option" data-lang="ko" role="option">🇰🇷 한국어</div>
+        <div class="lang-option" data-lang="nl" role="option">🇳🇱 Nederlands</div>
+        <div class="lang-option" data-lang="hi" role="option">🇮🇳 हिन्दी</div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <nav class="breadcrumb">
+    <a href="/de/">encodeb64.com</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <a href="/de/blog/">Blog</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <span class="breadcrumb-current">Wie viel größer ist Base64? Größe und Kompression gemessen</span>
+  </nav>
+  <div class="page-hero">
+    <h1>Wie viel größer ist Base64? Größe und Kompression gemessen</h1>
+    <div class="article-meta"><span>November 2026</span><span>6 Min. Lesezeit</span></div>
+  </div>
+  <article class="glass-card">
+<p>Der übliche Rat lautet, dass Base64 Daten um etwa 33 % größer macht. Das stimmt, ist aber nur ein Teil der Geschichte, denn Webserver komprimieren Antworten, und die Wirkung der Kompression auf Base64 hängt stark davon ab, was darin steckt. Dieser Artikel liefert echte Messungen, erklärt die Ergebnisse und sagt Ihnen, wann der Aufschlag tatsächlich etwas kostet.</p>
+
+<h2>Wie gemessen wurde</h2>
+<p>Ich habe Testdaten mit Python 3 erzeugt, mit dem Standardmodul <code>base64</code> kodiert und mit <code>gzip</code> auf höchster Kompressionsstufe komprimiert. Es wurden zwei Arten von Eingaben verwendet:</p>
+<ul>
+<li><strong>Zufallsbytes</strong>, die sich wie bereits komprimierte oder verschlüsselte Daten verhalten: JPEG- und PNG-Bilder, ZIP-Dateien, verschlüsselte Blöcke.</li>
+<li><strong>Echter Text</strong>: der 110.508 Byte große HTML-Quelltext der Startseite dieser Website.</li>
+</ul>
+<p>Die folgenden Zahlen stammen aus diesem Lauf vom 12. November 2026. Die genauen Bytezahlen der Kompression können je nach Werkzeug und Einstellung leicht abweichen, das Gesamtmuster bleibt aber stabil.</p>
+
+<h2>Ergebnis 1: Der rohe Aufschlag beträgt 4/3</h2>
+<p>Für Zufallsdaten unterschiedlicher Größe ergibt sich folgende Base64-Ausgabe:</p>
+<ul>
+<li>1.024 Byte werden zu 1.368 Byte (Verhältnis 1,336)</li>
+<li>10.240 Byte werden zu 13.656 Byte (Verhältnis 1,334)</li>
+<li>102.400 Byte werden zu 136.536 Byte (Verhältnis 1,333)</li>
+<li>1.048.576 Byte (1 MB) werden zu 1.398.104 Byte (Verhältnis 1,333)</li>
+</ul>
+<p>Das Verhältnis konvergiert genau gegen 4/3, also etwa 33,3 %. Kleine Eingaben zeigen wegen des Paddings etwas mehr: Die Base64-Ausgabe ist immer ein Vielfaches von vier Zeichen, daher erzeugen 1, 2 und 3 Eingabebytes alle 4 Zeichen, während 4, 5 und 6 Bytes 8 erzeugen.</p>
+
+<h2>Ergebnis 2: gzip hebt den Aufschlag bei Zufallsdaten fast vollständig auf</h2>
+<p>Base64 verwendet nur 64 verschiedene Symbole, jedes Zeichen trägt also 6 Bit Information in einem 8-Bit-Byte. Ein guter Kompressor erkennt diesen verschwendeten Platz und holt ihn zurück. Für die 1-MB-Probe:</p>
+<ul>
+<li>Rohe Zufallsbytes, komprimiert: 1.048.914 Byte (im Wesentlichen keine Änderung, wie bei Zufallsdaten zu erwarten)</li>
+<li>Base64 derselben Bytes: 1.398.104 Byte</li>
+<li>Base64, dann komprimiert: 1.059.032 Byte</li>
+</ul>
+<p>Nach gzip ist die Base64-Version nur etwa 1 % größer als die ursprünglichen Binärdaten. Anders gesagt: Komprimiert Ihr Server die Antwort, verschwindet der 33-%-Nachteil für Base64-kodierte Bilder und andere bereits komprimierte Dateien bei der Übertragung größtenteils. Brotli verhält sich ähnlich.</p>
+<p>Zwei Einschränkungen sind wichtig. Erstens hilft das nur, wenn der Base64-Text tatsächlich bei der Übertragung komprimiert wird; eine JSON-API oder HTML-Seite ohne Kompression zahlt die vollen 33 %. Zweitens muss der Browser die Daten dekomprimieren und dekodieren, was CPU-Zeit kostet, die ein normales Binärbild nicht braucht.</p>
+
+<h2>Ergebnis 3: Base64 verschlechtert die Kompression von Text</h2>
+<p>Komprimierbare Daten verhalten sich anders. Für die 110.508 Byte große HTML-Seite:</p>
+<ul>
+<li>Original: 110.508 Byte</li>
+<li>Base64: 147.344 Byte (Verhältnis 1,333)</li>
+<li>Original, mit gzip komprimiert: 27.294 Byte (24,7 % des Originals)</li>
+<li>Base64, mit gzip komprimiert: 43.007 Byte (38,9 % des Originals)</li>
+</ul>
+<p>Base64 verwischt die Muster, die Kompressoren nutzen. gzip kann den kodierten Text immer noch stark verkleinern, aber das Ergebnis ist etwa 58 % größer als die direkte Kompression des Originaltexts. Wenn Sie die Wahl haben, senden Sie Text als Text.</p>
+
+<h2>Ergebnis 4: Zeilenumbrüche fügen etwas hinzu</h2>
+<p>MIME-artiges Base64, wie es in E-Mails verwendet wird, fügt alle 76 Zeichen einen Zeilenumbruch ein. Bei 1.000 Zufallsbytes betrug die einfache Base64-Ausgabe 1.336 Zeichen und die umbrochene Version 1.354, also etwa 1,3 % mehr. Das ist wenig, aber ein guter Grund, den Umbruch zu deaktivieren, wenn Sie Base64 für JSON, HTTP-Header oder Data-URIs erzeugen.</p>
+
+<h2>Wann der Aufschlag eine Rolle spielt</h2>
+<ul>
+<li><strong>Unkomprimierte Kanäle:</strong> JSON-APIs ohne gzip, Nachrichtenwarteschlangen, Logs und Datenbanken, die Base64-Text speichern, zahlen die vollen 33 % plus den CPU-Aufwand für Kodierung und Dekodierung.</li>
+<li><strong>Eingebettete Bilder:</strong> Eine Data-URI in HTML oder CSS spart eine Anfrage, kann aber nicht separat gecacht werden. Ein 100-KB-Bild wächst auf etwa 133 KB Text, die bei jeder Änderung der Seite erneut geladen werden. Siehe <a href="/de/blog/base64-data-uris-when-to-inline-images-css-html/">Base64-Data-URIs: Wann Bilder einbetten</a>.</li>
+<li><strong>Große Dateien:</strong> Ein als Base64-JSON gesendeter 100-MB-Upload hat ohne Kompression etwa 133 MB auf der Leitung und muss bei der Verarbeitung mehrfach im Speicher gehalten werden.</li>
+<li><strong>Speicherbeschränkte Clients:</strong> Mobilgeräte und eingebettete Umgebungen spüren die zusätzliche Allokation früher.</li>
+</ul>
+
+<h2>Wann er keine Rolle spielt</h2>
+<ul>
+<li><strong>Kleine Werte:</strong> Tokens, Schlüssel, kurze Bezeichner und Icons von wenigen Kilobyte sind zu klein, als dass der Aufschlag auffiele.</li>
+<li><strong>Komprimierter Transport bereits komprimierter Daten:</strong> Wie oben gezeigt, hebt gzip oder Brotli den größten Teil des Nachteils auf.</li>
+<li><strong>Einmalige Nutzdaten:</strong> Daten, die einmal kodiert und einmal verwendet werden, verlieren keinen Cache.</li>
+</ul>
+
+<h2>Praktische Regeln</h2>
+<ol>
+<li>Senden Sie Binärdaten bevorzugt als Binärdaten (Multipart-Uploads, Binärspalten, gRPC), wenn der Kanal es erlaubt.</li>
+<li>Wenn Sie Base64 über HTTP nutzen müssen, aktivieren Sie gzip oder Brotli auf dem Server für die relevanten Inhaltstypen.</li>
+<li>Kodieren Sie keinen Text in Base64, den Sie als Text senden könnten.</li>
+<li>Schalten Sie den Zeilenumbruch aus, sofern kein Standard ihn verlangt.</li>
+<li>Messen Sie mit Ihren echten Daten: Kompressionsraten hängen vom Inhalt ab.</li>
+</ol>
+<p>Um die genauen Größen Ihrer eigenen Dateien zu erhalten, nutzen Sie den <a href="/de/image-to-base64">Bild-zu-Base64-Konverter</a> oder den <a href="/de/">Kodierer auf der Startseite</a> und vergleichen Sie mit der Originalgröße. Die Mechanik hinter dem Verhältnis 4/3 erklärt <a href="/de/blog/what-is-base64-encoding-and-how-it-works/">Was ist Base64-Kodierung und wie funktioniert sie?</a>, und Alternativen mit anderem Aufschlag finden Sie in <a href="/de/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/">Base64 vs. Hex vs. Base32 vs. Base85</a>.</p>
+
+  </article>
+</main>
+<footer>
+<span>encodeb64.com &copy; 2026</span>
+  <div class="footer-links">
+    <a href="/about/">Über uns</a>
+    <a href="/privacy-policy/">Datenschutzrichtlinie</a>
+    <a href="/terms-of-use/">Nutzungsbedingungen</a>
+    <a href="/contact/">Kontakt</a>
+    <a href="/de/blog/">Blog</a>
+  </div>
+  <span class="footer-right">
+    <span>Auch ausprobieren:</span>
+    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+  </span>
+<span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
+  Entwickelt von <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>
+</span>
+</footer>
+<script>
+  const langBtn = document.getElementById('langBtn');
+  const langDropdown = document.getElementById('langDropdown');
+  langBtn.addEventListener('click', () => {
+    const open = langDropdown.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.lang-selector')) {
+      langDropdown.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', false);
+    }
+  });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      window.location.href = ({en:'/blog/base64-size-overhead-and-compression-measured/',es:'/es/blog/base64-size-overhead-and-compression-measured/',pt:'/pt/blog/base64-size-overhead-and-compression-measured/',fr:'/fr/blog/base64-size-overhead-and-compression-measured/',de:'/de/blog/base64-size-overhead-and-compression-measured/',it:'/it/blog/base64-size-overhead-and-compression-measured/',zh:'/zh/blog/base64-size-overhead-and-compression-measured/',ru:'/ru/blog/base64-size-overhead-and-compression-measured/',ja:'/ja/blog/base64-size-overhead-and-compression-measured/',ko:'/ko/blog/base64-size-overhead-and-compression-measured/',nl:'/nl/blog/base64-size-overhead-and-compression-measured/',hi:'/hi/blog/base64-size-overhead-and-compression-measured/'})[lang] || '/blog/base64-size-overhead-and-compression-measured/';;
+    });
+  });
+</script>
+</body>
+</html>

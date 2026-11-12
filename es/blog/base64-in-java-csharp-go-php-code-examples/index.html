@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Base64 en Java, C#, Go y PHP: ejemplos de código</title>
+  <meta name="description" content="Ejemplos listos para copiar de codificar y decodificar Base64 en Java, C#, Go y PHP, con variantes seguras para URL, relleno y manejo de errores." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d0d14" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://encodeb64.com/es/blog/base64-in-java-csharp-go-php-code-examples/" />
+  <link rel="alternate" hreflang="en" href="https://encodeb64.com/blog/base64-in-java-csharp-go-php-code-examples/" />
+  <link rel="alternate" hreflang="es" href="https://encodeb64.com/es/blog/base64-in-java-csharp-go-php-code-examples/" />
+  <link rel="alternate" hreflang="pt" href="https://encodeb64.com/pt/blog/base64-in-java-csharp-go-php-code-examples/" />
+  <link rel="alternate" hreflang="fr" href="https://encodeb64.com/fr/blog/base64-in-java-csharp-go-php-code-examples/" />
+  <link rel="alternate" hreflang="de" href="https://encodeb64.com/de/blog/base64-in-java-csharp-go-php-code-examples/" />
+  <link rel="alternate" hreflang="it" href="https://encodeb64.com/it/blog/base64-in-java-csharp-go-php-code-examples/" />
+  <link rel="alternate" hreflang="zh" href="https://encodeb64.com/zh/blog/base64-in-java-csharp-go-php-code-examples/" />
+  <link rel="alternate" hreflang="ru" href="https://encodeb64.com/ru/blog/base64-in-java-csharp-go-php-code-examples/" />
+  <link rel="alternate" hreflang="ja" href="https://encodeb64.com/ja/blog/base64-in-java-csharp-go-php-code-examples/" />
+  <link rel="alternate" hreflang="ko" href="https://encodeb64.com/ko/blog/base64-in-java-csharp-go-php-code-examples/" />
+  <link rel="alternate" hreflang="nl" href="https://encodeb64.com/nl/blog/base64-in-java-csharp-go-php-code-examples/" />
+  <link rel="alternate" hreflang="hi" href="https://encodeb64.com/hi/blog/base64-in-java-csharp-go-php-code-examples/" />
+  <link rel="alternate" hreflang="x-default" href="https://encodeb64.com/blog/base64-in-java-csharp-go-php-code-examples/" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="encodeb64.com" />
+  <meta property="og:title" content="Base64 en Java, C#, Go y PHP: ejemplos de código" />
+  <meta property="og:description" content="Ejemplos listos para copiar de codificar y decodificar Base64 en Java, C#, Go y PHP, con variantes seguras para URL, relleno y manejo de errores." />
+  <meta property="og:url" content="https://encodeb64.com/es/blog/base64-in-java-csharp-go-php-code-examples/" />
+  <meta property="og:image" content="https://encodeb64.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Base64 en Java, C#, Go y PHP: ejemplos de código" />
+  <meta name="twitter:description" content="Ejemplos listos para copiar de codificar y decodificar Base64 en Java, C#, Go y PHP, con variantes seguras para URL, relleno y manejo de errores." />
+  <meta name="twitter:image" content="https://encodeb64.com/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
+
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      var _ch = document.createElement('script');
+      _ch.async = true;
+      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      document.head.appendChild(_ch);
+      document.addEventListener('DOMContentLoaded', function () {
+        window.cookiehub && window.cookiehub.load({});
+      });
+    }
+  </script>
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      var _ga = document.createElement('script');
+      _ga.async = true;
+      _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
+      document.head.appendChild(_ga);
+      gtag('js', new Date());
+      gtag('config', 'G-MYEHD96X9Q');
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d0d14; --bg2: #12121c; --bg3: #1a1a28;
+      --cyan: #00e5cc; --cyan-dim: rgba(0,229,204,0.12); --cyan-glow: rgba(0,229,204,0.3); --cyan-light: #5ef5e5;
+      --glass-bg: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+      --text: #e8e8f0; --text-muted: #7a7a9a; --text-dim: #4a4a6a;
+      --radius: 14px; --radius-sm: 8px;
+      --mono: 'JetBrains Mono', monospace; --sans: 'Sora', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background-color: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(0,229,204,0.1) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; z-index: 0; }
+    body::after { content: ''; position: fixed; top: -20%; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse, rgba(0,229,204,0.055) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(13,13,20,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 0 24px; height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; flex-shrink: 0; }
+    .logo span.encode { color: #ffffff; } .logo span.b64 { color: var(--cyan); }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .nav-pills { display: flex; gap: 6px; }
+    .nav-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; padding: 5px 14px; border-radius: 20px; text-decoration: none; transition: all 0.2s; border: 1px solid var(--glass-border); color: var(--text-muted); background: transparent; }
+    .nav-pill:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .nav-pill.current { color: #0d0d14; background: var(--cyan); font-weight: 600; border-color: transparent; }
+    .lang-selector { position: relative; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 5px 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; color: var(--text-muted); cursor: pointer; font-family: var(--sans); font-size: 0.78rem; transition: all 0.2s; white-space: nowrap; }
+    .lang-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .lang-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 200; max-height: 60vh; overflow-y: auto; }
+    .lang-dropdown.open { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 8px; padding: 9px 14px; cursor: pointer; font-size: 0.82rem; color: var(--text-muted); transition: all 0.15s; }
+    .lang-option:hover { background: var(--cyan-dim); color: var(--text); }
+    .lang-option.selected { color: var(--cyan); }
+    main { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px 0 8px; font-size: 0.78rem; color: var(--text-dim); flex-wrap: wrap; text-align: center; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; } .breadcrumb a:hover { color: var(--cyan); }
+    .breadcrumb-sep { color: var(--text-dim); } .breadcrumb-current { color: var(--text-muted); }
+    .page-hero { padding: 40px 0 28px; text-align: center; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; line-height: 1.15; margin-bottom: 10px; }
+    .page-hero p.sub { color: var(--text-muted); font-size: 1rem; font-weight: 300; }
+    .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 20px; }
+    .glass-card h2 { font-size: 1.1rem; font-weight: 600; color: var(--cyan); margin: 28px 0 10px; }
+    .glass-card h2:first-of-type { margin-top: 0; }
+    .glass-card p { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 10px; }
+    .glass-card p:last-child { margin-bottom: 0; }
+    .glass-card ul, .glass-card ol { list-style: none; padding: 0; margin: 6px 0 12px; }
+    .glass-card ol { counter-reset: step; }
+    .glass-card ul li, .glass-card ol li { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); padding: 2px 0 2px 22px; position: relative; }
+    .glass-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+    .glass-card ol li { counter-increment: step; }
+    .glass-card ol li::before { content: counter(step) '.'; position: absolute; left: 0; color: var(--cyan); font-weight: 600; }
+    .glass-card a { color: var(--cyan); text-decoration: none; } .glass-card a:hover { text-decoration: underline; }
+    .glass-card code { font-family: var(--mono); background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px; color: var(--cyan-light); font-size: 0.85em; word-break: break-all; }
+    .code-block { font-family: var(--mono); background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 14px 16px; border-radius: var(--radius-sm); color: var(--cyan-light); font-size: 0.82rem; overflow-x: auto; margin: 12px 0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; }
+    .article-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 8px; }
+    .blog-card { display: block; }
+    .blog-card h2 { margin-top: 0 !important; }
+    .blog-card h2 a { color: var(--text); }
+    .blog-card h2 a:hover { color: var(--cyan); text-decoration: none; }
+    .blog-card + .blog-card { margin-top: 4px; }
+    .readmore { display: inline-block; margin-top: 6px; font-weight: 600; }
+    footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px 24px; border-top: 1px solid var(--glass-border); font-size: 0.82rem; color: var(--text-dim); max-width: 900px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a, footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover, footer a:hover { color: var(--cyan); }
+    footer .footer-right a { color: var(--cyan); }
+    @media (max-width: 640px) {
+      header { padding: 0 16px; }
+      .nav-pill { padding: 4px 10px; font-size: 0.73rem; }
+      .lang-btn span { display: none; }
+      .glass-card { padding: 22px 20px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Base64 en Java, C#, Go y PHP: ejemplos de código",
+    "author": {"@type": "Organization", "name": "MpmDigital", "url": "https://mpmdigital.es/"},
+    "publisher": {"@type": "Organization", "name": "encodeb64.com", "url": "https://encodeb64.com/"},
+    "datePublished": "2026-11-12",
+    "inLanguage": "es",
+    "url": "https://encodeb64.com/es/blog/base64-in-java-csharp-go-php-code-examples/"
+  }
+  </script>
+</head>
+<body>
+<header>
+  <a href="/es/" class="logo">
+    <span class="encode">encode</span><span class="b64">B64</span>
+  </a>
+  <div class="header-right">
+    <nav class="nav-pills">
+      <a href="/es/" class="nav-pill">Codificar</a>
+      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">Decodificar</a>
+      <a href="/es/image-to-base64" class="nav-pill">Imagen a Base64</a>
+      <a href="/es/blog/" class="nav-pill current">Blog</a>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="langLabel">Español</span>
+        <svg viewBox="0 0 10 6" fill="currentColor" width="10" height="6"><path d="M0 0l5 6 5-6z"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown" role="listbox">
+        <div class="lang-option" data-lang="en" role="option">🇺🇸 English</div>
+        <div class="lang-option selected" data-lang="es" role="option">🇪🇸 Español</div>
+        <div class="lang-option" data-lang="pt" role="option">🇧🇷 Português</div>
+        <div class="lang-option" data-lang="fr" role="option">🇫🇷 Français</div>
+        <div class="lang-option" data-lang="de" role="option">🇩🇪 Deutsch</div>
+        <div class="lang-option" data-lang="it" role="option">🇮🇹 Italiano</div>
+        <div class="lang-option" data-lang="zh" role="option">🇨🇳 中文</div>
+        <div class="lang-option" data-lang="ru" role="option">🇷🇺 Русский</div>
+        <div class="lang-option" data-lang="ja" role="option">🇯🇵 日本語</div>
+        <div class="lang-option" data-lang="ko" role="option">🇰🇷 한국어</div>
+        <div class="lang-option" data-lang="nl" role="option">🇳🇱 Nederlands</div>
+        <div class="lang-option" data-lang="hi" role="option">🇮🇳 हिन्दी</div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <nav class="breadcrumb">
+    <a href="/es/">encodeb64.com</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <a href="/es/blog/">Blog</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <span class="breadcrumb-current">Base64 en Java, C#, Go y PHP: ejemplos de código</span>
+  </nav>
+  <div class="page-hero">
+    <h1>Base64 en Java, C#, Go y PHP: ejemplos de código</h1>
+    <div class="article-meta"><span>Noviembre de 2026</span><span>7 min de lectura</span></div>
+  </div>
+  <article class="glass-card">
+<p>Todos los lenguajes principales incluyen soporte de Base64, pero los nombres, los valores por defecto y el comportamiento ante fallos difieren de maneras que causan errores reales, sobre todo con la salida segura para URL, el relleno y la entrada inválida. Esta guía te da ejemplos compactos y listos para copiar en Java, C#, Go y PHP, y señala las diferencias que conviene conocer. Para JavaScript y Python, consulta nuestras guías de <a href="/es/blog/how-to-encode-and-decode-base64-in-javascript/">JavaScript</a> y <a href="/es/blog/how-to-encode-and-decode-base64-in-python/">Python</a>.</p>
+
+<h2>La cadena de prueba de estos ejemplos</h2>
+<p>Todos los ejemplos codifican el texto <code>Hello, World!</code>, que debería dar el mismo resultado en todos los lenguajes:</p>
+<div class="code-block">SGVsbG8sIFdvcmxkIQ==</div>
+<p>Si tu salida es distinta, revisa la codificación de caracteres. Convierte siempre el texto a bytes UTF-8 antes de codificar; si no, los resultados difieren entre plataformas con texto no ASCII.</p>
+
+<h2>Java</h2>
+<p>Desde Java 8, la clase <code>java.util.Base64</code> es la herramienta estándar. Evita el antiguo <code>sun.misc.BASE64Encoder</code> y las utilidades de terceros en código nuevo.</p>
+<div class="code-block">import java.util.Base64;
+import java.nio.charset.StandardCharsets;
+
+String encoded = Base64.getEncoder()
+    .encodeToString("Hello, World!".getBytes(StandardCharsets.UTF_8));
+// SGVsbG8sIFdvcmxkIQ==
+
+byte[] decoded = Base64.getDecoder().decode(encoded);
+String text = new String(decoded, StandardCharsets.UTF_8);</div>
+<p>Java ofrece tres familias de codificadores y decodificadores:</p>
+<ul>
+<li><code>getEncoder()</code> y <code>getDecoder()</code> para Base64 estándar.</li>
+<li><code>getUrlEncoder()</code> y <code>getUrlDecoder()</code> para el alfabeto seguro para URL.</li>
+<li><code>getMimeEncoder()</code> y <code>getMimeDecoder()</code> para MIME, que parte las líneas a los 76 caracteres e ignora los saltos de línea al decodificar.</li>
+</ul>
+<p>Para quitar el relleno <code>=</code>, como hace JWT, encadena <code>withoutPadding()</code>:</p>
+<div class="code-block">String token = Base64.getUrlEncoder().withoutPadding()
+    .encodeToString("subjects?_d".getBytes(StandardCharsets.UTF_8));
+// c3ViamVjdHM_X2Q</div>
+<p>La entrada inválida lanza <code>IllegalArgumentException</code>. Por ejemplo, decodificar con el decodificador estándar una cadena que contiene un espacio falla con un mensaje como <code>Illegal base64 character 20</code> (el código hexadecimal del espacio). Si tu entrada puede contener saltos de línea, usa <code>getMimeDecoder()</code>.</p>
+
+<h2>C# y .NET</h2>
+<p>La clase <code>Convert</code> gestiona el Base64 estándar:</p>
+<div class="code-block">using System;
+using System.Text;
+
+string encoded = Convert.ToBase64String(Encoding.UTF8.GetBytes("Hello, World!"));
+// SGVsbG8sIFdvcmxkIQ==
+
+byte[] decoded = Convert.FromBase64String(encoded);
+string text = Encoding.UTF8.GetString(decoded);</div>
+<p><code>Convert.FromBase64String</code> lanza <code>FormatException</code> con entrada inválida. Para evitar excepciones en rutas críticas, usa el patrón sin excepciones con <code>Convert.TryFromBase64String</code> y un búfer preasignado.</p>
+<p>La clase clásica <code>Convert</code> no tiene modo seguro para URL. Las versiones recientes de .NET añaden una clase <code>Base64Url</code> en <code>System.Buffers.Text</code>, y ASP.NET Core ofrece <code>WebEncoders.Base64UrlEncode</code>. Si no tienes ninguna, convierte a mano:</p>
+<div class="code-block">string url = Convert.ToBase64String(bytes)
+    .TrimEnd('=')
+    .Replace('+', '-')
+    .Replace('/', '_');</div>
+<p>Otra trampa: <code>Encoding.Unicode</code> en .NET es UTF-16, no UTF-8. Usarlo produce un Base64 distinto del de la mayoría de lenguajes.</p>
+
+<h2>Go</h2>
+<p>El paquete <code>encoding/base64</code> expone codificaciones ya hechas como variables, de modo que la elección de alfabeto y relleno es explícita:</p>
+<div class="code-block">import "encoding/base64"
+
+encoded := base64.StdEncoding.EncodeToString([]byte("Hello, World!"))
+// SGVsbG8sIFdvcmxkIQ==
+
+decoded, err := base64.StdEncoding.DecodeString(encoded)
+if err != nil {
+    // invalid input
+}
+text := string(decoded)</div>
+<p>Las cuatro codificaciones estándar son:</p>
+<ul>
+<li><code>StdEncoding</code>: alfabeto estándar, con relleno.</li>
+<li><code>URLEncoding</code>: alfabeto seguro para URL, con relleno.</li>
+<li><code>RawStdEncoding</code>: alfabeto estándar, sin relleno.</li>
+<li><code>RawURLEncoding</code>: alfabeto seguro para URL, sin relleno. Es la que usan las bibliotecas JWT.</li>
+</ul>
+<p>Go es estricto. Decodificar con <code>StdEncoding</code> una cadena a la que se quitó el relleno falla con un error como <code>illegal base64 data at input byte N</code>, así que debes elegir la codificación que coincida exactamente con tus datos.</p>
+
+<h2>PHP</h2>
+<p>PHP tiene dos funciones integradas:</p>
+<div class="code-block">$encoded = base64_encode('Hello, World!');
+// SGVsbG8sIFdvcmxkIQ==
+
+$decoded = base64_decode($encoded, true);
+if ($decoded === false) {
+    // invalid input
+}</div>
+<p>Pasa siempre <code>true</code> como segundo argumento de <code>base64_decode</code>. Sin él, PHP ignora en silencio los caracteres fuera del alfabeto, por lo que una entrada mal formada puede producir basura en lugar de un error. En modo estricto la función devuelve <code>false</code> con entrada inválida.</p>
+<p>PHP no tiene funciones integradas seguras para URL, así que usa <code>strtr</code>:</p>
+<div class="code-block">function base64url_encode(string $data): string {
+    return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');
+}
+
+function base64url_decode(string $data): string|false {
+    return base64_decode(strtr($data, '-_', '+/'));
+}</div>
+
+<h2>Diferencias de comportamiento de un vistazo</h2>
+<ul>
+<li><strong>Relleno al decodificar:</strong> el decodificador URL de Java acepta relleno ausente, Go exige que elijas una codificación Raw y el <code>FromBase64String</code> de .NET espera el relleno correcto.</li>
+<li><strong>Espacios en blanco:</strong> el decodificador MIME de Java ignora los saltos de línea; los decodificadores estándar de Java, Go y .NET rechazan los espacios en la mayoría de casos; PHP los descarta en modo no estricto.</li>
+<li><strong>Errores:</strong> Java lanza <code>IllegalArgumentException</code>, .NET lanza <code>FormatException</code>, Go devuelve un <code>error</code> y PHP devuelve <code>false</code> en modo estricto.</li>
+</ul>
+<p>Para ayuda con los mensajes anteriores, lee <a href="/es/blog/common-base64-errors-and-how-to-fix-them/">Errores comunes de Base64 y cómo solucionarlos</a>.</p>
+
+<h2>Verifica tu salida</h2>
+<p>Al portar código entre lenguajes, compara los resultados con una herramienta de confianza. Codifica texto con el <a href="/es/">codificador de la página de inicio</a> y decodifica cadenas en <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>. Si Base64 es nuevo para ti, empieza por <a href="/es/blog/what-is-base64-encoding-and-how-it-works/">¿Qué es Base64 y cómo funciona la codificación?</a></p>
+
+  </article>
+</main>
+<footer>
+<span>encodeb64.com &copy; 2026</span>
+  <div class="footer-links">
+    <a href="/about/">Acerca de</a>
+    <a href="/privacy-policy/">Política de privacidad</a>
+    <a href="/terms-of-use/">Términos de uso</a>
+    <a href="/contact/">Contacto</a>
+    <a href="/es/blog/">Blog</a>
+  </div>
+  <span class="footer-right">
+    <span>Prueba también:</span>
+    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+  </span>
+<span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
+  Desarrollado por <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>
+</span>
+</footer>
+<script>
+  const langBtn = document.getElementById('langBtn');
+  const langDropdown = document.getElementById('langDropdown');
+  langBtn.addEventListener('click', () => {
+    const open = langDropdown.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.lang-selector')) {
+      langDropdown.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', false);
+    }
+  });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      window.location.href = ({en:'/blog/base64-in-java-csharp-go-php-code-examples/',es:'/es/blog/base64-in-java-csharp-go-php-code-examples/',pt:'/pt/blog/base64-in-java-csharp-go-php-code-examples/',fr:'/fr/blog/base64-in-java-csharp-go-php-code-examples/',de:'/de/blog/base64-in-java-csharp-go-php-code-examples/',it:'/it/blog/base64-in-java-csharp-go-php-code-examples/',zh:'/zh/blog/base64-in-java-csharp-go-php-code-examples/',ru:'/ru/blog/base64-in-java-csharp-go-php-code-examples/',ja:'/ja/blog/base64-in-java-csharp-go-php-code-examples/',ko:'/ko/blog/base64-in-java-csharp-go-php-code-examples/',nl:'/nl/blog/base64-in-java-csharp-go-php-code-examples/',hi:'/hi/blog/base64-in-java-csharp-go-php-code-examples/'})[lang] || '/blog/base64-in-java-csharp-go-php-code-examples/';;
+    });
+  });
+</script>
+</body>
+</html>

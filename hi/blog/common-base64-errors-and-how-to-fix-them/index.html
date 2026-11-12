@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>आम Base64 त्रुटियाँ और उन्हें ठीक करने के तरीके</title>
+  <meta name="description" content="अमान्य पैडिंग, गलत अक्षर, बिगड़ा टेक्स्ट और Base64 डिकोडिंग की अन्य समस्याओं का निदान। कारणों और समाधानों के साथ एक व्यावहारिक चेकलिस्ट।" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d0d14" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://encodeb64.com/hi/blog/common-base64-errors-and-how-to-fix-them/" />
+  <link rel="alternate" hreflang="en" href="https://encodeb64.com/blog/common-base64-errors-and-how-to-fix-them/" />
+  <link rel="alternate" hreflang="es" href="https://encodeb64.com/es/blog/common-base64-errors-and-how-to-fix-them/" />
+  <link rel="alternate" hreflang="pt" href="https://encodeb64.com/pt/blog/common-base64-errors-and-how-to-fix-them/" />
+  <link rel="alternate" hreflang="fr" href="https://encodeb64.com/fr/blog/common-base64-errors-and-how-to-fix-them/" />
+  <link rel="alternate" hreflang="de" href="https://encodeb64.com/de/blog/common-base64-errors-and-how-to-fix-them/" />
+  <link rel="alternate" hreflang="it" href="https://encodeb64.com/it/blog/common-base64-errors-and-how-to-fix-them/" />
+  <link rel="alternate" hreflang="zh" href="https://encodeb64.com/zh/blog/common-base64-errors-and-how-to-fix-them/" />
+  <link rel="alternate" hreflang="ru" href="https://encodeb64.com/ru/blog/common-base64-errors-and-how-to-fix-them/" />
+  <link rel="alternate" hreflang="ja" href="https://encodeb64.com/ja/blog/common-base64-errors-and-how-to-fix-them/" />
+  <link rel="alternate" hreflang="ko" href="https://encodeb64.com/ko/blog/common-base64-errors-and-how-to-fix-them/" />
+  <link rel="alternate" hreflang="nl" href="https://encodeb64.com/nl/blog/common-base64-errors-and-how-to-fix-them/" />
+  <link rel="alternate" hreflang="hi" href="https://encodeb64.com/hi/blog/common-base64-errors-and-how-to-fix-them/" />
+  <link rel="alternate" hreflang="x-default" href="https://encodeb64.com/blog/common-base64-errors-and-how-to-fix-them/" />
+  <meta property="og:locale" content="hi_IN" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="encodeb64.com" />
+  <meta property="og:title" content="आम Base64 त्रुटियाँ और उन्हें ठीक करने के तरीके" />
+  <meta property="og:description" content="अमान्य पैडिंग, गलत अक्षर, बिगड़ा टेक्स्ट और Base64 डिकोडिंग की अन्य समस्याओं का निदान। कारणों और समाधानों के साथ एक व्यावहारिक चेकलिस्ट।" />
+  <meta property="og:url" content="https://encodeb64.com/hi/blog/common-base64-errors-and-how-to-fix-them/" />
+  <meta property="og:image" content="https://encodeb64.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="आम Base64 त्रुटियाँ और उन्हें ठीक करने के तरीके" />
+  <meta name="twitter:description" content="अमान्य पैडिंग, गलत अक्षर, बिगड़ा टेक्स्ट और Base64 डिकोडिंग की अन्य समस्याओं का निदान। कारणों और समाधानों के साथ एक व्यावहारिक चेकलिस्ट।" />
+  <meta name="twitter:image" content="https://encodeb64.com/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
+
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      var _ch = document.createElement('script');
+      _ch.async = true;
+      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      document.head.appendChild(_ch);
+      document.addEventListener('DOMContentLoaded', function () {
+        window.cookiehub && window.cookiehub.load({});
+      });
+    }
+  </script>
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      var _ga = document.createElement('script');
+      _ga.async = true;
+      _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
+      document.head.appendChild(_ga);
+      gtag('js', new Date());
+      gtag('config', 'G-MYEHD96X9Q');
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d0d14; --bg2: #12121c; --bg3: #1a1a28;
+      --cyan: #00e5cc; --cyan-dim: rgba(0,229,204,0.12); --cyan-glow: rgba(0,229,204,0.3); --cyan-light: #5ef5e5;
+      --glass-bg: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+      --text: #e8e8f0; --text-muted: #7a7a9a; --text-dim: #4a4a6a;
+      --radius: 14px; --radius-sm: 8px;
+      --mono: 'JetBrains Mono', monospace; --sans: 'Sora', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background-color: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(0,229,204,0.1) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; z-index: 0; }
+    body::after { content: ''; position: fixed; top: -20%; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse, rgba(0,229,204,0.055) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(13,13,20,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 0 24px; height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; flex-shrink: 0; }
+    .logo span.encode { color: #ffffff; } .logo span.b64 { color: var(--cyan); }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .nav-pills { display: flex; gap: 6px; }
+    .nav-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; padding: 5px 14px; border-radius: 20px; text-decoration: none; transition: all 0.2s; border: 1px solid var(--glass-border); color: var(--text-muted); background: transparent; }
+    .nav-pill:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .nav-pill.current { color: #0d0d14; background: var(--cyan); font-weight: 600; border-color: transparent; }
+    .lang-selector { position: relative; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 5px 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; color: var(--text-muted); cursor: pointer; font-family: var(--sans); font-size: 0.78rem; transition: all 0.2s; white-space: nowrap; }
+    .lang-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .lang-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 200; max-height: 60vh; overflow-y: auto; }
+    .lang-dropdown.open { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 8px; padding: 9px 14px; cursor: pointer; font-size: 0.82rem; color: var(--text-muted); transition: all 0.15s; }
+    .lang-option:hover { background: var(--cyan-dim); color: var(--text); }
+    .lang-option.selected { color: var(--cyan); }
+    main { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px 0 8px; font-size: 0.78rem; color: var(--text-dim); flex-wrap: wrap; text-align: center; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; } .breadcrumb a:hover { color: var(--cyan); }
+    .breadcrumb-sep { color: var(--text-dim); } .breadcrumb-current { color: var(--text-muted); }
+    .page-hero { padding: 40px 0 28px; text-align: center; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; line-height: 1.15; margin-bottom: 10px; }
+    .page-hero p.sub { color: var(--text-muted); font-size: 1rem; font-weight: 300; }
+    .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 20px; }
+    .glass-card h2 { font-size: 1.1rem; font-weight: 600; color: var(--cyan); margin: 28px 0 10px; }
+    .glass-card h2:first-of-type { margin-top: 0; }
+    .glass-card p { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 10px; }
+    .glass-card p:last-child { margin-bottom: 0; }
+    .glass-card ul, .glass-card ol { list-style: none; padding: 0; margin: 6px 0 12px; }
+    .glass-card ol { counter-reset: step; }
+    .glass-card ul li, .glass-card ol li { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); padding: 2px 0 2px 22px; position: relative; }
+    .glass-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+    .glass-card ol li { counter-increment: step; }
+    .glass-card ol li::before { content: counter(step) '.'; position: absolute; left: 0; color: var(--cyan); font-weight: 600; }
+    .glass-card a { color: var(--cyan); text-decoration: none; } .glass-card a:hover { text-decoration: underline; }
+    .glass-card code { font-family: var(--mono); background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px; color: var(--cyan-light); font-size: 0.85em; word-break: break-all; }
+    .code-block { font-family: var(--mono); background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 14px 16px; border-radius: var(--radius-sm); color: var(--cyan-light); font-size: 0.82rem; overflow-x: auto; margin: 12px 0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; }
+    .article-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 8px; }
+    .blog-card { display: block; }
+    .blog-card h2 { margin-top: 0 !important; }
+    .blog-card h2 a { color: var(--text); }
+    .blog-card h2 a:hover { color: var(--cyan); text-decoration: none; }
+    .blog-card + .blog-card { margin-top: 4px; }
+    .readmore { display: inline-block; margin-top: 6px; font-weight: 600; }
+    footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px 24px; border-top: 1px solid var(--glass-border); font-size: 0.82rem; color: var(--text-dim); max-width: 900px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a, footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover, footer a:hover { color: var(--cyan); }
+    footer .footer-right a { color: var(--cyan); }
+    @media (max-width: 640px) {
+      header { padding: 0 16px; }
+      .nav-pill { padding: 4px 10px; font-size: 0.73rem; }
+      .lang-btn span { display: none; }
+      .glass-card { padding: 22px 20px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "आम Base64 त्रुटियाँ और उन्हें ठीक करने के तरीके",
+    "author": {"@type": "Organization", "name": "MpmDigital", "url": "https://mpmdigital.es/"},
+    "publisher": {"@type": "Organization", "name": "encodeb64.com", "url": "https://encodeb64.com/"},
+    "datePublished": "2026-11-12",
+    "inLanguage": "hi",
+    "url": "https://encodeb64.com/hi/blog/common-base64-errors-and-how-to-fix-them/"
+  }
+  </script>
+</head>
+<body>
+<header>
+  <a href="/hi/" class="logo">
+    <span class="encode">encode</span><span class="b64">B64</span>
+  </a>
+  <div class="header-right">
+    <nav class="nav-pills">
+      <a href="/hi/" class="nav-pill">एनकोड</a>
+      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">डीकोड</a>
+      <a href="/hi/image-to-base64" class="nav-pill">छवि से Base64</a>
+      <a href="/hi/blog/" class="nav-pill current">ब्लॉग</a>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="langLabel">हिन्दी</span>
+        <svg viewBox="0 0 10 6" fill="currentColor" width="10" height="6"><path d="M0 0l5 6 5-6z"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown" role="listbox">
+        <div class="lang-option" data-lang="en" role="option">🇺🇸 English</div>
+        <div class="lang-option" data-lang="es" role="option">🇪🇸 Español</div>
+        <div class="lang-option" data-lang="pt" role="option">🇧🇷 Português</div>
+        <div class="lang-option" data-lang="fr" role="option">🇫🇷 Français</div>
+        <div class="lang-option" data-lang="de" role="option">🇩🇪 Deutsch</div>
+        <div class="lang-option" data-lang="it" role="option">🇮🇹 Italiano</div>
+        <div class="lang-option" data-lang="zh" role="option">🇨🇳 中文</div>
+        <div class="lang-option" data-lang="ru" role="option">🇷🇺 Русский</div>
+        <div class="lang-option" data-lang="ja" role="option">🇯🇵 日本語</div>
+        <div class="lang-option" data-lang="ko" role="option">🇰🇷 한국어</div>
+        <div class="lang-option" data-lang="nl" role="option">🇳🇱 Nederlands</div>
+        <div class="lang-option selected" data-lang="hi" role="option">🇮🇳 हिन्दी</div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <nav class="breadcrumb">
+    <a href="/hi/">encodeb64.com</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <a href="/hi/blog/">ब्लॉग</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <span class="breadcrumb-current">आम Base64 त्रुटियाँ और उन्हें ठीक करने के तरीके</span>
+  </nav>
+  <div class="page-hero">
+    <h1>आम Base64 त्रुटियाँ और उन्हें ठीक करने के तरीके</h1>
+    <div class="article-meta"><span>नवंबर 2026</span><span>8 मिनट पढ़ने का समय</span></div>
+  </div>
+  <article class="glass-card">
+<p>Base64 सरल है, फिर भी यह प्रोग्रामिंग के सबसे उलझाने वाले त्रुटि संदेशों में से कुछ पैदा करता है: <code>Incorrect padding</code>, <code>Invalid character</code>, <code>The input is not a valid Base-64 string</code>। भाषा के अनुसार संदेश बदलते हैं, लेकिन कारण लगभग हमेशा वही कुछ होते हैं। यह गाइड उन्हें उस क्रम में सूचीबद्ध करती है जिसमें आपको उन्हें जाँचना चाहिए, हर एक के लक्षण, कारण और समाधान के साथ।</p>
+
+<h2>पहला कदम: स्ट्रिंग को देखें</h2>
+<p>कोड बदलने से पहले उस वास्तविक स्ट्रिंग को देखें जिसे आप डिकोड करना चाहते हैं। चार त्वरित जाँचें अधिकांश सवालों का जवाब दे देती हैं:</p>
+<ul>
+<li>क्या उसमें <code>-</code> या <code>_</code> है? तब यह Base64URL है, मानक Base64 नहीं।</li>
+<li>क्या उसमें <code>+</code> या <code>/</code> है? तब यह मानक Base64 है।</li>
+<li>क्या वह <code>=</code> या <code>==</code> पर खत्म होती है? अगर होना चाहिए था और नहीं है, तो पैडिंग हटा दी गई थी।</li>
+<li>क्या वह <code>data:</code> से शुरू होती है? तब यह एक डेटा URI है और केवल कॉमा के बाद का हिस्सा Base64 है।</li>
+</ul>
+
+<h2>1. गायब या गलत पैडिंग</h2>
+<p><strong>लक्षण:</strong> <code>Incorrect padding</code> (Python), <code>illegal base64 data at input byte N</code> (Go), <code>Invalid length for a Base-64 char array</code> (.NET)।</p>
+<p><strong>कारण:</strong> स्ट्रिंग की लंबाई चार का गुणज नहीं है क्योंकि अंत के <code>=</code> अक्षर हटा दिए गए थे, जो JWT, URL और कुछ API में सामान्य है।</p>
+<p><strong>समाधान:</strong> डिकोड करने से पहले गायब पैडिंग जोड़ें। ज़रूरी <code>=</code> की संख्या <code>(4 - लंबाई % 4) % 4</code> है:</p>
+<div class="code-block">def fix_padding(s):
+    return s + '=' * (-len(s) % 4)</div>
+<p>एक उपयोगी जाँच: कोई वैध Base64 स्ट्रिंग, पैडिंग के साथ या बिना, कभी भी ऐसी नहीं हो सकती जिसकी लंबाई को 4 से भाग देने पर शेष 1 बचे। अगर <code>लंबाई % 4 == 1</code> है, तो डेटा कटा हुआ या बिगड़ा हुआ है और कोई पैडिंग उसे ठीक नहीं करेगी।</p>
+
+<h2>2. मानक और URL-सुरक्षित अक्षर-समूह में गड़बड़ी</h2>
+<p><strong>लक्षण:</strong> <code>Invalid character</code> या <code>Illegal base64 character 2d</code> (जहाँ <code>2d</code> हाइफ़न का हेक्साडेसिमल कोड है), या ऐसा आउटपुट जो बिना त्रुटि डिकोड हो जाए पर गलत हो।</p>
+<p><strong>कारण:</strong> Base64URL स्ट्रिंग (जिसमें <code>-</code> और <code>_</code> हैं) मानक डिकोडर को दे दी गई, या इसका उल्टा।</p>
+<p><strong>समाधान:</strong> डेटा से मेल खाने वाला डिकोडर इस्तेमाल करें, या पहले अक्षर बदलें: URL-सुरक्षित से मानक में जाने के लिए <code>-</code> को <code>+</code> और <code>_</code> को <code>/</code> से बदलें। हर एक कब उपयोग होता है, यह जानने के लिए <a href="/hi/blog/base64url-vs-base64-differences-and-when-to-use-each/">Base64URL बनाम Base64</a> देखें।</p>
+
+<h2>3. प्लस का स्पेस बन जाना</h2>
+<p><strong>लक्षण:</strong> डिकोड किया गया डेटा बिगड़ा हुआ है, या डिकोडर स्पेस अक्षर की शिकायत करता है, लेकिन केवल उन मानों के लिए जो URL या HTML फ़ॉर्म से होकर आए।</p>
+<p><strong>कारण:</strong> URL क्वेरी स्ट्रिंग और फ़ॉर्म बॉडी में <code>+</code> का अर्थ स्पेस होता है। प्रतिशत-एन्कोडिंग के बिना URL में रखा गया मानक Base64 मान अपने <code>+</code> अक्षरों के स्पेस से बदले जाने के साथ पहुँचता है।</p>
+<p><strong>समाधान:</strong> मानक Base64 को कभी भी बिना एस्केप किए URL में न रखें। या तो उसे प्रतिशत-एन्कोड करें (<code>+</code> बनता है <code>%2B</code>, <code>/</code> बनता है <code>%2F</code>, <code>=</code> बनता है <code>%3D</code>) या, बेहतर, Base64URL का उपयोग करें। प्राप्त करने वाले सिरे पर बचाव के तौर पर डिकोड करने से पहले स्पेस को <code>+</code> से बदल दें।</p>
+
+<h2>4. खाली स्थान और लाइन ब्रेक</h2>
+<p><strong>लक्षण:</strong> Java में <code>Illegal base64 character 20</code> (स्पेस) या <code>0a</code> (लाइन फ़ीड), .NET में <code>FormatException</code>, या केवल लंबे मानों पर विफलता।</p>
+<p><strong>कारण:</strong> मान को 76 अक्षरों पर तोड़ा गया था, ईमेल या PEM फ़ाइल से कॉपी किया गया था, या उसके अंत में एक नई पंक्ति है।</p>
+<p><strong>समाधान:</strong> डिकोड करने से पहले खाली स्थान हटाएँ (Python में <code>re.sub(r'\s+', '', s)</code>, JavaScript में <code>s.replace(/\s+/g, '')</code>), या ऐसा डिकोडर इस्तेमाल करें जो इन्हें सह ले, जैसे Java का MIME डिकोडर। कमांड लाइन पर एन्कोड करते समय <a href="/hi/blog/base64-encode-decode-command-line-linux-macos-windows/"><code>echo</code> द्वारा जोड़ी गई अंतिम नई पंक्ति</a> पर भी नज़र रखें।</p>
+
+<h2>5. डेटा URI उपसर्ग शामिल हो जाना</h2>
+<p><strong>लक्षण:</strong> कोलन या सेमीकोलन का ज़िक्र करने वाली त्रुटि, या <code>&lt;img src&gt;</code> एट्रिब्यूट से कॉपी की गई चीज़ को डिकोड करने पर बिगड़ा आउटपुट।</p>
+<p><strong>कारण:</strong> डिकोडर को केवल <code>iVBORw0...</code> के बजाय <code>data:image/png;base64,iVBORw0...</code> मिला।</p>
+<p><strong>समाधान:</strong> पहले कॉमा पर बाँटें और केवल दूसरा हिस्सा डिकोड करें: <code>s.split(',', 1)[1]</code>। अगर आपको केवल छवि चाहिए, तो उपसर्ग जोड़ने के बाद Base64 स्ट्रिंग को सीधे <code>src</code> के रूप में भी इस्तेमाल कर सकते हैं। हमारा <a href="/hi/image-to-base64">इमेज से Base64 कन्वर्टर</a> दोनों रूप बनाता है।</p>
+
+<h2>6. टेक्स्ट कचरे या अजीब अक्षरों में डिकोड होना</h2>
+<p><strong>लक्षण:</strong> डिकोडिंग सफल रहती है लेकिन टेक्स्ट में <code>Ã©</code>, <code>â€™</code> या प्रश्नचिह्न दिखते हैं।</p>
+<p><strong>कारण:</strong> कैरेक्टर एन्कोडिंग का बेमेल। बाइट्स UTF-8 हैं, पर उन्हें Latin-1 या Windows-1252 के रूप में पढ़ा गया। उल्टा भी होता है: UTF-16 में एन्कोड टेक्स्ट (.NET में <code>Encoding.Unicode</code> और PowerShell के <code>-EncodedCommand</code> का डिफ़ॉल्ट) को UTF-8 के रूप में डिकोड करने पर अक्षरों के बीच नल अक्षर दिखते हैं।</p>
+<p><strong>समाधान:</strong> दोनों सिरों को टेक्स्ट एन्कोडिंग पर सहमत करें, और जब तक कोई कारण न हो, UTF-8 इस्तेमाल करें। अगर डिकोड किया गया डेटा टेक्स्ट है ही नहीं (छवि, PDF, एन्क्रिप्टेड ब्लॉक), तो उसे स्ट्रिंग में न बदलें; बाइट्स के रूप में रखें।</p>
+
+<h2>7. दोहरी एन्कोडिंग</h2>
+<p><strong>लक्षण:</strong> डिकोड करने के बाद आपको एक और Base64 जैसी दिखने वाली स्ट्रिंग मिलती है, जो अक्सर <code>ey</code> या <code>SG</code> से शुरू होती है।</p>
+<p><strong>कारण:</strong> डेटा दो बार एन्कोड हुआ, आमतौर पर इसलिए कि आपके कोड की एक परत और एक लाइब्रेरी दोनों ने Base64 लागू किया।</p>
+<p><strong>समाधान:</strong> एक बार और डिकोड करें और फिर स्रोत पर फ़ालतू एन्कोडिंग चरण हटा दें। एक त्वरित परीक्षण: सामान्य टेक्स्ट का असली Base64 आमतौर पर किसी अक्षर से शुरू होता है, और ऐसा नतीजा जो खुद वैध Base64 हो, दोहरी एन्कोडिंग का मज़बूत संकेत है।</p>
+
+<h2>8. कटा हुआ या बिगड़ा डेटा</h2>
+<p><strong>लक्षण:</strong> किसी विशेष बाइट स्थिति पर त्रुटि, लंबाई का 4 से भाग देने पर शेष 1 होना, या ऐसी फ़ाइल जो केवल आंशिक रूप से खुलती है।</p>
+<p><strong>कारण:</strong> स्ट्रिंग को कॉलम सीमा, लॉग पंक्ति सीमा, URL लंबाई सीमा या कॉपी-पेस्ट की गलती ने काट दिया।</p>
+<p><strong>समाधान:</strong> स्रोत और गंतव्य पर स्ट्रिंग की लंबाई की तुलना करें, और बीच के हर सिस्टम की सीमाएँ जाँचें। Base64 में त्रुटि पहचान की सुविधा नहीं है, इसलिए अखंडता चाहिए तो चेकसम अलग से भेजें।</p>
+
+<h2>9. गलत प्रकार का इनपुट</h2>
+<p><strong>लक्षण:</strong> किसी हैश, UUID या हेक्स स्ट्रिंग को डिकोड करने पर अपठनीय बाइट्स मिलना।</p>
+<p><strong>कारण:</strong> Base64 जैसी दिखने वाली हर स्ट्रिंग Base64 नहीं होती। हेक्स स्ट्रिंग और कुछ पहचानकर्ता केवल वही अक्षर इस्तेमाल करते हैं जो Base64 अक्षर-समूह में भी हैं, इसलिए डिकोडर उन्हें खुशी-खुशी अर्थहीन बाइट्स में डिकोड कर देगा।</p>
+<p><strong>समाधान:</strong> डेटा बनाने वाले से प्रारूप की पुष्टि करें। हेक्स केवल <code>0-9</code> और <code>a-f</code> इस्तेमाल करता है और उसकी लंबाई सम होती है।</p>
+
+<h2>डीबगिंग के लिए एक चेकलिस्ट</h2>
+<ol>
+<li>सटीक स्ट्रिंग और उसकी लंबाई प्रिंट करें।</li>
+<li>अक्षर-समूह पहचानें (<code>+/</code> या <code>-_</code>)।</li>
+<li>खाली स्थान और कोई भी <code>data:</code> उपसर्ग हटाएँ।</li>
+<li>अगर लंबाई चार का गुणज नहीं है तो पैडिंग बहाल करें।</li>
+<li>बाइट्स में डिकोड करें और उसके बाद ही तय करें कि यह टेक्स्ट है या नहीं।</li>
+<li>अगर फिर भी विफल हो, तो स्ट्रिंग को <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a> में चिपकाकर पुष्टि करें कि समस्या डेटा में है या आपके कोड में।</li>
+</ol>
+<p>इन सभी विफलताओं को समझाने वाली प्रक्रिया जानने के लिए <a href="/hi/blog/what-is-base64-encoding-and-how-it-works/">Base64 एन्कोडिंग क्या है और यह कैसे काम करती है?</a> पढ़ें। भाषा-विशिष्ट विवरण के लिए हमारी <a href="/hi/blog/how-to-encode-and-decode-base64-in-javascript/">JavaScript</a>, <a href="/hi/blog/how-to-encode-and-decode-base64-in-python/">Python</a> और <a href="/hi/blog/base64-in-java-csharp-go-php-code-examples/">Java, C#, Go और PHP</a> गाइड देखें।</p>
+
+  </article>
+</main>
+<footer>
+<span>encodeb64.com &copy; 2026</span>
+  <div class="footer-links">
+    <a href="/about/">हमारे बारे में</a>
+    <a href="/privacy-policy/">गोपनीयता नीति</a>
+    <a href="/terms-of-use/">उपयोग की शर्तें</a>
+    <a href="/contact/">संपर्क</a>
+    <a href="/hi/blog/">ब्लॉग</a>
+  </div>
+  <span class="footer-right">
+    <span>यह भी आज़माएं:</span>
+    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+  </span>
+<span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
+  द्वारा विकसित <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>
+</span>
+</footer>
+<script>
+  const langBtn = document.getElementById('langBtn');
+  const langDropdown = document.getElementById('langDropdown');
+  langBtn.addEventListener('click', () => {
+    const open = langDropdown.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.lang-selector')) {
+      langDropdown.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', false);
+    }
+  });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      window.location.href = ({en:'/blog/common-base64-errors-and-how-to-fix-them/',es:'/es/blog/common-base64-errors-and-how-to-fix-them/',pt:'/pt/blog/common-base64-errors-and-how-to-fix-them/',fr:'/fr/blog/common-base64-errors-and-how-to-fix-them/',de:'/de/blog/common-base64-errors-and-how-to-fix-them/',it:'/it/blog/common-base64-errors-and-how-to-fix-them/',zh:'/zh/blog/common-base64-errors-and-how-to-fix-them/',ru:'/ru/blog/common-base64-errors-and-how-to-fix-them/',ja:'/ja/blog/common-base64-errors-and-how-to-fix-them/',ko:'/ko/blog/common-base64-errors-and-how-to-fix-them/',nl:'/nl/blog/common-base64-errors-and-how-to-fix-them/',hi:'/hi/blog/common-base64-errors-and-how-to-fix-them/'})[lang] || '/blog/common-base64-errors-and-how-to-fix-them/';;
+    });
+  });
+</script>
+</body>
+</html>

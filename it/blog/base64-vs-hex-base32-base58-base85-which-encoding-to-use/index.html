@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Base64, Hex, Base32 e Base85: quale codifica usare?</title>
+  <meta name="description" content="Confronta Base64, Base32, esadecimale, Base58 e Base85 per sovraccarico, alfabeto e uso tipico, con numeri misurati e un modo semplice per scegliere." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d0d14" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://encodeb64.com/it/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="en" href="https://encodeb64.com/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="es" href="https://encodeb64.com/es/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="pt" href="https://encodeb64.com/pt/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="fr" href="https://encodeb64.com/fr/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="de" href="https://encodeb64.com/de/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="it" href="https://encodeb64.com/it/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="zh" href="https://encodeb64.com/zh/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="ru" href="https://encodeb64.com/ru/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="ja" href="https://encodeb64.com/ja/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="ko" href="https://encodeb64.com/ko/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="nl" href="https://encodeb64.com/nl/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="hi" href="https://encodeb64.com/hi/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="x-default" href="https://encodeb64.com/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <meta property="og:locale" content="it_IT" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="encodeb64.com" />
+  <meta property="og:title" content="Base64, Hex, Base32 e Base85: quale codifica usare?" />
+  <meta property="og:description" content="Confronta Base64, Base32, esadecimale, Base58 e Base85 per sovraccarico, alfabeto e uso tipico, con numeri misurati e un modo semplice per scegliere." />
+  <meta property="og:url" content="https://encodeb64.com/it/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <meta property="og:image" content="https://encodeb64.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Base64, Hex, Base32 e Base85: quale codifica usare?" />
+  <meta name="twitter:description" content="Confronta Base64, Base32, esadecimale, Base58 e Base85 per sovraccarico, alfabeto e uso tipico, con numeri misurati e un modo semplice per scegliere." />
+  <meta name="twitter:image" content="https://encodeb64.com/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
+
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      var _ch = document.createElement('script');
+      _ch.async = true;
+      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      document.head.appendChild(_ch);
+      document.addEventListener('DOMContentLoaded', function () {
+        window.cookiehub && window.cookiehub.load({});
+      });
+    }
+  </script>
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      var _ga = document.createElement('script');
+      _ga.async = true;
+      _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
+      document.head.appendChild(_ga);
+      gtag('js', new Date());
+      gtag('config', 'G-MYEHD96X9Q');
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d0d14; --bg2: #12121c; --bg3: #1a1a28;
+      --cyan: #00e5cc; --cyan-dim: rgba(0,229,204,0.12); --cyan-glow: rgba(0,229,204,0.3); --cyan-light: #5ef5e5;
+      --glass-bg: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+      --text: #e8e8f0; --text-muted: #7a7a9a; --text-dim: #4a4a6a;
+      --radius: 14px; --radius-sm: 8px;
+      --mono: 'JetBrains Mono', monospace; --sans: 'Sora', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background-color: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(0,229,204,0.1) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; z-index: 0; }
+    body::after { content: ''; position: fixed; top: -20%; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse, rgba(0,229,204,0.055) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(13,13,20,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 0 24px; height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; flex-shrink: 0; }
+    .logo span.encode { color: #ffffff; } .logo span.b64 { color: var(--cyan); }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .nav-pills { display: flex; gap: 6px; }
+    .nav-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; padding: 5px 14px; border-radius: 20px; text-decoration: none; transition: all 0.2s; border: 1px solid var(--glass-border); color: var(--text-muted); background: transparent; }
+    .nav-pill:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .nav-pill.current { color: #0d0d14; background: var(--cyan); font-weight: 600; border-color: transparent; }
+    .lang-selector { position: relative; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 5px 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; color: var(--text-muted); cursor: pointer; font-family: var(--sans); font-size: 0.78rem; transition: all 0.2s; white-space: nowrap; }
+    .lang-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .lang-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 200; max-height: 60vh; overflow-y: auto; }
+    .lang-dropdown.open { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 8px; padding: 9px 14px; cursor: pointer; font-size: 0.82rem; color: var(--text-muted); transition: all 0.15s; }
+    .lang-option:hover { background: var(--cyan-dim); color: var(--text); }
+    .lang-option.selected { color: var(--cyan); }
+    main { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px 0 8px; font-size: 0.78rem; color: var(--text-dim); flex-wrap: wrap; text-align: center; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; } .breadcrumb a:hover { color: var(--cyan); }
+    .breadcrumb-sep { color: var(--text-dim); } .breadcrumb-current { color: var(--text-muted); }
+    .page-hero { padding: 40px 0 28px; text-align: center; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; line-height: 1.15; margin-bottom: 10px; }
+    .page-hero p.sub { color: var(--text-muted); font-size: 1rem; font-weight: 300; }
+    .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 20px; }
+    .glass-card h2 { font-size: 1.1rem; font-weight: 600; color: var(--cyan); margin: 28px 0 10px; }
+    .glass-card h2:first-of-type { margin-top: 0; }
+    .glass-card p { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 10px; }
+    .glass-card p:last-child { margin-bottom: 0; }
+    .glass-card ul, .glass-card ol { list-style: none; padding: 0; margin: 6px 0 12px; }
+    .glass-card ol { counter-reset: step; }
+    .glass-card ul li, .glass-card ol li { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); padding: 2px 0 2px 22px; position: relative; }
+    .glass-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+    .glass-card ol li { counter-increment: step; }
+    .glass-card ol li::before { content: counter(step) '.'; position: absolute; left: 0; color: var(--cyan); font-weight: 600; }
+    .glass-card a { color: var(--cyan); text-decoration: none; } .glass-card a:hover { text-decoration: underline; }
+    .glass-card code { font-family: var(--mono); background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px; color: var(--cyan-light); font-size: 0.85em; word-break: break-all; }
+    .code-block { font-family: var(--mono); background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 14px 16px; border-radius: var(--radius-sm); color: var(--cyan-light); font-size: 0.82rem; overflow-x: auto; margin: 12px 0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; }
+    .article-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 8px; }
+    .blog-card { display: block; }
+    .blog-card h2 { margin-top: 0 !important; }
+    .blog-card h2 a { color: var(--text); }
+    .blog-card h2 a:hover { color: var(--cyan); text-decoration: none; }
+    .blog-card + .blog-card { margin-top: 4px; }
+    .readmore { display: inline-block; margin-top: 6px; font-weight: 600; }
+    footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px 24px; border-top: 1px solid var(--glass-border); font-size: 0.82rem; color: var(--text-dim); max-width: 900px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a, footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover, footer a:hover { color: var(--cyan); }
+    footer .footer-right a { color: var(--cyan); }
+    @media (max-width: 640px) {
+      header { padding: 0 16px; }
+      .nav-pill { padding: 4px 10px; font-size: 0.73rem; }
+      .lang-btn span { display: none; }
+      .glass-card { padding: 22px 20px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Base64, Hex, Base32 e Base85: quale codifica usare?",
+    "author": {"@type": "Organization", "name": "MpmDigital", "url": "https://mpmdigital.es/"},
+    "publisher": {"@type": "Organization", "name": "encodeb64.com", "url": "https://encodeb64.com/"},
+    "datePublished": "2026-11-12",
+    "inLanguage": "it",
+    "url": "https://encodeb64.com/it/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/"
+  }
+  </script>
+</head>
+<body>
+<header>
+  <a href="/it/" class="logo">
+    <span class="encode">encode</span><span class="b64">B64</span>
+  </a>
+  <div class="header-right">
+    <nav class="nav-pills">
+      <a href="/it/" class="nav-pill">Codifica</a>
+      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">Decodifica</a>
+      <a href="/it/image-to-base64" class="nav-pill">Immagine in Base64</a>
+      <a href="/it/blog/" class="nav-pill current">Blog</a>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="langLabel">Italiano</span>
+        <svg viewBox="0 0 10 6" fill="currentColor" width="10" height="6"><path d="M0 0l5 6 5-6z"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown" role="listbox">
+        <div class="lang-option" data-lang="en" role="option">🇺🇸 English</div>
+        <div class="lang-option" data-lang="es" role="option">🇪🇸 Español</div>
+        <div class="lang-option" data-lang="pt" role="option">🇧🇷 Português</div>
+        <div class="lang-option" data-lang="fr" role="option">🇫🇷 Français</div>
+        <div class="lang-option" data-lang="de" role="option">🇩🇪 Deutsch</div>
+        <div class="lang-option selected" data-lang="it" role="option">🇮🇹 Italiano</div>
+        <div class="lang-option" data-lang="zh" role="option">🇨🇳 中文</div>
+        <div class="lang-option" data-lang="ru" role="option">🇷🇺 Русский</div>
+        <div class="lang-option" data-lang="ja" role="option">🇯🇵 日本語</div>
+        <div class="lang-option" data-lang="ko" role="option">🇰🇷 한국어</div>
+        <div class="lang-option" data-lang="nl" role="option">🇳🇱 Nederlands</div>
+        <div class="lang-option" data-lang="hi" role="option">🇮🇳 हिन्दी</div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <nav class="breadcrumb">
+    <a href="/it/">encodeb64.com</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <a href="/it/blog/">Blog</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <span class="breadcrumb-current">Base64, Hex, Base32 e Base85: quale codifica usare?</span>
+  </nav>
+  <div class="page-hero">
+    <h1>Base64, Hex, Base32 e Base85: quale codifica usare?</h1>
+    <div class="article-meta"><span>Novembre 2026</span><span>7 min di lettura</span></div>
+  </div>
+  <article class="glass-card">
+<p>Quando devi rappresentare dati binari come testo, Base64 è la scelta predefinita, ma è lontano dall'essere l'unica. Esadecimale, Base32, Base58 e Base85 risolvono lo stesso problema con compromessi diversi in termini di dimensione, leggibilità e sicurezza. Scegliere male porta a payload gonfiati, bug legati a maiuscole e minuscole o stringhe che le persone non riescono a digitare correttamente. Questa guida li confronta con misurazioni reali e ti dà un modo semplice per scegliere.</p>
+
+<h2>L'idea di fondo: bit per carattere</h2>
+<p>Ogni codifica di byte in testo è definita da un numero: quanti bit di dati porta ogni carattere in uscita. Un alfabeto più grande porta più bit per carattere e produce un output più corto.</p>
+<ul>
+<li>L'hex (Base16) ha 16 simboli, quindi ogni carattere porta 4 bit.</li>
+<li>Base32 ha 32 simboli, quindi ogni carattere porta 5 bit.</li>
+<li>Base64 ha 64 simboli, quindi ogni carattere porta 6 bit.</li>
+<li>Base85 ha 85 simboli, quindi in media ogni carattere porta poco più di 6,4 bit.</li>
+</ul>
+<p>Il prezzo di un alfabeto più grande è che include più punteggiatura e un misto di maiuscole e minuscole, più difficile da leggere ad alta voce e da digitare, e più facile da rovinare per i sistemi che cambiano le maiuscole o trattano i simboli in modo speciale.</p>
+
+<h2>Sovraccarico di dimensione misurato</h2>
+<p>Per un confronto equo, ho codificato 1.000 byte casuali con la libreria standard di Python e contato i caratteri in uscita:</p>
+<ul>
+<li><strong>Hex (Base16):</strong> 2.000 caratteri (+100%)</li>
+<li><strong>Base32:</strong> 1.600 caratteri (+60%)</li>
+<li><strong>Base64:</strong> 1.336 caratteri (+33,6%)</li>
+<li><strong>Base85 / Ascii85:</strong> 1.250 caratteri (+25%)</li>
+</ul>
+<p>Base58 non ha un alfabeto a potenza di due, quindi la sua lunghezza dipende dai dati, ma in pratica si colloca tra Base64 e Base32, con circa il 37% di sovraccarico.</p>
+
+<h2>Hex (Base16)</h2>
+<p>L'hex scrive ogni byte con due caratteri tra <code>0-9</code> e <code>a-f</code>. È l'opzione meno efficiente ma anche la più facile da leggere, perché un byte corrisponde sempre a esattamente due caratteri e si vedono i valori dei singoli byte.</p>
+<div class="code-block">Hello  &rarr;  48656c6c6f</div>
+<p><strong>Usalo per:</strong> hash e checksum (i digest SHA-256 sono quasi sempre mostrati in hex), colori, indirizzi MAC, dump di debug e tutto ciò che una persona deve ispezionare byte per byte. In pratica è anche immune ai problemi di maiuscole e simboli, perché usa solo cifre e lettere.</p>
+
+<h2>Base32</h2>
+<p>Base32 usa le lettere <code>A-Z</code> e le cifre <code>2-7</code>. È stato progettato per essere sicuro nei sistemi che non distinguono maiuscole e minuscole e per evitare caratteri simili, come 0 e O oppure 1 e I.</p>
+<div class="code-block">Hello  &rarr;  JBSWY3DP</div>
+<p><strong>Usalo per:</strong> valori che le persone devono digitare o leggere ad alta voce, e valori conservati in posti che non distinguono le maiuscole, come alcuni file system e nomi DNS. L'esempio più noto è la chiave segreta mostrata quando configuri l'autenticazione a due fattori con un'app di autenticazione. L'output viene completato con <code>=</code> fino a un multiplo di otto caratteri.</p>
+
+<h2>Base64</h2>
+<p>Base64 usa <code>A-Z</code>, <code>a-z</code>, <code>0-9</code>, <code>+</code> e <code>/</code>. È il miglior equilibrio generale tra compattezza e supporto universale: ogni linguaggio lo include ed è il formato atteso da e-mail, URI di dati, API JSON e molti protocolli.</p>
+<div class="code-block">Hello  &rarr;  SGVsbG8=</div>
+<p><strong>Usalo per:</strong> incorporare file in JSON, XML, HTML e CSS, allegati e-mail, chiavi e certificati crittografici nei file PEM e la maggior parte delle API che trasportano dati binari. La variante sicura per gli URL, Base64URL, sostituisce <code>+</code> e <code>/</code> con <code>-</code> e <code>_</code>; vedi <a href="/it/blog/base64url-vs-base64-differences-and-when-to-use-each/">Base64URL vs Base64</a>.</p>
+
+<h2>Base58</h2>
+<p>Base58 è Base64 senza i caratteri ambigui: omette <code>0</code> (zero), <code>O</code> (o maiuscola), <code>I</code> (i maiuscola), <code>l</code> (L minuscola) e i simboli <code>+</code> e <code>/</code>. Il risultato è una stringa facile da copiare a mano e selezionabile con doppio clic nella maggior parte dei programmi, perché non contiene punteggiatura.</p>
+<p><strong>Usalo per:</strong> identificatori che le persone trascrivono, come gli indirizzi di criptovalute e alcuni ID brevi. Lo svantaggio è che, a differenza degli alfabeti a potenza di due, codifica e decodifica richiedono aritmetica su numeri grandi, quindi è più lento e inadatto a dati voluminosi. Inoltre non fa parte della maggior parte delle librerie standard, quindi di solito serve un pacchetto.</p>
+
+<h2>Base85 (Ascii85)</h2>
+<p>Base85 impacchetta quattro byte in cinque caratteri, dando il sovraccarico più basso tra le codifiche testuali qui trattate: 25%. Usa un alfabeto ampio con molti simboli, che lo rende compatto ma scomodo dove la punteggiatura ha un significato speciale.</p>
+<p><strong>Usalo per:</strong> formati in cui lo spazio conta e il mezzo di trasporto è controllato, come PDF e PostScript. Git ne usa una variante per incorporare patch binarie. Python offre <code>base64.a85encode()</code> e <code>base64.b85encode()</code>, ma il supporto in altri linguaggi è meno universale di quello di Base64.</p>
+
+<h2>Una guida rapida alla scelta</h2>
+<ul>
+<li><strong>Una persona leggerà i byte (hash, debug)?</strong> Usa l'hex.</li>
+<li><strong>Una persona digiterà o pronuncerà il valore, oppure deve sopravvivere al cambio di maiuscole?</strong> Usa Base32 (o Base58 se le maiuscole sono preservate).</li>
+<li><strong>Le macchine si scambiano dati binari tramite API di testo, JSON, HTML o e-mail?</strong> Usa Base64.</li>
+<li><strong>Il valore finisce in un URL, in un nome di file o in un JWT?</strong> Usa Base64URL.</li>
+<li><strong>Ogni byte conta e controlli entrambe le estremità?</strong> Valuta Base85 o, meglio, evita del tutto la codifica testuale e invia byte grezzi.</li>
+</ul>
+
+<h2>A volte la migliore codifica è nessuna</h2>
+<p>Ogni codifica qui sopra aggiunge sovraccarico. Se il tuo protocollo può trasportare byte grezzi, come un upload binario con <code>multipart/form-data</code>, una colonna binaria in un database o gRPC, usa quello. Ricorri a una codifica testuale solo quando il canale ti ci costringe.</p>
+
+<h2>Provale</h2>
+<p>Puoi produrre Base64 subito con il <a href="/it/">codificatore della home page</a> e decodificarlo su <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>. Per capire la meccanica di queste codifiche, parti da <a href="/it/blog/what-is-base64-encoding-and-how-it-works/">Che cos'è la codifica Base64 e come funziona?</a> e scopri quanto spazio aggiunge davvero Base64 in <a href="/it/blog/base64-size-overhead-and-compression-measured/">Quanto è più grande Base64?</a></p>
+
+  </article>
+</main>
+<footer>
+<span>encodeb64.com &copy; 2026</span>
+  <div class="footer-links">
+    <a href="/about/">Chi siamo</a>
+    <a href="/privacy-policy/">Informativa sulla privacy</a>
+    <a href="/terms-of-use/">Termini di utilizzo</a>
+    <a href="/contact/">Contatto</a>
+    <a href="/it/blog/">Blog</a>
+  </div>
+  <span class="footer-right">
+    <span>Prova anche:</span>
+    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+  </span>
+<span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
+  Sviluppato da <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>
+</span>
+</footer>
+<script>
+  const langBtn = document.getElementById('langBtn');
+  const langDropdown = document.getElementById('langDropdown');
+  langBtn.addEventListener('click', () => {
+    const open = langDropdown.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.lang-selector')) {
+      langDropdown.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', false);
+    }
+  });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      window.location.href = ({en:'/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',es:'/es/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',pt:'/pt/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',fr:'/fr/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',de:'/de/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',it:'/it/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',zh:'/zh/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',ru:'/ru/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',ja:'/ja/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',ko:'/ko/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',nl:'/nl/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',hi:'/hi/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/'})[lang] || '/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/';;
+    });
+  });
+</script>
+</body>
+</html>

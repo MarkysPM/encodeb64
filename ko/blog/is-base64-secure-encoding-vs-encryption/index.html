@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Base64는 안전할까? 인코딩과 암호화의 차이</title>
+  <meta name="description" content="Base64는 아무것도 숨기지 않습니다. 인코딩과 암호화의 차이, Base64가 보안으로 오해되는 곳, 비밀 정보와 신뢰할 수 없는 데이터를 안전하게 다루는 법." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d0d14" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://encodeb64.com/ko/blog/is-base64-secure-encoding-vs-encryption/" />
+  <link rel="alternate" hreflang="en" href="https://encodeb64.com/blog/is-base64-secure-encoding-vs-encryption/" />
+  <link rel="alternate" hreflang="es" href="https://encodeb64.com/es/blog/is-base64-secure-encoding-vs-encryption/" />
+  <link rel="alternate" hreflang="pt" href="https://encodeb64.com/pt/blog/is-base64-secure-encoding-vs-encryption/" />
+  <link rel="alternate" hreflang="fr" href="https://encodeb64.com/fr/blog/is-base64-secure-encoding-vs-encryption/" />
+  <link rel="alternate" hreflang="de" href="https://encodeb64.com/de/blog/is-base64-secure-encoding-vs-encryption/" />
+  <link rel="alternate" hreflang="it" href="https://encodeb64.com/it/blog/is-base64-secure-encoding-vs-encryption/" />
+  <link rel="alternate" hreflang="zh" href="https://encodeb64.com/zh/blog/is-base64-secure-encoding-vs-encryption/" />
+  <link rel="alternate" hreflang="ru" href="https://encodeb64.com/ru/blog/is-base64-secure-encoding-vs-encryption/" />
+  <link rel="alternate" hreflang="ja" href="https://encodeb64.com/ja/blog/is-base64-secure-encoding-vs-encryption/" />
+  <link rel="alternate" hreflang="ko" href="https://encodeb64.com/ko/blog/is-base64-secure-encoding-vs-encryption/" />
+  <link rel="alternate" hreflang="nl" href="https://encodeb64.com/nl/blog/is-base64-secure-encoding-vs-encryption/" />
+  <link rel="alternate" hreflang="hi" href="https://encodeb64.com/hi/blog/is-base64-secure-encoding-vs-encryption/" />
+  <link rel="alternate" hreflang="x-default" href="https://encodeb64.com/blog/is-base64-secure-encoding-vs-encryption/" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="encodeb64.com" />
+  <meta property="og:title" content="Base64는 안전할까? 인코딩과 암호화의 차이" />
+  <meta property="og:description" content="Base64는 아무것도 숨기지 않습니다. 인코딩과 암호화의 차이, Base64가 보안으로 오해되는 곳, 비밀 정보와 신뢰할 수 없는 데이터를 안전하게 다루는 법." />
+  <meta property="og:url" content="https://encodeb64.com/ko/blog/is-base64-secure-encoding-vs-encryption/" />
+  <meta property="og:image" content="https://encodeb64.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Base64는 안전할까? 인코딩과 암호화의 차이" />
+  <meta name="twitter:description" content="Base64는 아무것도 숨기지 않습니다. 인코딩과 암호화의 차이, Base64가 보안으로 오해되는 곳, 비밀 정보와 신뢰할 수 없는 데이터를 안전하게 다루는 법." />
+  <meta name="twitter:image" content="https://encodeb64.com/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
+
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      var _ch = document.createElement('script');
+      _ch.async = true;
+      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      document.head.appendChild(_ch);
+      document.addEventListener('DOMContentLoaded', function () {
+        window.cookiehub && window.cookiehub.load({});
+      });
+    }
+  </script>
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      var _ga = document.createElement('script');
+      _ga.async = true;
+      _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
+      document.head.appendChild(_ga);
+      gtag('js', new Date());
+      gtag('config', 'G-MYEHD96X9Q');
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d0d14; --bg2: #12121c; --bg3: #1a1a28;
+      --cyan: #00e5cc; --cyan-dim: rgba(0,229,204,0.12); --cyan-glow: rgba(0,229,204,0.3); --cyan-light: #5ef5e5;
+      --glass-bg: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+      --text: #e8e8f0; --text-muted: #7a7a9a; --text-dim: #4a4a6a;
+      --radius: 14px; --radius-sm: 8px;
+      --mono: 'JetBrains Mono', monospace; --sans: 'Sora', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background-color: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(0,229,204,0.1) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; z-index: 0; }
+    body::after { content: ''; position: fixed; top: -20%; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse, rgba(0,229,204,0.055) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(13,13,20,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 0 24px; height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; flex-shrink: 0; }
+    .logo span.encode { color: #ffffff; } .logo span.b64 { color: var(--cyan); }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .nav-pills { display: flex; gap: 6px; }
+    .nav-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; padding: 5px 14px; border-radius: 20px; text-decoration: none; transition: all 0.2s; border: 1px solid var(--glass-border); color: var(--text-muted); background: transparent; }
+    .nav-pill:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .nav-pill.current { color: #0d0d14; background: var(--cyan); font-weight: 600; border-color: transparent; }
+    .lang-selector { position: relative; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 5px 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; color: var(--text-muted); cursor: pointer; font-family: var(--sans); font-size: 0.78rem; transition: all 0.2s; white-space: nowrap; }
+    .lang-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .lang-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 200; max-height: 60vh; overflow-y: auto; }
+    .lang-dropdown.open { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 8px; padding: 9px 14px; cursor: pointer; font-size: 0.82rem; color: var(--text-muted); transition: all 0.15s; }
+    .lang-option:hover { background: var(--cyan-dim); color: var(--text); }
+    .lang-option.selected { color: var(--cyan); }
+    main { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px 0 8px; font-size: 0.78rem; color: var(--text-dim); flex-wrap: wrap; text-align: center; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; } .breadcrumb a:hover { color: var(--cyan); }
+    .breadcrumb-sep { color: var(--text-dim); } .breadcrumb-current { color: var(--text-muted); }
+    .page-hero { padding: 40px 0 28px; text-align: center; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; line-height: 1.15; margin-bottom: 10px; }
+    .page-hero p.sub { color: var(--text-muted); font-size: 1rem; font-weight: 300; }
+    .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 20px; }
+    .glass-card h2 { font-size: 1.1rem; font-weight: 600; color: var(--cyan); margin: 28px 0 10px; }
+    .glass-card h2:first-of-type { margin-top: 0; }
+    .glass-card p { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 10px; }
+    .glass-card p:last-child { margin-bottom: 0; }
+    .glass-card ul, .glass-card ol { list-style: none; padding: 0; margin: 6px 0 12px; }
+    .glass-card ol { counter-reset: step; }
+    .glass-card ul li, .glass-card ol li { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); padding: 2px 0 2px 22px; position: relative; }
+    .glass-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+    .glass-card ol li { counter-increment: step; }
+    .glass-card ol li::before { content: counter(step) '.'; position: absolute; left: 0; color: var(--cyan); font-weight: 600; }
+    .glass-card a { color: var(--cyan); text-decoration: none; } .glass-card a:hover { text-decoration: underline; }
+    .glass-card code { font-family: var(--mono); background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px; color: var(--cyan-light); font-size: 0.85em; word-break: break-all; }
+    .code-block { font-family: var(--mono); background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 14px 16px; border-radius: var(--radius-sm); color: var(--cyan-light); font-size: 0.82rem; overflow-x: auto; margin: 12px 0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; }
+    .article-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 8px; }
+    .blog-card { display: block; }
+    .blog-card h2 { margin-top: 0 !important; }
+    .blog-card h2 a { color: var(--text); }
+    .blog-card h2 a:hover { color: var(--cyan); text-decoration: none; }
+    .blog-card + .blog-card { margin-top: 4px; }
+    .readmore { display: inline-block; margin-top: 6px; font-weight: 600; }
+    footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px 24px; border-top: 1px solid var(--glass-border); font-size: 0.82rem; color: var(--text-dim); max-width: 900px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a, footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover, footer a:hover { color: var(--cyan); }
+    footer .footer-right a { color: var(--cyan); }
+    @media (max-width: 640px) {
+      header { padding: 0 16px; }
+      .nav-pill { padding: 4px 10px; font-size: 0.73rem; }
+      .lang-btn span { display: none; }
+      .glass-card { padding: 22px 20px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Base64는 안전할까? 인코딩과 암호화의 차이",
+    "author": {"@type": "Organization", "name": "MpmDigital", "url": "https://mpmdigital.es/"},
+    "publisher": {"@type": "Organization", "name": "encodeb64.com", "url": "https://encodeb64.com/"},
+    "datePublished": "2026-11-12",
+    "inLanguage": "ko",
+    "url": "https://encodeb64.com/ko/blog/is-base64-secure-encoding-vs-encryption/"
+  }
+  </script>
+</head>
+<body>
+<header>
+  <a href="/ko/" class="logo">
+    <span class="encode">encode</span><span class="b64">B64</span>
+  </a>
+  <div class="header-right">
+    <nav class="nav-pills">
+      <a href="/ko/" class="nav-pill">인코드</a>
+      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">디코드</a>
+      <a href="/ko/image-to-base64" class="nav-pill">이미지를 Base64로</a>
+      <a href="/ko/blog/" class="nav-pill current">블로그</a>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="langLabel">한국어</span>
+        <svg viewBox="0 0 10 6" fill="currentColor" width="10" height="6"><path d="M0 0l5 6 5-6z"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown" role="listbox">
+        <div class="lang-option" data-lang="en" role="option">🇺🇸 English</div>
+        <div class="lang-option" data-lang="es" role="option">🇪🇸 Español</div>
+        <div class="lang-option" data-lang="pt" role="option">🇧🇷 Português</div>
+        <div class="lang-option" data-lang="fr" role="option">🇫🇷 Français</div>
+        <div class="lang-option" data-lang="de" role="option">🇩🇪 Deutsch</div>
+        <div class="lang-option" data-lang="it" role="option">🇮🇹 Italiano</div>
+        <div class="lang-option" data-lang="zh" role="option">🇨🇳 中文</div>
+        <div class="lang-option" data-lang="ru" role="option">🇷🇺 Русский</div>
+        <div class="lang-option" data-lang="ja" role="option">🇯🇵 日本語</div>
+        <div class="lang-option selected" data-lang="ko" role="option">🇰🇷 한국어</div>
+        <div class="lang-option" data-lang="nl" role="option">🇳🇱 Nederlands</div>
+        <div class="lang-option" data-lang="hi" role="option">🇮🇳 हिन्दी</div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <nav class="breadcrumb">
+    <a href="/ko/">encodeb64.com</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <a href="/ko/blog/">블로그</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <span class="breadcrumb-current">Base64는 안전할까? 인코딩과 암호화의 차이</span>
+  </nav>
+  <div class="page-hero">
+    <h1>Base64는 안전할까? 인코딩과 암호화의 차이</h1>
+    <div class="article-meta"><span>2026년 11월</span><span>읽는 시간 약 7분</span></div>
+  </div>
+  <article class="glass-card">
+<p><code>cGFzc3dvcmQxMjM=</code> 같은 Base64 문자열은 뒤섞인 것처럼 보이고, 이런 겉모습 때문에 많은 사람이 이를 보호 수단으로 여깁니다. 하지만 그렇지 않습니다. Base64는 키도 비밀도 없는 가역적 인코딩이며, 누구나 1초 만에 디코딩할 수 있습니다. 이 가이드는 인코딩과 암호화의 차이를 설명하고, Base64가 보안으로 오해되는 곳을 보여 주며, 비밀 정보와 신뢰할 수 없는 입력을 다루는 실용적인 규칙을 제시합니다.</p>
+
+<h2>인코딩은 암호화가 아닙니다</h2>
+<p>두 개념은 서로 다른 문제를 해결합니다.</p>
+<ul>
+<li><strong>인코딩</strong>은 데이터가 특정 채널을 통과할 수 있도록 표현을 바꿉니다. 방법은 공개되어 있고 키가 없으며 누구나 되돌릴 수 있습니다. Base64, URL 인코딩, 16진수가 인코딩입니다.</li>
+<li><strong>암호화</strong>는 올바른 키를 가진 사람만 읽을 수 있도록 데이터를 변환합니다. AES처럼 방법이 공개되어 있어도, 키가 없으면 데이터는 읽을 수 없습니다.</li>
+<li><strong>해싱</strong>은 되돌릴 수 없는 고정 크기의 지문을 만듭니다. 무결성 검사와 비밀번호 저장(적절한 비밀번호 해시 함수 사용)에 쓰입니다.</li>
+</ul>
+<p>위의 문자열은 어떤 Base64 디코더로든 <code>password123</code>으로 디코딩됩니다. 변환 과정 어디에도 비밀에 의존하는 부분이 없습니다.</p>
+
+<h2>Base64가 보안으로 오해되는 곳</h2>
+<h3>HTTP Basic 인증</h3>
+<p>Basic 인증은 <code>Authorization: Basic</code> 뒤에 <code>사용자이름:비밀번호</code>의 Base64를 보냅니다. Base64는 특수 문자가 헤더에서 온전히 전달되도록 하려는 용도일 뿐입니다. 요청을 볼 수 있는 사람은 누구나 자격 증명을 읽을 수 있으므로, Basic 인증은 반드시 HTTPS에서만 사용해야 합니다.</p>
+
+<h3>JSON Web Token</h3>
+<p>JWT의 헤더와 페이로드는 암호화된 것이 아니라 Base64URL로 인코딩된 것입니다. 토큰을 가진 사람은 누구나 그 안의 모든 클레임을 읽을 수 있습니다. 서명은 토큰이 변조되지 않았음을 증명할 뿐 내용을 숨기지 않습니다. 표준 서명 JWT에 비밀 정보나 민감한 개인 데이터를 넣지 마세요. 자세한 내용은 <a href="/ko/blog/how-jwt-tokens-use-base64url-encoding/">JWT 토큰이 Base64URL 인코딩을 사용하는 방식</a>을 참고하세요.</p>
+
+<h3>Kubernetes Secret</h3>
+<p>Kubernetes Secret 매니페스트의 값은 Base64로 인코딩됩니다. 이는 바이너리를 안전하게 저장하기 위한 형식상의 요구사항이지 보호가 아닙니다. 기본적으로 Secret은 클러스터의 데이터 저장소에 암호화되지 않은 채 저장되므로, 이를 보호하는 것은 접근 제어와 선택적인 저장 시 암호화입니다. 매니페스트 파일은 민감한 것으로 취급하고 버전 관리에서 제외하세요.</p>
+
+<h3>설정 파일과 환경 변수</h3>
+<p>비밀번호를 Base64로 바꿔 설정 파일, Docker 환경 변수, 모바일 앱에 저장해도 공격자에게 디코딩 단계 하나를 더해 줄 뿐입니다. 클라이언트 애플리케이션 안에 포함되어 배포되는 것은 모두 추출해서 디코딩할 수 있습니다.</p>
+
+<h3>공격자의 난독화</h3>
+<p>악성 스크립트는 가벼운 점검이나 단순한 문자열 검색이 놓치도록 명령을 Base64 안에 숨기는 일이 많습니다. UTF-16 텍스트의 Base64를 요구하는 PowerShell의 <code>-EncodedCommand</code> 옵션이 잘 알려진 예입니다. 방어하는 쪽에서는 로그와 스크립트에 예상치 못한 Base64가 있으면 더 자세히 살펴볼 가치가 있다는 뜻입니다. 디코딩해서 읽어 보세요.</p>
+
+<h2>비밀 정보를 제대로 보호하는 방법</h2>
+<ul>
+<li><strong>최신 인증 암호화 알고리즘으로 암호화하세요.</strong> 충분히 검토된 라이브러리의 AES-GCM이나 ChaCha20-Poly1305 같은 것을 쓰세요. 자체 방식을 만들지 마세요.</li>
+<li><strong>키와 데이터를 분리하세요.</strong> 코드나 설정이 아니라 비밀 관리자나 키 관리 서비스에서 관리하세요.</li>
+<li><strong>비밀번호는 해시하세요.</strong> Argon2id, scrypt, bcrypt 같은 전용 알고리즘을 쓰세요. 되돌릴 수 있는 방식으로 인코딩하거나 암호화해서 저장하면 안 됩니다.</li>
+<li><strong>어디서나 HTTPS를 사용하세요.</strong> 자격 증명과 토큰이 전송 중에 암호화됩니다.</li>
+<li><strong>암호화한 뒤에 인코딩하세요.</strong> 채널이 텍스트를 요구할 때만 해당합니다. 순서는 먼저 암호화하고, 그다음 암호문을 Base64로 바꾸는 것입니다.</li>
+</ul>
+
+<h2>Base64 입력을 다룰 때의 보안 위험</h2>
+<p>Base64 자체는 아무 보호도 제공하지 않지만, 애플리케이션이 외부에서 Base64를 받을 때는 실제 보안상의 고려 사항이 있습니다.</p>
+<ul>
+<li><strong>크기 제한.</strong> 작은 요청이 큰 버퍼로 디코딩될 수 있습니다. 메모리 고갈을 막으려면 디코딩 전에 들어오는 Base64의 길이를 제한하세요.</li>
+<li><strong>디코딩된 내용을 검증하세요.</strong> 주장하는 형식과 상관없이 디코딩된 파일은 무엇이든 될 수 있습니다. 실제 파일 형식을 확인하고, 다른 파일처럼 업로드를 검사하세요.</li>
+<li><strong>디코딩된 데이터를 신뢰하지 마세요.</strong> 디코딩된 값을 데이터베이스 쿼리, 명령, HTML에 사용한다면 매개변수화된 쿼리, 이스케이프, 출력 인코딩 같은 일반적인 보호를 적용하세요.</li>
+<li><strong>데이터 URI를 조심하세요.</strong> 사용자가 제공한 데이터 URI를 검증 없이 링크나 프레임에 넣지 말고, Content Security Policy에서 <code>img-src</code>처럼 필요한 곳으로만 제한하세요.</li>
+<li><strong>엄격한 디코딩.</strong> 문자 집합 밖의 문자가 있는 입력은 무시하지 말고 거부하세요. 그래야 서로 다른 구성 요소가 같은 문자열을 다르게 해석하지 않습니다.</li>
+</ul>
+
+<h2>Base64를 써도 괜찮은 경우</h2>
+<p>이 모든 것이 Base64가 나쁘다는 뜻은 아닙니다. 텍스트 채널로 바이너리 데이터를 옮기는 본래의 일에는 꼭 맞는 도구입니다. 실수는 처음부터 설계되지 않은 일을 시키는 것입니다. 데이터가 비밀이 아니라면 Base64만으로 충분합니다. 비밀이라면 암호화하고, Base64는 암호문을 옮기는 용도로만 쓰세요.</p>
+
+<h2>직접 해보세요</h2>
+<p>Base64가 얼마나 쉽게 되돌려지는지 보려면 아무 문자열이나 <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>에 붙여넣거나 <a href="/ko/">홈 페이지의 인코더</a>로 직접 텍스트를 인코딩해 보세요. 이 형식이 왜 이렇게 동작하는지는 <a href="/ko/blog/what-is-base64-encoding-and-how-it-works/">Base64 인코딩이란 무엇이며 어떻게 동작할까?</a>에서 알아보고, 다른 인코딩과의 비교는 <a href="/ko/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/">Base64 vs 16진수 vs Base32 vs Base85: 무엇을 쓸까?</a>에서 확인하세요.</p>
+
+  </article>
+</main>
+<footer>
+<span>encodeb64.com &copy; 2026</span>
+  <div class="footer-links">
+    <a href="/about/">소개</a>
+    <a href="/privacy-policy/">개인정보처리방침</a>
+    <a href="/terms-of-use/">이용약관</a>
+    <a href="/contact/">연락처</a>
+    <a href="/ko/blog/">블로그</a>
+  </div>
+  <span class="footer-right">
+    <span>이것도 사용해 보세요:</span>
+    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+  </span>
+<span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
+  개발: <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>
+</span>
+</footer>
+<script>
+  const langBtn = document.getElementById('langBtn');
+  const langDropdown = document.getElementById('langDropdown');
+  langBtn.addEventListener('click', () => {
+    const open = langDropdown.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.lang-selector')) {
+      langDropdown.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', false);
+    }
+  });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      window.location.href = ({en:'/blog/is-base64-secure-encoding-vs-encryption/',es:'/es/blog/is-base64-secure-encoding-vs-encryption/',pt:'/pt/blog/is-base64-secure-encoding-vs-encryption/',fr:'/fr/blog/is-base64-secure-encoding-vs-encryption/',de:'/de/blog/is-base64-secure-encoding-vs-encryption/',it:'/it/blog/is-base64-secure-encoding-vs-encryption/',zh:'/zh/blog/is-base64-secure-encoding-vs-encryption/',ru:'/ru/blog/is-base64-secure-encoding-vs-encryption/',ja:'/ja/blog/is-base64-secure-encoding-vs-encryption/',ko:'/ko/blog/is-base64-secure-encoding-vs-encryption/',nl:'/nl/blog/is-base64-secure-encoding-vs-encryption/',hi:'/hi/blog/is-base64-secure-encoding-vs-encryption/'})[lang] || '/blog/is-base64-secure-encoding-vs-encryption/';;
+    });
+  });
+</script>
+</body>
+</html>

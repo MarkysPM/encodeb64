@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Base64・16進・Base32・Base85：どのエンコードを使うべきか</title>
+  <meta name="description" content="Base64、Base32、16進、Base58、Base85をサイズ増加、文字セット、典型的な用途で比較。実測値と、選び方のシンプルな目安を紹介します。" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d0d14" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://encodeb64.com/ja/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="en" href="https://encodeb64.com/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="es" href="https://encodeb64.com/es/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="pt" href="https://encodeb64.com/pt/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="fr" href="https://encodeb64.com/fr/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="de" href="https://encodeb64.com/de/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="it" href="https://encodeb64.com/it/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="zh" href="https://encodeb64.com/zh/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="ru" href="https://encodeb64.com/ru/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="ja" href="https://encodeb64.com/ja/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="ko" href="https://encodeb64.com/ko/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="nl" href="https://encodeb64.com/nl/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="hi" href="https://encodeb64.com/hi/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <link rel="alternate" hreflang="x-default" href="https://encodeb64.com/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="encodeb64.com" />
+  <meta property="og:title" content="Base64・16進・Base32・Base85：どのエンコードを使うべきか" />
+  <meta property="og:description" content="Base64、Base32、16進、Base58、Base85をサイズ増加、文字セット、典型的な用途で比較。実測値と、選び方のシンプルな目安を紹介します。" />
+  <meta property="og:url" content="https://encodeb64.com/ja/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/" />
+  <meta property="og:image" content="https://encodeb64.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Base64・16進・Base32・Base85：どのエンコードを使うべきか" />
+  <meta name="twitter:description" content="Base64、Base32、16進、Base58、Base85をサイズ増加、文字セット、典型的な用途で比較。実測値と、選び方のシンプルな目安を紹介します。" />
+  <meta name="twitter:image" content="https://encodeb64.com/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
+
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      var _ch = document.createElement('script');
+      _ch.async = true;
+      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      document.head.appendChild(_ch);
+      document.addEventListener('DOMContentLoaded', function () {
+        window.cookiehub && window.cookiehub.load({});
+      });
+    }
+  </script>
+  <script>
+    if (location.hostname === 'encodeb64.com') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+      var _ga = document.createElement('script');
+      _ga.async = true;
+      _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
+      document.head.appendChild(_ga);
+      gtag('js', new Date());
+      gtag('config', 'G-MYEHD96X9Q');
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d0d14; --bg2: #12121c; --bg3: #1a1a28;
+      --cyan: #00e5cc; --cyan-dim: rgba(0,229,204,0.12); --cyan-glow: rgba(0,229,204,0.3); --cyan-light: #5ef5e5;
+      --glass-bg: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+      --text: #e8e8f0; --text-muted: #7a7a9a; --text-dim: #4a4a6a;
+      --radius: 14px; --radius-sm: 8px;
+      --mono: 'JetBrains Mono', monospace; --sans: 'Sora', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background-color: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(0,229,204,0.1) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; z-index: 0; }
+    body::after { content: ''; position: fixed; top: -20%; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse, rgba(0,229,204,0.055) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(13,13,20,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 0 24px; height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; flex-shrink: 0; }
+    .logo span.encode { color: #ffffff; } .logo span.b64 { color: var(--cyan); }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .nav-pills { display: flex; gap: 6px; }
+    .nav-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 500; padding: 5px 14px; border-radius: 20px; text-decoration: none; transition: all 0.2s; border: 1px solid var(--glass-border); color: var(--text-muted); background: transparent; }
+    .nav-pill:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .nav-pill.current { color: #0d0d14; background: var(--cyan); font-weight: 600; border-color: transparent; }
+    .lang-selector { position: relative; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 5px 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; color: var(--text-muted); cursor: pointer; font-family: var(--sans); font-size: 0.78rem; transition: all 0.2s; white-space: nowrap; }
+    .lang-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+    .lang-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: #1a1a2e; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 200; max-height: 60vh; overflow-y: auto; }
+    .lang-dropdown.open { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 8px; padding: 9px 14px; cursor: pointer; font-size: 0.82rem; color: var(--text-muted); transition: all 0.15s; }
+    .lang-option:hover { background: var(--cyan-dim); color: var(--text); }
+    .lang-option.selected { color: var(--cyan); }
+    main { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px 0 8px; font-size: 0.78rem; color: var(--text-dim); flex-wrap: wrap; text-align: center; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; } .breadcrumb a:hover { color: var(--cyan); }
+    .breadcrumb-sep { color: var(--text-dim); } .breadcrumb-current { color: var(--text-muted); }
+    .page-hero { padding: 40px 0 28px; text-align: center; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; line-height: 1.15; margin-bottom: 10px; }
+    .page-hero p.sub { color: var(--text-muted); font-size: 1rem; font-weight: 300; }
+    .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 20px; }
+    .glass-card h2 { font-size: 1.1rem; font-weight: 600; color: var(--cyan); margin: 28px 0 10px; }
+    .glass-card h2:first-of-type { margin-top: 0; }
+    .glass-card p { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 10px; }
+    .glass-card p:last-child { margin-bottom: 0; }
+    .glass-card ul, .glass-card ol { list-style: none; padding: 0; margin: 6px 0 12px; }
+    .glass-card ol { counter-reset: step; }
+    .glass-card ul li, .glass-card ol li { font-size: 0.93rem; line-height: 1.75; color: var(--text-muted); padding: 2px 0 2px 22px; position: relative; }
+    .glass-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+    .glass-card ol li { counter-increment: step; }
+    .glass-card ol li::before { content: counter(step) '.'; position: absolute; left: 0; color: var(--cyan); font-weight: 600; }
+    .glass-card a { color: var(--cyan); text-decoration: none; } .glass-card a:hover { text-decoration: underline; }
+    .glass-card code { font-family: var(--mono); background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px; color: var(--cyan-light); font-size: 0.85em; word-break: break-all; }
+    .code-block { font-family: var(--mono); background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 14px 16px; border-radius: var(--radius-sm); color: var(--cyan-light); font-size: 0.82rem; overflow-x: auto; margin: 12px 0; white-space: pre-wrap; word-break: break-all; line-height: 1.6; }
+    .article-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 8px; }
+    .blog-card { display: block; }
+    .blog-card h2 { margin-top: 0 !important; }
+    .blog-card h2 a { color: var(--text); }
+    .blog-card h2 a:hover { color: var(--cyan); text-decoration: none; }
+    .blog-card + .blog-card { margin-top: 4px; }
+    .readmore { display: inline-block; margin-top: 6px; font-weight: 600; }
+    footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px 24px; border-top: 1px solid var(--glass-border); font-size: 0.82rem; color: var(--text-dim); max-width: 900px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a, footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover, footer a:hover { color: var(--cyan); }
+    footer .footer-right a { color: var(--cyan); }
+    @media (max-width: 640px) {
+      header { padding: 0 16px; }
+      .nav-pill { padding: 4px 10px; font-size: 0.73rem; }
+      .lang-btn span { display: none; }
+      .glass-card { padding: 22px 20px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Base64・16進・Base32・Base85：どのエンコードを使うべきか",
+    "author": {"@type": "Organization", "name": "MpmDigital", "url": "https://mpmdigital.es/"},
+    "publisher": {"@type": "Organization", "name": "encodeb64.com", "url": "https://encodeb64.com/"},
+    "datePublished": "2026-11-12",
+    "inLanguage": "ja",
+    "url": "https://encodeb64.com/ja/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/"
+  }
+  </script>
+</head>
+<body>
+<header>
+  <a href="/ja/" class="logo">
+    <span class="encode">encode</span><span class="b64">B64</span>
+  </a>
+  <div class="header-right">
+    <nav class="nav-pills">
+      <a href="/ja/" class="nav-pill">エンコード</a>
+      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">デコード</a>
+      <a href="/ja/image-to-base64" class="nav-pill">画像をBase64に</a>
+      <a href="/ja/blog/" class="nav-pill current">ブログ</a>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="langLabel">日本語</span>
+        <svg viewBox="0 0 10 6" fill="currentColor" width="10" height="6"><path d="M0 0l5 6 5-6z"/></svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown" role="listbox">
+        <div class="lang-option" data-lang="en" role="option">🇺🇸 English</div>
+        <div class="lang-option" data-lang="es" role="option">🇪🇸 Español</div>
+        <div class="lang-option" data-lang="pt" role="option">🇧🇷 Português</div>
+        <div class="lang-option" data-lang="fr" role="option">🇫🇷 Français</div>
+        <div class="lang-option" data-lang="de" role="option">🇩🇪 Deutsch</div>
+        <div class="lang-option" data-lang="it" role="option">🇮🇹 Italiano</div>
+        <div class="lang-option" data-lang="zh" role="option">🇨🇳 中文</div>
+        <div class="lang-option" data-lang="ru" role="option">🇷🇺 Русский</div>
+        <div class="lang-option selected" data-lang="ja" role="option">🇯🇵 日本語</div>
+        <div class="lang-option" data-lang="ko" role="option">🇰🇷 한국어</div>
+        <div class="lang-option" data-lang="nl" role="option">🇳🇱 Nederlands</div>
+        <div class="lang-option" data-lang="hi" role="option">🇮🇳 हिन्दी</div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <nav class="breadcrumb">
+    <a href="/ja/">encodeb64.com</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <a href="/ja/blog/">ブログ</a>
+    <span class="breadcrumb-sep">&rsaquo;</span>
+    <span class="breadcrumb-current">Base64・16進・Base32・Base85：どのエンコードを使うべきか</span>
+  </nav>
+  <div class="page-hero">
+    <h1>Base64・16進・Base32・Base85：どのエンコードを使うべきか</h1>
+    <div class="article-meta"><span>2026年11月</span><span>読了時間約7分</span></div>
+  </div>
+  <article class="glass-card">
+<p>バイナリデータをテキストとして表す必要があるとき、Base64が標準的な選択ですが、唯一の選択肢ではありません。16進数、Base32、Base58、Base85も同じ問題を解決しますが、サイズ、読みやすさ、堅牢性のトレードオフが異なります。選択を誤ると、ペイロードが膨らんだり、大文字小文字に起因するバグが起きたり、人間が正しく入力できない文字列になったりします。このガイドでは実測値でそれらを比較し、選び方のシンプルな目安を示します。</p>
+
+<h2>基本的な考え方：1文字あたりのビット数</h2>
+<p>バイト列をテキストにするエンコードは、1つの数値で決まります。出力の1文字が何ビット分のデータを運ぶか、です。文字セットが大きいほど1文字あたりのビット数が増え、出力は短くなります。</p>
+<ul>
+<li>16進（Base16）は16種類の記号なので、1文字は4ビットを運びます。</li>
+<li>Base32は32種類の記号なので、1文字は5ビットを運びます。</li>
+<li>Base64は64種類の記号なので、1文字は6ビットを運びます。</li>
+<li>Base85は85種類の記号なので、1文字は平均して6.4ビット強を運びます。</li>
+</ul>
+<p>文字セットが大きくなる代償として、句読点や大文字小文字の混在が増えます。そのため声に出して読んだり入力したりするのが難しくなり、大文字小文字を変えたり記号を特別扱いしたりするシステムによって壊されやすくなります。</p>
+
+<h2>実測したサイズ増加</h2>
+<p>公平に比較するため、1,000バイトのランダムデータをPythonの標準ライブラリでエンコードし、出力文字数を数えました。</p>
+<ul>
+<li><strong>16進（Base16）：</strong>2,000文字（+100%）</li>
+<li><strong>Base32：</strong>1,600文字（+60%）</li>
+<li><strong>Base64：</strong>1,336文字（+33.6%）</li>
+<li><strong>Base85 / Ascii85：</strong>1,250文字（+25%）</li>
+</ul>
+<p>Base58は2のべき乗の文字セットではないため、長さはデータによって変わりますが、実際にはBase64とBase32の中間に収まり、増加率は約37%です。</p>
+
+<h2>16進（Base16）</h2>
+<p>16進は各バイトを <code>0-9</code> と <code>a-f</code> の2文字で書きます。最も効率は悪いものの、最も読みやすい方式です。1バイトが常にちょうど2文字に対応し、個々のバイト値が見えるからです。</p>
+<div class="code-block">Hello  &rarr;  48656c6c6f</div>
+<p><strong>向いている用途：</strong>ハッシュとチェックサム（SHA-256のダイジェストはほぼ常に16進で表示されます）、色、MACアドレス、デバッグ用ダンプ、人間がバイト単位で確認する必要があるものすべて。数字と英字だけを使うため、実際には大文字小文字や記号の問題とも無縁です。</p>
+
+<h2>Base32</h2>
+<p>Base32は英字 <code>A-Z</code> と数字 <code>2-7</code> を使います。大文字小文字を区別しないシステムでも安全に使え、0とO、1とIのような紛らわしい文字を避けるよう設計されています。</p>
+<div class="code-block">Hello  &rarr;  JBSWY3DP</div>
+<p><strong>向いている用途：</strong>人が入力したり読み上げたりする値、および一部のファイルシステムやDNS名のように大文字小文字を区別しない場所に保存される値。最もよく知られた例は、認証アプリで2要素認証を設定するときに表示される秘密鍵です。出力は8文字の倍数になるよう <code>=</code> で埋められます。</p>
+
+<h2>Base64</h2>
+<p>Base64は <code>A-Z</code>、<code>a-z</code>、<code>0-9</code>、<code>+</code>、<code>/</code> を使います。コンパクトさと普遍的なサポートのバランスが最も良い汎用の選択肢です。あらゆる言語に標準で備わっており、メール、データURI、JSON API、多くのプロトコルが期待する形式でもあります。</p>
+<div class="code-block">Hello  &rarr;  SGVsbG8=</div>
+<p><strong>向いている用途：</strong>JSON、XML、HTML、CSSへのファイル埋め込み、メールの添付ファイル、PEMファイル内の暗号鍵や証明書、バイナリデータを運ぶほとんどのAPI。URLセーフな変種であるBase64URLは、<code>+</code> と <code>/</code> を <code>-</code> と <code>_</code> に置き換えます。詳しくは<a href="/ja/blog/base64url-vs-base64-differences-and-when-to-use-each/">Base64URLとBase64の違い</a>をご覧ください。</p>
+
+<h2>Base58</h2>
+<p>Base58は、紛らわしい文字を取り除いたBase64です。<code>0</code>（ゼロ）、<code>O</code>（大文字のオー）、<code>I</code>（大文字のアイ）、<code>l</code>（小文字のエル）、および記号 <code>+</code> と <code>/</code> を含みません。句読点がないため、手で書き写しやすく、ほとんどのプログラムでダブルクリックで選択できる文字列になります。</p>
+<p><strong>向いている用途：</strong>暗号資産のアドレスや一部の短いIDなど、人が書き写す識別子。欠点は、2のべき乗の文字セットと違って、エンコードとデコードに大きな数の演算が必要になるため、速度が遅く、大きなデータには向かないことです。また、ほとんどの標準ライブラリには含まれていないので、通常はパッケージが必要です。</p>
+
+<h2>Base85（Ascii85）</h2>
+<p>Base85は4バイトを5文字にまとめ、ここで扱うテキストエンコードの中で最も小さい25%の増加に収まります。多くの記号を含む大きな文字セットを使うため、コンパクトですが、句読点が特別な意味を持つ場面では扱いにくくなります。</p>
+<p><strong>向いている用途：</strong>PDFやPostScriptのように、容量が重要で伝送経路を管理できる形式。Gitはバイナリパッチの埋め込みに変種を使っています。Pythonには <code>base64.a85encode()</code> と <code>base64.b85encode()</code> がありますが、他の言語での対応はBase64ほど普遍的ではありません。</p>
+
+<h2>選び方の簡単な目安</h2>
+<ul>
+<li><strong>人がバイトを読む（ハッシュ、デバッグ）？</strong>16進を使います。</li>
+<li><strong>人が入力したり口頭で伝えたりする、または大文字小文字の変換に耐える必要がある？</strong>Base32を使います（大文字小文字が保たれるならBase58も可）。</li>
+<li><strong>機械同士がテキストAPI、JSON、HTML、メールでバイナリデータをやり取りする？</strong>Base64を使います。</li>
+<li><strong>値がURL、ファイル名、JWTに入る？</strong>Base64URLを使います。</li>
+<li><strong>1バイトでも惜しく、両端を自分で管理できる？</strong>Base85を検討するか、むしろテキストエンコード自体をやめて生のバイトを送ります。</li>
+</ul>
+
+<h2>最良のエンコードは「使わない」こともある</h2>
+<p>上記のどのエンコードにもオーバーヘッドがあります。プロトコルが生のバイトを運べる場合、たとえば <code>multipart/form-data</code> によるバイナリアップロード、データベースのバイナリ列、gRPCなどでは、それを使いましょう。テキストエンコードは、通信経路にそれを強いられたときにだけ使います。</p>
+
+<h2>試してみましょう</h2>
+<p><a href="/ja/">トップページのエンコーダー</a>で今すぐBase64を生成し、<a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>でデコードできます。これらのエンコードの仕組みについては、まず<a href="/ja/blog/what-is-base64-encoding-and-how-it-works/">Base64エンコードとは？その仕組み</a>をお読みください。Base64が実際にどれだけ容量を増やすかは、<a href="/ja/blog/base64-size-overhead-and-compression-measured/">Base64はどれだけ大きくなる？</a>で確認できます。</p>
+
+  </article>
+</main>
+<footer>
+<span>encodeb64.com &copy; 2026</span>
+  <div class="footer-links">
+    <a href="/about/">概要</a>
+    <a href="/privacy-policy/">プライバシーポリシー</a>
+    <a href="/terms-of-use/">利用規約</a>
+    <a href="/contact/">お問い合わせ</a>
+    <a href="/ja/blog/">ブログ</a>
+  </div>
+  <span class="footer-right">
+    <span>こちらも試してみてください：</span>
+    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+  </span>
+<span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
+  開発: <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>
+</span>
+</footer>
+<script>
+  const langBtn = document.getElementById('langBtn');
+  const langDropdown = document.getElementById('langDropdown');
+  langBtn.addEventListener('click', () => {
+    const open = langDropdown.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.lang-selector')) {
+      langDropdown.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', false);
+    }
+  });
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const lang = opt.dataset.lang;
+      window.location.href = ({en:'/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',es:'/es/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',pt:'/pt/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',fr:'/fr/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',de:'/de/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',it:'/it/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',zh:'/zh/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',ru:'/ru/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',ja:'/ja/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',ko:'/ko/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',nl:'/nl/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/',hi:'/hi/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/'})[lang] || '/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/';;
+    });
+  });
+</script>
+</body>
+</html>

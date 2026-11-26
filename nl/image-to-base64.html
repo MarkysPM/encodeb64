@@ -38,40 +38,27 @@
   <meta name="twitter:image:alt" content="Afbeelding naar Base64 Converter op encodeb64.com" />
   <meta name="google-site-verification" content="zw27fsekxX4vNdkOvHfQkWX5v1hB-HBlqchzUv6ejl8" />
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      // CookieHub
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      _ch.onload = function () {
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', function () {
-            window.cookiehub && window.cookiehub.load({});
-          });
-        } else {
-          window.cookiehub && window.cookiehub.load({});
-        }
-      };
-      document.head.appendChild(_ch);
-      // Google Consent Mode v2
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
-      // Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
       document.head.appendChild(_ga);
-      window.dataLayer = window.dataLayer || [];
       gtag('js', new Date());
       gtag('config', 'G-MYEHD96X9Q');
-      // AdSense
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
     }
   </script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
@@ -917,8 +904,6 @@
       .options-row { flex-direction: column; gap: 12px; }
     }
   </style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104"
-     crossorigin="anonymous"></script>
 </head>
 <body>
 

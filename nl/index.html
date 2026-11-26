@@ -55,44 +55,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      _ch.onload = function () {
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', function () {
-            window.cookiehub && window.cookiehub.load({});
-          });
-        } else {
-          window.cookiehub && window.cookiehub.load({});
-        }
-      };
-      document.head.appendChild(_ch);
-    }
-  </script>
-
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
-
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
       document.head.appendChild(_ga);
-
       gtag('js', new Date());
       gtag('config', 'G-MYEHD96X9Q');
-
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
     }
   </script>
 
@@ -970,8 +953,6 @@
       .select-wrap select { min-width: 100%; width: 100%; }
     }
   </style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104"
-     crossorigin="anonymous"></script>
 </head>
 <body>
 

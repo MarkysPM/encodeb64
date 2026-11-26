@@ -40,6 +40,19 @@
                  'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
     });
     if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
+      var _ch = document.createElement('script');
+      _ch.async = true;
+      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      _ch.onload = function () {
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', function () {
+            window.cookiehub && window.cookiehub.load({});
+          });
+        } else {
+          window.cookiehub && window.cookiehub.load({});
+        }
+      };
+      document.head.appendChild(_ch);
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';

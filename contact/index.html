@@ -669,9 +669,7 @@
   document.querySelectorAll('.lang-option').forEach(opt => {
     opt.addEventListener('click', () => {
       const lang = opt.dataset.lang;
-      const slug = PAGE_SLUG;
-      if (lang === 'en') window.location.href = '/' + slug;
-      else window.location.href = '/' + lang + '/' + slug;
+      window.location.href = lang === 'en' ? '/' : '/' + lang + '/';
     });
   });
   function applyLang(lang) {

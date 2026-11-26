@@ -160,7 +160,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/es/" class="nav-pill">Codificar</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">Decodificar</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">Decodificar</a>
       <a href="/es/image-to-base64" class="nav-pill">Imagen a Base64</a>
       <a href="/es/blog/" class="nav-pill current">Blog</a>
     </nav>
@@ -235,7 +235,7 @@
 <p>Para inspeccionar un JWT durante el desarrollo:</p>
 <ol>
 <li>Copia la cadena JWT</li>
-<li>Pega la parte del header o del payload (el texto antes del primer o segundo punto) en <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a></li>
+<li>Pega la parte del header o del payload (el texto antes del primer o segundo punto) en <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a></li>
 <li>El JSON decodificado te mostrará los claims</li>
 </ol>
 <p>También puedes pegar el JWT completo: la herramienta decodificará la primera sección que pueda analizar. Para depuración en producción, usa un inspector de JWT dedicado que también muestre información de la firma.</p>
@@ -243,7 +243,7 @@
 <p><strong>Error: "Invalid Base64 input" al decodificar un JWT</strong><br>Causa: estás usando un decodificador Base64 estándar que no maneja los caracteres - y _. Usa un decodificador compatible con Base64URL.</p>
 <p><strong>Error: el payload muestra caracteres inesperados o ilegibles</strong><br>Causa: el JWT puede usar una codificación distinta de UTF-8 para los claims, o la cadena se corrompió durante la transmisión. Revisa si hay truncamiento o sustitución de caracteres.</p>
 <h2>Prueba a decodificar un JWT ahora</h2>
-<p>Pega cualquier payload de JWT en <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>: el decodificador gestiona automáticamente la entrada Base64URL, convirtiendo - en + y _ en / antes de decodificar. No necesitas sustituir los caracteres manualmente.</p>
+<p>Pega cualquier payload de JWT en <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>: el decodificador gestiona automáticamente la entrada Base64URL, convirtiendo - en + y _ en / antes de decodificar. No necesitas sustituir los caracteres manualmente.</p>
 <p>Los JWT son elegantes por su sencillez: tres secciones codificadas en Base64URL separadas por puntos, firmadas para evitar manipulaciones. Entender su estructura facilita mucho depurar flujos de autenticación, inspeccionar los claims de los tokens durante el desarrollo e integrarse con APIs de terceros que usan autenticación basada en JWT.</p>
 
   </article>
@@ -259,7 +259,7 @@
   </div>
   <span class="footer-right">
     <span>Prueba también:</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   Desarrollado por <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

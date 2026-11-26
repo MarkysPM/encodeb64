@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -169,7 +160,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/nl/" class="nav-pill">Coderen</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">Decoderen</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">Decoderen</a>
       <a href="/nl/image-to-base64" class="nav-pill">Afbeelding naar Base64</a>
       <a href="/nl/blog/" class="nav-pill current">Blog</a>
     </nav>
@@ -259,7 +250,7 @@
 <p>Niets hiervan betekent dat Base64 slecht is. Het is precies het juiste hulpmiddel voor zijn taak: binaire data door tekstkanalen vervoeren. De fout is om het een taak te laten doen waarvoor het nooit is ontworpen. Als de data niet geheim is, volstaat Base64 alleen. Als de data geheim is, versleutel je haar en gebruik je Base64 alleen om de versleutelde tekst te vervoeren.</p>
 
 <h2>Probeer het zelf</h2>
-<p>Om te zien hoe makkelijk Base64 terug te draaien is, plak je een willekeurige string in <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a> of codeer je je eigen tekst met de <a href="/nl/">encoder op de homepage</a>. Om te begrijpen waarom het formaat zo werkt, lees je <a href="/nl/blog/what-is-base64-encoding-and-how-it-works/">Wat is Base64-codering en hoe werkt het?</a> en vergelijk je het met andere coderingen in <a href="/nl/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/">Base64 vs hex vs Base32 vs Base85</a>.</p>
+<p>Om te zien hoe makkelijk Base64 terug te draaien is, plak je een willekeurige string in <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a> of codeer je je eigen tekst met de <a href="/nl/">encoder op de homepage</a>. Om te begrijpen waarom het formaat zo werkt, lees je <a href="/nl/blog/what-is-base64-encoding-and-how-it-works/">Wat is Base64-codering en hoe werkt het?</a> en vergelijk je het met andere coderingen in <a href="/nl/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/">Base64 vs hex vs Base32 vs Base85</a>.</p>
 
   </article>
 </main>
@@ -274,7 +265,7 @@
   </div>
   <span class="footer-right">
     <span>Probeer ook:</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   Ontwikkeld door <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

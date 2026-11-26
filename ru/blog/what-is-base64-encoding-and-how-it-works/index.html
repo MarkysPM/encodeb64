@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -169,7 +160,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/ru/" class="nav-pill">Кодировать</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">Декодировать</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">Декодировать</a>
       <a href="/ru/image-to-base64" class="nav-pill">Изображение в Base64</a>
       <a href="/ru/blog/" class="nav-pill current">Блог</a>
     </nav>
@@ -272,7 +263,7 @@ n = 01101110</div>
 <p>Base64 подходит, когда нужно передать двоичные данные внутри чисто текстового формата: встроить маленькое изображение в HTML или CSS, поместить файл в JSON-запрос к API, хранить двоичный ключ в файле конфигурации или отправлять вложения по почте. Он не подходит для больших файлов, для данных, которые ваш транспорт и так умеет передавать как сырые байты, и для всего, что должно оставаться секретным.</p>
 
 <h2>Попробуйте сами</h2>
-<p>Используйте <a href="/ru/">кодировщик Base64</a> для кодирования текста, <a href="/ru/image-to-base64">конвертер изображений в Base64</a>, чтобы превратить картинку в data URI, и <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, чтобы декодировать строку Base64 обратно в исходное содержимое. Чтобы применять Base64 в коде, продолжайте с руководствами по <a href="/ru/blog/how-to-encode-and-decode-base64-in-javascript/">JavaScript</a>, <a href="/ru/blog/how-to-encode-and-decode-base64-in-python/">Python</a> и <a href="/ru/blog/base64-encode-decode-command-line-linux-macos-windows/">командной строке</a>.</p>
+<p>Используйте <a href="/ru/">кодировщик Base64</a> для кодирования текста, <a href="/ru/image-to-base64">конвертер изображений в Base64</a>, чтобы превратить картинку в data URI, и <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, чтобы декодировать строку Base64 обратно в исходное содержимое. Чтобы применять Base64 в коде, продолжайте с руководствами по <a href="/ru/blog/how-to-encode-and-decode-base64-in-javascript/">JavaScript</a>, <a href="/ru/blog/how-to-encode-and-decode-base64-in-python/">Python</a> и <a href="/ru/blog/base64-encode-decode-command-line-linux-macos-windows/">командной строке</a>.</p>
 
   </article>
 </main>
@@ -287,7 +278,7 @@ n = 01101110</div>
   </div>
   <span class="footer-right">
     <span>Попробуйте также:</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   Разработано: <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

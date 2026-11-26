@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -169,7 +160,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/ja/" class="nav-pill">エンコード</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">デコード</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">デコード</a>
       <a href="/ja/image-to-base64" class="nav-pill">画像をBase64に</a>
       <a href="/ja/blog/" class="nav-pill current">ブログ</a>
     </nav>
@@ -244,7 +235,7 @@
 <p>開発中にJWTを調べるには：</p>
 <ol>
 <li>JWT文字列をコピーする</li>
-<li>headerまたはpayloadの部分（最初または2番目のドットより前のテキスト）を<a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>に貼り付ける</li>
+<li>headerまたはpayloadの部分（最初または2番目のドットより前のテキスト）を<a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>に貼り付ける</li>
 <li>デコードされたJSONにクレームが表示される</li>
 </ol>
 <p>JWT全体を貼り付けることもできます——ツールはパースできる最初のセクションをデコードします。本番環境でのデバッグには、署名情報も表示してくれる専用のJWTインスペクターを使用してください。</p>
@@ -252,7 +243,7 @@
 <p><strong>エラー：JWTをデコードすると「Invalid Base64 input」が表示される</strong><br>原因：-と_の文字を処理できない標準Base64デコーダーを使用しています。Base64URL対応のデコーダーを使用してください。</p>
 <p><strong>エラー：payloadに予期しない文字や意味不明な内容が表示される</strong><br>原因：JWTのクレームに非UTF-8エンコーディングが使われている、または送信中に文字列が破損した可能性があります。切り詰めや文字の置き換えがないか確認してください。</p>
 <h2>今すぐJWTのデコードを試す</h2>
-<p>任意のJWTのpayloadを<a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>に貼り付けてください——デコーダーはBase64URL形式の入力を自動的に処理し、デコード前に-を+に、_を/に変換します。手動での文字置き換えは不要です。</p>
+<p>任意のJWTのpayloadを<a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>に貼り付けてください——デコーダーはBase64URL形式の入力を自動的に処理し、デコード前に-を+に、_を/に変換します。手動での文字置き換えは不要です。</p>
 <p>JWTはそのシンプルさにおいて洗練されています：ドットで区切られた3つのBase64URLエンコードセクションが、改ざん防止のために署名されています。その構造を理解しておくことで、認証フローのデバッグ、開発中のトークンクレームの確認、JWTベースの認証を使うサードパーティAPIとの連携がずっと容易になります。</p>
 
   </article>
@@ -268,7 +259,7 @@
   </div>
   <span class="footer-right">
     <span>こちらも試してみてください：</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   開発: <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

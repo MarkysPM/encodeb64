@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -169,7 +160,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/zh/" class="nav-pill">编码</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">解码</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">解码</a>
       <a href="/zh/image-to-base64" class="nav-pill">图片转Base64</a>
       <a href="/zh/blog/" class="nav-pill current">博客</a>
     </nav>
@@ -267,7 +258,7 @@
 <p>上面每种编码都会增加开销。如果你的协议可以承载原始字节，例如使用 <code>multipart/form-data</code> 的二进制上传、数据库中的二进制列或 gRPC，就直接用它。只有在通道强制要求时，才使用文本编码。</p>
 
 <h2>动手试试</h2>
-<p>你现在就可以用<a href="/zh/">首页的编码器</a>生成 Base64，并在 <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a> 解码。想了解这些编码背后的原理，请先阅读<a href="/zh/blog/what-is-base64-encoding-and-how-it-works/">什么是 Base64 编码，它是如何工作的？</a>，并在<a href="/zh/blog/base64-size-overhead-and-compression-measured/">Base64 到底大多少？</a>中看看 Base64 究竟增加了多少空间。</p>
+<p>你现在就可以用<a href="/zh/">首页的编码器</a>生成 Base64，并在 <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a> 解码。想了解这些编码背后的原理，请先阅读<a href="/zh/blog/what-is-base64-encoding-and-how-it-works/">什么是 Base64 编码，它是如何工作的？</a>，并在<a href="/zh/blog/base64-size-overhead-and-compression-measured/">Base64 到底大多少？</a>中看看 Base64 究竟增加了多少空间。</p>
 
   </article>
 </main>
@@ -282,7 +273,7 @@
   </div>
   <span class="footer-right">
     <span>也可以试试：</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   开发者： <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Privacy Policy — encodeb64.com</title>
-  <meta name="description" content="Privacy Policy for encodeb64.com. We process no personal data — all Base64 encoding happens locally in your browser." />
+  <meta name="description" content="Privacy Policy for encodeb64.com. All Base64 processing happens locally in your browser." />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0d0d14" />
   <meta name="color-scheme" content="dark" />
@@ -16,39 +16,30 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="encodeb64.com" />
   <meta property="og:title" content="Privacy Policy — encodeb64.com" />
-  <meta property="og:description" content="Privacy Policy for encodeb64.com. We process no personal data — all Base64 encoding happens locally in your browser." />
+  <meta property="og:description" content="Privacy Policy for encodeb64.com. All Base64 processing happens locally in your browser." />
   <meta property="og:url" content="https://encodeb64.com/privacy-policy/" />
   <meta property="og:image" content="https://encodeb64.com/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Privacy Policy — encodeb64.com" />
-  <meta name="twitter:description" content="Privacy Policy for encodeb64.com. We process no personal data — all Base64 encoding happens locally in your browser." />
+  <meta name="twitter:description" content="Privacy Policy for encodeb64.com. All Base64 processing happens locally in your browser." />
   <meta name="twitter:image" content="https://encodeb64.com/og-image.png" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -306,7 +297,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/" class="nav-pill" data-i18n="nav_encode">Encode</a>
-      <a href="https://decodeb64.com" class="nav-pill" data-i18n="nav_decode" rel="noopener noreferrer" target="_blank">Decode</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" data-i18n="nav_decode" rel="noopener noreferrer" target="_blank">Decode</a>
       <a href="/image-to-base64" class="nav-pill" data-i18n="nav_image">Image to Base64</a>
       <a href="/blog/" class="nav-pill" data-i18n="nav_blog">Blog</a>
     </nav>
@@ -343,7 +334,7 @@
     <h1>Privacy <span style="color:var(--cyan)">Policy</span></h1>
   </div>
   <div class="glass-card">
-    <span class="last-updated">Last updated: August 2026</span>
+    <span class="last-updated">Last updated: November 2026</span>
     <h2>1. Overview</h2>
     <p>encodeb64.com is operated by MpmDigital (<a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank">mpmdigital.es</a>). This Privacy Policy explains how we handle information when you use our website.</p>
     <h2>2. Data we do NOT collect</h2>
@@ -351,22 +342,25 @@
     <ul>
       <li>The text, files, or images you encode</li>
       <li>Your IP address (beyond standard server logs retained by our hosting provider, Cloudflare)</li>
-      <li>Personal identifiable information of any kind</li>
-      <li>Cookies for tracking or advertising purposes</li>
+      <li>Personal information you type, upload or process in the tool</li>
+      <li>Tracking or advertising cookies without your consent</li>
     </ul>
     <p>All encoding operations happen entirely in your browser using standard JavaScript APIs (TextEncoder, btoa, FileReader). Nothing is uploaded to our servers.</p>
-    <h2>3. Analytics</h2>
-    <p>We use Google Analytics 4 to collect anonymous usage statistics (page views, session duration, general geographic region). This data is anonymised and does not identify individual users. You can opt out via your browser's privacy settings or by using an ad blocker.</p>
-    <p>We use Google AdSense to display advertisements. Google may use cookies to serve ads based on your prior visits to this or other websites. You can opt out of personalised advertising at <a href="https://adssettings.google.com/" rel="noopener noreferrer" target="_blank">Google's Ad Settings</a>.</p>
-    <h2>4. Cookies</h2>
-    <p>We use CookieHub to manage cookie consent in compliance with GDPR. Only strictly necessary cookies are set by default. You may update your preferences at any time via the cookie banner.</p>
-    <h2>5. Third-party services</h2>
+    <h2>3. Consent</h2>
+    <p>For visitors in the European Economic Area, the United Kingdom and Switzerland, analytics and advertising storage are denied by default until you make a choice in Google's consent message. You can change your choice at any time by clearing this site's cookies and reloading the page, which shows the message again.</p>
+    <h2>4. Google Analytics</h2>
+    <p>Where consent is required, we use Google Analytics 4 to collect anonymous usage statistics (pages viewed, session duration, general region).</p>
+    <h2>5. Google AdSense</h2>
+    <p>Where consent is required, Google AdSense may use cookies and identifiers to show and personalise ads. You can manage personalised advertising at <a href="https://adssettings.google.com/" rel="noopener noreferrer" target="_blank">https://adssettings.google.com/</a>.</p>
+    <h2>6. Cloudflare Web Analytics</h2>
+    <p>We use Cloudflare Web Analytics to measure aggregated traffic and page performance (page views, visits, country, device type). It does not use cookies or local storage, does not track you across sessions and does not collect personal data. It applies to all visitors, including those in the EU.</p>
+    <h2>7. Third-party services</h2>
     <p>Our website is hosted on Cloudflare Pages. Cloudflare may retain standard server access logs. Please refer to Cloudflare's Privacy Policy for details.</p>
-    <h2>6. Your rights (GDPR)</h2>
-    <p>If you are located in the European Union, you have rights under the GDPR including the right to access, rectify, and erase personal data. Since we collect no personal data, there is nothing to access or erase. For any privacy-related questions, contact us at: <a href="mailto:contacto@mpmdigital.es">contacto@mpmdigital.es</a></p>
-    <h2>7. Changes to this policy</h2>
+    <h2>8. Your rights (GDPR)</h2>
+    <p>If you are located in the European Union, you have rights under the GDPR including the right to access, rectify, and erase personal data. The content you process in the tool is never sent to us, so we hold no copy of it. For data processed by Google, you can exercise your rights through Google or contact us. For any privacy-related questions, contact us at: <a href="mailto:contacto@mpmdigital.es">contacto@mpmdigital.es</a></p>
+    <h2>9. Changes to this policy</h2>
     <p>We may update this policy from time to time. The "Last updated" date at the top of this page will reflect any changes.</p>
-    <h2>8. Contact</h2>
+    <h2>10. Contact</h2>
     <p>MpmDigital<br>Website: <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank">mpmdigital.es</a><br>Email: <a href="mailto:contacto@mpmdigital.es">contacto@mpmdigital.es</a></p>
   </div>
 </main>
@@ -381,7 +375,7 @@
   </div>
   <span class="footer-right">
     <span data-i18n="footer_also_try">Also try:</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   Developed by <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>
@@ -557,9 +551,7 @@
   document.querySelectorAll('.lang-option').forEach(opt => {
     opt.addEventListener('click', () => {
       const lang = opt.dataset.lang;
-      const slug = PAGE_SLUG;
-      if (lang === 'en') window.location.href = '/' + slug;
-      else window.location.href = '/' + lang + '/' + slug;
+      window.location.href = lang === 'en' ? '/' : '/' + lang + '/';
     });
   });
   function applyLang(lang) {

@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -169,7 +160,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/zh/" class="nav-pill">编码</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">解码</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">解码</a>
       <a href="/zh/image-to-base64" class="nav-pill">图片转Base64</a>
       <a href="/zh/blog/" class="nav-pill current">博客</a>
     </nav>
@@ -306,7 +297,7 @@ except binascii.Error:
 <li>处理 URL 和令牌时使用 <code>urlsafe_b64encode</code>。</li>
 <li>输入来自不可信来源时使用 <code>validate=True</code>。</li>
 </ul>
-<p>想把输出与可靠工具对照，请使用<a href="/zh/">编码器</a>或 <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>。如果你刚接触这种格式，请先阅读<a href="/zh/blog/what-is-base64-encoding-and-how-it-works/">什么是 Base64 编码？它是如何工作的？</a></p>
+<p>想把输出与可靠工具对照，请使用<a href="/zh/">编码器</a>或 <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>。如果你刚接触这种格式，请先阅读<a href="/zh/blog/what-is-base64-encoding-and-how-it-works/">什么是 Base64 编码？它是如何工作的？</a></p>
 
   </article>
 </main>
@@ -321,7 +312,7 @@ except binascii.Error:
   </div>
   <span class="footer-right">
     <span>也可以试试：</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   开发者： <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

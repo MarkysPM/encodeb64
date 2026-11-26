@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -170,7 +161,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/" class="nav-pill">Encode</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">Decode</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">Decode</a>
       <a href="/image-to-base64" class="nav-pill">Image to Base64</a>
       <a href="/blog/" class="nav-pill current">Blog</a>
     </nav>
@@ -276,7 +267,7 @@
 <li>Remove whitespace and any <code>data:</code> prefix.</li>
 <li>Restore padding if the length is not a multiple of four.</li>
 <li>Decode to bytes and only then decide whether it is text.</li>
-<li>If it still fails, paste the string into <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a> to confirm whether the problem is the data or your code.</li>
+<li>If it still fails, paste the string into <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a> to confirm whether the problem is the data or your code.</li>
 </ol>
 <p>To learn the mechanics that explain all of these failures, read <a href="/blog/what-is-base64-encoding-and-how-it-works/">What Is Base64 Encoding and How Does It Work?</a> For language-specific details, see our guides for <a href="/blog/how-to-encode-and-decode-base64-in-javascript/">JavaScript</a>, <a href="/blog/how-to-encode-and-decode-base64-in-python/">Python</a> and <a href="/blog/base64-in-java-csharp-go-php-code-examples/">Java, C#, Go and PHP</a>.</p>
 
@@ -293,7 +284,7 @@
   </div>
   <span class="footer-right">
     <span>Also try:</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   Developed by <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

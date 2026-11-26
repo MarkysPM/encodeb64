@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -169,7 +160,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/fr/" class="nav-pill">Encoder</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">Décoder</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">Décoder</a>
       <a href="/fr/image-to-base64" class="nav-pill">Image en Base64</a>
       <a href="/fr/blog/" class="nav-pill current">Blog</a>
     </nav>
@@ -267,7 +258,7 @@
 <p>Chaque encodage ci-dessus ajoute un surcoût. Si votre protocole peut transporter des octets bruts, comme un envoi binaire en <code>multipart/form-data</code>, une colonne binaire dans une base de données ou gRPC, utilisez-le. Ne recourez à un encodage texte que lorsque le canal vous y oblige.</p>
 
 <h2>Essayez-les</h2>
-<p>Vous pouvez produire du Base64 dès maintenant avec l'<a href="/fr/">encodeur de la page d'accueil</a> et le décoder sur <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>. Pour comprendre la mécanique de ces encodages, commencez par <a href="/fr/blog/what-is-base64-encoding-and-how-it-works/">Qu'est-ce que l'encodage Base64 et comment fonctionne-t-il ?</a> et voyez combien de place Base64 ajoute vraiment dans <a href="/fr/blog/base64-size-overhead-and-compression-measured/">De combien Base64 est-il plus gros ?</a></p>
+<p>Vous pouvez produire du Base64 dès maintenant avec l'<a href="/fr/">encodeur de la page d'accueil</a> et le décoder sur <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>. Pour comprendre la mécanique de ces encodages, commencez par <a href="/fr/blog/what-is-base64-encoding-and-how-it-works/">Qu'est-ce que l'encodage Base64 et comment fonctionne-t-il ?</a> et voyez combien de place Base64 ajoute vraiment dans <a href="/fr/blog/base64-size-overhead-and-compression-measured/">De combien Base64 est-il plus gros ?</a></p>
 
   </article>
 </main>
@@ -282,7 +273,7 @@
   </div>
   <span class="footer-right">
     <span>Essayez aussi :</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   Développé par <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

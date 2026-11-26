@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -169,7 +160,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/hi/" class="nav-pill">एनकोड</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">डीकोड</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">डीकोड</a>
       <a href="/hi/image-to-base64" class="nav-pill">छवि से Base64</a>
       <a href="/hi/blog/" class="nav-pill current">ब्लॉग</a>
     </nav>
@@ -259,7 +250,7 @@
 <p>इसका मतलब यह नहीं कि Base64 बुरा है। अपने काम के लिए यह बिल्कुल सही उपकरण है: टेक्स्ट चैनलों के ज़रिए बाइनरी डेटा ले जाना। गलती उससे वह काम माँगना है जिसके लिए वह कभी बना ही नहीं था। अगर डेटा गोपनीय नहीं है, तो अकेला Base64 ठीक है। अगर गोपनीय है, तो उसे एन्क्रिप्ट करें और Base64 का उपयोग केवल सिफ़रटेक्स्ट ढोने के लिए करें।</p>
 
 <h2>खुद आज़माएँ</h2>
-<p>यह देखने के लिए कि Base64 कितनी आसानी से उलट जाता है, कोई भी स्ट्रिंग <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a> में चिपकाएँ या <a href="/hi/">होम पेज के एन्कोडर</a> से अपना टेक्स्ट एन्कोड करें। यह प्रारूप ऐसा क्यों काम करता है, यह समझने के लिए <a href="/hi/blog/what-is-base64-encoding-and-how-it-works/">Base64 एन्कोडिंग क्या है और यह कैसे काम करती है?</a> पढ़ें, और अन्य एन्कोडिंग से तुलना <a href="/hi/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/">Base64, हेक्स, Base32 और Base85: कौन-सी एन्कोडिंग चुनें?</a> में देखें।</p>
+<p>यह देखने के लिए कि Base64 कितनी आसानी से उलट जाता है, कोई भी स्ट्रिंग <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a> में चिपकाएँ या <a href="/hi/">होम पेज के एन्कोडर</a> से अपना टेक्स्ट एन्कोड करें। यह प्रारूप ऐसा क्यों काम करता है, यह समझने के लिए <a href="/hi/blog/what-is-base64-encoding-and-how-it-works/">Base64 एन्कोडिंग क्या है और यह कैसे काम करती है?</a> पढ़ें, और अन्य एन्कोडिंग से तुलना <a href="/hi/blog/base64-vs-hex-base32-base58-base85-which-encoding-to-use/">Base64, हेक्स, Base32 और Base85: कौन-सी एन्कोडिंग चुनें?</a> में देखें।</p>
 
   </article>
 </main>
@@ -274,7 +265,7 @@
   </div>
   <span class="footer-right">
     <span>यह भी आज़माएं:</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   द्वारा विकसित <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

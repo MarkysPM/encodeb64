@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -169,7 +160,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/pt/" class="nav-pill">Codificar</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">Decodificar</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">Decodificar</a>
       <a href="/pt/image-to-base64" class="nav-pill">Imagem para Base64</a>
       <a href="/pt/blog/" class="nav-pill current">Blog</a>
     </nav>
@@ -267,7 +258,7 @@
 <p>Toda codificação acima acrescenta sobrecarga. Se o seu protocolo consegue transportar bytes brutos, como um envio binário com <code>multipart/form-data</code>, uma coluna binária em um banco de dados ou gRPC, use isso. Recorra a uma codificação de texto apenas quando o canal exigir.</p>
 
 <h2>Experimente</h2>
-<p>Você pode gerar Base64 agora mesmo com o <a href="/pt/">codificador da página inicial</a> e decodificá-lo em <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>. Para entender a mecânica dessas codificações, comece por <a href="/pt/blog/what-is-base64-encoding-and-how-it-works/">O que é a codificação Base64 e como ela funciona?</a> e veja quanto espaço o Base64 realmente acrescenta em <a href="/pt/blog/base64-size-overhead-and-compression-measured/">Quanto maior fica o Base64?</a></p>
+<p>Você pode gerar Base64 agora mesmo com o <a href="/pt/">codificador da página inicial</a> e decodificá-lo em <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>. Para entender a mecânica dessas codificações, comece por <a href="/pt/blog/what-is-base64-encoding-and-how-it-works/">O que é a codificação Base64 e como ela funciona?</a> e veja quanto espaço o Base64 realmente acrescenta em <a href="/pt/blog/base64-size-overhead-and-compression-measured/">Quanto maior fica o Base64?</a></p>
 
   </article>
 </main>
@@ -282,7 +273,7 @@
   </div>
   <span class="footer-right">
     <span>Experimente também:</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   Desenvolvido por <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

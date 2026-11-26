@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -169,7 +160,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/ja/" class="nav-pill">エンコード</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">デコード</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">デコード</a>
       <a href="/ja/image-to-base64" class="nav-pill">画像をBase64に</a>
       <a href="/ja/blog/" class="nav-pill current">ブログ</a>
     </nav>
@@ -297,7 +288,7 @@ const base64 = readFileSync('photo.png').toString('base64');</div>
 <p>新しいJavaScriptエンジンでは、Base64との相互変換を行う組み込みメソッドが<code>Uint8Array</code>に追加されつつあります。ブラウザ間の対応状況はまだ一様ではないため、本番環境で頼る前に最新の互換性表を確認してください。このガイドの関数は、現時点でどこでも動作します。</p>
 
 <h2>結果を確認する</h2>
-<p>デバッグするときは、コードの出力を信頼できるツールと比較してください。テキストは<a href="/ja/">トップページのエンコーダー</a>でエンコードし、文字列は<a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>でデコードできます。エンコードの理論については、<a href="/ja/blog/what-is-base64-encoding-and-how-it-works/">Base64エンコードとは？仕組みをわかりやすく解説</a>をお読みください。</p>
+<p>デバッグするときは、コードの出力を信頼できるツールと比較してください。テキストは<a href="/ja/">トップページのエンコーダー</a>でエンコードし、文字列は<a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>でデコードできます。エンコードの理論については、<a href="/ja/blog/what-is-base64-encoding-and-how-it-works/">Base64エンコードとは？仕組みをわかりやすく解説</a>をお読みください。</p>
 
   </article>
 </main>
@@ -312,7 +303,7 @@ const base64 = readFileSync('photo.png').toString('base64');</div>
   </div>
   <span class="footer-right">
     <span>こちらも試してみてください：</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   開発: <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

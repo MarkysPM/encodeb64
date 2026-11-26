@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -169,7 +160,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/ko/" class="nav-pill">인코드</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">디코드</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">디코드</a>
       <a href="/ko/image-to-base64" class="nav-pill">이미지를 Base64로</a>
       <a href="/ko/blog/" class="nav-pill current">블로그</a>
     </nav>
@@ -272,7 +263,7 @@ n = 01101110</div>
 <p>Base64는 텍스트만 허용하는 형식 안에 바이너리 데이터를 담아야 할 때 적합합니다. HTML이나 CSS에 작은 이미지를 포함하거나, API로 보내는 JSON 요청에 파일을 담거나, 설정 파일에 바이너리 키를 저장하거나, 이메일로 첨부 파일을 보낼 때가 그렇습니다. 큰 파일, 전송 경로가 이미 원시 바이트를 그대로 전달할 수 있는 데이터, 비밀로 유지해야 하는 정보에는 적합하지 않습니다.</p>
 
 <h2>직접 해보기</h2>
-<p>텍스트를 인코딩하려면 <a href="/ko/">Base64 인코더</a>를, 이미지를 data URI로 바꾸려면 <a href="/ko/image-to-base64">이미지 Base64 변환기</a>를, Base64 문자열을 원래 내용으로 되돌리려면 <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>을 사용하세요. 코드에서 Base64를 사용하려면 <a href="/ko/blog/how-to-encode-and-decode-base64-in-javascript/">JavaScript</a>, <a href="/ko/blog/how-to-encode-and-decode-base64-in-python/">Python</a>, <a href="/ko/blog/base64-encode-decode-command-line-linux-macos-windows/">명령줄</a> 가이드로 이어서 읽어 보세요.</p>
+<p>텍스트를 인코딩하려면 <a href="/ko/">Base64 인코더</a>를, 이미지를 data URI로 바꾸려면 <a href="/ko/image-to-base64">이미지 Base64 변환기</a>를, Base64 문자열을 원래 내용으로 되돌리려면 <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>을 사용하세요. 코드에서 Base64를 사용하려면 <a href="/ko/blog/how-to-encode-and-decode-base64-in-javascript/">JavaScript</a>, <a href="/ko/blog/how-to-encode-and-decode-base64-in-python/">Python</a>, <a href="/ko/blog/base64-encode-decode-command-line-linux-macos-windows/">명령줄</a> 가이드로 이어서 읽어 보세요.</p>
 
   </article>
 </main>
@@ -287,7 +278,7 @@ n = 01101110</div>
   </div>
   <span class="footer-right">
     <span>이것도 사용해 보세요:</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   개발: <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -169,7 +160,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/zh/" class="nav-pill">编码</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">解码</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">解码</a>
       <a href="/zh/image-to-base64" class="nav-pill">图片转Base64</a>
       <a href="/zh/blog/" class="nav-pill current">博客</a>
     </nav>
@@ -276,7 +267,7 @@
 <p>HTML 邮件对 data URI 的支持并不一致：有些客户端会显示它们，而另一些（尤其是多个网页邮箱服务）会将其移除。想详细了解哪些做法可行，请阅读<a href="/zh/blog/how-to-embed-images-in-html-emails-using-base64/">如何使用 Base64 在 HTML 邮件中嵌入图片</a>。</p>
 
 <h2>如何创建 data URI</h2>
-<p>最快的方式是使用<a href="/zh/image-to-base64">图片转 Base64 工具</a>：拖入图片，复制现成的 data URI。如果你更想用代码完成，请参阅 <a href="/zh/blog/how-to-encode-and-decode-base64-in-javascript/">JavaScript</a>、<a href="/zh/blog/how-to-encode-and-decode-base64-in-python/">Python</a> 或<a href="/zh/blog/base64-encode-decode-command-line-linux-macos-windows/">命令行</a>指南。要从 data URI 中还原原始文件，请把 Base64 部分粘贴到 <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>。</p>
+<p>最快的方式是使用<a href="/zh/image-to-base64">图片转 Base64 工具</a>：拖入图片，复制现成的 data URI。如果你更想用代码完成，请参阅 <a href="/zh/blog/how-to-encode-and-decode-base64-in-javascript/">JavaScript</a>、<a href="/zh/blog/how-to-encode-and-decode-base64-in-python/">Python</a> 或<a href="/zh/blog/base64-encode-decode-command-line-linux-macos-windows/">命令行</a>指南。要从 data URI 中还原原始文件，请把 Base64 部分粘贴到 <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>。</p>
 
   </article>
 </main>
@@ -291,7 +282,7 @@
   </div>
   <span class="footer-right">
     <span>也可以试试：</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   开发者： <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

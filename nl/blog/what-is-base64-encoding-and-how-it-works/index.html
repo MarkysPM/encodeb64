@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -169,7 +160,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/nl/" class="nav-pill">Coderen</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">Decoderen</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">Decoderen</a>
       <a href="/nl/image-to-base64" class="nav-pill">Afbeelding naar Base64</a>
       <a href="/nl/blog/" class="nav-pill current">Blog</a>
     </nav>
@@ -272,7 +263,7 @@ n = 01101110</div>
 <p>Base64 is geschikt wanneer je binaire gegevens moet meenemen in een formaat dat alleen tekst toelaat: een kleine afbeelding in HTML of CSS insluiten, een bestand in een JSON-verzoek naar een API stoppen, een binaire sleutel in een configuratiebestand opslaan of bijlagen per e-mail versturen. Het is ongeschikt voor grote bestanden, voor gegevens die je transport al als ruwe bytes kan versturen en voor alles wat geheim moet blijven.</p>
 
 <h2>Probeer het zelf</h2>
-<p>Gebruik de <a href="/nl/">Base64-encoder</a> om tekst te coderen, de <a href="/nl/image-to-base64">afbeelding-naar-Base64-converter</a> om een afbeelding om te zetten in een data-URI en <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a> om een Base64-tekenreeks terug te decoderen naar de oorspronkelijke inhoud. Wil je Base64 in code gebruiken, lees dan verder met de gidsen voor <a href="/nl/blog/how-to-encode-and-decode-base64-in-javascript/">JavaScript</a>, <a href="/nl/blog/how-to-encode-and-decode-base64-in-python/">Python</a> en de <a href="/nl/blog/base64-encode-decode-command-line-linux-macos-windows/">opdrachtregel</a>.</p>
+<p>Gebruik de <a href="/nl/">Base64-encoder</a> om tekst te coderen, de <a href="/nl/image-to-base64">afbeelding-naar-Base64-converter</a> om een afbeelding om te zetten in een data-URI en <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a> om een Base64-tekenreeks terug te decoderen naar de oorspronkelijke inhoud. Wil je Base64 in code gebruiken, lees dan verder met de gidsen voor <a href="/nl/blog/how-to-encode-and-decode-base64-in-javascript/">JavaScript</a>, <a href="/nl/blog/how-to-encode-and-decode-base64-in-python/">Python</a> en de <a href="/nl/blog/base64-encode-decode-command-line-linux-macos-windows/">opdrachtregel</a>.</p>
 
   </article>
 </main>
@@ -287,7 +278,7 @@ n = 01101110</div>
   </div>
   <span class="footer-right">
     <span>Probeer ook:</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   Ontwikkeld door <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

@@ -38,32 +38,29 @@
   <meta name="twitter:image:alt" content="Convertisseur Image en Base64 sur encodeb64.com" />
   <meta name="google-site-verification" content="zw27fsekxX4vNdkOvHfQkWX5v1hB-HBlqchzUv6ejl8" />
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      // CookieHub
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function() { var cpm = {}; window.cookiehub && window.cookiehub.load(cpm); });
-      // Google Consent Mode v2
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
-      // Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
       document.head.appendChild(_ga);
-      window.dataLayer = window.dataLayer || [];
       gtag('js', new Date());
       gtag('config', 'G-MYEHD96X9Q');
-      // AdSense
+      var _as = document.createElement('script');
+      _as.async = true;
+      _as.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104';
+      _as.crossOrigin = 'anonymous';
+      document.head.appendChild(_as);
     }
   </script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d14'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='11' fill='%2300e5cc'>B64</text></svg>" />
@@ -909,8 +906,6 @@
       .options-row { flex-direction: column; gap: 12px; }
     }
   </style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7602115974474104"
-     crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -922,7 +917,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="./" class="nav-pill inactive" data-i18n="nav_encode">Encode</a>
-      <a href="https://decodeb64.com" class="nav-pill inactive" data-i18n="nav_decode" rel="noopener noreferrer" target="_blank">Decode</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill inactive" data-i18n="nav_decode" rel="noopener noreferrer" target="_blank">Decode</a>
       <span class="nav-pill active" data-i18n="nav_image">Image to Base64</span>
       <a href="/fr/blog/" class="nav-pill inactive" data-i18n="nav_blog">Blog</a>
     </nav>
@@ -1083,7 +1078,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
         <span data-i18n="tool_text_encode">Text to Base64</span>
       </a>
-      <a href="https://decodeb64.com" class="tool-link" rel="noopener noreferrer" target="_blank">
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="tool-link" rel="noopener noreferrer" target="_blank">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 17 20 20 4 20 4 17"/><line x1="9" y1="4" x2="15" y2="4"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
         <span data-i18n="tool_base64_decode">Base64 Decode</span>
       </a>
@@ -1208,7 +1203,7 @@
   </div>
   <span class="footer-right">
     <span data-i18n="footer_also_try">Also try:</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">

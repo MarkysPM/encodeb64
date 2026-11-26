@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -169,7 +160,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/hi/" class="nav-pill">एनकोड</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">डीकोड</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">डीकोड</a>
       <a href="/hi/image-to-base64" class="nav-pill">छवि से Base64</a>
       <a href="/hi/blog/" class="nav-pill current">ब्लॉग</a>
     </nav>
@@ -297,7 +288,7 @@ const base64 = readFileSync('photo.png').toString('base64');</div>
 <p>नए JavaScript इंजन <code>Uint8Array</code> पर Base64 से और में बदलने के अंतर्निहित मेथड जोड़ रहे हैं। ब्राउज़रों में इनका समर्थन अभी असमान है, इसलिए प्रोडक्शन में इन पर निर्भर होने से पहले ताज़ा संगतता तालिकाएँ देखें। इस गाइड के फ़ंक्शन आज हर जगह काम करते हैं।</p>
 
 <h2>अपने नतीजे जाँचें</h2>
-<p>डीबग करते समय अपने कोड के आउटपुट की तुलना किसी भरोसेमंद टूल से करें। टेक्स्ट को <a href="/hi/">होम पेज के एन्कोडर</a> से एन्कोड करें और स्ट्रिंग को <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a> से डिकोड करें। एन्कोडिंग के पीछे का सिद्धांत जानने के लिए <a href="/hi/blog/what-is-base64-encoding-and-how-it-works/">Base64 एन्कोडिंग क्या है और यह कैसे काम करती है?</a> पढ़ें।</p>
+<p>डीबग करते समय अपने कोड के आउटपुट की तुलना किसी भरोसेमंद टूल से करें। टेक्स्ट को <a href="/hi/">होम पेज के एन्कोडर</a> से एन्कोड करें और स्ट्रिंग को <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a> से डिकोड करें। एन्कोडिंग के पीछे का सिद्धांत जानने के लिए <a href="/hi/blog/what-is-base64-encoding-and-how-it-works/">Base64 एन्कोडिंग क्या है और यह कैसे काम करती है?</a> पढ़ें।</p>
 
   </article>
 </main>
@@ -312,7 +303,7 @@ const base64 = readFileSync('photo.png').toString('base64');</div>
   </div>
   <span class="footer-right">
     <span>यह भी आज़माएं:</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   द्वारा विकसित <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -169,7 +160,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/nl/" class="nav-pill">Coderen</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">Decoderen</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">Decoderen</a>
       <a href="/nl/image-to-base64" class="nav-pill">Afbeelding naar Base64</a>
       <a href="/nl/blog/" class="nav-pill current">Blog</a>
     </nav>
@@ -244,7 +235,7 @@
 <p>Om een JWT tijdens de ontwikkeling te inspecteren:</p>
 <ol>
 <li>Kopieer de JWT-string</li>
-<li>Plak het header- of payload-gedeelte (de tekst voor de eerste of tweede punt) in <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a></li>
+<li>Plak het header- of payload-gedeelte (de tekst voor de eerste of tweede punt) in <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a></li>
 <li>De gedecodeerde JSON toont je de claims</li>
 </ol>
 <p>Je kunt ook het volledige JWT plakken — de tool decodeert het eerste deel dat het kan parsen. Gebruik voor debugging in productie een specifieke JWT-inspector die ook handtekeninginformatie toont.</p>
@@ -252,7 +243,7 @@
 <p><strong>Fout: "Invalid Base64 input" bij het decoderen van een JWT</strong><br>Oorzaak: je gebruikt een standaard Base64-decoder die geen - en _ tekens verwerkt. Gebruik een Base64URL-bewuste decoder.</p>
 <p><strong>Fout: payload toont onverwachte tekens of onleesbare data</strong><br>Oorzaak: het JWT gebruikt mogelijk een niet-UTF-8-codering voor de claims, of de string is beschadigd tijdens verzending. Controleer op afkapping of tekenvervanging.</p>
 <h2>Probeer nu een JWT te decoderen</h2>
-<p>Plak een JWT-payload in <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a> — de decoder verwerkt automatisch Base64URL-invoer, waarbij - naar + en _ naar / wordt omgezet vóór het decoderen. Geen handmatige tekenvervanging nodig.</p>
+<p>Plak een JWT-payload in <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a> — de decoder verwerkt automatisch Base64URL-invoer, waarbij - naar + en _ naar / wordt omgezet vóór het decoderen. Geen handmatige tekenvervanging nodig.</p>
 <p>JWT's zijn elegant in hun eenvoud: drie door punten gescheiden, Base64URL-gecodeerde delen, ondertekend om manipulatie te voorkomen. Het begrijpen van hun structuur maakt het veel eenvoudiger om authenticatieflows te debuggen, tokenclaims tijdens ontwikkeling te inspecteren en te integreren met externe API's die JWT-gebaseerde authenticatie gebruiken.</p>
 
   </article>
@@ -268,7 +259,7 @@
   </div>
   <span class="footer-right">
     <span>Probeer ook:</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   Ontwikkeld door <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

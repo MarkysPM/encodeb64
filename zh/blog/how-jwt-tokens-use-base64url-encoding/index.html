@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -169,7 +160,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/zh/" class="nav-pill">编码</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">解码</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">解码</a>
       <a href="/zh/image-to-base64" class="nav-pill">图片转Base64</a>
       <a href="/zh/blog/" class="nav-pill current">博客</a>
     </nav>
@@ -244,7 +235,7 @@
 <p>在开发过程中检查 JWT：</p>
 <ol>
 <li>复制 JWT 字符串</li>
-<li>将 header 或 payload 部分（第一个或第二个点之前的文本）粘贴到 <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a></li>
+<li>将 header 或 payload 部分（第一个或第二个点之前的文本）粘贴到 <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a></li>
 <li>解码后的 JSON 会显示其中的 claim</li>
 </ol>
 <p>你也可以直接粘贴完整的 JWT——该工具会解码它能解析的第一部分。对于生产环境调试，建议使用专门的 JWT 检查工具，它同时还能显示签名相关信息。</p>
@@ -252,7 +243,7 @@
 <p><strong>错误：解码 JWT 时出现“Invalid Base64 input”</strong><br>原因：你使用的是不支持 - 和 _ 字符的标准 Base64 解码器。请使用支持 Base64URL 的解码器。</p>
 <p><strong>错误：payload 显示出意外字符或乱码</strong><br>原因：JWT 的 claim 可能使用了非 UTF-8 编码，或字符串在传输过程中被损坏。请检查是否存在截断或字符替换问题。</p>
 <h2>现在就试着解码一个 JWT</h2>
-<p>将任意 JWT 的 payload 粘贴到 <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>——解码器会自动处理 Base64URL 输入，在解码前把 - 转换为 +、把 _ 转换为 /，无需手动替换字符。</p>
+<p>将任意 JWT 的 payload 粘贴到 <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>——解码器会自动处理 Base64URL 输入，在解码前把 - 转换为 +、把 _ 转换为 /，无需手动替换字符。</p>
 <p>JWT 的优雅之处在于其简洁性：三段以点分隔的 Base64URL 编码内容，并经过签名以防止篡改。理解其结构能让你更轻松地调试身份验证流程、在开发过程中检查令牌 claim，并与使用基于 JWT 的身份验证的第三方 API 进行集成。</p>
 
   </article>
@@ -268,7 +259,7 @@
   </div>
   <span class="footer-right">
     <span>也可以试试：</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   开发者： <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -169,7 +160,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/it/" class="nav-pill">Codifica</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">Decodifica</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">Decodifica</a>
       <a href="/it/image-to-base64" class="nav-pill">Immagine in Base64</a>
       <a href="/it/blog/" class="nav-pill current">Blog</a>
     </nav>
@@ -244,7 +235,7 @@
 <p>Per esaminare un JWT durante lo sviluppo:</p>
 <ol>
 <li>Copia la stringa JWT</li>
-<li>Incolla la parte dell'header o del payload (il testo prima del primo o secondo punto) su <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a></li>
+<li>Incolla la parte dell'header o del payload (il testo prima del primo o secondo punto) su <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a></li>
 <li>Il JSON decodificato mostrerà i claim</li>
 </ol>
 <p>Puoi anche incollare il JWT completo — lo strumento decodificherà la prima sezione che riesce ad analizzare. Per il debug in produzione, usa un ispettore JWT dedicato che mostri anche le informazioni sulla firma.</p>
@@ -252,7 +243,7 @@
 <p><strong>Errore: "Invalid Base64 input" durante la decodifica di un JWT</strong><br>Causa: stai usando un decoder Base64 standard che non gestisce i caratteri - e _. Usa un decoder compatibile con Base64URL.</p>
 <p><strong>Errore: il payload mostra caratteri inaspettati o illeggibili</strong><br>Causa: il JWT potrebbe usare una codifica non UTF-8 per i claim, oppure la stringa è stata corrotta durante la trasmissione. Controlla eventuali troncamenti o sostituzioni di caratteri.</p>
 <h2>Prova subito a decodificare un JWT</h2>
-<p>Incolla qualsiasi payload JWT su <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a> — il decoder gestisce automaticamente l'input Base64URL, convertendo - in + e _ in / prima della decodifica. Nessuna sostituzione manuale di caratteri necessaria.</p>
+<p>Incolla qualsiasi payload JWT su <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a> — il decoder gestisce automaticamente l'input Base64URL, convertendo - in + e _ in / prima della decodifica. Nessuna sostituzione manuale di caratteri necessaria.</p>
 <p>I JWT sono eleganti nella loro semplicità: tre sezioni codificate in Base64URL separate da punti, firmate per prevenire manomissioni. Comprendere la loro struttura rende molto più semplice il debug dei flussi di autenticazione, l'ispezione dei claim dei token durante lo sviluppo e l'integrazione con API di terze parti che usano l'autenticazione basata su JWT.</p>
 
   </article>
@@ -268,7 +259,7 @@
   </div>
   <span class="footer-right">
     <span>Prova anche:</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   Sviluppato da <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -170,7 +161,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/" class="nav-pill">Encode</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">Decode</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">Decode</a>
       <a href="/image-to-base64" class="nav-pill">Image to Base64</a>
       <a href="/blog/" class="nav-pill current">Blog</a>
     </nav>
@@ -273,7 +264,7 @@ n = 01101110</div>
 <p>Base64 is a good fit when you must carry binary data inside a text-only format: embedding a small image in HTML or CSS, putting a file inside a JSON API request, storing a binary key in a configuration file, or sending attachments by email. It is a poor fit for large files, for data that your transport can already carry as raw bytes, and for anything that needs to be secret.</p>
 
 <h2>Try It Yourself</h2>
-<p>Use the <a href="/">Base64 encoder</a> to encode text, the <a href="/image-to-base64">Image to Base64 converter</a> to turn an image into a data URI, and <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a> to decode a Base64 string back to its original content. To use Base64 in code, continue with the guides for <a href="/blog/how-to-encode-and-decode-base64-in-javascript/">JavaScript</a>, <a href="/blog/how-to-encode-and-decode-base64-in-python/">Python</a> and the <a href="/blog/base64-encode-decode-command-line-linux-macos-windows/">command line</a>.</p>
+<p>Use the <a href="/">Base64 encoder</a> to encode text, the <a href="/image-to-base64">Image to Base64 converter</a> to turn an image into a data URI, and <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a> to decode a Base64 string back to its original content. To use Base64 in code, continue with the guides for <a href="/blog/how-to-encode-and-decode-base64-in-javascript/">JavaScript</a>, <a href="/blog/how-to-encode-and-decode-base64-in-python/">Python</a> and the <a href="/blog/base64-encode-decode-command-line-linux-macos-windows/">command line</a>.</p>
 
   </article>
 </main>
@@ -288,7 +279,7 @@ n = 01101110</div>
   </div>
   <span class="footer-right">
     <span>Also try:</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   Developed by <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

@@ -28,27 +28,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -306,7 +297,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/" class="nav-pill" data-i18n="nav_encode">Encode</a>
-      <a href="https://decodeb64.com" class="nav-pill" data-i18n="nav_decode" rel="noopener noreferrer" target="_blank">Decode</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" data-i18n="nav_decode" rel="noopener noreferrer" target="_blank">Decode</a>
       <a href="/image-to-base64" class="nav-pill" data-i18n="nav_image">Image to Base64</a>
       <a href="/blog/" class="nav-pill" data-i18n="nav_blog">Blog</a>
     </nav>
@@ -350,7 +341,7 @@
     <h2 data-i18n="philosophy_title">Our philosophy</h2>
     <p data-i18n="philosophy_body">We believe developer tools should be fast, private, and free. All processing on encodeb64.com happens entirely in your browser — no data is ever sent to a server. No registration required, no usage limits, no ads injected into your encoded content.</p>
     <h2 data-i18n="sister_title">Sister tool</h2>
-    <p data-i18n="sister_body">encodeb64.com is the encoding companion to <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, which handles Base64 decoding of text, files, and images.</p>
+    <p data-i18n="sister_body">encodeb64.com is the encoding companion to <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, which handles Base64 decoding of text, files, and images.</p>
     <h2 data-i18n="contact_title">Contact</h2>
     <p data-i18n="contact_body">For questions or feedback: <a href="mailto:contacto@mpmdigital.es">contacto@mpmdigital.es</a></p>
   </div>
@@ -366,7 +357,7 @@
   </div>
   <span class="footer-right">
     <span data-i18n="footer_also_try">Also try:</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   Developed by <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>
@@ -389,7 +380,7 @@
       philosophy_title: `Our philosophy`,
       philosophy_body: `We believe developer tools should be fast, private, and free. All processing on encodeb64.com happens entirely in your browser — no data is ever sent to a server. No registration required, no usage limits, no ads injected into your encoded content.`,
       sister_title: `Sister tool`,
-      sister_body: `encodeb64.com is the encoding companion to <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, which handles Base64 decoding of text, files, and images.`,
+      sister_body: `encodeb64.com is the encoding companion to <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, which handles Base64 decoding of text, files, and images.`,
       contact_title: `Contact`,
       contact_body: `For questions or feedback: <a href="mailto:contacto@mpmdigital.es">contacto@mpmdigital.es</a>`,
       footer_about: `About`,
@@ -414,7 +405,7 @@
       philosophy_title: `Nuestra filosofía`,
       philosophy_body: `Creemos que las herramientas para desarrolladores deben ser rápidas, privadas y gratuitas. Todo el procesamiento en encodeb64.com ocurre íntegramente en tu navegador: ningún dato se envía jamás a un servidor. Sin registro, sin límites de uso, sin publicidad inyectada en el contenido codificado.`,
       sister_title: `Herramienta hermana`,
-      sister_body: `encodeb64.com es el compañero de codificación de <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, que se encarga de decodificar Base64 de texto, archivos e imágenes.`,
+      sister_body: `encodeb64.com es el compañero de codificación de <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, que se encarga de decodificar Base64 de texto, archivos e imágenes.`,
       contact_title: `Contacto`,
       contact_body: `Para preguntas o comentarios: <a href="mailto:contacto@mpmdigital.es">contacto@mpmdigital.es</a>`,
       footer_about: `Acerca de`,
@@ -439,7 +430,7 @@
       philosophy_title: `Nossa filosofia`,
       philosophy_body: `Acreditamos que as ferramentas para desenvolvedores devem ser rápidas, privadas e gratuitas. Todo o processamento no encodeb64.com acontece inteiramente no seu navegador — nenhum dado é enviado para um servidor. Sem cadastro, sem limites de uso, sem anúncios injetados no conteúdo codificado.`,
       sister_title: `Ferramenta irmã`,
-      sister_body: `encodeb64.com é o companheiro de codificação de <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, que trata da decodificação Base64 de texto, arquivos e imagens.`,
+      sister_body: `encodeb64.com é o companheiro de codificação de <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, que trata da decodificação Base64 de texto, arquivos e imagens.`,
       contact_title: `Contato`,
       contact_body: `Para dúvidas ou feedback: <a href="mailto:contacto@mpmdigital.es">contacto@mpmdigital.es</a>`,
       footer_about: `Sobre`,
@@ -464,7 +455,7 @@
       philosophy_title: `Notre philosophie`,
       philosophy_body: `Nous pensons que les outils pour développeurs doivent être rapides, privés et gratuits. Tout le traitement sur encodeb64.com s'effectue entièrement dans votre navigateur — aucune donnée n'est jamais envoyée à un serveur. Sans inscription, sans limites d'utilisation, sans publicité injectée dans le contenu encodé.`,
       sister_title: `Outil complémentaire`,
-      sister_body: `encodeb64.com est le compagnon d'encodage de <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, qui gère le décodage Base64 de texte, fichiers et images.`,
+      sister_body: `encodeb64.com est le compagnon d'encodage de <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, qui gère le décodage Base64 de texte, fichiers et images.`,
       contact_title: `Contact`,
       contact_body: `Pour toute question ou retour : <a href="mailto:contacto@mpmdigital.es">contacto@mpmdigital.es</a>`,
       footer_about: `À propos`,
@@ -489,7 +480,7 @@
       philosophy_title: `Unsere Philosophie`,
       philosophy_body: `Wir glauben, dass Entwickler-Tools schnell, privat und kostenlos sein sollten. Die gesamte Verarbeitung auf encodeb64.com findet ausschließlich in Ihrem Browser statt — es werden keine Daten an einen Server gesendet. Keine Registrierung, keine Nutzungslimits, keine Werbung im kodierten Inhalt.`,
       sister_title: `Schwester-Tool`,
-      sister_body: `encodeb64.com ist das Kodier-Gegenstück zu <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, das Base64-Dekodierung von Text, Dateien und Bildern übernimmt.`,
+      sister_body: `encodeb64.com ist das Kodier-Gegenstück zu <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, das Base64-Dekodierung von Text, Dateien und Bildern übernimmt.`,
       contact_title: `Kontakt`,
       contact_body: `Bei Fragen oder Feedback: <a href="mailto:contacto@mpmdigital.es">contacto@mpmdigital.es</a>`,
       footer_about: `Über uns`,
@@ -514,7 +505,7 @@
       philosophy_title: `La nostra filosofia`,
       philosophy_body: `Crediamo che gli strumenti per sviluppatori debbano essere veloci, privati e gratuiti. Tutta l'elaborazione su encodeb64.com avviene interamente nel tuo browser: nessun dato viene mai inviato a un server. Nessuna registrazione, nessun limite d'uso, nessuna pubblicità iniettata nel contenuto codificato.`,
       sister_title: `Strumento gemello`,
-      sister_body: `encodeb64.com è il compagno di codifica di <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, che si occupa della decodifica Base64 di testo, file e immagini.`,
+      sister_body: `encodeb64.com è il compagno di codifica di <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, che si occupa della decodifica Base64 di testo, file e immagini.`,
       contact_title: `Contatto`,
       contact_body: `Per domande o feedback: <a href="mailto:contacto@mpmdigital.es">contacto@mpmdigital.es</a>`,
       footer_about: `Chi siamo`,
@@ -539,7 +530,7 @@
       philosophy_title: `我们的理念`,
       philosophy_body: `我们相信，开发者工具应该快速、私密且免费。encodeb64.com 上的所有处理完全在您的浏览器中进行——任何数据都不会发送到服务器。无需注册，无使用限制，编码内容中不含广告。`,
       sister_title: `姐妹工具`,
-      sister_body: `encodeb64.com 是 <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a> 的编码搭档，后者负责对文本、文件和图片进行 Base64 解码。`,
+      sister_body: `encodeb64.com 是 <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a> 的编码搭档，后者负责对文本、文件和图片进行 Base64 解码。`,
       contact_title: `联系方式`,
       contact_body: `如有疑问或反馈，请发送邮件至：<a href="mailto:contacto@mpmdigital.es">contacto@mpmdigital.es</a>`,
       footer_about: `关于`,
@@ -564,7 +555,7 @@
       philosophy_title: `Наша философия`,
       philosophy_body: `Мы считаем, что инструменты для разработчиков должны быть быстрыми, конфиденциальными и бесплатными. Всё обработка на encodeb64.com происходит исключительно в вашем браузере — никакие данные не отправляются на сервер. Регистрация не требуется, ограничений нет, реклама в кодируемый контент не встраивается.`,
       sister_title: `Родственный инструмент`,
-      sister_body: `encodeb64.com — партнёр по кодированию для <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, который занимается декодированием Base64 для текста, файлов и изображений.`,
+      sister_body: `encodeb64.com — партнёр по кодированию для <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, который занимается декодированием Base64 для текста, файлов и изображений.`,
       contact_title: `Контакты`,
       contact_body: `По вопросам и отзывам: <a href="mailto:contacto@mpmdigital.es">contacto@mpmdigital.es</a>`,
       footer_about: `О нас`,
@@ -589,7 +580,7 @@
       philosophy_title: `私たちの理念`,
       philosophy_body: `開発者ツールは高速で、プライベートで、無料であるべきだと考えています。encodeb64.com 上のすべての処理はブラウザ内で完結し、データがサーバーに送信されることはありません。登録不要、使用制限なし、エンコードされたコンテンツへの広告挿入もありません。`,
       sister_title: `姉妹ツール`,
-      sister_body: `encodeb64.com は <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a> のエンコード担当パートナーです。decodeb64.com はテキスト・ファイル・画像の Base64 デコードを担います。`,
+      sister_body: `encodeb64.com は <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a> のエンコード担当パートナーです。decodeb64.com はテキスト・ファイル・画像の Base64 デコードを担います。`,
       contact_title: `お問い合わせ`,
       contact_body: `ご質問やフィードバックは: <a href="mailto:contacto@mpmdigital.es">contacto@mpmdigital.es</a>`,
       footer_about: `概要`,
@@ -614,7 +605,7 @@
       philosophy_title: `우리의 철학`,
       philosophy_body: `개발자 도구는 빠르고, 개인적이며, 무료여야 한다고 믿습니다. encodeb64.com의 모든 처리는 브라우저 내에서만 이루어지며 데이터는 서버로 전송되지 않습니다. 회원가입 불필요, 사용 제한 없음, 인코딩 콘텐츠에 광고 삽입 없음.`,
       sister_title: `자매 도구`,
-      sister_body: `encodeb64.com은 텍스트, 파일, 이미지의 Base64 디코딩을 담당하는 <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>의 인코딩 파트너입니다.`,
+      sister_body: `encodeb64.com은 텍스트, 파일, 이미지의 Base64 디코딩을 담당하는 <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>의 인코딩 파트너입니다.`,
       contact_title: `연락처`,
       contact_body: `질문이나 피드백: <a href="mailto:contacto@mpmdigital.es">contacto@mpmdigital.es</a>`,
       footer_about: `소개`,
@@ -639,7 +630,7 @@
       philosophy_title: `Onze filosofie`,
       philosophy_body: `Wij geloven dat ontwikkelaarstools snel, privé en gratis moeten zijn. Alle verwerking op encodeb64.com vindt volledig in je browser plaats — er worden nooit gegevens naar een server gestuurd. Geen registratie vereist, geen gebruikslimieten, geen advertenties in je gecodeerde inhoud.`,
       sister_title: `Zusterwerktuig`,
-      sister_body: `encodeb64.com is de codeerbegeleider van <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, dat Base64-decodering van tekst, bestanden en afbeeldingen verzorgt.`,
+      sister_body: `encodeb64.com is de codeerbegeleider van <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a>, dat Base64-decodering van tekst, bestanden en afbeeldingen verzorgt.`,
       contact_title: `Contact`,
       contact_body: `Voor vragen of feedback: <a href="mailto:contacto@mpmdigital.es">contacto@mpmdigital.es</a>`,
       footer_about: `Over ons`,
@@ -664,7 +655,7 @@
       philosophy_title: `हमारी दर्शन`,
       philosophy_body: `हम मानते हैं कि डेवलपर टूल तेज़, निजी और मुफ़्त होने चाहिए। encodeb64.com पर सभी प्रसंस्करण पूरी तरह से आपके ब्राउज़र में होता है — कोई भी डेटा कभी सर्वर पर नहीं भेजा जाता। कोई पंजीकरण नहीं, कोई उपयोग सीमा नहीं, एनकोड की गई सामग्री में कोई विज्ञापन नहीं।`,
       sister_title: `सहोदर टूल`,
-      sister_body: `encodeb64.com, <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a> का एनकोडिंग साथी है, जो टेक्स्ट, फ़ाइलों और छवियों की Base64 डीकोडिंग संभालता है।`,
+      sister_body: `encodeb64.com, <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a> का एनकोडिंग साथी है, जो टेक्स्ट, फ़ाइलों और छवियों की Base64 डीकोडिंग संभालता है।`,
       contact_title: `संपर्क`,
       contact_body: `प्रश्नों या फ़ीडबैक के लिए: <a href="mailto:contacto@mpmdigital.es">contacto@mpmdigital.es</a>`,
       footer_about: `हमारे बारे में`,
@@ -698,9 +689,7 @@
   document.querySelectorAll('.lang-option').forEach(opt => {
     opt.addEventListener('click', () => {
       const lang = opt.dataset.lang;
-      const slug = PAGE_SLUG;
-      if (lang === 'en') window.location.href = '/' + slug;
-      else window.location.href = '/' + lang + '/' + slug;
+      window.location.href = lang === 'en' ? '/' : '/' + lang + '/';
     });
   });
   function applyLang(lang) {

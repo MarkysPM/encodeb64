@@ -40,27 +40,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" />
 
   <script>
-    if (location.hostname === 'encodeb64.com') {
-      var _ch = document.createElement('script');
-      _ch.async = true;
-      _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
-      document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        window.cookiehub && window.cookiehub.load({});
-      });
-    }
-  </script>
-  <script>
-    if (location.hostname === 'encodeb64.com') {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': 500,
+      'region': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV',
+                 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+    });
+    if (/(^|\.)encodeb64\.com$/.test(location.hostname)) {
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-MYEHD96X9Q';
@@ -169,7 +160,7 @@
   <div class="header-right">
     <nav class="nav-pills">
       <a href="/hi/" class="nav-pill">एनकोड</a>
-      <a href="https://decodeb64.com" class="nav-pill" rel="noopener noreferrer" target="_blank">डीकोड</a>
+      <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" class="nav-pill" rel="noopener noreferrer" target="_blank">डीकोड</a>
       <a href="/hi/image-to-base64" class="nav-pill">छवि से Base64</a>
       <a href="/hi/blog/" class="nav-pill current">ब्लॉग</a>
     </nav>
@@ -244,7 +235,7 @@
 <p>डेवलपमेंट के दौरान किसी JWT की जांच करने के लिए:</p>
 <ol>
 <li>JWT स्ट्रिंग कॉपी करें</li>
-<li>header या payload वाले हिस्से को (पहले या दूसरे डॉट से पहले का टेक्स्ट) <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a> में पेस्ट करें</li>
+<li>header या payload वाले हिस्से को (पहले या दूसरे डॉट से पहले का टेक्स्ट) <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a> में पेस्ट करें</li>
 <li>डीकोड किया गया JSON आपको claims दिखाएगा</li>
 </ol>
 <p>आप पूरा JWT भी पेस्ट कर सकते हैं — टूल वह पहला भाग डीकोड करेगा जिसे वह पार्स कर सकता है। प्रोडक्शन डीबगिंग के लिए, एक डेडिकेटेड JWT इंस्पेक्टर का उपयोग करें जो signature की जानकारी भी दिखाता है।</p>
@@ -252,7 +243,7 @@
 <p><strong>एरर: JWT डीकोड करते समय "Invalid Base64 input"</strong><br>कारण: आप एक स्टैंडर्ड Base64 डिकोडर का उपयोग कर रहे हैं जो - और _ वर्णों को नहीं संभालता। JWT के लिए Base64URL-सक्षम डिकोडर का उपयोग करें।</p>
 <p><strong>एरर: payload में अप्रत्याशित वर्ण या गड़बड़ आउटपुट दिखता है</strong><br>कारण: JWT claims के लिए non-UTF-8 एन्कोडिंग का उपयोग कर रहा हो सकता है, या ट्रांसमिशन के दौरान स्ट्रिंग करप्ट हो गई हो। ट्रंकेशन या वर्ण प्रतिस्थापन की जांच करें।</p>
 <h2>अभी एक JWT डीकोड करने का प्रयास करें</h2>
-<p>किसी भी JWT payload को <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">decodeb64.com</a> में पेस्ट करें — डिकोडर डीकोडिंग से पहले - को + और _ को / में बदलते हुए Base64URL इनपुट को स्वचालित रूप से संभालता है। किसी मैन्युअल वर्ण प्रतिस्थापन की आवश्यकता नहीं है।</p>
+<p>किसी भी JWT payload को <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">decodeb64.com</a> में पेस्ट करें — डिकोडर डीकोडिंग से पहले - को + और _ को / में बदलते हुए Base64URL इनपुट को स्वचालित रूप से संभालता है। किसी मैन्युअल वर्ण प्रतिस्थापन की आवश्यकता नहीं है।</p>
 <p>JWT अपनी सरलता में शानदार हैं: डॉट से अलग किए गए तीन Base64URL-एन्कोडेड भाग, जो छेड़छाड़ रोकने के लिए साइन किए गए हैं। उनकी संरचना को समझने से प्रमाणीकरण फ़्लो को डीबग करना, डेवलपमेंट के दौरान टोकन claims की जांच करना, और JWT-आधारित प्रमाणीकरण का उपयोग करने वाले थर्ड-पार्टी API के साथ इंटीग्रेट करना बहुत आसान हो जाता है।</p>
 
   </article>
@@ -268,7 +259,7 @@
   </div>
   <span class="footer-right">
     <span>यह भी आज़माएं:</span>
-    <a href="https://decodeb64.com" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
+    <a href="https://decodeb64.com/?utm_source=encodeb64&amp;utm_medium=referral&amp;utm_campaign=decode_link" rel="noopener noreferrer" target="_blank">Base64 Decode Tool →</a>
   </span>
 <span class="footer-right" style="font-size:0.72rem;color:var(--text-dim);">
   द्वारा विकसित <a href="https://mpmdigital.es/" rel="noopener noreferrer" target="_blank" style="color:var(--cyan,#00e5cc);">MpmDigital</a>

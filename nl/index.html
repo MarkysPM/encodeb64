@@ -59,11 +59,16 @@
       var _ch = document.createElement('script');
       _ch.async = true;
       _ch.src = 'https://cdn.cookiehub.eu/c2/f67c8ba2.js';
+      _ch.onload = function () {
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', function () {
+            window.cookiehub && window.cookiehub.load({});
+          });
+        } else {
+          window.cookiehub && window.cookiehub.load({});
+        }
+      };
       document.head.appendChild(_ch);
-      document.addEventListener('DOMContentLoaded', function () {
-        var cpm = {};
-        window.cookiehub && window.cookiehub.load(cpm);
-      });
     }
   </script>
 
